@@ -1,0 +1,42 @@
+$main-color: #ff792a;
+
+@media screen and (min-width: 769px) {
+  .outerSection {
+    width: calc(100% - 400px);
+    border: 1px solid black;
+
+    .innerSection {
+      min-width: 800px;
+      border: 1px solid yellow;
+      padding: 30px 100px;
+
+      .listInfo {
+        padding: 0 15px;
+        border: 1px solid blue;
+
+        .listTitle {
+          font-size: 2.3rem;
+          font-weight: 500;
+          color: $main-color;
+        }
+      }
+
+      .listSection {
+        margin-top: 20px;
+
+        .listRestaurants {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          width: 100%;
+
+          .listItem {
+            border: 1px solid black;
+            width: calc(50% - 15px);
+          }
+        }
+      }
+
+    }
+  }
+}
