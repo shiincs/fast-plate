@@ -1,12 +1,15 @@
 @import '../common.scss';
-
+$color: #555;
 .Header {
   height: 61px;
   line-height: 61px;
   border-bottom: 1px solid $main-color;
+  color: #555;
+
   .Logo {
     font-size: 2rem;
     float: left;
+    color: #333;
   }
   .__list {
     display: flex;
@@ -18,7 +21,11 @@
       text-align: center;
       width: 130px;
       font-size: 1rem;
-      // border: 1px solid #333;
+      border-left: 1px solid #dbdbdb;
+
+      &:last-child {
+        border-right: 1px solid #dbdbdb;
+      }
     }
   }
 

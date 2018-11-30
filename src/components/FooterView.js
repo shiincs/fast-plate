@@ -14,14 +14,16 @@ export default class FooterView extends Component {
               </h1>
               <p className="slogon">Eat, Share, Be Happy.</p>
             </div>
-            <div classNames="link__list">
+            <div className="link__list">
               <ul>
-                <li classNames="link__item">회사소개</li>
-                <li classNames="link__item">망고플레이트 채용</li>
+                <li>회사소개</li>
+                <li>망고플레이트 채용</li>
                 <li>투자 정보</li>
                 <li>브랜드 가이드라인</li>
                 <li>망고플레이트 비즈니스</li>
                 <li>광고 문의</li>
+              </ul>
+              <ul>
                 <li>공지사항</li>
                 <li>이용약관</li>
                 <li>비회원 이용자 이용정책</li>
