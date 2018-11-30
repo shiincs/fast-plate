@@ -1,0 +1,33 @@
+@import '../common.scss';
+
+.Header {
+  height: 61px;
+  line-height: 61px;
+  border-bottom: 1px solid $main-color;
+  .Logo {
+    font-size: 2rem;
+    float: left;
+  }
+  .__list {
+    display: flex;
+    align-items: center;
+    float: right;
+
+    .__item {
+      display: inline-block;
+      text-align: center;
+      width: 130px;
+      font-size: 1rem;
+      // border: 1px solid #333;
+    }
+  }
+
+  .Myprofile {
+    margin: 0 $main-margin;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid $main-color;
+  }
+}
