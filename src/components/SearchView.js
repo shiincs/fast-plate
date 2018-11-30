@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import SearchList from '../containers/SearchList';
+import SearchListView from '../components/SearchListView';
 
 export default class SearchView extends Component {
   render() {
     return (
       <React.Fragment>
-        <SearchList />
+        <SearchListView />
       </React.Fragment>
     );
   }
