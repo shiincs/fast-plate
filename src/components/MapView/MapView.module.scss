@@ -1,0 +1,13 @@
+// mobile vertical, mobile horizontal, tablet device
+.mapSection {
+  display: none;
+}
+
+// desktop(or laptop) device
+@media screen and (min-width: 993px) {
+  .mapSection {
+    display: block;
+    min-width: 400px;
+    background-color: greenyellow;
+  }
+}
