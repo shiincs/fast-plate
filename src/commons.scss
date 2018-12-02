@@ -1,0 +1,25 @@
+$main-color: #ff792a;
+
+@mixin mobileHorizontal {
+  @media screen and (min-width: 577px) {
+    @content
+  }
+}
+
+;
+
+@mixin tablet {
+  @media screen and (min-width: 769px) {
+    @content
+  }
+}
+
+;
+
+@mixin desktop {
+  @media screen and (min-width: 993px) {
+    @content
+  }
+}
+
+;

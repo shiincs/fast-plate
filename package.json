@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "google-maps-react": "^2.0.2",
     "node-sass": "^4.10.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -31,5 +32,6 @@
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.0",
     "prettier": "^1.15.2"
-  }
+  },
+  "proxy": "https://api.fastplate.xyz/"
 }
