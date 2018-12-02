@@ -11,20 +11,15 @@ export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgUrl: '',
-      name: '',
-      score: 0,
-      address: '',
-      foodTyle: '',
-      viewNum: 0,
-      reviewNum: 0,
+      restaurants: [],
     };
   }
 
   async componentDidMount() {
     // 현재 api 서버에서 CORS 관련 문제 발생 (요청 불가)
-    // const res = await api.get('/restaurants/list');
-    // console.log(res);
+    // proxy 우회해서 사용은 가능한 상태
+    const { data: restaurants } = await api.get('/api/restaurants/list/');
+    console.log(restaurants);
   }
 
   render() {

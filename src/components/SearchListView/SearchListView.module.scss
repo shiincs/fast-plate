@@ -1,9 +1,8 @@
+@import '../../commons.scss';
 // media query width
 // mobile: max-width 576px
 // tablet: man-width 768px
 // desktop: man-width 992px
-
-$main-color: #ff792a;
 
 // mobile device vertical mode (max-width: 576px)
 .outerSection {
@@ -57,6 +56,7 @@ $main-color: #ff792a;
 
             .score {
               font-size: 2rem;
+              font-weight: 500;
               color: $main-color;
               margin-left: 7px;
             }
@@ -112,7 +112,7 @@ $main-color: #ff792a;
 }
 
 // mobile device horizontal mode (577px to 768px)
-@media screen and (min-width: 577px) {
+@include mobileHorizontal {
   .outerSection {
     width: 100%;
     border: 1px solid green;
@@ -126,7 +126,7 @@ $main-color: #ff792a;
 }
 
 // tablet device (769px to 992px)
-@media screen and (min-width: 769px) {
+@include tablet {
   .outerSection {
     width: 100%;
     border: 1px solid green;
@@ -140,10 +140,10 @@ $main-color: #ff792a;
 }
 
 // desktop(or laptop) device (993px +)
-@media screen and (min-width: 993px) {
+@include desktop {
   .outerSection {
     width: calc(100% - 400px);
-    min-width: 992px;
+    min-width: 950px;
     border: 1px solid green;
 
     .innerSection {
