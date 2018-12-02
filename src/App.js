@@ -9,7 +9,8 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route path="/search/:searchKeyword" component={SearchPage} />
+            {/* <Route path="/search/:searchKeyword" component={SearchPage} /> */}
+            <Route path="/" component={SearchPage} />
           </Switch>
         </div>
       </BrowserRouter>
