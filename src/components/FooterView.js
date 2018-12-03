@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Footer.scss';
+import './FooterView.scss';
 
 export default class FooterView extends Component {
   render() {
