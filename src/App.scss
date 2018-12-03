@@ -157,8 +157,8 @@ table {
   }
 
   &-background {
-    height: 100%;
     width: 100%;
+    height: 100%;
   }
 
   .main-title {
@@ -177,7 +177,7 @@ table {
 
       @media all and (min-width: $size-basic) and (max-width: $size-normal) {
         font-size: 20px;
-        letter-spacing: 6px;
+        letter-spacing: 5px;
         transform: translateY(-2rem);
       }
     }
@@ -216,6 +216,9 @@ table {
       height: 1.8rem;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
+      border: 2px orange solid;
+      border-right: none;
+      outline: none;
 
       @media all and (min-width: $size-normal) and (max-width: $size-big) {
         width: 20rem;
@@ -235,6 +238,7 @@ table {
       display: inline-block;
       border: 1px transparent solid;
       transform: translateY(1.5px);
+      outline: none;
       @media all and (min-width: $size-basic) and (max-width: $size-normal) {
         width: 3rem;
       }
@@ -272,59 +276,43 @@ table {
 
 /************************************ Secondary ************************************/
 .secondary {
-  padding: 50px;
+  padding: 30px 50px 0px 50px;
   font-weight: 900;
   color: orange;
+  text-align: center;
 
-  &-first,
-  &-second {
-    display: flex;
-    justify-content: center;
+  & h2 {
+    transform: translateX(-40%);
+    margin-bottom: 1rem;
+  }
+
+  &-list__list {
     margin-top: 20px;
     position: relative;
-    @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-      display: block;
-    }
+    color: #fff;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
 
     & p {
       font-weight: 700;
-      font-size: 1.3rem;
+      font-size: 1rem;
       color: $color-white;
-      margin: 0;
       position: absolute;
       top: 50%;
       left: 50%;
-      margin-right: -50%;
       @include center;
+      white-space: nowrap;
     }
 
-    &__list {
-      position: relative;
-      @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-        margin-top: 50px;
-      }
+    & img {
+      width: 90%;
     }
 
-    &__list:before {
-      display: block;
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgb(160, 157, 157);
-      opacity: 0.2;
-    }
-
-    &__list img {
-      width: 100%;
-      height: auto;
-    }
-
-    &__list:not(:last-child) {
+    @media all and (min-width: $size-basic) and (max-width: $size-normal) {
+      width: 40%;
+      display: inline-block;
       margin-right: 20px;
-      @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-        margin-right: 0;
-      }
     }
   }
 }
