@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import styles from './MypageView.module.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 export default class MypageView extends Component {
   render() {
     return (
-      <div>
-        <section className="my-page">
+      <div className={cx('blackOverlay')}>
+        <section className={cx('myPage', 'arrowTop')}>
           <div className="my-page__tap">
             <button>최근 본 맛집</button>
             <button>가고싶다</button>

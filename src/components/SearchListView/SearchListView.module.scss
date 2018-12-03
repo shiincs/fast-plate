@@ -8,6 +8,7 @@
 .outerSection {
   width: 100%;
   border: 1px solid green;
+  padding: 0 0 30px 0;
 
   .innerSection {
     width: 100%;
@@ -17,11 +18,30 @@
     .listInfo {
       padding: 0 15px;
       border: 1px solid blue;
+      display: flex;
+      justify-content: space-between;
 
       .listTitle {
         font-size: 2.3rem;
         font-weight: 500;
         color: $main-color;
+      }
+
+      .listFilter::before {
+        content: '';
+        margin: -2px 12px 0 0;
+        background-image: url(./mangoplate_sprites_desktop.png);
+        background-position: -974px -304px;
+        width: 23px;
+        height: 22px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .listFilter {
+        font-size: 1.8rem;
+        color: #9b9b9b;
+        cursor: pointer;
       }
     }
 
@@ -63,8 +83,7 @@
             }
 
             .etcInfo {
-              margin-top: 4px;
-              line-height: 1.7rem;
+              margin-top: 11px;
 
               .location,
               .type {
@@ -74,7 +93,7 @@
             }
 
             .countInfo {
-              line-height: 1.7rem;
+              margin-top: 6px;
 
               .viewCount::before {
                 content: '';
@@ -109,6 +128,28 @@
         }
       }
     }
+
+    .pagination {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .btnPaginate {
+        display: inline-block;
+        margin-right: 10px;
+        width: 46px;
+        height: 46px;
+        line-height: 42px;
+        font-size: 1.8rem;
+        color: #cbcbcb;
+        text-align: center;
+        border: 2px solid #cbcbcb;
+        border-radius: 50%;
+        text-decoration: none;
+      }
+    }
+
   }
 }
 

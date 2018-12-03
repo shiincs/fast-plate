@@ -9,10 +9,17 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 
 html {
   font-size: 10px;
+  line-height: 1;
+}
+
+button {
+  background: none;
 }
 
 ul,
