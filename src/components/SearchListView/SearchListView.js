@@ -7,7 +7,27 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 export default class SearchListView extends Component {
+  static defaultProps = {
+    // 서버로부터 받아온 레스토랑 목록 데이터
+    restaurants: [
+      {
+        // id:
+        // imgUrl:
+        // name:
+        // score:
+        // location:
+        // foodType:
+        // viewCount:
+        // reviewCount:
+        // wannagoCount:
+        // latitude:
+        // longitude:
+      },
+    ],
+  };
+
   render() {
+    const { restaurants } = this.props;
     return (
       <React.Fragment>
         <section className={cx('outerSection')}>
@@ -21,56 +41,34 @@ export default class SearchListView extends Component {
                 )}
               </SearchContext.Consumer>
             </div>
+
             <div className={cx('listSection')}>
               <ul className={cx('listRestaurants')}>
-                <li className={cx('listItem')}>
-                  <figure>
-                    <Link to="/restaurant/1">
-                      <img
-                        className={cx('thumb')}
-                        src="https://mp-seoul-image-production-s3.mangoplate.com/882510_1516984909816099.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80"
-                      />
-                    </Link>
-                    <figcaption className={cx('info')}>
-                      <Link to="/restaurant/1">
-                        <h2 className={cx('name')}>팩피</h2>
+                {restaurants.map(r => (
+                  <li key={r.id} className={cx('listItem')}>
+                    <figure>
+                      <Link to={`/restaurant/${r.id}`}>
+                        <img className={cx('thumb')} src={r.imgUrl} />
                       </Link>
-                      <span className={cx('score')}>4.7</span>
-                      <p className={cx('etcInfo')}>
-                        <span className={cx('location')}>왕십리/성동 -</span>
-                        <span className={cx('type')}> 기타 양식</span>
-                      </p>
-                      <p className={cx('countInfo')}>
-                        <span className={cx('viewCount')}>22751</span>
-                        <span className={cx('reviewCount')}>26</span>
-                      </p>
-                    </figcaption>
-                  </figure>
-                </li>
-                <li className={cx('listItem')}>
-                  <figure>
-                    <Link to="/restaurant/1">
-                      <img
-                        className={cx('thumb')}
-                        src="https://mp-seoul-image-production-s3.mangoplate.com/882510_1516984909816099.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80"
-                      />
-                    </Link>
-                    <figcaption className={cx('info')}>
-                      <Link to="/restaurant/1">
-                        <h2 className={cx('name')}>팩피</h2>
-                      </Link>
-                      <span className={cx('score')}>4.7</span>
-                      <p className={cx('etcInfo')}>
-                        <span className={cx('location')}>왕십리/성동 -</span>
-                        <span className={cx('type')}> 기타 양식</span>
-                      </p>
-                      <p className={cx('countInfo')}>
-                        <span className={cx('viewCount')}>22751</span>
-                        <span className={cx('reviewCount')}>26</span>
-                      </p>
-                    </figcaption>
-                  </figure>
-                </li>
+                      <figcaption className={cx('info')}>
+                        <Link to={`/restaurant/${r.id}`}>
+                          <h2 className={cx('name')}>{r.name}</h2>
+                        </Link>
+                        <span className={cx('score')}>{r.score}</span>
+                        <p className={cx('etcInfo')}>
+                          <span className={cx('location')}>{r.location} -</span>
+                          <span className={cx('type')}> {r.foodType}</span>
+                        </p>
+                        <p className={cx('countInfo')}>
+                          <span className={cx('viewCount')}>{r.viewCount}</span>
+                          <span className={cx('reviewCount')}>
+                            {r.reviewCount}
+                          </span>
+                        </p>
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

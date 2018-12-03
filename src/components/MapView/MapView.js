@@ -42,36 +42,33 @@ export class MapView extends Component {
   };
 
   render() {
+    const { restaurants } = this.props;
     return (
       <section className={cx('mapSection')}>
         <Map
           google={this.props.google}
-          zoom={14}
+          zoom={15}
           style={mapStyles}
           onClick={this.onMapClicked}
           initialCenter={{
-            lat: 37.5497824,
-            lng: 127.0445833,
+            lat: restaurants[0].latitude,
+            lng: restaurants[0].longitude,
           }}
         >
-          <Marker
-            img={
-              'https://mp-seoul-image-production-s3.mangoplate.com/882510_1516984909816099.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80'
-            }
-            name={'팩피'}
-            score={4.7}
-            location={'왕십리/성동'}
-            type={'기타 양식'}
-            reviewCount={26}
-            wannagoCount={10}
-            position={{ lat: 37.5497824, lng: 127.0445833 }}
-            onClick={this.onMarkerClick}
-          />
-          <Marker
-            name={'와하카'}
-            position={{ lat: 37.54785459, lng: 127.05436622 }}
-            onClick={this.onMarkerClick}
-          />
+          {restaurants.map(r => (
+            <Marker
+              key={r.id}
+              img={r.imgUrl}
+              name={r.name}
+              score={r.score}
+              location={r.location}
+              type={r.foodType}
+              reviewCount={r.reviewCount}
+              wannagoCount={r.wannagoCount}
+              position={{ lat: r.latitude, lng: r.longitude }}
+              onClick={this.onMarkerClick}
+            />
+          ))}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}

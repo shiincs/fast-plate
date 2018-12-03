@@ -19,13 +19,16 @@ export default class Search extends Component {
     // 현재 api 서버에서 CORS 관련 문제 발생 (요청 불가)
     // proxy 우회해서 사용은 가능한 상태
     const { data: restaurants } = await api.get('/api/restaurants/list/');
-    console.log(restaurants);
+    this.setState({
+      restaurants: [...restaurants],
+    });
   }
 
   render() {
+    const { restaurants } = this.state;
     return (
       <React.Fragment>
-        <SearchView />
+        <SearchView restaurants={restaurants} />
       </React.Fragment>
     );
   }
