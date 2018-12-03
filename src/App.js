@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
-<<<<<<< HEAD
-import Layout from './components/Layout';
-
-class App extends Component {
-  render() {
-    return <Layout />;
-=======
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
+import PostDetailPage from './pages/PostDetailPage';
 
 class App extends Component {
   render() {
@@ -17,11 +11,11 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route path="/search/:searchKeyword" component={SearchPage} />
+            <Route path="/restaurant/:rKeyword" component={PostDetailPage} />
           </Switch>
         </div>
       </BrowserRouter>
     );
->>>>>>> 9c73ebb49fe6ccbb1fd2d0da5acca81fc36563a5
   }
 }
 
