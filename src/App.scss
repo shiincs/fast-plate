@@ -216,7 +216,7 @@ table {
       height: 1.8rem;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
-      border: 2px orange solid;
+      border: 3px orange solid;
       border-right: none;
       outline: none;
 
@@ -236,7 +236,7 @@ table {
       border-bottom-right-radius: 10px;
       background-color: orange;
       display: inline-block;
-      border: 1px transparent solid;
+      border: 3px orange solid;
       transform: translateY(1.5px);
       outline: none;
       @media all and (min-width: $size-basic) and (max-width: $size-normal) {

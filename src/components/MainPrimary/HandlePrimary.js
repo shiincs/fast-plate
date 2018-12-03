@@ -9,7 +9,7 @@ export default class HandlePrimary extends Component {
   render() {
     return (
       <div className="primary">
-        <img src={hero} class="primary-background" alt="background" />
+        <img src={hero} className="primary-background" alt="background" />
         <HandleTitle />
         <HandleSearch />
         <HandleBadges />
