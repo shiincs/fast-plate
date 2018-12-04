@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import styles from './MainPrimary.module.scss';
+import styles from './HandlePrimary.module.scss';
 
 export default class HandleSearch extends Component {
   constructor(props) {

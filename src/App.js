@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import HandlePrimary from './components/MainPrimary/HandlePrimary';
-import HandleSecondary from './components/MainSecondary/HandleSecondary';
+import HandlePrimary from './components/HandlePrimary/HandlePrimary';
+import HandleSecondary from './components/HandleSecondary/HandleSecondary';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.scss';
 

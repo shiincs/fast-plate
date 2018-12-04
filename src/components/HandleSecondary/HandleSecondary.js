@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import styles from './MainSecondary.module.scss';
+import styles from './HandleSecondary.module.scss';
+import classNames from 'classnames/bind';
 import food1 from './SecondaryImg/food1.jpg';
 import food2 from './SecondaryImg/food2.jpg';
 import food3 from './SecondaryImg/food3.jpg';
 import food4 from './SecondaryImg/food4.jpeg';
 import food5 from './SecondaryImg/food5.jpg';
 import food6 from './SecondaryImg/food6.jpg';
+
+const cx = classNames.bind(styles);
 
 export default class HandleSecondary extends Component {
   constructor(props) {
@@ -43,7 +46,7 @@ export default class HandleSecondary extends Component {
   render() {
     const { dummyImgTextArr } = this.state;
     return (
-      <div className={styles.secondary}>
+      <div className={cx('secondary')}>
         <h2>믿고 보는 맛집 리스트</h2>
         {dummyImgTextArr.map((dummy, index) => (
           <HandleList
@@ -61,7 +64,7 @@ class HandleList extends Component {
   render() {
     const { listImg, listText } = this.props;
     return (
-      <div className={styles.secondarylistList}>
+      <div className={cx('secondarylistList')}>
         <img src={listImg} alt="list-images" />
         <p>{listText}</p>
       </div>
