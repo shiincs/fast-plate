@@ -1,0 +1,38 @@
+.blackOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 99;
+  overflow: hidden;
+}
+
+.myPage {
+  position: fixed;
+  top: 30px;
+  right: 5px;
+  width: 200px;
+  height: 75px;
+  background-color: #fff;
+  color: #fff;
+  padding: 20px;
+  margin: 0px;
+  z-index: 100;
+}
+
+.myPage.arrowTop {
+  margin-top: 40px;
+}
+
+.myPage.arrowTop::before {
+  content: " ";
+  position: absolute;
+  right: 15px;
+  top: -15px;
+  border-top: none;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid #000;
+}

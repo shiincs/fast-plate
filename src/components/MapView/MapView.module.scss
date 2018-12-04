@@ -1,0 +1,16 @@
+@import '../../commons.scss';
+
+// mobile vertical, mobile horizontal, tablet device
+.mapSection {
+  display: none;
+}
+
+// desktop(or laptop) device
+@include desktop {
+  .mapSection {
+    position: absolute;
+    display: block;
+    width: 400px;
+    background-color: greenyellow;
+  }
+}
