@@ -1,8 +1,12 @@
 @import '../commons.scss';
 .reveiw-content {
+  margin-top: 14px;
+  &:hover {
+    background: #f6f6f6;
+  }
   display: flex;
   justify-content: space-between;
-  padding: 40px 0 52px 0;
+  padding: 40px 1% 52px;
   min-height: 74px;
   figure {
     display: flex;
