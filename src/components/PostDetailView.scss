@@ -1,10 +1,11 @@
-@import '../common.scss';
+@import '../commons.scss';
 
 .photo-list {
   height: 340px;
   font-size: $fontsize;
   // border: 1px solid $main-color;
 }
+
 .detail-inner {
   display: flex;
   margin: 0 auto;
@@ -18,19 +19,23 @@
 
     font-size: $fontsize;
     color: $main-gray;
+
     header {
       padding-bottom: 20px;
       border-bottom: 1px solid #ececec;
+
       .titleWrap {
         height: 52px;
         display: flex;
         align-items: center;
         margin-bottom: $main-margin;
       }
+
       .title {
         font-size: 2rem;
         color: #090909;
       }
+
       .rate {
         font-size: 1.8rem;
         margin-left: 1rem;
@@ -52,9 +57,11 @@
       flex-wrap: wrap;
       line-height: 1.7;
       padding: 20px 0;
+
       dt {
         width: 30%;
       }
+
       dd {
         width: 70%;
       }

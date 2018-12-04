@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import styles from './MypageView.module.scss';
 import classNames from 'classnames/bind';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { withUser } from '../contexts/UserContext';
+import { withModal } from '../contexts/ModalContext';
+import LoginPopupView from './LoginPopupView';
 
 const cx = classNames.bind(styles);
 
-export default class MypageView extends Component {
+class MypageView extends Component {
+  targetElement = null;
+
+  componentDidMount() {
+    this.targetElement = LoginPopupView;
+  }
   componentWillUnmount() {
     // 5. Useful if we have called disableBodyScroll for multiple target elements,
     // and we just want a kill-switch to undo all that.
@@ -15,29 +23,82 @@ export default class MypageView extends Component {
   }
 
   render() {
-    const { modalOpen, hideTargetElement } = this.props;
+    const {
+      modalOpen,
+      popupOpen,
+      recentOpen,
+      wannagoOpen,
+      handleClick,
+      showTargetElement,
+      hideTargetElement,
+      username,
+    } = this.props;
 
     return (
       <React.Fragment>
         <div
           className={cx({ blackOverlay: modalOpen })}
-          onClick={hideTargetElement}
+          onClick={() => {
+            hideTargetElement('modalOpen');
+          }}
         />
         <section className={cx('myPage', 'arrowTop', { modal: !modalOpen })}>
-          <div className={cx('tapWrapper')}>
-            <button className={cx('tap')}>최근 본 맛집 (0)</button>
-            <button className={cx('tap')}>가고싶다</button>
-          </div>
-          <div className={cx('list')}>
-            <ul className={cx('recentView')}>
-              <li>1</li>
-            </ul>
-            <ul className={cx('wannago')}>
-              <li>1</li>
-            </ul>
+          <div className={cx('myPageWrapper')}>
+            <div className={cx('tapWrapper')}>
+              <div
+                className={cx('tap', { active: recentOpen })}
+                onClick={() => {
+                  handleClick('recentOpen', 'wannagoOpen');
+                }}
+              >
+                최근 본 맛집 (0)
+              </div>
+              <div
+                className={cx('tap', { active: wannagoOpen })}
+                onClick={() => {
+                  username == null
+                    ? !popupOpen && showTargetElement('popupOpen')
+                    : handleClick('wannagoOpen', 'recentOpen');
+                }}
+              >
+                가고싶다
+              </div>
+            </div>
+            <div className={cx('list')}>
+              {recentOpen && (
+                <ul className={cx('recentView')}>
+                  <li>최근 본 맛집</li>
+                </ul>
+              )}
+              {wannagoOpen && (
+                <ul className={cx('wannago')}>
+                  <li>가고싶다</li>
+                </ul>
+              )}
+            </div>
+            <div className={cx('buttonList')}>
+              {username == null ? (
+                <button
+                  className={cx('btn')}
+                  onClick={() => {
+                    !popupOpen && showTargetElement('popupOpen');
+                  }}
+                >
+                  로그인
+                </button>
+              ) : (
+                <button className={cx('btn')}>로그아웃</button>
+              )}
+            </div>
           </div>
         </section>
+        <LoginPopupView
+          popupOpen={popupOpen}
+          hideTargetElement={hideTargetElement}
+        />
       </React.Fragment>
     );
   }
 }
+
+export default withUser(withModal(MypageView));

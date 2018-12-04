@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
   overflow: hidden;
 }
@@ -20,19 +20,22 @@
   top: 30px;
   right: 10px;
   width: 320px;
+  height: 60%;
   min-height: 250px;
   max-height: 450px;
   background-color: #fff;
   color: #fff;
   margin: 0px;
   z-index: 200;
+  display: flex;
+  flex-direction: column;
 
   &.arrowTop {
     margin-top: 40px;
   }
 
   &.arrowTop::before {
-    content: " ";
+    content: ' ';
     position: absolute;
     right: 15px;
     top: -11px;
@@ -42,27 +45,77 @@
     border-bottom: 12px solid #fff;
   }
 
+  // .myPageWrapper {
+  //   width: 100%;
+  //   height: 100%;
+  //   padding: 50px 0;
+  //   box-sizing: border-box;
+  //   position: relative;
+  //   border: 1px solid red;
+  // }
+
   .tapWrapper {
+    position: relative;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 50px;
-    border: 1px solid yellowgreen;
+    display: flex;
 
     .tap {
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       width: 50%;
       height: 100%;
       font-size: 1.6rem;
       color: #9b9b9b;
       cursor: pointer;
       outline: none;
+      border-bottom: 1px solid #dbdbdb;
+
+      &.active {
+        color: $main-color;
+        border-bottom: 3px solid $main-color;
+      }
     }
   }
 
   .list {
     position: absolute;
     width: 100%;
-    height: calc(100% - 50px);
+    height: calc(100% - 100px);
     color: #000;
-    overflow-y: scroll;
+    overflow-y: auto;
+    border-bottom: 1px solid #dbdbdb;
+  }
+
+  .buttonList {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+
+    .btn {
+      display: block;
+      width: 110px;
+      height: 40px;
+      font-size: 1.6rem;
+      color: #9b9b9b;
+      border: 3px solid #9b9b9b;
+      border-radius: 50px;
+      cursor: pointer;
+      outline: none;
+
+      &:hover {
+        color: $main-color;
+        border-color: $main-color;
+      }
+    }
   }
 }

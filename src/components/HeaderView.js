@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './HeaderView.scss';
 import MypageView from './MypageView';
+import { withModal } from '../contexts/ModalContext';
 
-export default class HeaderView extends Component {
+class HeaderView extends Component {
   targetElement = null;
 
   componentDidMount() {
@@ -11,7 +12,7 @@ export default class HeaderView extends Component {
   }
 
   render() {
-    const { modalOpen, showTargetElement, hideTargetElement } = this.props;
+    const { modalOpen, showTargetElement, handleClick, ...rest } = this.props;
     return (
       <>
         <header className="Header">
@@ -23,15 +24,27 @@ export default class HeaderView extends Component {
               <li className="__item">망고 스토리</li>
               <button
                 className="Myprofile"
-                onClick={modalOpen ? hideTargetElement : showTargetElement}
+                onClick={() => {
+                  !modalOpen && showTargetElement('modalOpen');
+                }}
               >
                 프로필
               </button>
             </ul>
           </nav>
         </header>
-        {modalOpen ? <MypageView {...this.props} /> : null}
+        {modalOpen ? (
+          <MypageView
+            // showTargetElement={showTargetElement}
+            // hideTargetElement={hideTargetElement}
+            // modalOpen={modalOpen}
+            {...rest}
+            handleClick={handleClick}
+          />
+        ) : null}
       </>
     );
   }
 }
+
+export default withModal(HeaderView);
