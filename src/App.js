@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import HandlePrimary from './components/HandlePrimary/HandlePrimary';
 import HandleSecondary from './components/HandleSecondary/HandleSecondary';
-import { BrowserRouter, Route } from 'react-router-dom';
 import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
