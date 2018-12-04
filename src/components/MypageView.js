@@ -28,15 +28,13 @@ export default class MypageView extends Component {
             <button className={cx('tap')}>최근 본 맛집 (0)</button>
             <button className={cx('tap')}>가고싶다</button>
           </div>
-          <div className="my-page__list">
-            <div className="veiwed-restraurants__list">
-              <ul>
-                <li>
-                  <div className="viewed_restaurant__thumbnail" />
-                </li>
-              </ul>
-            </div>
-            <div className="wannago-container__list" />
+          <div className={cx('list')}>
+            <ul className={cx('recentView')}>
+              <li>1</li>
+            </ul>
+            <ul className={cx('wannago')}>
+              <li>1</li>
+            </ul>
           </div>
         </section>
       </React.Fragment>

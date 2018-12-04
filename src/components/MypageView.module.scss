@@ -20,7 +20,8 @@
   top: 30px;
   right: 10px;
   width: 320px;
-  height: auto;
+  min-height: 250px;
+  max-height: 450px;
   background-color: #fff;
   color: #fff;
   margin: 0px;
@@ -55,5 +56,13 @@
       cursor: pointer;
       outline: none;
     }
+  }
+
+  .list {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 50px);
+    color: #000;
+    overflow-y: scroll;
   }
 }
