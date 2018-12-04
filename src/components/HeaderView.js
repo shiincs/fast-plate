@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import './Header.scss';
+import './HeaderView.scss';
 import MypageView from './MypageView';
 
 export default class HeaderView extends Component {
+  targetElement = null;
+
+  componentDidMount() {
+    // 2. Get a target element that you want to persist scrolling for (such as a modal/lightbox/flyout/nav).
+    this.targetElement = MypageView;
+  }
+
   render() {
+    const { modalOpen, showTargetElement, hideTargetElement } = this.props;
     return (
       <>
         <header className="Header">
@@ -13,11 +21,16 @@ export default class HeaderView extends Component {
               <li className="__item">EAT DEAL</li>
               <li className="__item">맛집 리스트</li>
               <li className="__item">망고 스토리</li>
-              <button className="Myprofile">프로필</button>
+              <button
+                className="Myprofile"
+                onClick={modalOpen ? hideTargetElement : showTargetElement}
+              >
+                프로필
+              </button>
             </ul>
           </nav>
         </header>
-        <MypageView />
+        {modalOpen ? <MypageView {...this.props} /> : null}
       </>
     );
   }
