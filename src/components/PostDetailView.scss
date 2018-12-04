@@ -5,50 +5,66 @@
   font-size: $fontsize;
   // border: 1px solid $main-color;
 }
-.restaurant-detail {
-  width: 75%;
-  padding: 0 20px;
-  font-size: $fontsize;
-  color: $main-gray;
-  header {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ececec;
-    .titleWrap {
-      height: 52px;
-      display: flex;
-      align-items: center;
-      margin-bottom: $main-margin;
-    }
-    .title {
-      font-size: 2rem;
-      color: #090909;
-    }
-    .rate {
-      font-size: 1.8rem;
-      margin-left: 1rem;
-      color: $main-color;
+.detail-inner {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+
+  .restaurant-detail {
+    width: calc(100% - 400px);
+    padding: 0 14%;
+    flex: 1;
+    float: left;
+
+    font-size: $fontsize;
+    color: $main-gray;
+    header {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ececec;
+      .titleWrap {
+        height: 52px;
+        display: flex;
+        align-items: center;
+        margin-bottom: $main-margin;
+      }
+      .title {
+        font-size: 2rem;
+        color: #090909;
+      }
+      .rate {
+        font-size: 1.8rem;
+        margin-left: 1rem;
+        color: $main-color;
+      }
+
+      .status {
+        width: 60%;
+        display: flex;
+
+        span {
+          min-width: 80px;
+        }
+      }
     }
 
-    .status {
-      width: 60%;
+    .detail-list {
       display: flex;
-
-      span {
-        min-width: 80px;
+      flex-wrap: wrap;
+      line-height: 1.7;
+      padding: 20px 0;
+      dt {
+        width: 30%;
+      }
+      dd {
+        width: 70%;
       }
     }
   }
 
-  .detail-list {
-    display: flex;
-    flex-wrap: wrap;
-    line-height: 1.7;
-    padding: 20px 0;
-    dt {
-      width: 30%;
-    }
-    dd {
-      width: 70%;
-    }
+  .map {
+    width: 400px;
+
+    height: 400px;
+    background: #e5e5e5;
   }
 }
