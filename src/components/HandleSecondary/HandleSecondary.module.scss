@@ -1,0 +1,46 @@
+@import '../../commons.scss';
+
+.secondary {
+  padding: 30px 50px 0px 50px;
+  font-weight: 900;
+  color: orange;
+  text-align: center;
+
+  & h2 {
+    transform: translateX(-40%);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  & .secondarylistList {
+    margin-top: 20px;
+    position: relative;
+    color: #fff;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+
+    & p {
+      font-weight: 700;
+      font-size: 2rem;
+      color: $color-white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include center;
+      white-space: nowrap;
+    }
+
+    & img {
+      width: 90%;
+    }
+
+    @media all and (min-width: $size-basic) and (max-width: $size-normal) {
+      width: 100%;
+      font-size: 4rem;
+      display: block;
+      margin-right: 20px;
+      text-align: center;
+    }
+  }
+}
