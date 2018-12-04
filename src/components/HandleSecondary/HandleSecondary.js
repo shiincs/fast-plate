@@ -64,7 +64,7 @@ export default class HandleSecondary extends Component {
           keyword: '강남',
         },
       ],
-      dummySlice: [],
+      dummyArr: [],
     };
   }
 
@@ -75,14 +75,14 @@ export default class HandleSecondary extends Component {
   all() {
     const { dummyImgTextArr } = this.state;
     this.setState({
-      dummySlice: dummyImgTextArr,
+      dummyArr: dummyImgTextArr,
     });
   }
 
   sungsu() {
     const { dummyImgTextArr } = this.state;
     this.setState({
-      dummySlice: dummyImgTextArr.filter(dummy => {
+      dummyArr: dummyImgTextArr.filter(dummy => {
         return dummy.keyword === '성수';
       }),
     });
@@ -91,7 +91,7 @@ export default class HandleSecondary extends Component {
   myundong() {
     const { dummyImgTextArr } = this.state;
     this.setState({
-      dummySlice: dummyImgTextArr.filter(dummy => {
+      dummyArr: dummyImgTextArr.filter(dummy => {
         return dummy.keyword === '명동';
       }),
     });
@@ -100,14 +100,14 @@ export default class HandleSecondary extends Component {
   gangnam() {
     const { dummyImgTextArr } = this.state;
     this.setState({
-      dummySlice: dummyImgTextArr.filter(dummy => {
+      dummyArr: dummyImgTextArr.filter(dummy => {
         return dummy.keyword === '강남';
       }),
     });
   }
 
   render() {
-    const { dummySlice } = this.state;
+    const { dummyArr } = this.state;
     return (
       <div className={cx('secondary')}>
         <h2>믿고 보는 맛집 리스트</h2>
@@ -118,7 +118,7 @@ export default class HandleSecondary extends Component {
           <button onClick={() => this.gangnam()}>#강남</button>
         </div>
         <div>''</div>
-        {dummySlice.map((dummy, index) => (
+        {dummyArr.map((dummy, index) => (
           <HandleList
             key={dummy[index]}
             listImg={dummy.img}
