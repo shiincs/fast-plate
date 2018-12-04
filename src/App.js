@@ -5,7 +5,7 @@ import SearchPage from './pages/SearchPage';
 import PostDetailPage from './pages/PostDetailPage';
 import Layout from './components/Layout';
 import UserProvider from './contexts/UserContext';
-import Handle from './containers/Handle';
+import HandleMainFront from './containers/HandleMainFront';
 
 class App extends Component {
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
                   component={PostDetailPage}
                 />
                 {/*루트페이지는 항상 맨 아래 위치 */}
-                <Route path="/" component={Handle} />
+                <Route path="/" component={HandleMainFront} />
               </Switch>
             </Layout>
           </div>
