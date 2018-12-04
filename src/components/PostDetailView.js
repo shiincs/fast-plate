@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
 // import MapView from '../MapView/MapView';
+import ReviewList from '../containers/ReviewList';
 
 export default class PostDetailView extends Component {
   static defaultProps = {
@@ -52,6 +53,7 @@ export default class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
+            <ReviewList />
           </div>
           <div className="map">지도</div>
         </div>

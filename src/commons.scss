@@ -1,28 +1,23 @@
 $main-color: #ff792a;
 $main-gray: rgb(62, 62, 62);
-$fontsize: 1rem; // 1rem === 10px입니다.
+$sub-gray: #e9e9e9;
+$fontsize: 1.6rem; // 1rem === 10px입니다.
 $main-margin: 13px;
 
 @mixin mobileHorizontal {
   @media screen and (min-width: 577px) {
-    @content
+    @content;
   }
 }
-
-;
 
 @mixin tablet {
   @media screen and (min-width: 769px) {
-    @content
+    @content;
   }
 }
-
-;
 
 @mixin desktop {
   @media screen and (min-width: 993px) {
-    @content
+    @content;
   }
 }
-
-;

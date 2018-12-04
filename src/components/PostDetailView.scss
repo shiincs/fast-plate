@@ -1,4 +1,4 @@
-@import '../common.scss';
+@import '../commons.scss';
 
 .photo-list {
   height: 340px;
@@ -28,7 +28,7 @@
         margin-bottom: $main-margin;
       }
       .title {
-        font-size: 2rem;
+        font-size: 2.6rem;
         color: #090909;
       }
       .rate {
