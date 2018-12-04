@@ -12,6 +12,16 @@
     font-size: 2rem;
   }
 
+  & .tags {
+    display: flex;
+  }
+
+  & button {
+    justify-content: end;
+    margin-left: 5rem;
+    font-size: 2rem;
+  }
+
   & .secondarylistList {
     margin-top: 20px;
     position: relative;
