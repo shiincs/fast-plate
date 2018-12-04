@@ -3,13 +3,27 @@ import HandleSearch from './HandleSearch';
 import AppStore from './MainImg/AppStore.png';
 import GooglePlay from './MainImg/GooglePlay.png';
 import EatDeal from './MainImg/EatDeal.png';
-import hero from './MainImg/hero.jpg';
+import styles from './MainPrimary.module.scss';
+import hero1 from './MainImg/hero1.jpg';
+import hero2 from './MainImg/hero2.jpg';
+import hero3 from './MainImg/hero3.jpg';
+import hero4 from './MainImg/hero4.jpg';
 
 export default class HandlePrimary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      heroArr: [hero1, hero2, hero3, hero4],
+    };
+  }
   render() {
     return (
-      <div className="primary">
-        <img src={hero} className="primary-background" alt="background" />
+      <div className={styles.primary}>
+        <img
+          src={this.state.heroArr[Math.floor(Math.random() * 4)]}
+          className={styles.primaryBackground}
+          alt="background"
+        />
         <HandleTitle />
         <HandleSearch />
         <HandleBadges />
@@ -21,7 +35,7 @@ export default class HandlePrimary extends Component {
 class HandleTitle extends Component {
   render() {
     return (
-      <div className="main-title">
+      <div className={styles.mainTitle}>
         <p>솔직한 리뷰, 믿을 수 있는 평점!</p>
         <h1>망고플레이트</h1>
       </div>
@@ -32,19 +46,19 @@ class HandleTitle extends Component {
 class HandleBadges extends Component {
   render() {
     return (
-      <div className="main-badges">
-        <a href="#" className="eat-deal">
+      <div>
+        <a href="#" className={styles.eatDeal}>
           <img src={EatDeal} alt="EatDeal-Logo" />
         </a>
         <a
           href="https://play.google.com/store/apps/details?id=com.mangoplate"
-          className="google-play"
+          className={styles.googlePlay}
         >
           <img src={GooglePlay} alt="GooglePlay-Logo" />
         </a>
         <a
           href="https://itunes.apple.com/app/id628509224"
-          className="app-store"
+          className={styles.appStore}
         >
           {' '}
           <img src={AppStore} alt="AppStore-Logo" />{' '}

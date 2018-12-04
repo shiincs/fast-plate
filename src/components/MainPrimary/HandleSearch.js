@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import styles from './MainPrimary.module.scss';
 
 export default class HandleSearch extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class HandleSearch extends Component {
     }
 
     return (
-      <form className="main-search">
+      <form className={styles.mainSearch}>
         <fieldset>
           <legend>맛집검색</legend>
           <input

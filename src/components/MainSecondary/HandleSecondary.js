@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './MainSecondary.module.scss';
 import food1 from './SecondaryImg/food1.jpg';
 import food2 from './SecondaryImg/food2.jpg';
 import food3 from './SecondaryImg/food3.jpg';
@@ -42,7 +43,7 @@ export default class HandleSecondary extends Component {
   render() {
     const { dummyImgTextArr } = this.state;
     return (
-      <div className="secondary">
+      <div className={styles.secondary}>
         <h2>믿고 보는 맛집 리스트</h2>
         {dummyImgTextArr.map((dummy, index) => (
           <HandleList
@@ -60,7 +61,7 @@ class HandleList extends Component {
   render() {
     const { listImg, listText } = this.props;
     return (
-      <div className="secondary-list__list">
+      <div className={styles.secondarylistList}>
         <img src={listImg} alt="list-images" />
         <p>{listText}</p>
       </div>
