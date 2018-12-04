@@ -26,7 +26,7 @@ export default class SearchView extends Component {
     ],
   };
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, loading } = this.props;
     const restaurantList = restaurants.map(r => ({
       id: r.pk,
       imgUrl:
@@ -43,7 +43,7 @@ export default class SearchView extends Component {
     }));
     return (
       <article className={cx('searchView')}>
-        <SearchListView restaurants={restaurantList} />
+        <SearchListView restaurants={restaurantList} loading={loading} />
         <div>여기 지도 default</div>
         {/* <MapView restaurants={restaurantList} /> */}
       </article>
