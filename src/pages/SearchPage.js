@@ -4,11 +4,12 @@ import SearchContext from '../contexts/SearchContext';
 
 export default class SearchPage extends Component {
   render() {
-    const { match } = this.props;
-    const searchKeyword = match.params.searchKeyword;
+    const { location } = this.props;
+    const params = new URLSearchParams(decodeURI(location.search));
+    const keyword = params.get('keyword');
     return (
       <React.Fragment>
-        <SearchContext.Provider value={searchKeyword}>
+        <SearchContext.Provider value={keyword}>
           <Search />
         </SearchContext.Provider>
       </React.Fragment>

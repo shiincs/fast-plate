@@ -44,7 +44,8 @@ export default class SearchView extends Component {
     return (
       <article className={cx('searchView')}>
         <SearchListView restaurants={restaurantList} />
-        <MapView restaurants={restaurantList} />
+        <div>여기 지도 default</div>
+        {/* <MapView restaurants={restaurantList} /> */}
       </article>
     );
   }

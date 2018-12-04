@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import HeaderView from './HeaderView';
 import FooterView from './FooterView';
+import Header from '../containers/Header';
 export default class Layout extends Component {
   render() {
     return (
       <div>
-        <HeaderView />
+        <Header />
         {this.props.children}
         <FooterView />
       </div>

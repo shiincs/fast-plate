@@ -1,5 +1,6 @@
-@import '../common.scss';
+@import '../commons.scss';
 $color: #555;
+
 .Header {
   height: 61px;
   line-height: 61px;
@@ -7,10 +8,11 @@ $color: #555;
   color: #555;
 
   .Logo {
-    font-size: 2rem;
+    font-size: 3.2rem;
     float: left;
     color: #333;
   }
+
   .__list {
     display: flex;
     align-items: center;
@@ -20,7 +22,7 @@ $color: #555;
       display: inline-block;
       text-align: center;
       width: 130px;
-      font-size: 1rem;
+      font-size: 1.6rem;
       border-left: 1px solid #dbdbdb;
 
       &:last-child {

@@ -35,9 +35,12 @@ export default class SearchListView extends Component {
             <div className={cx('listInfo')}>
               <SearchContext.Consumer>
                 {keyword => (
-                  <h1 className={cx('listTitle')}>
-                    {keyword} 맛집 인기 검색순위
-                  </h1>
+                  <React.Fragment>
+                    <h1 className={cx('listTitle')}>
+                      {keyword} 맛집 인기 검색순위
+                    </h1>
+                    <button className={cx('listFilter')}>필터</button>
+                  </React.Fragment>
                 )}
               </SearchContext.Consumer>
             </div>
@@ -48,7 +51,11 @@ export default class SearchListView extends Component {
                   <li key={r.id} className={cx('listItem')}>
                     <figure>
                       <Link to={`/restaurant/${r.id}`}>
-                        <img className={cx('thumb')} src={r.imgUrl} />
+                        <img
+                          className={cx('thumb')}
+                          src={r.imgUrl}
+                          alt={r.name}
+                        />
                       </Link>
                       <figcaption className={cx('info')}>
                         <Link to={`/restaurant/${r.id}`}>
@@ -70,6 +77,18 @@ export default class SearchListView extends Component {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div className={cx('pagination')}>
+              <Link to="/" className={cx('btnPaginate')}>
+                1
+              </Link>
+              <Link to="/" className={cx('btnPaginate')}>
+                2
+              </Link>
+              <Link to="/" className={cx('btnPaginate')}>
+                3
+              </Link>
             </div>
           </div>
         </section>
