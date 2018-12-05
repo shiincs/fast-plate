@@ -1,8 +1,18 @@
+// 변수
+$color-white: #fff;
+$size-basic: 320px;
+$size-normal: 768px;
+$size-big: 855px;
 $main-color: #ff792a;
 $main-gray: rgb(62, 62, 62);
 $sub-gray: #e9e9e9;
 $fontsize: 1.6rem; // 1rem === 10px입니다.
 $main-margin: 13px;
+
+// 믹스인
+@mixin center {
+  transform: translate(-50%, -50%);
+}
 
 @mixin mobileHorizontal {
   @media screen and (min-width: 577px) {

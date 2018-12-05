@@ -3,10 +3,11 @@ import classNames from 'classnames/bind';
 import styles from './SearchListView.module.scss';
 import SearchContext from '../../contexts/SearchContext';
 import { Link } from 'react-router-dom';
+import withLoading from '../../hoc/withLoading';
 
 const cx = classNames.bind(styles);
 
-export default class SearchListView extends Component {
+class SearchListView extends Component {
   static defaultProps = {
     // 서버로부터 받아온 레스토랑 목록 데이터
     restaurants: [
@@ -96,3 +97,5 @@ export default class SearchListView extends Component {
     );
   }
 }
+
+export default withLoading(SearchListView);
