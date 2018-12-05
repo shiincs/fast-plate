@@ -31,7 +31,8 @@ class HeaderView extends Component {
         <header className={cx('header')}>
           <div className={cx('headerInfo')}>
             <Link to="/" className={cx('logo')}>
-              <MainLogo className={cx('logoImg')} />
+              <div className={cx('miniLogo', 'hide')} />
+              <MainLogo className={cx('logoImg', 'appear')} />
               <GrayLogo className={cx('logoImg', 'hide')} />
             </Link>
             <form className={cx('searchBox')}>
@@ -41,9 +42,19 @@ class HeaderView extends Component {
           </div>
           <nav className={cx('nav')}>
             <ul className={cx('navList')}>
-              <li className={cx('navItem')}>EAT딜</li>
-              <li className={cx('navItem')}>맛집 리스트</li>
-              <li className={cx('navItem')}>망고 스토리</li>
+              <li className={cx('navItem', 'hide')}>EAT딜</li>
+              <li className={cx('navItem', 'hide')}>맛집 리스트</li>
+              <li className={cx('navItem', 'hide')}>망고 스토리</li>
+              <li className={cx('navItem', 'appear')}>
+                <button
+                  className={cx('hamburger')}
+                  onClick={() => {
+                    // !modalOpen && showTargetElement('modalOpen');
+                  }}
+                >
+                  메뉴 펼치기
+                </button>
+              </li>
               <li className={cx('navItem')}>
                 {username ? (
                   <button
