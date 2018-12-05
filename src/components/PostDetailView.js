@@ -30,6 +30,12 @@ export default class PostDetailView extends Component {
               <div className="titleWrap">
                 <h1 className="title">{restaurants.name}</h1>
                 <span className="rate" />
+                <div className="restaurants_action_button_wrap">
+                  <button className="review_writing_button">리뷰쓰기</button>
+                  <button class="wannago">
+                    <span>가고싶다</span>
+                  </button>
+                </div>
               </div>
               <div className="status">
                 <span className="hit">{restaurants.view_num}</span>

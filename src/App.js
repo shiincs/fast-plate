@@ -6,7 +6,7 @@ import PostDetailPage from './pages/PostDetailPage';
 import Layout from './components/Layout';
 import UserProvider from './contexts/UserContext';
 import HandleMainFront from './containers/HandleMainFront';
-
+import WritingReview from './containers/WritingReview';
 class App extends Component {
   render() {
     return (
@@ -15,6 +15,7 @@ class App extends Component {
           <div className="App">
             <Layout>
               <Switch>
+                <Route path="/newrestaurant" component={WritingReview} />
                 <Route path="/search" component={SearchPage} />
                 <Route
                   path="/restaurant/:rKeyword"

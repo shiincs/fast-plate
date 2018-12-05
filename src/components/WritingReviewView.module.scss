@@ -1,0 +1,26 @@
+@import '../commons.scss';
+
+.WritingReviewPage {
+  font-size: 1.6rem;
+  width: 773px;
+  margin: 145px auto 0;
+  .ReviewWritingPage__Row {
+    display: flex;
+    justify-content: space-between;
+
+    .RestaurantSubMessage {
+      .RestaurantName {
+        font-size: 2.6rem;
+      }
+    }
+    .RestaurantRecommendPicker {
+      .RestaurantRecommendPicker__List {
+        display: flex;
+        .RestaurantRecommendPicker__Item {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
