@@ -4,6 +4,12 @@
   height: 340px;
   font-size: $fontsize;
   // border: 1px solid $main-color;
+  margin-bottom: 10px;
+  & img {
+    width: 365px;
+    height: 100%;
+    margin-left: 10px;
+  }
 }
 
 .detail-inner {
