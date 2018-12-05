@@ -9,6 +9,7 @@
     "google-maps-react": "^2.0.2",
     "node-sass": "^4.10.0",
     "react": "^16.6.3",
+    "react-awesome-modal": "^2.0.5",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "react-naver-maps": "0.0.11",
