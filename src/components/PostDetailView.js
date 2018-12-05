@@ -2,10 +2,31 @@ import React, { Component } from 'react';
 import './PostDetailView.scss';
 // import MapView from '../MapView/MapView';
 import ReviewList from '../containers/ReviewList';
+import Modal from 'react-awesome-modal';
 
 export default class PostDetailView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+  }
+
+  modalOpen() {
+    this.setState = {
+      visibile: true,
+    };
+  }
+
+  modalClose() {
+    this.setState = {
+      visible: false,
+    };
+  }
+
   static defaultProps = {
     // 서버로부터 받아온 레스토랑 목록 데이터
+    // PostDetail에서 받아온 레스토랑 더미 사진 목록
     restaurants: [
       {
         // name:
@@ -17,13 +38,27 @@ export default class PostDetailView extends Component {
         // Business_hour:
       },
     ],
+    detailpics: [
+      // food2, food3, food4, food5
+    ],
   };
-  render() {
-    const { restaurants } = this.props;
 
+  render() {
+    const { restaurants, detailpics } = this.props;
+    const { visible } = this.state;
     return (
       <React.Fragment>
-        <div className="photo-list">이미지 캐러셀 들어갈 자리</div>
+        <div className="photo-list">
+          {detailpics.map((pic, index) => (
+            <img
+              key={index}
+              src={pic}
+              alt="detailRestaurantpics"
+              onClick={() => this.modalOpen()}
+            />
+          ))}
+        </div>
+
         <div className="detail-inner">
           <div className="restaurant-detail">
             <header>
