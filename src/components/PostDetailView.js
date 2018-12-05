@@ -2,26 +2,25 @@ import React, { Component } from 'react';
 import './PostDetailView.scss';
 // import MapView from '../MapView/MapView';
 import ReviewList from '../containers/ReviewList';
-import Modal from 'react-awesome-modal';
 
 export default class PostDetailView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
+      show: false,
     };
   }
 
-  modalOpen() {
-    this.setState = {
-      visibile: true,
-    };
+  showModal() {
+    this.setState({
+      show: true,
+    });
   }
 
-  modalClose() {
-    this.setState = {
-      visible: false,
-    };
+  hideModal() {
+    this.setState({
+      show: false,
+    });
   }
 
   static defaultProps = {
@@ -39,24 +38,24 @@ export default class PostDetailView extends Component {
       },
     ],
     detailpics: [
-      // food2, food3, food4, food5
+      // food1, food2, food3, food4
     ],
   };
 
   render() {
     const { restaurants, detailpics } = this.props;
-    const { visible } = this.state;
     return (
       <React.Fragment>
         <div className="photo-list">
           {detailpics.map((pic, index) => (
-            <img
-              key={index}
-              src={pic}
-              alt="detailRestaurantpics"
-              onClick={() => this.modalOpen()}
-            />
+            <img key={index} src={pic} alt="detailRestaurantpics" />
           ))}
+          <Modal show={this.state.show} handleClose={() => this.hideModal()}>
+            {detailpics.map((pic, index) => (
+              <img key={index} src={pic} alt="detailRestaurantpics" />
+            ))}
+          </Modal>
+          <button onClick={() => this.showModal()}>사진 더보기</button>
         </div>
 
         <div className="detail-inner">
@@ -96,3 +95,15 @@ export default class PostDetailView extends Component {
     );
   }
 }
+
+const Modal = ({ handleClose, show, children }) => {
+  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+  return (
+    <div className={showHideClassName}>
+      <section className="modal-main">
+        {children}
+        <button onClick={handleClose}>CLOSE</button>
+      </section>
+    </div>
+  );
+};

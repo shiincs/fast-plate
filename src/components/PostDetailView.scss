@@ -12,6 +12,34 @@
   }
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+
+  .modal-main {
+    position: fixed;
+    background: $color-white;
+    width: 100%;
+    height: 30%;
+    top: 20%;
+    left: 20%;
+    transform: translate(-20%, -20%);
+  }
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
 .detail-inner {
   display: flex;
   margin: 0 auto;
