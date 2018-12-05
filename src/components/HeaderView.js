@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-import './HeaderView.scss';
+import classNames from 'classnames/bind';
+import styles from './HeaderView.module.scss';
 import MypageView from './MypageView';
+import { withUser } from '../contexts/UserContext';
 import { withModal } from '../contexts/ModalContext';
+import { ReactComponent as MainLogo } from '../commonimgs/main-logo.svg';
+import { ReactComponent as GrayLogo } from '../commonimgs/gray-logo.svg';
+import { Link } from 'react-router-dom';
+
+const cx = classNames.bind(styles);
 
 class HeaderView extends Component {
   targetElement = null;
@@ -12,39 +19,70 @@ class HeaderView extends Component {
   }
 
   render() {
-    const { modalOpen, showTargetElement, handleClick, ...rest } = this.props;
+    const {
+      username,
+      modalOpen,
+      showTargetElement,
+      handleClick,
+      ...rest
+    } = this.props;
     return (
       <>
-        <header className="Header">
-          <h1 className="Logo">MANGO PLATE</h1>
-          <nav className="Nav">
-            <ul className="__list">
-              <li className="__item">EAT DEAL</li>
-              <li className="__item">맛집 리스트</li>
-              <li className="__item">망고 스토리</li>
-              <button
-                className="Myprofile"
-                onClick={() => {
-                  !modalOpen && showTargetElement('modalOpen');
-                }}
-              >
-                프로필
-              </button>
+        <header className={cx('header')}>
+          <div className={cx('headerInfo')}>
+            <Link to="/" className={cx('logo')}>
+              <div className={cx('miniLogo', 'hide')} />
+              <MainLogo className={cx('logoImg', 'appear')} />
+              <GrayLogo className={cx('logoImg', 'hide')} />
+            </Link>
+            <form className={cx('searchBox')}>
+              <span className={cx('searchIcon')} />
+              <input type="text" placeholder="지역, 식당 또는 음식" />
+            </form>
+          </div>
+          <nav className={cx('nav')}>
+            <ul className={cx('navList')}>
+              <li className={cx('navItem', 'hide')}>EAT딜</li>
+              <li className={cx('navItem', 'hide')}>맛집 리스트</li>
+              <li className={cx('navItem', 'hide')}>망고 스토리</li>
+              <li className={cx('navItem', 'appear')}>
+                <button
+                  className={cx('hamburger')}
+                  onClick={() => {
+                    // !modalOpen && showTargetElement('modalOpen');
+                  }}
+                >
+                  메뉴 펼치기
+                </button>
+              </li>
+              <li className={cx('navItem')}>
+                {username ? (
+                  <button
+                    className={cx('myPage', 'logined')}
+                    onClick={() => {
+                      !modalOpen && showTargetElement('modalOpen');
+                    }}
+                  >
+                    마이페이지
+                  </button>
+                ) : (
+                  <button
+                    className={cx('myPage')}
+                    onClick={() => {
+                      !modalOpen && showTargetElement('modalOpen');
+                    }}
+                  >
+                    마이페이지
+                  </button>
+                )}
+              </li>
             </ul>
           </nav>
         </header>
-        {modalOpen ? (
-          <MypageView
-            // showTargetElement={showTargetElement}
-            // hideTargetElement={hideTargetElement}
-            // modalOpen={modalOpen}
-            {...rest}
-            handleClick={handleClick}
-          />
-        ) : null}
+        {modalOpen ? <MypageView {...rest} handleClick={handleClick} /> : null}
       </>
     );
   }
 }
 
-export default withModal(HeaderView);
+export default withUser(withModal(HeaderView));

@@ -119,3 +119,9 @@
     }
   }
 }
+
+@include mobileVertical {
+  .myPage {
+    right: 0;
+  }
+}

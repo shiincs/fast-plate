@@ -1,4 +1,6 @@
-@media screen and (min-width: 993px) {
+@import '../../commons.scss';
+
+@include desktop {
   .searchView {
     display: flex;
   }
