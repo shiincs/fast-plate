@@ -1,0 +1,64 @@
+@import '../commons.scss';
+.reveiw-content {
+  margin-top: 14px;
+  &:hover {
+    background: #f6f6f6;
+  }
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 1% 52px;
+  min-height: 74px;
+  figure {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    .user-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: pink;
+    }
+    figcaption {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+  }
+  .review-wrapper {
+    position: relative;
+    line-height: 2;
+    max-width: 605px;
+    .date {
+      position: absolute;
+      top: -20px;
+      color: #9b9b9b;
+      font-size: 1.3rem;
+    }
+  }
+  .list-thumb-photos {
+    width: 100%;
+    display: flex;
+    margin-top: 12px;
+    .button-thumb {
+      width: 120px;
+      height: 120px;
+      background: pink;
+      margin-right: 10px;
+    }
+  }
+}
+
+.icon-rating {
+  .icon-img {
+    color: $main-color;
+    &::before {
+      content: '';
+      display: block;
+
+      width: 44px;
+      height: 44px;
+      background-image: url('../components/SearchListView/mangoplate_sprites_desktop.png');
+      background-position: -714px -866px;
+    }
+  }
+}
