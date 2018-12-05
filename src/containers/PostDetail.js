@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
+import food1 from '../components/HandleSecondary/SecondaryImg/food1.jpg';
+import food2 from '../components/HandleSecondary/SecondaryImg/food2.jpg';
+import food3 from '../components/HandleSecondary/SecondaryImg/food3.jpg';
+import food4 from '../components/HandleSecondary/SecondaryImg/food4.jpeg';
 
 export default class PostDetail extends Component {
   /* 
@@ -12,6 +16,7 @@ export default class PostDetail extends Component {
     super(props);
     this.state = {
       restaurants: [],
+      detailpics: [food1, food2, food3, food4],
     };
   }
 
@@ -26,10 +31,10 @@ export default class PostDetail extends Component {
   }
 
   render() {
-    const { restaurants } = this.state;
+    const { restaurants, detailpics } = this.state;
     return (
       <React.Fragment>
-        <PostDetailView restaurants={restaurants} />
+        <PostDetailView restaurants={restaurants} detailpics={detailpics} />
       </React.Fragment>
     );
   }
