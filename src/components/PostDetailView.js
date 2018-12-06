@@ -8,19 +8,24 @@ export default class PostDetailView extends Component {
     super(props);
     this.state = {
       show: false,
+      currentModalPic: null,
     };
   }
 
-  showModal() {
+  showModal(index) {
+    const { detailpics } = this.props;
     this.setState({
       show: true,
+      currentModalPic: detailpics[index],
     });
+    document.body.style.overflow = 'hidden';
   }
 
   hideModal() {
     this.setState({
       show: false,
     });
+    document.body.style.overflow = 'scroll';
   }
 
   static defaultProps = {
@@ -47,15 +52,22 @@ export default class PostDetailView extends Component {
     return (
       <React.Fragment>
         <div className="photo-list">
+          {/* 레스토랑 디테일 정보 사진들 */}
           {detailpics.map((pic, index) => (
-            <img key={index} src={pic} alt="detailRestaurantpics" />
+            <img
+              key={index}
+              src={pic}
+              alt="detailRestaurantpics"
+              onClick={() => this.showModal(index)}
+            />
           ))}
+          {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
           <Modal show={this.state.show} handleClose={() => this.hideModal()}>
-            {detailpics.map((pic, index) => (
-              <img key={index} src={pic} alt="detailRestaurantpics" />
-            ))}
+            <img
+              src={this.state.currentModalPic}
+              alt="restuarantDetailPicsWithComments"
+            />
           </Modal>
-          <button onClick={() => this.showModal()}>사진 더보기</button>
         </div>
 
         <div className="detail-inner">
