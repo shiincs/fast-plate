@@ -18,39 +18,46 @@ export default class WritingReviewView extends Component {
             <div className={cx('RestaurantRecommendPicker')}>
               <ul className={cx('RestaurantRecommendPicker__List')}>
                 <li className={cx('RestaurantRecommendPicker__Item')}>
-                  맛있다
+                  <button className={cx('recommend')}>맛있다</button>
                 </li>
                 <li className={cx('RestaurantRecommendPicker__Item')}>
-                  괜찮다
+                  <button className={cx('ok')}>괜찮다</button>
                 </li>
-                <li className={cx('RestaurantRecommendPicker__Item')}>별로</li>
+                
+                <li className={cx('RestaurantRecommendPicker__Item')}>
+                  <button className={cx('not-recommend')}>별로</button>
+                </li>
               </ul>
             </div>
           </div>
           <div className={cx('ReviewWritingPage__ContentWrap')}>
             <div className={cx('UserSimpleProfile')}>
               <img src="" alt="" />
-              <span>Jominji</span>
+              <span className={cx('username')}>Jominji</span>
             </div>
             <div className={cx('ReviewWritingPage__FormWrap')}>
-              <textarea placeholder="Jominji님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" />
-              <p>0 / 10,000</p>
+              <div className={cx('ReviewWritingPage__EditorWrap')}>
+                <textarea placeholder="Jominji님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" />
+                <p className={cx('ReviewEditor__TextLengthStateBox')}>
+                  0 / 10,000
+                </p>
+              </div>
               <div className={cx('DraggablePictureContainer')}>
                 <ul>
-                  <li
-                    className={cx('DraggablePictureContainer__PictureList')}
-                  />
+                  <li className={cx('DraggablePictureContainer__PictureList')}>
+                    <button />
+                  </li>
                 </ul>
               </div>
             </div>
-            <div className={cx('ReviewWritingPage__Buttons')}>
-              <button className={cx('ReviewWritingPage__CancelButton')}>
-                취소
-              </button>
-              <button className={cx('ReviewWritingPage__SubmitButton')}>
-                완료
-              </button>
-            </div>
+          </div>
+          <div className={cx('ReviewWritingPage__Buttons')}>
+            <button className={cx('ReviewWritingPage__CancelButton')}>
+              취소
+            </button>
+            <button className={cx('ReviewWritingPage__SubmitButton')}>
+              완료
+            </button>
           </div>
         </section>
       </React.Fragment>

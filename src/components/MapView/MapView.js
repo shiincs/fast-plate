@@ -45,42 +45,38 @@ class MapView extends Component {
     const { restaurants } = this.props;
     return (
       <section className={cx('mapSection')}>
-        {restaurants.length > 0 ? (
-          <Map
-            google={this.props.google}
-            zoom={15}
-            style={mapStyles}
-            onClick={this.onMapClicked}
-            initialCenter={{
-              lat: restaurants[0].latitude,
-              lng: restaurants[0].longitude,
-            }}
-          >
-            {restaurants.map(r => (
-              <Marker
-                key={r.id}
-                img={r.imgUrl}
-                name={r.name}
-                score={r.score}
-                location={r.location}
-                type={r.foodType}
-                reviewCount={r.reviewCount}
-                wannagoCount={r.wannagoCount}
-                position={{ lat: r.latitude, lng: r.longitude }}
-                onClick={this.onMarkerClick}
-              />
-            ))}
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-              onClose={this.onClose}
-            >
-              <MapInfoView selectedPlace={this.state.selectedPlace} />
-            </InfoWindow>
-          </Map>
-        ) : (
-          <div>검색 결과가 없습니다.</div>
-        )}
+        <Map
+          google={this.props.google}
+          zoom={15}
+          style={mapStyles}
+          onClick={this.onMapClicked}
+          initialCenter={{
+            lat: 27,
+            lng: 130,
+          }}
+        >
+          {/* {restaurants.map(r => ( */}
+          {/* <Marker
+              key={r.id}
+              img={r.imgUrl}
+              name={r.name}
+              score={r.score}
+              location={r.location}
+              type={r.foodType}
+              reviewCount={r.reviewCount}
+              wannagoCount={r.wannagoCount}
+              position={{ lat: r.latitude, lng: r.longitude }}
+              onClick={this.onMarkerClick}
+            />
+          ))}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          > */}
+          {/* <MapInfoView selectedPlace={this.state.selectedPlace} /> */}
+          {/* </InfoWindow> */}
+        </Map>
       </section>
     );
   }
