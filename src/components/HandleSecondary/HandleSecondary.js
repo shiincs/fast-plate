@@ -119,11 +119,7 @@ export default class HandleSecondary extends Component {
         </div>
         <div>''</div>
         {dummyArr.map((dummy, index) => (
-          <HandleList
-            key={dummy[index]}
-            listImg={dummy.img}
-            listText={dummy.text}
-          />
+          <HandleList key={index} listImg={dummy.img} listText={dummy.text} />
         ))}
       </div>
     );
