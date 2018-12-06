@@ -9,14 +9,16 @@ export default class PostDetailView extends Component {
     this.state = {
       show: false,
       currentModalPic: null,
+      currentModalComment: null,
     };
   }
 
   showModal(index) {
-    const { detailpics } = this.props;
+    const { detailpics, comments } = this.props;
     this.setState({
       show: true,
       currentModalPic: detailpics[index],
+      currentModalComment: comments[index],
     });
     document.body.style.overflow = 'hidden';
   }
@@ -63,10 +65,15 @@ export default class PostDetailView extends Component {
           ))}
           {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
           <Modal show={this.state.show} handleClose={() => this.hideModal()}>
-            <img
-              src={this.state.currentModalPic}
-              alt="restuarantDetailPicsWithComments"
-            />
+            <div className="picCommentContainer">
+              <img
+                src={this.state.currentModalPic}
+                alt="restuarantDetailPicsWithComments"
+              />
+              <div className="commentBox">
+                <p>{this.state.currentModalComment}</p>
+              </div>
+            </div>
           </Modal>
         </div>
 
