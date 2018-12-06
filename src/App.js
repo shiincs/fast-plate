@@ -14,8 +14,8 @@ class App extends Component {
       <BrowserRouter>
         <UserProvider>
           <PageProvider>
-            <div className="App">
-              <Layout>
+            <Layout>
+              <div className="App">
                 <Switch>
                   <Route path="/search" component={SearchPage} />
                   <Route
@@ -25,8 +25,8 @@ class App extends Component {
                   {/*루트페이지는 항상 맨 아래 위치 */}
                   <Route path="/" component={MainPage} />
                 </Switch>
-              </Layout>
-            </div>
+              </div>
+            </Layout>
           </PageProvider>
         </UserProvider>
       </BrowserRouter>

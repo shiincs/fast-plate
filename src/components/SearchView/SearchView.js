@@ -26,7 +26,8 @@ export default class SearchView extends Component {
     ],
   };
   render() {
-    const { restaurants, loading } = this.props;
+    const { restaurants, ...rest } = this.props;
+    // DB의 속성 이름을 내가 원하는 이름으로 바꾸기 위해 map을 돌려서 새로운 객체 속성에 값을 대입해준다.
     const restaurantList = restaurants.map(r => ({
       id: r.pk,
       imgUrl:
@@ -43,9 +44,11 @@ export default class SearchView extends Component {
     }));
     return (
       <article className={cx('searchView')}>
-        <SearchListView restaurants={restaurantList} loading={loading} />
-        <div>여기 지도 default</div>
-        {/* <MapView restaurants={restaurantList} /> */}
+        {/* 검색 결과 목록 출력 컴포넌트 */}
+        <SearchListView restaurants={restaurantList} {...rest} />
+        {/* 지도 출력 컴포넌트 */}
+        {/* <div>여기 지도 default</div> */}
+        <MapView restaurants={restaurantList} />
       </article>
     );
   }

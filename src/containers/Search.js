@@ -11,27 +11,33 @@ export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      count: 0,
+      next: null,
+      previous: null,
       restaurants: [],
       loading: true,
+      keyword: null,
     };
   }
 
   async componentDidMount() {
-    // 현재 api 서버에서 CORS 관련 문제 발생 (요청 불가)
-    // proxy 우회해서 사용은 가능한 상태
-    const { data: restaurants } = await api.get('/api/restaurants/list');
+    const { data } = await api.get(
+      `/api/restaurants/list/?page=${this.props.page}`
+    );
     // setState는 비동기로 작동하지만 promise를 반환하지 않기 때문에 await을 쓸 수 없다.
     this.setState({
-      restaurants: [...restaurants],
+      count: data.count,
+      next: data.next,
+      previous: data.previous,
+      restaurants: [...data.results],
       loading: false,
     });
   }
 
   render() {
-    const { restaurants, loading } = this.state;
     return (
       <React.Fragment>
-        <SearchView restaurants={restaurants} loading={loading} />
+        <SearchView {...this.state} />
       </React.Fragment>
     );
   }
