@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import magnifying from './MainImg/magnifying.jpg';
 import styles from './HandlePrimary.module.scss';
 
 export default class HandleSearch extends Component {
@@ -32,6 +33,9 @@ export default class HandleSearch extends Component {
       <form className={styles.mainSearch}>
         <fieldset>
           <legend>맛집검색</legend>
+          <div className={styles.magnifyIcon}>
+            <img src={magnifying} alt="magnifyingIcon" />
+          </div>
           <input
             type="text"
             value={this.state.value}
