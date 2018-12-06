@@ -17,6 +17,7 @@ export default class PostDetail extends Component {
     this.state = {
       restaurants: [],
       detailpics: [food1, food2, food3, food4],
+      comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
     };
   }
 
@@ -31,10 +32,14 @@ export default class PostDetail extends Component {
   }
 
   render() {
-    const { restaurants, detailpics } = this.state;
+    const { restaurants, detailpics, comments } = this.state;
     return (
       <React.Fragment>
-        <PostDetailView restaurants={restaurants} detailpics={detailpics} />
+        <PostDetailView
+          restaurants={restaurants}
+          detailpics={detailpics}
+          comments={comments}
+        />
       </React.Fragment>
     );
   }
