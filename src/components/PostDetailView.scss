@@ -3,10 +3,12 @@
 .photo-list {
   height: 340px;
   font-size: $fontsize;
+  display: flex;
+  justify-content: space-around;
   // border: 1px solid $main-color;
   margin-bottom: 10px;
   & img {
-    width: 365px;
+    width: 25%;
     height: 100%;
     margin-left: 10px;
   }
