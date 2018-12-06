@@ -1,46 +1,60 @@
 @import '../commons.scss';
 $color: #555;
 
-
+// default setting (mobile vertical)
 .header {
-  position: sticky;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
-  box-shadow: 0 4px 11px rgba(0, 0, 0, 0.1);
+  height: 50px;
   color: #555;
+  background: #fff;
+  box-shadow: 0 4px 11px rgba(0, 0, 0, 0.2);
+  z-index: 100;
 
-  .headerInfo {
+  &.transparent {
+    background: #fff;
+    box-shadow: 0 4px 11px rgba(0, 0, 0, 0);
+  }
+
+  .logoAndSearch {
     display: flex;
 
     .logo {
+      width: 50px;
       height: 100%;
-      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
 
-      .miniLogo.hide {
-        position: relative;
+      .miniLogo {
         background-image: url('../commonimgs/mangoplate_sprites_mobile.png');
         background-position: -491px -56px;
         width: 19px;
         height: 35px;
       }
 
-      .logoImg {
-        position: relative;
+      .mainLogo,
+      .grayLogo {
+        display: none;
       }
     }
 
     .searchBox {
-      position: relative;
+      position: absolute;
+      left: 50px;
+      width: calc(100% - 145px);
       height: 100%;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      padding-left: 40px;
-      border: 1px solid red;
 
-      & .searchIcon {
+      /* Main Page 에서는 searchBox 감춤 */
+      &.hide {
+        display: none;
+      }
+
+      .searchIcon {
         position: absolute;
         left: 5px;
         background-image: url('../commonimgs/mangoplate_sprites_desktop.png');
@@ -49,63 +63,73 @@ $color: #555;
         height: 25px;
       }
 
-      & input[type='text'] {
+      input[type=text] {
+        width: 100%;
+        margin-left: 35px;
         font-size: 1.6rem;
         font-weight: 400;
         outline: none;
-        border: 1px solid green;
+        background: transparent;
       }
     }
   }
 
   .nav {
+    display: flex;
+    height: 100%;
+
     .navList {
-      display: flex;
+      display: inline-flex;
+      height: 100%;
+      align-items: center;
 
-      .navItem {
-        text-align: center;
-        font-size: 1.6rem;
-        color: #888;
-        border-left: 1px solid #dbdbdb;
-        cursor: pointer;
-        outline: none;
+      .navItem:nth-child(1),
+      .navItem:nth-child(2),
+      .navItem:nth-child(3) {
+        height: 100%;
+        display: none;
+      }
 
-        &:nth-child(4),
-        &:nth-child(5) {
+      .navItem:nth-child(4),
+      .navItem:nth-child(5) {
+        height: 100%;
+        padding: 5px;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
 
-          .hamburger {
-            background-image: url('../commonimgs/mangoplate_sprites_mobile.png');
-            background-position: -573px -430px;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            outline: none;
-            // hide text
-            text-indent: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-          }
+        .hamburger {
+          background-image: url('../commonimgs/mangoplate_sprites_mobile.png');
+          background-position: -573px -430px;
+          width: 35px;
+          height: 35px;
+          cursor: pointer;
+          outline: none;
+          /* Hide the text. */
+          text-indent: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+        }
 
-          .myPage {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: transparent;
-            background-image: url('../commonimgs/mangoplate_sprites_desktop.png');
-            background-position: -82px -919px;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            outline: none;
-            /* Hide the text. */
-            text-indent: 100%;
-            white-space: nowrap;
-            overflow: hidden;
+        .myPage {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: transparent;
+          background-image: url('../commonimgs/mangoplate_sprites_desktop.png');
+          background-position: -82px -919px;
+          width: 35px;
+          height: 35px;
+          cursor: pointer;
+          outline: none;
+          /* Hide the text. */
+          text-indent: 100%;
+          white-space: nowrap;
+          overflow: hidden;
 
-            &.logined {
-              border: 2px solid $main-color;
-              background-image: none;
-            }
+          &.logined {
+            border: 2px solid $main-color;
+            background-image: none;
           }
         }
       }
@@ -113,189 +137,122 @@ $color: #555;
   }
 }
 
-
 @include mobileVertical {
-  .logo {
-    width: 50px;
-
-    .miniLogo.hide {
-      display: inline-block;
-      top: 20%;
-    }
-
-    .logoImg {
-      position: relative;
-      top: 20%;
-
-      &.hide {
-        display: none;
-      }
-
-      &.appear {
-        display: none;
-      }
-    }
-  }
-
-  .searchBox {
-    width: 180px;
-
-    & input[type="text"] {
-      width: 130px;
-    }
-  }
-
-  .navItem {
-    width: 130px;
-
-    &.hide {
-      display: none;
-    }
-
-    &.appear {
-      display: inline-block;
-    }
-
-    &:nth-child(4),
-    &:nth-child(5) {
-      width: 40px;
-    }
-  }
+  // header.transparent {
+  //   background: #fff;
+  //   box-shadow: 0 4px 11px rgba(0, 0, 0, 0);
+  // }
 }
 
 @include mobileHorizontal {
-  .logo {
-    width: 50px;
-
-    .miniLogo.hide {
-      display: inline-block;
-      top: 20%;
-    }
-
-    .logoImg {
-      position: relative;
-      top: 20%;
-
-      &.hide {
-        display: none;
-      }
-
-      &.appear {
-        display: none;
-      }
-    }
-  }
-
-  .searchBox {
-    width: 240px;
-
-    & input[type="text"] {
-      width: 190px;
-    }
-  }
-
-  .navItem {
-    width: 130px;
-
-    &.hide {
-      display: none;
-    }
-
-    &.appear {
-      display: inline-block;
-    }
-
-    &:nth-child(4),
-    &:nth-child(5) {
-      width: 85px;
-    }
-  }
+  // header.transparent {
+  //   background: #fff;
+  //   box-shadow: 0 4px 11px rgba(0, 0, 0, 0);
+  // }
 }
 
 @include tablet {
-  .logo {
-    width: 150px;
+  .header {
+    height: 60px;
 
-    .miniLogo.hide {
-      display: none;
+    &.transparent {
+      background: #fff;
+      box-shadow: 0 4px 11px rgba(0, 0, 0, 0);
     }
 
-    .logoImg {
-      position: relative;
-      top: 20%;
+    .logoAndSearch {
 
-      &.hide {
-        display: none;
+      .logo {
+        width: 150px;
+
+        .miniLogo {
+          display: none;
+        }
+
+        .mainLogo {
+          display: inline-block;
+        }
       }
-    }
-  }
 
-  .searchBox {
-    width: 350px;
-
-    & input[type="text"] {
-      width: 300px;
-    }
-  }
-
-  .navItem {
-    width: 130px;
-
-    &.hide {
-      display: none;
-    }
-
-    &.appear {
-      display: inline-block;
-    }
-
-    &:nth-child(4),
-    &:nth-child(5) {
-      width: 85px;
+      .searchBox {
+        position: absolute;
+        left: 150px;
+        width: calc(100% - 245px);
+      }
     }
   }
 }
 
 @include desktop {
-  .logo {
-    width: 150px;
+  .header {
+    height: 60px;
 
-    .miniLogo.hide {
-      display: none;
+    &.transparent {
+      background: transparent;
+      box-shadow: 0 4px 11px rgba(0, 0, 0, 0);
     }
 
-    .logoImg {
-      position: relative;
-      top: 20%;
+    .logoAndSearch {
 
-      &.hide {
-        display: none;
+      .logo {
+        width: 150px;
+
+        .miniLogo {
+          display: none;
+        }
+
+        .mainLogo.appear,
+        .grayLogo.hide {
+          display: inline-block;
+        }
+      }
+
+      .searchBox {
+        position: absolute;
+        left: 150px;
+        width: calc(100% - 630px);
       }
     }
-  }
 
-  .searchBox {
-    width: 350px;
+    .nav {
+      .navList {
 
-    & input[type="text"] {
-      width: 300px;
-    }
-  }
+        .navItem:nth-child(1),
+        .navItem:nth-child(2),
+        .navItem:nth-child(3) {
+          width: 130px;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-size: 1.6rem;
+          color: #888;
+          border-left: 1px solid #dbdbdb;
+          cursor: pointer;
+          outline: none;
 
-  .navItem {
-    width: 130px;
+          &.white {
+            border: 0;
+            color: #fff;
+          }
+        }
 
-    &.hide {
-      display: inline-block;
-    }
+        .navItem:nth-child(4) {
+          display: none;
+        }
 
-    &.appear {
-      display: none;
-    }
+        .navItem:nth-child(5) {
+          width: 85px;
+          border-left: 1px solid #dbdbdb;
+          display: inline-flex;
+          justify-content: center;
 
-    &:nth-child(4),
-    &:nth-child(5) {
-      width: 85px;
+          &.white {
+            border: 0;
+          }
+        }
+      }
+
     }
   }
 }
