@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
-// import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-
 import ReviewList from '../containers/ReviewList';
 import { Link } from 'react-router-dom';
 import MapView from './MapView/MapView';
 
-// import MapView from './MapView/MapView';
 export default class PostDetailView extends Component {
   constructor(props) {
     super(props);
@@ -124,7 +121,9 @@ export default class PostDetailView extends Component {
             </div>
             <ReviewList />
           </div>
-          <div className="map">{/* <MapView /> */}</div>
+          <div className="map">
+            <MapView restaurants={restaurants} />
+          </div>
         </div>
       </React.Fragment>
     );

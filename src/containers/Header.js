@@ -31,10 +31,17 @@ export default class Header extends Component {
   };
 
   render() {
+    const params = new URLSearchParams(decodeURI(window.location.search));
+    const keyword = params.get('keyword');
+    console.log(keyword);
     return (
       <React.Fragment>
         <ModalProvider>
-          <HeaderView {...this.state} handleClick={this.handleClick} />
+          <HeaderView
+            {...this.state}
+            handleClick={this.handleClick}
+            key={keyword}
+          />
         </ModalProvider>
       </React.Fragment>
     );
