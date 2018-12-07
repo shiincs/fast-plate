@@ -15,23 +15,31 @@ export default class PostDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: [],
+      want_num: 0,
+      restaurants: {},
       detailpics: [food1, food2, food3, food4],
       comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
     };
   }
 
   async componentDidMount() {
+    const { restaurantId } = this.props;
     // 현재 api 서버에서 CORS 관련 문제 발생 (요청 불가)
     // proxy 우회해서 사용은 가능한 상태
-    const { restaurantId } = this.props;
+
     //PostDetailPage에서 받아온 match 안에 id 값
-    const { data: restaurants } = await api.get(
-      `/api/restaurants/list/${this.props.restaurantId}`
-    );
-    console.log(restaurants);
+    const {
+      data: { want_num, ...rest },
+    } = await api.get(`/api/restaurants/list/${restaurantId}`);
     this.setState({
-      restaurants: { ...restaurants },
+      restaurants: { want_num, ...rest },
+      want_num: want_num,
+    });
+  }
+
+  async handleCount(pk, num) {
+    const res = await api.patch(`/api/restaurants/list/${pk}`, {
+      want_num: num + 1,
     });
   }
 
@@ -43,6 +51,7 @@ export default class PostDetail extends Component {
           restaurants={restaurants}
           detailpics={detailpics}
           comments={comments}
+          handleCount={this.handleCount}
         />
       </React.Fragment>
     );

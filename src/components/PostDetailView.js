@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './PostDetailView.scss';
 import ReviewList from '../containers/ReviewList';
 import { Link } from 'react-router-dom';
-import MapView from './MapView/MapView';
 import Map from '../containers/Map';
 
 export default class PostDetailView extends Component {
@@ -52,7 +51,7 @@ export default class PostDetailView extends Component {
   };
 
   render() {
-    const { restaurants, detailpics } = this.props;
+    const { restaurants, detailpics, handleCount } = this.props;
     return (
       <React.Fragment>
         <div className="photo-list">
@@ -91,7 +90,12 @@ export default class PostDetailView extends Component {
                   <Link to="/newrestaurant">
                     <button className="review_writing_button">리뷰쓰기</button>
                   </Link>
-                  <button class="wannago">
+                  <button
+                    class="wannago"
+                    onClick={() =>
+                      handleCount(restaurants.pk, restaurants.want_num)
+                    }
+                  >
                     <span>가고싶다</span>
                   </button>
                 </div>
