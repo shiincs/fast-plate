@@ -4,7 +4,7 @@
 // tablet: man-width 768px
 // desktop: man-width 992px
 
-// mobile device vertical mode (max-width: 576px)
+// mobile device vertical mode (max-width: 480px)
 .outerSection {
   width: 100%;
   border: 1px solid green;
@@ -154,8 +154,22 @@
   }
 }
 
-// mobile device horizontal mode (577px to 768px)
+// mobile device horizontal mode (481px to 767px)
 @include mobileHorizontal {
+  .outerSection {
+    width: 100%;
+    border: 1px solid green;
+
+    .innerSection {
+      width: 100%;
+      border: 1px solid yellow;
+      padding: 30px 20px;
+    }
+  }
+}
+
+// tablet device (768px to 1023px)
+@include tablet {
   .outerSection {
     width: 100%;
     border: 1px solid green;
@@ -168,25 +182,11 @@
   }
 }
 
-// tablet device (769px to 992px)
-@include tablet {
-  .outerSection {
-    width: 100%;
-    border: 1px solid green;
-
-    .innerSection {
-      width: 100%;
-      border: 1px solid yellow;
-      padding: 30px 100px;
-    }
-  }
-}
-
-// desktop(or laptop) device (993px +)
+// desktop(or laptop) device (1024px +)
 @include desktop {
   .outerSection {
     width: calc(100% - 400px);
-    min-width: 950px;
+    min-width: 1000px;
     border: 1px solid green;
 
     .innerSection {

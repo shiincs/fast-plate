@@ -7,10 +7,11 @@ export default class SearchPage extends Component {
     const { location } = this.props;
     const params = new URLSearchParams(decodeURI(location.search));
     const keyword = params.get('keyword');
+    const page = parseInt(params.get('page'));
     return (
       <React.Fragment>
         <SearchContext.Provider value={keyword}>
-          <Search />
+          <Search key={page} page={page} />
         </SearchContext.Provider>
       </React.Fragment>
     );

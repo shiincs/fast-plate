@@ -8,8 +8,35 @@ import MapView from './MapView/MapView';
 
 // import MapView from './MapView/MapView';
 export default class PostDetailView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+      currentModalPic: null,
+      currentModalComment: null,
+    };
+  }
+
+  showModal(index) {
+    const { detailpics, comments } = this.props;
+    this.setState({
+      show: true,
+      currentModalPic: detailpics[index],
+      currentModalComment: comments[index],
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  hideModal() {
+    this.setState({
+      show: false,
+    });
+    document.body.style.overflow = 'scroll';
+  }
+
   static defaultProps = {
     // 서버로부터 받아온 레스토랑 목록 데이터
+    // PostDetail에서 받아온 레스토랑 더미 사진 목록
     restaurants: [
       {
         // name:
@@ -21,13 +48,39 @@ export default class PostDetailView extends Component {
         // Business_hour:
       },
     ],
+    detailpics: [
+      // food1, food2, food3, food4
+    ],
   };
-  render() {
-    const { restaurants } = this.props;
 
+  render() {
+    const { restaurants, detailpics } = this.props;
     return (
       <React.Fragment>
-        <div className="photo-list">이미지 캐러셀 들어갈 자리</div>
+        <div className="photo-list">
+          {/* 레스토랑 디테일 정보 사진들 */}
+          {detailpics.map((pic, index) => (
+            <img
+              key={index}
+              src={pic}
+              alt="detailRestaurantpics"
+              onClick={() => this.showModal(index)}
+            />
+          ))}
+          {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
+          <Modal show={this.state.show} handleClose={() => this.hideModal()}>
+            <div className="picCommentContainer">
+              <img
+                src={this.state.currentModalPic}
+                alt="restuarantDetailPicsWithComments"
+              />
+              <div className="commentBox">
+                <p>{this.state.currentModalComment}</p>
+              </div>
+            </div>
+          </Modal>
+        </div>
+
         <div className="detail-inner">
           <div className="restaurant-detail">
             <header>
@@ -76,3 +129,15 @@ export default class PostDetailView extends Component {
     );
   }
 }
+
+const Modal = ({ handleClose, show, children }) => {
+  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+  return (
+    <div className={showHideClassName}>
+      <section className="modal-main">
+        {children}
+        <button onClick={handleClose}>CLOSE</button>
+      </section>
+    </div>
+  );
+};
