@@ -8,7 +8,7 @@ const mapStyles = {
   width: '100%',
   height: '450px',
 };
-
+                                                                                                                                                                                         
 class MapView extends Component {
   state = {
     showingInfoWindow: false, //Hides or the shows the infoWindow
@@ -29,9 +29,7 @@ class MapView extends Component {
         showingInfoWindow: false,
         activeMarker: null,
       });
-    }
-  };
-
+    }-=bv                          
   onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -43,22 +41,6 @@ class MapView extends Component {
 
   render() {
     const { restaurants } = this.props;
-    // let points = [];
-    // restaurants.map(item =>
-    //   points.push({ lat: item.latitude, lng: item.longitude })
-    // );
-
-    // let bounds = new this.props.google.maps.LatLngBounds();
-    // for (var i = 0; i < points.length; i++) {
-    //   bounds.extend(points[i]);
-    // }
-    const latSum = restaurants.reduce((acc, item) => {
-      return acc + item.latitude;
-    }, 0);
-    const lngSum = restaurants.reduce((acc, item) => {
-      return acc + item.longitude;
-    }, 0);
-    console.log(restaurants.length);
     return (
       <section className={cx('mapSection')}>
         {restaurants.length > 0 ? (
@@ -68,10 +50,9 @@ class MapView extends Component {
             style={mapStyles}
             onClick={this.onMapClicked}
             initialCenter={{
-              lat: latSum / restaurants.length,
-              lng: lngSum / restaurants.length,
+              lat: restaurants[0].latitude,
+              lng: restaurants[0].longitude,
             }}
-            // bounds={bounds}
           >
             {restaurants.map(r => (
               <Marker

@@ -6,6 +6,8 @@ import SearchPage from './pages/SearchPage';
 import PostDetailPage from './pages/PostDetailPage';
 import Layout from './components/Layout';
 import UserProvider from './contexts/UserContext';
+import HandleMainFront from './containers/HandleMainFront';
+import WritingReview from './containers/WritingReview';
 import PageProvider from './contexts/PageContext';
 
 class App extends Component {
@@ -17,6 +19,7 @@ class App extends Component {
             <Layout>
               <div className="App">
                 <Switch>
+                  <Route path="/newrestaurant" component={WritingReview} />
                   <Route path="/search" component={SearchPage} />
                   <Route
                     path="/restaurant/:rKeyword"
