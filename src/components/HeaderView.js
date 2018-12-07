@@ -8,6 +8,7 @@ import { withModal } from '../contexts/ModalContext';
 import { ReactComponent as MainLogo } from '../commonimgs/main-logo.svg';
 import { ReactComponent as GrayLogo } from '../commonimgs/gray-logo.svg';
 import { Link } from 'react-router-dom';
+import HandleSearch from './HandlePrimary/HandleSearch';
 
 const cx = classNames.bind(styles);
 
@@ -42,7 +43,6 @@ class HeaderView extends Component {
       handleClick,
       ...rest
     } = this.props;
-    // console.log(this.props.main);
     const { scroll } = this.state;
 
     if (this.props.main) {
@@ -64,10 +64,11 @@ class HeaderView extends Component {
                 className={cx('grayLogo', { hide: main && scroll < 300 })}
               />
             </Link>
-            <form className={cx('searchBox', { hide: main })}>
+            {!main && <HandleSearch />}
+            {/* <form className={cx('searchBox', { hide: main })}>
               <span className={cx('searchIcon')} />
               <input type="text" placeholder="지역, 식당 또는 음식" />
-            </form>
+            </form> */}
           </div>
           <nav className={cx('nav')}>
             <ul className={cx('navList')}>

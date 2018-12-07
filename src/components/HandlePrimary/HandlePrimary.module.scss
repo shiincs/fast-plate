@@ -51,72 +51,13 @@
     }
   }
 
-  .mainSearch {
-    background: $color-white;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    margin-top: 2rem;
-    width: 60rem;
-    height: 5rem;
-    border-radius: 25px;
-    border: 2px solid $main-color;
-    font-size: 2rem;
 
-    @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-      width: 40rem;
-    }
-
-    @include center;
-
-    & legend {
-      position: absolute; /*제목 숨기기*/
-      width: 1px; /*초점을 받기위해 최소한의 크기사용*/
-      height: 1px; /*초점을 받기위해 최소한의 크기사용*/
-      overflow: hidden;
-      margin: -1px;
-      clip: rect(0, 0, 0, 0);
-    }
-
-    .magnifyIcon {
-      display: inline-block;
-      line-height: 6.4rem;
-      position: absolute;
-      left: 2.3rem;
-      @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-        left: 2rem;
-      }
-    }
-
-    & input {
-      width: 35rem;
-      height: 4.6rem;
-      margin-left: 3rem;
-      position: absolute;
-      left: 5rem;
-      outline: none;
-      @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-        width: 17rem;
-        left: 4rem;
-      }
-    }
-
-    & button {
-      height: 4.7rem;
-      width: 15rem;
-      border-radius: 25px;
-      border-top-right-radius: 23px;
-      background: $main-color;
-      color: $color-white;
-      position: absolute;
-      right: 0rem;
-    }
-  }
 
   .eatDeal {
     position: absolute;
     bottom: 1rem;
     left: 2rem;
+
     @media all and (min-width: $size-basic) and (max-width: $size-normal) {
       bottom: 9rem;
       right: 2rem;
@@ -127,6 +68,7 @@
     position: absolute;
     bottom: 1.5rem;
     right: 20rem;
+
     @media all and (min-width: $size-basic) and (max-width: $size-normal) {
       left: 5rem;
     }
@@ -136,6 +78,7 @@
     position: absolute;
     bottom: 0;
     right: 2.5rem;
+
     @media all and (min-width: $size-basic) and (max-width: $size-normal) {
       left: 18rem;
     }
