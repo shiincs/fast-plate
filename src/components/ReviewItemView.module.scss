@@ -1,6 +1,7 @@
 @import '../commons.scss';
 .reveiw-content {
   margin-top: 14px;
+  border-bottom: 1px solid #dbdbdb;
   &:hover {
     background: #f6f6f6;
   }
@@ -28,6 +29,7 @@
     position: relative;
     line-height: 2;
     max-width: 605px;
+    margin: 0 20px;
     .date {
       position: absolute;
       top: -20px;

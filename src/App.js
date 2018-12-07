@@ -6,6 +6,8 @@ import SearchPage from './pages/SearchPage';
 import PostDetailPage from './pages/PostDetailPage';
 import Layout from './components/Layout';
 import UserProvider from './contexts/UserContext';
+import HandleMainFront from './containers/HandleMainFront';
+import WritingReview from './containers/WritingReview';
 import PageProvider from './contexts/PageContext';
 
 class App extends Component {
@@ -14,9 +16,10 @@ class App extends Component {
       <BrowserRouter>
         <UserProvider>
           <PageProvider>
-            <div className="App">
-              <Layout>
+            <Layout>
+              <div className="App">
                 <Switch>
+                  <Route path="/newrestaurant" component={WritingReview} />
                   <Route path="/search" component={SearchPage} />
                   <Route
                     path="/restaurant/:rKeyword"
@@ -25,8 +28,8 @@ class App extends Component {
                   {/*루트페이지는 항상 맨 아래 위치 */}
                   <Route path="/" component={MainPage} />
                 </Switch>
-              </Layout>
-            </div>
+              </div>
+            </Layout>
           </PageProvider>
         </UserProvider>
       </BrowserRouter>

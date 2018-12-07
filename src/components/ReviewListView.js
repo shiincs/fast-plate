@@ -18,6 +18,7 @@ export default class ReviewListView extends Component {
           </ul>
         </div>
         <ReviewItem />
+        <button className={cx('review-more-btn')}>더보기</button>
       </React.Fragment>
     );
   }

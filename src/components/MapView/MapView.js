@@ -8,7 +8,7 @@ const mapStyles = {
   width: '100%',
   height: '450px',
 };
-
+                                                                                                                                                                                         
 class MapView extends Component {
   state = {
     showingInfoWindow: false, //Hides or the shows the infoWindow
@@ -29,9 +29,7 @@ class MapView extends Component {
         showingInfoWindow: false,
         activeMarker: null,
       });
-    }
-  };
-
+    }-=bv                          
   onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
