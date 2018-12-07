@@ -26,7 +26,7 @@ export default class HandleSearch extends Component {
 
   render() {
     if (this.state.search) {
-      return <Redirect to={`/search?keyword=${this.state.value}`} />;
+      return <Redirect to={`/search?keyword=${this.state.value}&page=1`} />;
     }
 
     return (

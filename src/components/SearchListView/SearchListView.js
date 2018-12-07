@@ -83,7 +83,7 @@ class SearchListView extends Component {
                 </div>
 
                 <div className={cx('pagination')}>
-                  {[...Array(count / 5)].map((item, index) => {
+                  {[...Array(Math.ceil(count / 10))].map((item, index) => {
                     return (
                       <Link
                         key={index + 1}

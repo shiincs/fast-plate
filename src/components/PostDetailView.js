@@ -120,10 +120,7 @@ export default class PostDetailView extends Component {
             </div>
             <ReviewList />
           </div>
-          <div className="map">
-            <MapView />
-            {/* <Map google={this.props.google} zoom={14} /> */}
-          </div>
+          <div className="map">{/* <MapView /> */}</div>
         </div>
       </React.Fragment>
     );

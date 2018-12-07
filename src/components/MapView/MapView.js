@@ -8,7 +8,7 @@ const mapStyles = {
   width: '100%',
   height: '450px',
 };
-                                                                                                                                                                                         
+
 class MapView extends Component {
   state = {
     showingInfoWindow: false, //Hides or the shows the infoWindow
@@ -16,12 +16,13 @@ class MapView extends Component {
     selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
   };
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
     });
+  };
 
   onMapClicked = props => {
     if (this.state.showingInfoWindow) {
@@ -29,7 +30,9 @@ class MapView extends Component {
         showingInfoWindow: false,
         activeMarker: null,
       });
-    }-=bv                          
+    }
+  };
+
   onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
