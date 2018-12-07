@@ -55,14 +55,16 @@ export default class PostDetailView extends Component {
     return (
       <React.Fragment>
         <div className="photo-list">
-          {/* 레스토랑 디테일 정보 사진들 */}
           {detailpics.map((pic, index) => (
-            <img
-              key={index}
-              src={pic}
-              alt="detailRestaurantpics"
-              onClick={() => this.showModal(index)}
-            />
+            <div className="photo-item">
+              {/* 레스토랑 디테일 정보 사진들 */}
+              <img
+                key={index}
+                src={pic}
+                alt="detailRestaurantpics"
+                onClick={() => this.showModal(index)}
+              />
+            </div>
           ))}
           {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
           <Modal show={this.state.show} handleClose={() => this.hideModal()}>
@@ -101,10 +103,12 @@ export default class PostDetailView extends Component {
             </header>
             <div>
               <dl className="detail-list">
-                <dt>주소</dt>
-                <dd> {restaurants.address_detail}</dd>
-                <dt>전화번호</dt>
+                <dt className="addressName">주소</dt>
+                <dd className="address"> {restaurants.address_detail}</dd>
+
+                <dt className="telLabel">전화번호</dt>
                 <dd>{restaurants.phone_num}</dd>
+
                 <dt>음식 종류</dt>
                 <dd>{restaurants.food_type}</dd>
                 <dt>가격대</dt>
