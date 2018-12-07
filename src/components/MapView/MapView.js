@@ -44,6 +44,13 @@ class MapView extends Component {
 
   render() {
     const { restaurants } = this.props;
+    const latSum = restaurants.reduce((acc, item) => {
+      return acc + item.latitude;
+    }, 0);
+    const lngSum = restaurants.reduce((acc, item) => {
+      return acc + item.longitude;
+    }, 0);
+    console.log(restaurants.length);
     return (
       <section className={cx('mapSection')}>
         {restaurants.length > 0 ? (
@@ -53,8 +60,8 @@ class MapView extends Component {
             style={mapStyles}
             onClick={this.onMapClicked}
             initialCenter={{
-              lat: restaurants[0].latitude,
-              lng: restaurants[0].longitude,
+              lat: latSum / restaurants.length,
+              lng: lngSum / restaurants.length,
             }}
           >
             {restaurants.map(r => (

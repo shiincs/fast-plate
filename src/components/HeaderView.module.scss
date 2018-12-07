@@ -40,38 +40,6 @@ $color: #555;
         display: none;
       }
     }
-
-    .searchBox {
-      position: absolute;
-      left: 50px;
-      width: calc(100% - 145px);
-      height: 100%;
-      display: inline-flex;
-      align-items: center;
-
-      /* Main Page 에서는 searchBox 감춤 */
-      &.hide {
-        display: none;
-      }
-
-      .searchIcon {
-        position: absolute;
-        left: 5px;
-        background-image: url('../commonimgs/mangoplate_sprites_desktop.png');
-        background-position: -974px -159px;
-        width: 25px;
-        height: 25px;
-      }
-
-      input[type=text] {
-        width: 100%;
-        margin-left: 35px;
-        font-size: 1.6rem;
-        font-weight: 400;
-        outline: none;
-        background: transparent;
-      }
-    }
   }
 
   .nav {

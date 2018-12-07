@@ -38,3 +38,15 @@ $main-margin: 13px;
     @content;
   }
 }
+
+@mixin deleteMap {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
