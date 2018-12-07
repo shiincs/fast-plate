@@ -1,5 +1,6 @@
 // 변수
 $color-white: #fff;
+$color-black: #181818;
 $size-basic: 320px;
 $size-normal: 768px;
 $size-big: 855px;
@@ -14,20 +15,26 @@ $main-margin: 13px;
   transform: translate(-50%, -50%);
 }
 
+@mixin mobileVertical {
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    @content;
+  }
+}
+
 @mixin mobileHorizontal {
-  @media screen and (min-width: 577px) {
+  @media screen and (min-width: 481px) and (max-width: 768px) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media screen and (min-width: 993px) {
+  @media screen and (min-width: 1024px) {
     @content;
   }
 }

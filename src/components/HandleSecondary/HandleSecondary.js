@@ -19,46 +19,55 @@ export default class HandleSecondary extends Component {
     this.state = {
       dummyImgTextArr: [
         {
+          id: 1,
           img: food1,
           text: '곱창전골 맛집 베스트',
           keyword: '성수',
         },
         {
+          id: 2,
           img: food2,
           text: '이주의 EAT딜 베스트',
           keyword: '성수',
         },
         {
+          id: 3,
           img: food3,
           text: '성북구 양식 맛집 베스트',
           keyword: '성수',
         },
         {
+          id: 4,
           img: food4,
           text: '명동 맛집 베스트',
           keyword: '명동',
         },
         {
+          id: 5,
           img: food5,
           text: '펍 베스트',
           keyword: '명동',
         },
         {
+          id: 6,
           img: food6,
           text: '오믈렛 맛집 베스트',
           keyword: '명동',
         },
         {
+          id: 7,
           img: food7,
           text: '들깨 칼국수 맛집 베스트',
           keyword: '강남',
         },
         {
+          id: 8,
           img: food8,
           text: '생선구이 맛집 베스트',
           keyword: '강남',
         },
         {
+          id: 9,
           img: food9,
           text: '비빔밥 맛집 베스트',
           keyword: '강남',
@@ -120,7 +129,7 @@ export default class HandleSecondary extends Component {
         <div>''</div>
         {dummyArr.map((dummy, index) => (
           <HandleList
-            key={dummy[index]}
+            key={dummy.id}
             listImg={dummy.img}
             listText={dummy.text}
           />

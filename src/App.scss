@@ -1,1 +1,26 @@
 /************************************ Primary ************************************/
+@import './commons.scss';
+
+@include mobileVertical {
+  .App {
+    padding-top: 50px;
+  }
+}
+
+@include mobileHorizontal {
+  .App {
+    padding-top: 50px;
+  }
+}
+
+@include tablet {
+  .App {
+    padding-top: 60px;
+  }
+}
+
+@include desktop {
+  .App {
+    padding-top: 60px;
+  }
+}
