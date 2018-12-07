@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SearchListView from '../SearchListView/SearchListView';
-import MapView from '../MapView/MapView';
 import classNames from 'classnames/bind';
 import styles from './SearchView.module.scss';
+import Map from '../../containers/Map';
 
 const cx = classNames.bind(styles);
 
@@ -48,7 +48,7 @@ export default class SearchView extends Component {
         <SearchListView restaurants={restaurantList} {...rest} />
         {/* 지도 출력 컴포넌트 */}
         {/* <div>여기 지도 default</div> */}
-        <MapView restaurants={restaurantList} />
+        <Map restaurants={restaurantList} />
       </article>
     );
   }

@@ -8,7 +8,7 @@ import { withModal } from '../contexts/ModalContext';
 import { ReactComponent as MainLogo } from '../commonimgs/main-logo.svg';
 import { ReactComponent as GrayLogo } from '../commonimgs/gray-logo.svg';
 import { Link } from 'react-router-dom';
-import HandleSearch from './HandlePrimary/HandleSearch';
+import MainSearchView from './MainSearchView/MainSearchView';
 
 const cx = classNames.bind(styles);
 
@@ -64,7 +64,7 @@ class HeaderView extends Component {
                 className={cx('grayLogo', { hide: main && scroll < 300 })}
               />
             </Link>
-            {!main && <HandleSearch />}
+            {!main && <MainSearchView />}
             {/* <form className={cx('searchBox', { hide: main })}>
               <span className={cx('searchIcon')} />
               <input type="text" placeholder="지역, 식당 또는 음식" />

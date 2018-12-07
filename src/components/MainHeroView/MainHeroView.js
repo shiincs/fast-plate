@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import HandleSearch from './HandleSearch';
 import AppStore from './MainImg/AppStore.png';
 import GooglePlay from './MainImg/GooglePlay.png';
 import EatDeal from './MainImg/EatDeal.png';
-import styles from './HandlePrimary.module.scss';
+import styles from './MainHeroView.module.scss';
 import classNames from 'classnames/bind';
 import hero1 from './MainImg/hero1.jpg';
 import hero2 from './MainImg/hero2.jpg';
 import hero3 from './MainImg/hero3.jpg';
 import hero4 from './MainImg/hero4.jpg';
+import MainSearchView from '../MainSearchView/MainSearchView';
 
 const cx = classNames.bind(styles);
 
-export default class HandlePrimary extends Component {
+export default class MainHeroView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +28,7 @@ export default class HandlePrimary extends Component {
           alt="background"
         />
         <HandleTitle />
-        <HandleSearch />
+        <MainSearchView />
         <HandleBadges />
       </div>
     );

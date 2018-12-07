@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import PostDetail from '../containers/PostDetail';
+import { withPage } from '../contexts/PageContext';
 
-export default class PostDetailPage extends Component {
+class PostDetailPage extends Component {
+  componentDidMount() {
+    this.props.handlePageOpen('detail');
+  }
+
+  componentWillUnmount() {
+    this.props.handlePageClose('detail');
+  }
+
   render() {
+    console.log(this.props.detail);
     const { match } = this.props;
     const restaurantId = match.params.rKeyword;
     return <PostDetail restaurantId={restaurantId} />;
   }
 }
+
+export default withPage(PostDetailPage);

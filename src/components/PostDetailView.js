@@ -3,6 +3,7 @@ import './PostDetailView.scss';
 import ReviewList from '../containers/ReviewList';
 import { Link } from 'react-router-dom';
 import MapView from './MapView/MapView';
+import Map from '../containers/Map';
 
 export default class PostDetailView extends Component {
   constructor(props) {
@@ -122,7 +123,7 @@ export default class PostDetailView extends Component {
             <ReviewList />
           </div>
           <div className="map">
-            <MapView restaurants={restaurants} />
+            <Map restaurants={restaurants} />
           </div>
         </div>
       </React.Fragment>
