@@ -84,19 +84,50 @@
       .titleWrap {
         height: 52px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
         margin-bottom: $main-margin;
-      }
 
-      .title {
-        font-size: 2.6rem;
-        color: #090909;
-      }
-
-      .rate {
-        font-size: 1.8rem;
-        margin-left: 1rem;
-        color: $main-color;
+        .title {
+          font-size: 2.6rem;
+          color: #090909;
+        }
+        .restaurants_action_button_wrap {
+          display: flex;
+          button {
+            width: 55px;
+            height: 42px;
+            font-size: 1.3rem;
+          }
+          .review_writing_button {
+            background-image: url('../commonimgs/review_writing_icon.png');
+            background-size: 32px;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-right: 19px;
+            padding-top: 38px;
+            color: #9b9b9b;
+          }
+          .wannago {
+            width: 32px;
+            height: 37px;
+            background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
+            background-position: -935px -579px;
+            position: relative;
+            color: #9b9b9b;
+            span {
+              position: absolute;
+              left: -10px;
+              bottom: -20px;
+              width: 52px;
+            }
+          }
+        }
+        .rate {
+          font-size: 1.8rem;
+          margin-left: 1rem;
+          color: $main-color;
+        }
       }
 
       .status {
