@@ -14,10 +14,10 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
+      <main>
         <MainHeroView />
         <MainListView />
-      </div>
+      </main>
     );
   }
 }

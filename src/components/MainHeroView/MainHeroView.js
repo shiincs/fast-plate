@@ -4,10 +4,9 @@ import GooglePlay from './MainImg/GooglePlay.png';
 import EatDeal from './MainImg/EatDeal.png';
 import styles from './MainHeroView.module.scss';
 import classNames from 'classnames/bind';
-import hero1 from './MainImg/hero1.jpg';
-import hero2 from './MainImg/hero2.jpg';
-import hero3 from './MainImg/hero3.jpg';
-import hero4 from './MainImg/hero4.jpg';
+import hero1 from './MainImg/heroBg1.jpg';
+import hero2 from './MainImg/heroBg2.jpg';
+import hero3 from './MainImg/heroBg3.jpg';
 import MainSearchView from '../MainSearchView/MainSearchView';
 
 const cx = classNames.bind(styles);
@@ -16,21 +15,24 @@ export default class MainHeroView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      heroArr: [hero1, hero2, hero3, hero4],
+      heroArr: [hero1, hero2, hero3],
     };
   }
   render() {
+    const { heroArr } = this.state;
+    const heroBg = {
+      backgroundColor: '#fff',
+      backgroundImage: `url(${
+        heroArr[Math.floor(Math.random() * heroArr.length)]
+      })`,
+    };
     return (
-      <div className={cx('primary')}>
-        <img
-          src={this.state.heroArr[Math.floor(Math.random() * 4)]}
-          className={cx('primaryBackground')}
-          alt="background"
-        />
+      <section className={cx('primary')}>
+        <div className={cx('primaryBackground')} style={heroBg} />
         <HandleTitle />
         <MainSearchView />
         <HandleBadges />
-      </div>
+      </section>
     );
   }
 }
@@ -50,18 +52,18 @@ class HandleBadges extends Component {
   render() {
     return (
       <div>
-        <a href="#" className={styles.eatDeal}>
+        <a href="#" className={cx('eatDeal')}>
           <img src={EatDeal} alt="EatDeal-Logo" />
         </a>
         <a
           href="https://play.google.com/store/apps/details?id=com.mangoplate"
-          className={styles.googlePlay}
+          className={cx('googlePlay')}
         >
           <img src={GooglePlay} alt="GooglePlay-Logo" />
         </a>
         <a
           href="https://itunes.apple.com/app/id628509224"
-          className={styles.appStore}
+          className={cx('appStore')}
         >
           {' '}
           <img src={AppStore} alt="AppStore-Logo" />{' '}
