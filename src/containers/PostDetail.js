@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
-import food1 from '../components/HandleSecondary/SecondaryImg/food1.jpg';
-import food2 from '../components/HandleSecondary/SecondaryImg/food2.jpg';
-import food3 from '../components/HandleSecondary/SecondaryImg/food3.jpg';
-import food4 from '../components/HandleSecondary/SecondaryImg/food4.jpeg';
+import food1 from '../components/MainListView/SecondaryImg/food1.jpg';
+import food2 from '../components/MainListView/SecondaryImg/food2.jpg';
+import food3 from '../components/MainListView/SecondaryImg/food3.jpg';
+import food4 from '../components/MainListView/SecondaryImg/food4.jpeg';
 
 export default class PostDetail extends Component {
   /* 
