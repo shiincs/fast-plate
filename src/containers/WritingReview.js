@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WritingReviewView from '../components/WritingReviewView';
+
 export default class WritingReview extends Component {
   constructor(props) {
     super(props);
@@ -7,6 +8,7 @@ export default class WritingReview extends Component {
       goodOpen: false,
       okOpen: false,
       notGoodOpen: false,
+      reviewScore: 0,
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
 
@@ -23,21 +25,18 @@ export default class WritingReview extends Component {
     };
   }
 
-  allFontBlack = () => {
-    document.querySelector('.pickColor1').style.color = '#181818';
-    document.querySelector('.pickColor2').style.color = '#181818';
-    document.querySelector('.pickColor3').style.color = '#181818';
-  };
-
   toggleGoodOpen = () => {
-    this.setState(prevState => ({
-      goodOpen: !prevState.goodOpen,
-      okOpen: false,
-      notGoodOpen: false,
-    }));
-    if (this.state.goodOpen) {
-      this.allFontBlack();
-    } else {
+    this.setState(
+      {
+        goodOpen: true,
+        okOpen: false,
+        notGoodOpen: false,
+        reviewScore: 5,
+      },
+      // this.setState는 비동기함수
+      () => console.log(this.state.reviewScore) // 5
+    );
+    if (!this.state.goodOpen) {
       document.querySelector('.pickColor1').style.color = '#ff792a';
       document.querySelector('.pickColor2').style.color = '#181818';
       document.querySelector('.pickColor3').style.color = '#181818';
@@ -45,15 +44,16 @@ export default class WritingReview extends Component {
   };
 
   toggleOkOpen = () => {
-    this.setState(prevState => ({
-      okOpen: !prevState.okOpen,
-      goodOpen: false,
-      notGoodOpen: false,
-    }));
-
-    if (this.state.okOpen) {
-      this.allFontBlack();
-    } else {
+    this.setState(
+      {
+        okOpen: true,
+        goodOpen: false,
+        notGoodOpen: false,
+        reviewScore: 3,
+      },
+      () => console.log(this.state.reviewScore) // 3
+    );
+    if (!this.state.okOpen) {
       document.querySelector('.pickColor2').style.color = '#ff792a';
       document.querySelector('.pickColor1').style.color = '#181818';
       document.querySelector('.pickColor3').style.color = '#181818';
@@ -61,14 +61,16 @@ export default class WritingReview extends Component {
   };
 
   toggleNotGoodOpen = () => {
-    this.setState(prevState => ({
-      notGoodOpen: !prevState.notGoodOpen,
-      okOpen: false,
-      goodOpen: false,
-    }));
-    if (this.state.notGoodOpen) {
-      this.allFontBlack();
-    } else {
+    this.setState(
+      {
+        notGoodOpen: true,
+        okOpen: false,
+        goodOpen: false,
+        reviewScore: 1,
+      },
+      () => console.log(this.state.reviewScore) // 1
+    );
+    if (!this.state.notGoodOpen) {
       document.querySelector('.pickColor3').style.color = '#ff792a';
       document.querySelector('.pickColor1').style.color = '#181818';
       document.querySelector('.pickColor2').style.color = '#181818';
