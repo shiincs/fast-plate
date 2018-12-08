@@ -51,24 +51,26 @@ class HandleTitle extends Component {
 class HandleBadges extends Component {
   render() {
     return (
-      <div>
+      <aside className={cx('badges')}>
         <a href="#" className={cx('eatDeal')}>
           <img src={EatDeal} alt="EatDeal-Logo" />
         </a>
-        <a
-          href="https://play.google.com/store/apps/details?id=com.mangoplate"
-          className={cx('googlePlay')}
-        >
-          <img src={GooglePlay} alt="GooglePlay-Logo" />
-        </a>
-        <a
-          href="https://itunes.apple.com/app/id628509224"
-          className={cx('appStore')}
-        >
-          {' '}
-          <img src={AppStore} alt="AppStore-Logo" />{' '}
-        </a>
-      </div>
+        <div className={cx('linkToApp')}>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.mangoplate"
+            className={cx('googlePlay')}
+          >
+            <img src={GooglePlay} alt="GooglePlay-Logo" />
+          </a>
+          <a
+            href="https://itunes.apple.com/app/id628509224"
+            className={cx('appStore')}
+          >
+            {' '}
+            <img src={AppStore} alt="AppStore-Logo" />{' '}
+          </a>
+        </div>
+      </aside>
     );
   }
 }
