@@ -6,104 +6,18 @@ const cx = classNames.bind(styles);
 // 컴포넌트 나누기 (page, container, presentational)
 // 코드의 양 줄이기
 
-const imagePath = {
-  goodOff:
-    'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
-  goodOn:
-    'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_active_face.svg',
-  okOff:
-    'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_ok_face.svg',
-  okOn:
-    'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_ok_active_face.svg',
-  notGoodOff:
-    'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_not_recommend_face.svg',
-  notGoodOn:
-    'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_not_recommend_active_face.svg',
-};
-
 export default class WritingReviewView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      goodOpen: false,
-      okOpen: false,
-      notGoodOpen: false,
-    };
-  }
-
-  toggleGoodOpen() {
-    const { reviewScore } = this.props;
-    this.setState(prevState => ({
-      goodOpen: !prevState.goodOpen,
-      okOpen: false,
-      notGoodOpen: false,
-    }));
-    document.querySelector('.pickColor1').style.color = '#ff792a';
-    document.querySelector('.pickColor2').style.color = '#181818';
-    document.querySelector('.pickColor3').style.color = '#181818';
-    if (this.state.goodOpen) {
-      console.log(reviewScore);
-      document.querySelector('.pickColor1').style.color = '#181818';
-    } else {
-      this.setState({
-        reviewScore: reviewScore + 5,
-      });
-      console.log(this.state.reviewScore);
-    }
-  }
-
-  toggleOkOpen() {
-    const { reviewScore } = this.props;
-    this.setState(prevState => ({
-      okOpen: !prevState.okOpen,
-      goodOpen: false,
-      notGoodOpen: false,
-    }));
-    document.querySelector('.pickColor2').style.color = '#ff792a';
-    document.querySelector('.pickColor1').style.color = '#181818';
-    document.querySelector('.pickColor3').style.color = '#181818';
-    if (this.state.okOpen) {
-      console.log(reviewScore);
-      document.querySelector('.pickColor2').style.color = '#181818';
-    } else {
-      this.setState({
-        reviewScore: reviewScore + 3,
-      });
-      console.log(this.state.reviewScore);
-    }
-  }
-
-  toggleNotGoodOpen() {
-    const { reviewScore } = this.props;
-    this.setState(prevState => ({
-      notGoodOpen: !prevState.notGoodOpen,
-      okOpen: false,
-      goodOpen: false,
-    }));
-    document.querySelector('.pickColor3').style.color = '#ff792a';
-    document.querySelector('.pickColor1').style.color = '#181818';
-    document.querySelector('.pickColor2').style.color = '#181818';
-
-    if (this.state.notGoodOpen) {
-      console.log(reviewScore);
-      document.querySelector('.pickColor3').style.color = '#181818';
-    } else {
-      this.setState({
-        reviewScore: reviewScore + 1,
-      });
-      console.log(this.state.reviewScore);
-    }
-  }
-
-  goodImageName = () => (this.state.goodOpen ? 'goodOn' : 'goodOff');
-  okImageName = () => (this.state.okOpen ? 'okOn' : 'okOff');
-  notGoodImageName = () =>
-    this.state.notGoodOpen ? 'notGoodOn' : 'notGoodOff';
-
   render() {
-    const goodImage = this.goodImageName();
-    const okImage = this.okImageName();
-    const notGood = this.notGoodImageName();
+    const {
+      goodOpen,
+      okOpen,
+      notGoodOpen,
+      imagePath,
+      toggleGoodOpen,
+      toggleOkOpen,
+      toggleNotGoodOpen,
+    } = this.props;
+
     return (
       <React.Fragment>
         <section className={cx('WritingReviewPage')}>
@@ -118,25 +32,25 @@ export default class WritingReviewView extends Component {
               <ul className={cx('RestaurantRecommendPicker__List')}>
                 <li className={cx('RestaurantRecommendPicker__Item')}>
                   <img
-                    src={imagePath[goodImage]}
+                    src={goodOpen ? imagePath[1] : imagePath[0]}
                     alt="좋아요 버튼"
-                    onClick={() => this.toggleGoodOpen()}
+                    onClick={toggleGoodOpen}
                   />
                   <p className={cx('pickColor1')}>맛있다</p>
                 </li>
                 <li className={cx('RestaurantRecommendPicker__Item')}>
                   <img
-                    src={imagePath[okImage]}
+                    src={okOpen ? imagePath[3] : imagePath[2]}
                     alt="괜찮다 버튼"
-                    onClick={() => this.toggleOkOpen()}
+                    onClick={toggleOkOpen}
                   />
                   <p className={cx('pickColor2')}>괜찮다</p>
                 </li>
                 <li className={cx('RestaurantRecommendPicker__Item')}>
                   <img
-                    src={imagePath[notGood]}
+                    src={notGoodOpen ? imagePath[5] : imagePath[4]}
                     alt="별로 버튼"
-                    onClick={() => this.toggleNotGoodOpen()}
+                    onClick={toggleNotGoodOpen}
                   />
                   <p className={cx('pickColor3')}>별로</p>
                 </li>
