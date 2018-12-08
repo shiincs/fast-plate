@@ -1,86 +1,60 @@
 @import '../../commons.scss';
 
 .primary {
-  background-color: skyblue;
-  height: 70vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 500px;
+  max-height: 500px;
   text-align: center;
-  position: relative;
 
-  @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-    height: 70vh;
-  }
-
-  &:before {
-    display: block;
-    content: '';
+  .primaryBackground {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: rgb(192, 190, 190);
-    opacity: 0.2;
-  }
+    background-position: center;
+    background-size: cover;
 
-  &Background {
-    width: 100%;
-    height: 100%;
-    // width: 1600px;
-    // height: 529px;
+    &:before {
+      content: '';
+      display: block;
+      position: relative;
+      z-index: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 
   .mainTitle {
     position: absolute;
     top: 40%;
     left: 50%;
+    color: $color-white;
+    font-weight: 400;
+    font-size: 3.5rem;
+    line-height: 4.2rem;
+    letter-spacing: 2px;
+    white-space: nowrap;
     @include center;
-
-    & p,
-    & h1 {
-      color: $color-white;
-      font-weight: 400;
-      font-size: 3.5rem;
-      line-height: 5rem;
-      letter-spacing: 2px;
-
-      white-space: nowrap;
-
-      @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-        font-size: 20px;
-        letter-spacing: 5px;
-        transform: translateY(-2rem);
-      }
-    }
   }
 
 
-
-  .eatDeal {
+  .badges {
     position: absolute;
-    bottom: 1rem;
-    left: 2rem;
+    width: 100%;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
 
-    @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-      bottom: 9rem;
-      right: 2rem;
-    }
-  }
-
-  .googlePlay {
-    position: absolute;
-    bottom: 1.5rem;
-    right: 20rem;
-
-    @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-      left: 5rem;
-    }
-  }
-
-  .appStore {
-    position: absolute;
-    bottom: 0;
-    right: 2.5rem;
-
-    @media all and (min-width: $size-basic) and (max-width: $size-normal) {
-      left: 18rem;
+    .linkToApp {
+      display: flex;
+      align-items: center;
     }
   }
 }
