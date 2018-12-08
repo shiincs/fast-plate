@@ -9,6 +9,7 @@ export default class WritingReview extends Component {
       okOpen: false,
       notGoodOpen: false,
       reviewScore: 0,
+      chars_left: 10000,
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
 
@@ -24,6 +25,14 @@ export default class WritingReview extends Component {
       ],
     };
   }
+
+  handleWordCount = e => {
+    const charCount = e.target.value.length;
+    const charLeft = 10000 - charCount;
+    this.setState({
+      chars_left: charLeft,
+    });
+  };
 
   toggleGoodOpen = () => {
     this.setState(
@@ -85,6 +94,7 @@ export default class WritingReview extends Component {
           toggleGoodOpen={this.toggleGoodOpen}
           toggleOkOpen={this.toggleOkOpen}
           toggleNotGoodOpen={this.toggleNotGoodOpen}
+          handleWordCount={this.handleWordCount}
         />
       </React.Fragment>
     );

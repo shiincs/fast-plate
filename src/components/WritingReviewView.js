@@ -16,6 +16,7 @@ export default class WritingReviewView extends Component {
       toggleGoodOpen,
       toggleOkOpen,
       toggleNotGoodOpen,
+      handleWordCount,
     } = this.props;
 
     return (
@@ -64,7 +65,13 @@ export default class WritingReviewView extends Component {
             </div>
             <div className={cx('ReviewWritingPage__FormWrap')}>
               <div className={cx('ReviewWritingPage__EditorWrap')}>
-                <textarea placeholder="Jominji님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" />
+                <textarea
+                  type="text"
+                  maxLength="10000"
+                  required
+                  placeholder="Jominji님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!"
+                  onChange={handleWordCount}
+                />
                 <p className={cx('ReviewEditor__TextLengthStateBox')}>
                   0 / 10,000
                 </p>
