@@ -12,7 +12,6 @@ import food2 from '../components/MainListView/SecondaryImg/food2.jpg';
 import food3 from '../components/MainListView/SecondaryImg/food3.jpg';
 import food4 from '../components/MainListView/SecondaryImg/food4.jpeg';
 
-
 export default class PostDetail extends Component {
   /* 
     여기에서 식당리스트 정보를 서버에서 받아와서 상태를 관리한다.
@@ -42,6 +41,16 @@ export default class PostDetail extends Component {
       restaurants: { want_num, ...rest },
       want_num: want_num,
     });
+
+    // 해당 레스토랑 정보를 localStorage에 저장 (최근 본 맛집에서 사용)
+    const localArr = Object.keys(localStorage)
+      .map(item => item.split('-'))
+      .map(item => item[1]);
+    !localArr.includes(restaurantId) &&
+      localStorage.setItem(
+        `${new Date()}-${restaurantId}`,
+        JSON.stringify(this.state.restaurants)
+      );
   }
 
   async handleCount(pk, num) {

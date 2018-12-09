@@ -12,6 +12,7 @@ export default class Header extends Component {
   }
 
   componentDidMount() {
+    // 현재 보고있는 페이지가 메인 페이지라면 scroll 이벤트 리스너 등록
     if (this.props.main) {
       window.addEventListener('scroll', this.handleScroll, true);
     } else {
@@ -33,7 +34,6 @@ export default class Header extends Component {
   render() {
     const params = new URLSearchParams(decodeURI(window.location.search));
     const keyword = params.get('keyword');
-    console.log(keyword);
     return (
       <React.Fragment>
         <ModalProvider>
