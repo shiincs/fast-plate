@@ -46,11 +46,18 @@ export default class PostDetail extends Component {
     const localArr = Object.keys(localStorage)
       .map(item => item.split('-'))
       .map(item => item[1]);
-    !localArr.includes(restaurantId) &&
-      localStorage.setItem(
-        `${new Date()}-${restaurantId}`,
-        JSON.stringify(this.state.restaurants)
+    console.log(
+      Object.keys(localStorage).find(item => item.includes(restaurantId))
+    );
+    if (localArr.includes(restaurantId)) {
+      localStorage.removeItem(
+        Object.keys(localStorage).find(item => item.includes(restaurantId))
       );
+    }
+    localStorage.setItem(
+      `${new Date()}-${restaurantId}`,
+      JSON.stringify(this.state.restaurants)
+    );
   }
 
   async handleCount(pk, num) {

@@ -56,10 +56,9 @@ export default class PostDetailView extends Component {
       <React.Fragment>
         <div className="photo-list">
           {detailpics.map((pic, index) => (
-            <div className="photo-item">
+            <div key={index} className="photo-item">
               {/* 레스토랑 디테일 정보 사진들 */}
               <img
-                key={index}
                 src={pic}
                 alt="detailRestaurantpics"
                 onClick={() => this.showModal(index)}
@@ -91,7 +90,7 @@ export default class PostDetailView extends Component {
                     <button className="review_writing_button">리뷰쓰기</button>
                   </Link>
                   <button
-                    class="wannago"
+                    className="wannago"
                     onClick={() =>
                       handleCount(restaurants.pk, restaurants.want_num)
                     }

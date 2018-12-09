@@ -11,22 +11,10 @@ const cx = classNames.bind(styles);
 class MypageView extends Component {
   targetElement = null;
 
-  state = {
-    recentView: [],
-  };
-
   componentDidMount() {
     this.targetElement = LoginPopupView;
-    // 로컬 스토리지에 저장된 최근 본 맛집을 상태에 저장한다.
-    // (하위 컴포넌트인 MyPageView에 넘겨주기 위함)
-    for (let i = 0; i < localStorage.length; i++) {
-      this.state.recentView.unshift(JSON.parse(Object.values(localStorage)[i]));
-      console.log(this.state.recentView);
-    }
-    // this.setState({
-    //   recentView: recentView,
-    // });
   }
+
   componentWillUnmount() {
     // 5. Useful if we have called disableBodyScroll for multiple target elements,
     // and we just want a kill-switch to undo all that.
@@ -37,6 +25,8 @@ class MypageView extends Component {
 
   render() {
     const {
+      handleRecentReset,
+      recentView,
       modalOpen,
       popupOpen,
       recentOpen,
@@ -47,7 +37,7 @@ class MypageView extends Component {
       username,
     } = this.props;
 
-    console.log(this.state.recentView);
+    console.log(recentView);
 
     return (
       <React.Fragment>
@@ -81,12 +71,19 @@ class MypageView extends Component {
             </div>
             <div className={cx('list')}>
               {recentOpen && (
-                <ul className={cx('recentView')}>
-                  <button>목록 삭제</button>
-                  {this.state.recentView.map(item => (
-                    <li key={item.pk}>{item.name}</li>
-                  ))}
-                </ul>
+                <React.Fragment>
+                  <button
+                    className={cx('recentResetBtn')}
+                    onClick={handleRecentReset}
+                  >
+                    목록 삭제
+                  </button>
+                  <ul className={cx('recentView')}>
+                    {recentView.map(item => (
+                      <li key={item.pk}>{item.name}</li>
+                    ))}
+                  </ul>
+                </React.Fragment>
               )}
               {wannagoOpen && (
                 <ul className={cx('wannago')}>
