@@ -111,8 +111,8 @@ export default class PostDetailView extends Component {
                 <dt className="addressName">주소</dt>
                 <dd className="address"> {restaurants.address_detail}</dd>
 
-                <dt className="telLabel">전화번호</dt>
-                <dd>{restaurants.phone_num}</dd>
+                <dt className="tel-label">전화번호</dt>
+                <dd className="tel-number">{restaurants.phone_num}</dd>
 
                 <dt>음식 종류</dt>
                 <dd>{restaurants.food_type}</dd>
