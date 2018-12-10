@@ -9,6 +9,9 @@
   justify-content: space-between;
   padding: 40px 1% 52px;
   min-height: 74px;
+  @include mobile {
+    font-size: 1.4rem;
+  }
   figure {
     display: flex;
     align-items: center;
@@ -46,6 +49,17 @@
       height: 120px;
       background: pink;
       margin-right: 10px;
+      @include mobile {
+        display: block;
+        float: left;
+        position: relative;
+        overflow: hidden;
+        margin-right: 5px;
+        height: 44px;
+        width: 44px;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
     }
   }
 }
