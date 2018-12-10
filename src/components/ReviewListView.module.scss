@@ -8,10 +8,16 @@
 
   .review-title {
     font-size: 1.8rem;
+    @include mobile {
+      color: $main-color;
+    }
   }
   .review-filter-list {
     display: flex;
     font-size: $fontsize;
+    @include mobile {
+      display: none;
+    }
   }
   .review-filter-item {
     width: 80px;
