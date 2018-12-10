@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
-
 import hero1 from '../components/MainHeroView/MainImg/hero1.jpg';
 import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
 import hero3 from '../components/MainHeroView/MainImg/hero3.jpg';
 import hero4 from '../components/MainHeroView/MainImg/hero4.jpg';
+import WritingReview from './WritingReview';
 
 export default class PostDetail extends Component {
   /* 
@@ -63,18 +63,16 @@ export default class PostDetail extends Component {
   }
 
   handleWannaGo() {
-    this.setState(
-      prevState => {
-        return {
-          wannaGo: !prevState.wannaGo,
-        };
-      },
-      () => console.log(this.state.wannaGo)
-    );
+    this.setState(prevState => {
+      return {
+        wannaGo: !prevState.wannaGo,
+      };
+    });
   }
 
   render() {
     const { restaurants, detailpics, comments, wannaGo } = this.state;
+
     return (
       <React.Fragment>
         <PostDetailView

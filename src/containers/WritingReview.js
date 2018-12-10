@@ -26,6 +26,13 @@ export default class WritingReview extends Component {
     };
   }
 
+  componentDidMount() {
+    document.querySelector('.pickColor1').style.color = '#CBCBCB';
+    document.querySelector('.pickColor2').style.color = '#CBCBCB';
+    document.querySelector('.pickColor3').style.color = '#CBCBCB';
+    document.querySelector('.pickColor3').style.marginLeft = '10px';
+  }
+
   handleWordCount = e => {
     const charCount = e.target.value.length;
     const charLeft = 10000 - charCount;
@@ -47,8 +54,8 @@ export default class WritingReview extends Component {
     );
     if (!this.state.goodOpen) {
       document.querySelector('.pickColor1').style.color = '#ff792a';
-      document.querySelector('.pickColor2').style.color = '#181818';
-      document.querySelector('.pickColor3').style.color = '#181818';
+      document.querySelector('.pickColor2').style.color = '#CBCBCB';
+      document.querySelector('.pickColor3').style.color = '#CBCBCB';
     }
   };
 
@@ -64,8 +71,8 @@ export default class WritingReview extends Component {
     );
     if (!this.state.okOpen) {
       document.querySelector('.pickColor2').style.color = '#ff792a';
-      document.querySelector('.pickColor1').style.color = '#181818';
-      document.querySelector('.pickColor3').style.color = '#181818';
+      document.querySelector('.pickColor1').style.color = '#CBCBCB';
+      document.querySelector('.pickColor3').style.color = '#CBCBCB';
     }
   };
 
@@ -81,12 +88,13 @@ export default class WritingReview extends Component {
     );
     if (!this.state.notGoodOpen) {
       document.querySelector('.pickColor3').style.color = '#ff792a';
-      document.querySelector('.pickColor1').style.color = '#181818';
-      document.querySelector('.pickColor2').style.color = '#181818';
+      document.querySelector('.pickColor1').style.color = '#CBCBCB';
+      document.querySelector('.pickColor2').style.color = '#CBCBCB';
     }
   };
 
   render() {
+    const { restaurants } = this.props;
     return (
       <React.Fragment>
         <WritingReviewView
@@ -95,6 +103,7 @@ export default class WritingReview extends Component {
           toggleOkOpen={this.toggleOkOpen}
           toggleNotGoodOpen={this.toggleNotGoodOpen}
           handleWordCount={this.handleWordCount}
+          restaurants={restaurants}
         />
       </React.Fragment>
     );

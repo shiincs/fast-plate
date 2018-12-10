@@ -3,9 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './WritingReviewView.module.scss';
 const cx = classNames.bind(styles);
 
-// 컴포넌트 나누기 (page, container, presentational)
-// 코드의 양 줄이기
-
 export default class WritingReviewView extends Component {
   render() {
     const {

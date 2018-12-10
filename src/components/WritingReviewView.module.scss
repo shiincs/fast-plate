@@ -28,8 +28,11 @@
             width: 100%;
             padding-top: 100%;
             color: #cbcbcb;
+            margin-bottom: 1rem;
           }
-
+          img {
+            margin-bottom: 1rem;
+          }
           &:last-child {
             margin: 0;
           }
@@ -37,6 +40,7 @@
       }
     }
   }
+
   .ReviewWritingPage__ContentWrap {
     display: flex;
     justify-content: space-between;
