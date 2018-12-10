@@ -9,19 +9,8 @@ export default class ReviewList extends Component {
     };
   }
 
-  async componentDidMount() {
-    const { postset } = this.props;
-    // console.log(restaurantId);
-    // const {
-    //   data: { post_set },
-    // } = await api.get(`/api/restaurants/list/${restaurantId}`);
-    // this.setState({
-    //   post_set,
-    // });
-  }
-
   render() {
-    const { postset } = this.state;
+    const { postset } = this.props;
     const reviewList = postset.map(r => ({
       content: r.content,
       username: r.author.username,

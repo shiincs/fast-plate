@@ -131,7 +131,7 @@ export default class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewList reviewList={postset} />
+            <ReviewList postset={postset} />
           </div>
           <div className="map">
             <Map restaurants={restaurants} />
