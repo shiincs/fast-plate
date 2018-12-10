@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
+import { setRecentView } from '../localStorage';
 
 import hero1 from '../components/MainHeroView/MainImg/hero1.jpg';
 import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
@@ -39,21 +40,42 @@ export default class PostDetail extends Component {
     });
 
     // 해당 레스토랑 정보를 localStorage에 저장 (최근 본 맛집에서 사용)
-    const localArr = Object.keys(localStorage)
-      .map(item => item.split('-'))
-      .map(item => item[1]);
-    console.log(
-      Object.keys(localStorage).find(item => item.includes(restaurantId))
-    );
-    if (localArr.includes(restaurantId)) {
-      localStorage.removeItem(
-        Object.keys(localStorage).find(item => item.includes(restaurantId))
-      );
-    }
-    localStorage.setItem(
-      `${new Date()}-${restaurantId}`,
-      JSON.stringify(this.state.restaurants)
-    );
+    const {
+      pk,
+      name,
+      address,
+      food_type,
+      rate_average,
+    } = this.state.restaurants;
+    const restData = {
+      pk,
+      name,
+      address,
+      food_type,
+      rate_average,
+    };
+
+    setRecentView(restData);
+    // let tempArr = [localStorage.getItem('recent')];
+    // console.log(tempArr);
+    // console.log(localStorage.getItem('recent').constructor);
+    // console.log(Object.values(localStorage).constructor);
+
+    // const localArr = Object.keys(localStorage)
+    //   .map(item => item.split('-'))
+    //   .map(item => item[1]);
+    // console.log(
+    //   Object.keys(localStorage).find(item => item.includes(restaurantId))
+    // );
+    // if (localArr.includes(restaurantId)) {
+    //   localStorage.removeItem(
+    //     Object.keys(localStorage).find(item => item.includes(restaurantId))
+    //   );
+    // }
+    // localStorage.setItem(
+    //   `${new Date()}-${restaurantId}`,
+    //   JSON.stringify(this.state.restaurants)
+    // );
   }
 
   async handleCount(pk, num) {
@@ -63,18 +85,16 @@ export default class PostDetail extends Component {
   }
 
   handleWannaGo() {
-    this.setState(
-      prevState => {
-        return {
-          wannaGo: !prevState.wannaGo,
-        };
-      },
-      () => console.log(this.state.wannaGo)
-    );
+    this.setState(prevState => {
+      return {
+        wannaGo: !prevState.wannaGo,
+      };
+    });
   }
 
   render() {
     const { restaurants, detailpics, comments, wannaGo } = this.state;
+
     return (
       <React.Fragment>
         <PostDetailView
