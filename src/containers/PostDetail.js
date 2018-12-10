@@ -16,11 +16,13 @@ export default class PostDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      restaurantId: null,
       want_num: 0,
       restaurants: {},
       detailpics: [hero1, hero2, hero3, hero4],
       comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
       wannaGo: false,
+      post_set: [],
     };
   }
 
@@ -31,11 +33,13 @@ export default class PostDetail extends Component {
 
     //PostDetailPage에서 받아온 match 안에 id 값
     const {
-      data: { want_num, ...rest },
+      data: { want_num, post_set, ...rest },
     } = await api.get(`/api/restaurants/list/${restaurantId}`);
+    console.log(post_set);
     this.setState({
       restaurants: { want_num, ...rest },
       want_num: want_num,
+      post_set: post_set,
     });
 
     // 해당 레스토랑 정보를 localStorage에 저장 (최근 본 맛집에서 사용)
@@ -74,10 +78,19 @@ export default class PostDetail extends Component {
   }
 
   render() {
-    const { restaurants, detailpics, comments, wannaGo } = this.state;
+    const {
+      restaurantId,
+      restaurants,
+      detailpics,
+      comments,
+      wannaGo,
+      post_set,
+    } = this.state;
     return (
       <React.Fragment>
         <PostDetailView
+          postset={post_set}
+          restaurantId={restaurantId}
           restaurants={restaurants}
           detailpics={detailpics}
           comments={comments}

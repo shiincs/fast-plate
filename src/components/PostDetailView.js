@@ -52,12 +52,14 @@ export default class PostDetailView extends Component {
 
   render() {
     const {
+      postset,
       restaurants,
       detailpics,
       handleCount,
       wannaGo,
       handleWannaGo,
     } = this.props;
+    console.log(postset);
     const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
     return (
       <React.Fragment>
@@ -117,10 +119,8 @@ export default class PostDetailView extends Component {
               <dl className="detail-list">
                 <dt className="addressName">주소</dt>
                 <dd className="address"> {restaurants.address_detail}</dd>
-
                 <dt className="tel-label">전화번호</dt>
                 <dd className="tel-number">{restaurants.phone_num}</dd>
-
                 <dt>음식 종류</dt>
                 <dd>{restaurants.food_type}</dd>
                 <dt>가격대</dt>
@@ -131,7 +131,7 @@ export default class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewList />
+            <ReviewList reviewList={postset} />
           </div>
           <div className="map">
             <Map restaurants={restaurants} />
