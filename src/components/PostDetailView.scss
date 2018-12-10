@@ -85,10 +85,6 @@
     margin: 50px auto 0;
     font-size: 1.6rem;
     color: #3e3e3e;
-    @include mobile {
-      width: 100%;
-      font-size: 1.5rem;
-    }
 
     header {
       padding-bottom: 20px;
@@ -120,11 +116,10 @@
             margin-right: 19px;
             padding-top: 38px;
             color: #9b9b9b;
-            @include mobile {
-              display: none;
-            }
           }
-          .wannago {
+
+          .wannaGoOff {
+            cursor: pointer;
             width: 32px;
             height: 37px;
             background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
@@ -137,6 +132,22 @@
               left: -10px;
               bottom: -20px;
               width: 52px;
+            }
+          }
+
+          .wannaGoOn {
+            cursor: pointer;
+            width: 32px;
+            height: 37px;
+            background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
+            background-position: -933px -653px;
+            position: relative;
+            span {
+              position: absolute;
+              left: -10px;
+              bottom: -20px;
+              width: 52px;
+              color: $main-color;
             }
           }
         }
@@ -173,27 +184,12 @@
 
       .address {
         @include mobile {
-          min-height: 62px;
           width: 100%;
           padding: 22px 40px 22px 14px;
           border: 1px solid #e9e9e9;
         }
       }
       .addressName {
-        @include mobile {
-          display: none;
-        }
-      }
-      .tel-number {
-        @include mobile {
-          min-height: 62px;
-          width: 100%;
-          padding: 14px 14px;
-          margin: 10px 0;
-          border: 1px solid #e9e9e9;
-        }
-      }
-      .tel-label {
         @include mobile {
           display: none;
         }

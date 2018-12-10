@@ -51,7 +51,14 @@ export default class PostDetailView extends Component {
   };
 
   render() {
-    const { restaurants, detailpics, handleCount } = this.props;
+    const {
+      restaurants,
+      detailpics,
+      handleCount,
+      wannaGo,
+      handleWannaGo,
+    } = this.props;
+    const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
     return (
       <React.Fragment>
         <div className="photo-list">
@@ -90,10 +97,11 @@ export default class PostDetailView extends Component {
                     <button className="review_writing_button">리뷰쓰기</button>
                   </Link>
                   <button
-                    className="wannago"
-                    onClick={() =>
-                      handleCount(restaurants.pk, restaurants.want_num)
-                    }
+                    className={wannaGoColor}
+                    onClick={() => {
+                      handleCount(restaurants.pk, restaurants.want_num);
+                      handleWannaGo();
+                    }}
                   >
                     <span>가고싶다</span>
                   </button>
