@@ -99,11 +99,11 @@ export default class PostDetailView extends Component {
                   </button>
                 </div>
               </div>
-              <div className="status">
+              {/* <div className="status">
                 <span className="hit">{restaurants.view_num}</span>
                 <span className="review">{restaurants.review_num}</span>
                 <span className="favorite">{restaurants.want_num}</span>
-              </div>
+              </div> */}
             </header>
             <div>
               <dl className="detail-list">

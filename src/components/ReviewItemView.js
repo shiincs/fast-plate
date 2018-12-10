@@ -5,6 +5,14 @@ import styles from './ReviewItemView.module.scss';
 const cx = classNames.bind(styles);
 
 export default class ReviewItemView extends Component {
+  // class defaultprops = {
+  //   pk:null,
+  //   author:'',
+  //   restaurant:'',
+  //   rate:'',
+  //   content:'',
+  //   postimage_posts:[]
+  // }
   render() {
     return (
       <div className={cx('reveiw-content')}>
