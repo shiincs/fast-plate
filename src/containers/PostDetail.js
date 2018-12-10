@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
+
 import hero1 from '../components/MainHeroView/MainImg/hero1.jpg';
 import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
 import hero3 from '../components/MainHeroView/MainImg/hero3.jpg';
@@ -19,6 +20,7 @@ export default class PostDetail extends Component {
       restaurants: {},
       detailpics: [hero1, hero2, hero3, hero4],
       comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
+      wannaGo: false,
     };
   }
 
@@ -35,6 +37,23 @@ export default class PostDetail extends Component {
       restaurants: { want_num, ...rest },
       want_num: want_num,
     });
+
+    // 해당 레스토랑 정보를 localStorage에 저장 (최근 본 맛집에서 사용)
+    const localArr = Object.keys(localStorage)
+      .map(item => item.split('-'))
+      .map(item => item[1]);
+    console.log(
+      Object.keys(localStorage).find(item => item.includes(restaurantId))
+    );
+    if (localArr.includes(restaurantId)) {
+      localStorage.removeItem(
+        Object.keys(localStorage).find(item => item.includes(restaurantId))
+      );
+    }
+    localStorage.setItem(
+      `${new Date()}-${restaurantId}`,
+      JSON.stringify(this.state.restaurants)
+    );
   }
 
   async handleCount(pk, num) {
@@ -43,8 +62,19 @@ export default class PostDetail extends Component {
     });
   }
 
+  handleWannaGo() {
+    this.setState(
+      prevState => {
+        return {
+          wannaGo: !prevState.wannaGo,
+        };
+      },
+      () => console.log(this.state.wannaGo)
+    );
+  }
+
   render() {
-    const { restaurants, detailpics, comments } = this.state;
+    const { restaurants, detailpics, comments, wannaGo } = this.state;
     return (
       <React.Fragment>
         <PostDetailView
@@ -52,6 +82,8 @@ export default class PostDetail extends Component {
           detailpics={detailpics}
           comments={comments}
           handleCount={this.handleCount}
+          wannaGo={wannaGo}
+          handleWannaGo={() => this.handleWannaGo()}
         />
       </React.Fragment>
     );
