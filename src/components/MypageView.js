@@ -5,6 +5,8 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { withUser } from '../contexts/UserContext';
 import { withModal } from '../contexts/ModalContext';
 import LoginPopupView from './LoginPopupView';
+import { Link } from 'react-router-dom';
+import RecentGo from '../containers/RecentGo';
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +38,6 @@ class MypageView extends Component {
       hideTargetElement,
       username,
     } = this.props;
-
     console.log(recentView);
 
     return (
@@ -79,9 +80,10 @@ class MypageView extends Component {
                     목록 삭제
                   </button>
                   <ul className={cx('recentView')}>
-                    {recentView.map(item => (
-                      <li key={item.pk}>{item.name}</li>
-                    ))}
+                    <RecentGo
+                      hideTargetElement={hideTargetElement}
+                      recentView={recentView}
+                    />
                   </ul>
                 </React.Fragment>
               )}

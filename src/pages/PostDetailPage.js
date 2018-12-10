@@ -14,7 +14,7 @@ class PostDetailPage extends Component {
   render() {
     const { match } = this.props;
     const restaurantId = match.params.rKeyword;
-    return <PostDetail restaurantId={restaurantId} />;
+    return <PostDetail key={restaurantId} restaurantId={restaurantId} />;
   }
 }
 
