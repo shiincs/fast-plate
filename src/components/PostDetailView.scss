@@ -6,13 +6,12 @@
   // margin-top: 61px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-around;
   .photo-item {
     position: relative;
-    width: 370px;
+    width: 313px;
     height: 340px;
-    margin-left: 5px;
-
+    margin-left: 6px;
+    // overflow: hidden;
     & img {
       position: absolute;
       top: 0;
@@ -86,10 +85,6 @@
     margin: 50px auto 0;
     font-size: 1.6rem;
     color: #3e3e3e;
-    @include mobile {
-      width: 100%;
-      font-size: 1.5rem;
-    }
 
     header {
       padding-bottom: 20px;
@@ -114,27 +109,15 @@
             font-size: 1.3rem;
           }
           .review_writing_button {
-            cursor: pointer;
-            background-image: url('https://mp-seoul-image-production-s3.mangoplate.com/web/resources/review_writing_icon.png');
+            background-image: url('../commonimgs/review_writing_icon.png');
             background-size: 32px;
             background-position: center;
             background-repeat: no-repeat;
             margin-right: 19px;
             padding-top: 38px;
             color: #9b9b9b;
-            &:hover {
-              background-image: url('https://mp-seoul-image-production-s3.mangoplate.com/web/resources/review_writing_active_icon.png');
-              color: $main-color;
-              @include mobile {
-                display: none;
-              }
-            }
           }
-          .rate {
-            font-size: 1.8rem;
-            margin-left: 1rem;
-            color: $main-color;
-          }
+
           .wannaGoOff {
             cursor: pointer;
             width: 32px;
@@ -143,6 +126,7 @@
             background-position: -935px -579px;
             position: relative;
             color: #9b9b9b;
+
             span {
               position: absolute;
               left: -10px;
@@ -150,12 +134,13 @@
               width: 52px;
             }
           }
+
           .wannaGoOn {
             cursor: pointer;
             width: 32px;
             height: 37px;
             background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
-            background-position: -933px -652px;
+            background-position: -933px -653px;
             position: relative;
             span {
               position: absolute;
@@ -166,67 +151,59 @@
             }
           }
         }
-        .status {
-          width: 60%;
-          display: flex;
-
-          span {
-            min-width: 80px;
-          }
+        .rate {
+          font-size: 1.8rem;
+          margin-left: 1rem;
+          color: $main-color;
         }
       }
-      .detail-list {
+
+      .status {
+        width: 60%;
         display: flex;
-        flex-wrap: wrap;
-        line-height: 1.7;
-        padding: 20px 0;
 
-        dt {
-          width: 30%;
-        }
-
-        dd {
-          width: 70%;
-        }
-
-        .address {
-          @include mobile {
-            min-height: 62px;
-            width: 100%;
-            padding: 22px 40px 22px 14px;
-            border: 1px solid #e9e9e9;
-          }
-        }
-        .addressName {
-          @include mobile {
-            display: none;
-          }
-        }
-        .tel-number {
-          @include mobile {
-            min-height: 62px;
-            width: 100%;
-            padding: 14px 14px;
-            margin: 10px 0;
-            border: 1px solid #e9e9e9;
-          }
-        }
-        .tel-label {
-          @include mobile {
-            display: none;
-          }
+        span {
+          min-width: 80px;
         }
       }
     }
 
-    .map {
-      width: 400px;
+    .detail-list {
+      display: flex;
+      flex-wrap: wrap;
+      line-height: 1.7;
+      padding: 20px 0;
 
-      height: 400px;
-      background: #e5e5e5;
-      @include deleteMap {
-        display: none;
+      dt {
+        width: 30%;
       }
+
+      dd {
+        width: 70%;
+      }
+
+      .address {
+        @include mobile {
+          width: 100%;
+          padding: 22px 40px 22px 14px;
+          border: 1px solid #e9e9e9;
+        }
+      }
+      .addressName {
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .map {
+    width: 400px;
+
+    height: 400px;
+    background: #e5e5e5;
+    @include deleteMap {
+      display: none;
     }
   }
 }
