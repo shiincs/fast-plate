@@ -129,45 +129,43 @@
                 display: none;
               }
             }
-            .wannaGoOff {
-              cursor: pointer;
-              width: 32px;
-              height: 37px;
-              background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
-              background-position: -935px -579px;
-              position: relative;
-              color: #9b9b9b;
-
-              span {
-                position: absolute;
-                left: -10px;
-                bottom: -20px;
-                width: 52px;
-              }
-            }
-            .wannaGoOn {
-              cursor: pointer;
-              width: 32px;
-              height: 37px;
-              background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
-              background-position: -933px -652px;
-              position: relative;
-              span {
-                position: absolute;
-                left: -10px;
-                bottom: -20px;
-                width: 52px;
-                color: $main-color;
-              }
-            }
           }
           .rate {
             font-size: 1.8rem;
             margin-left: 1rem;
             color: $main-color;
           }
+          .wannaGoOff {
+            cursor: pointer;
+            width: 32px;
+            height: 37px;
+            background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
+            background-position: -935px -579px;
+            position: relative;
+            color: #9b9b9b;
+            span {
+              position: absolute;
+              left: -10px;
+              bottom: -20px;
+              width: 52px;
+            }
+          }
+          .wannaGoOn {
+            cursor: pointer;
+            width: 32px;
+            height: 37px;
+            background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
+            background-position: -933px -652px;
+            position: relative;
+            span {
+              position: absolute;
+              left: -10px;
+              bottom: -20px;
+              width: 52px;
+              color: $main-color;
+            }
+          }
         }
-
         .status {
           width: 60%;
           display: flex;
@@ -177,7 +175,6 @@
           }
         }
       }
-
       .detail-list {
         display: flex;
         flex-wrap: wrap;
