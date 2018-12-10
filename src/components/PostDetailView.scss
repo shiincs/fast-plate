@@ -6,12 +6,13 @@
   // margin-top: 61px;
   margin-bottom: 10px;
   display: flex;
+  justify-content: space-around;
   .photo-item {
     position: relative;
-    width: 313px;
+    width: 370px;
     height: 340px;
-    margin-left: 6px;
-    // overflow: hidden;
+    margin-left: 5px;
+
     & img {
       position: absolute;
       top: 0;
@@ -109,15 +110,21 @@
             font-size: 1.3rem;
           }
           .review_writing_button {
-            background-image: url('../commonimgs/review_writing_icon.png');
+            cursor: pointer;
+            background-image: url('https://mp-seoul-image-production-s3.mangoplate.com/web/resources/review_writing_icon.png');
             background-size: 32px;
             background-position: center;
             background-repeat: no-repeat;
             margin-right: 19px;
             padding-top: 38px;
             color: #9b9b9b;
+            &:hover {
+              background-image: url('https://mp-seoul-image-production-s3.mangoplate.com/web/resources/review_writing_active_icon.png');
+              color: $main-color;
+            }
           }
-          .wannago {
+          .wannaGoOff {
+            cursor: pointer;
             width: 32px;
             height: 37px;
             background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
@@ -129,6 +136,21 @@
               left: -10px;
               bottom: -20px;
               width: 52px;
+            }
+          }
+          .wannaGoOn {
+            cursor: pointer;
+            width: 32px;
+            height: 37px;
+            background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
+            background-position: -933px -652px;
+            position: relative;
+            span {
+              position: absolute;
+              left: -10px;
+              bottom: -20px;
+              width: 52px;
+              color: $main-color;
             }
           }
         }
