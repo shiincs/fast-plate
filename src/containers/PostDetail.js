@@ -8,11 +8,6 @@ import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
 import hero3 from '../components/MainHeroView/MainImg/hero3.jpg';
 import hero4 from '../components/MainHeroView/MainImg/hero4.jpg';
 
-import food1 from '../components/MainListView/SecondaryImg/food1.jpg';
-import food2 from '../components/MainListView/SecondaryImg/food2.jpg';
-import food3 from '../components/MainListView/SecondaryImg/food3.jpg';
-import food4 from '../components/MainListView/SecondaryImg/food4.jpeg';
-
 export default class PostDetail extends Component {
   /* 
     여기에서 식당리스트 정보를 서버에서 받아와서 상태를 관리한다.
@@ -26,6 +21,7 @@ export default class PostDetail extends Component {
       restaurants: {},
       detailpics: [hero1, hero2, hero3, hero4],
       comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
+      wannaGo: false,
     };
   }
 
@@ -88,8 +84,19 @@ export default class PostDetail extends Component {
     });
   }
 
+  handleWannaGo() {
+    this.setState(
+      prevState => {
+        return {
+          wannaGo: !prevState.wannaGo,
+        };
+      },
+      () => console.log(this.state.wannaGo)
+    );
+  }
+
   render() {
-    const { restaurants, detailpics, comments } = this.state;
+    const { restaurants, detailpics, comments, wannaGo } = this.state;
     return (
       <React.Fragment>
         <PostDetailView
@@ -97,6 +104,8 @@ export default class PostDetail extends Component {
           detailpics={detailpics}
           comments={comments}
           handleCount={this.handleCount}
+          wannaGo={wannaGo}
+          handleWannaGo={() => this.handleWannaGo()}
         />
       </React.Fragment>
     );

@@ -117,18 +117,37 @@
             padding-top: 38px;
             color: #9b9b9b;
           }
-          .wannago {
+
+          .wannaGoOff {
+            cursor: pointer;
             width: 32px;
             height: 37px;
             background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
             background-position: -935px -579px;
             position: relative;
             color: #9b9b9b;
+
             span {
               position: absolute;
               left: -10px;
               bottom: -20px;
               width: 52px;
+            }
+          }
+
+          .wannaGoOn {
+            cursor: pointer;
+            width: 32px;
+            height: 37px;
+            background-image: url(/static/media/mangoplate_sprites_desktop.fca0e081.png);
+            background-position: -933px -653px;
+            position: relative;
+            span {
+              position: absolute;
+              left: -10px;
+              bottom: -20px;
+              width: 52px;
+              color: $main-color;
             }
           }
         }
