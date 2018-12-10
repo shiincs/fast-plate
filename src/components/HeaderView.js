@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import styles from './HeaderView.module.scss';
-import MypageView from './MypageView';
 import { withUser } from '../contexts/UserContext';
 import { withPage } from '../contexts/PageContext';
 import { withModal } from '../contexts/ModalContext';
 import { ReactComponent as MainLogo } from '../commonimgs/main-logo.svg';
 import { ReactComponent as GrayLogo } from '../commonimgs/gray-logo.svg';
 import { Link } from 'react-router-dom';
-import HandleSearch from './HandlePrimary/HandleSearch';
+import MainSearchView from './MainSearchView/MainSearchView';
+import MyPage from '../containers/MyPage';
 
 const cx = classNames.bind(styles);
 
@@ -25,7 +25,7 @@ class HeaderView extends Component {
 
   componentDidMount() {
     // 2. Get a target element that you want to persist scrolling for (such as a modal/lightbox/flyout/nav).
-    this.targetElement = MypageView;
+    this.targetElement = MyPage;
   }
 
   handleScroll = () => {
@@ -64,7 +64,7 @@ class HeaderView extends Component {
                 className={cx('grayLogo', { hide: main && scroll < 300 })}
               />
             </Link>
-            {!main && <HandleSearch />}
+            {!main && <MainSearchView />}
             {/* <form className={cx('searchBox', { hide: main })}>
               <span className={cx('searchIcon')} />
               <input type="text" placeholder="지역, 식당 또는 음식" />
@@ -115,7 +115,7 @@ class HeaderView extends Component {
             </ul>
           </nav>
         </header>
-        {modalOpen ? <MypageView {...rest} handleClick={handleClick} /> : null}
+        {modalOpen ? <MyPage {...rest} handleClick={handleClick} /> : null}
       </>
     );
   }

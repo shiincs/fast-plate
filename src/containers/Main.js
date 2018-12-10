@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import HandlePrimary from '../components/HandlePrimary/HandlePrimary';
-import HandleSecondary from '../components/HandleSecondary/HandleSecondary';
 import { withPage } from '../contexts/PageContext';
+import MainHeroView from '../components/MainHeroView/MainHeroView';
+import MainListView from '../components/MainListView/MainListView';
 
 class Main extends Component {
   componentDidMount() {
@@ -14,10 +14,10 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
-        <HandlePrimary />
-        <HandleSecondary />
-      </div>
+      <main>
+        <MainHeroView />
+        <MainListView />
+      </main>
     );
   }
 }

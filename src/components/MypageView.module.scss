@@ -88,6 +88,27 @@
     color: #000;
     overflow-y: auto;
     border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+
+    .recentResetBtn {
+      display: inline-flex;
+      justify-content: flex-end;
+      color: #dbdbdb;
+      padding-right: 10px;
+      font-size: 1.2rem;
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    .recentView {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .buttonList {

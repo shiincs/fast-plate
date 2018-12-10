@@ -14,6 +14,7 @@ class MypageView extends Component {
   componentDidMount() {
     this.targetElement = LoginPopupView;
   }
+
   componentWillUnmount() {
     // 5. Useful if we have called disableBodyScroll for multiple target elements,
     // and we just want a kill-switch to undo all that.
@@ -24,6 +25,8 @@ class MypageView extends Component {
 
   render() {
     const {
+      handleRecentReset,
+      recentView,
       modalOpen,
       popupOpen,
       recentOpen,
@@ -33,6 +36,8 @@ class MypageView extends Component {
       hideTargetElement,
       username,
     } = this.props;
+
+    console.log(recentView);
 
     return (
       <React.Fragment>
@@ -66,9 +71,19 @@ class MypageView extends Component {
             </div>
             <div className={cx('list')}>
               {recentOpen && (
-                <ul className={cx('recentView')}>
-                  <li>최근 본 맛집</li>
-                </ul>
+                <React.Fragment>
+                  <button
+                    className={cx('recentResetBtn')}
+                    onClick={handleRecentReset}
+                  >
+                    목록 삭제
+                  </button>
+                  <ul className={cx('recentView')}>
+                    {recentView.map(item => (
+                      <li key={item.pk}>{item.name}</li>
+                    ))}
+                  </ul>
+                </React.Fragment>
               )}
               {wannagoOpen && (
                 <ul className={cx('wannago')}>

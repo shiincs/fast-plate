@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import styles from './HandleSearch.module.scss';
+import styles from './MainSearchView.module.scss';
 import classNames from 'classnames/bind';
 import { withPage } from '../../contexts/PageContext';
 
 const cx = classNames.bind(styles);
 
-class HandleSearch extends Component {
+class MainSearchView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -78,4 +78,4 @@ class HandleSearch extends Component {
   }
 }
 
-export default withPage(HandleSearch);
+export default withPage(MainSearchView);

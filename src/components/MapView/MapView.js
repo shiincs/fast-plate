@@ -10,55 +10,39 @@ const mapStyles = {
 };
 
 class MapView extends Component {
-  state = {
-    showingInfoWindow: false, //Hides or the shows the infoWindow
-    activeMarker: {}, //Shows the active marker upon click
-    selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
-  };
-
-  onMarkerClick = (props, marker, e) => {
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true,
-    });
-  };
-
-  onMapClicked = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null,
-      });
-    }
-  };
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null,
-      });
-    }
-  };
-
   render() {
-    const { restaurants } = this.props;
-    const latSum = restaurants.reduce((acc, item) => {
-      return acc + item.latitude;
-    }, 0);
-    const lngSum = restaurants.reduce((acc, item) => {
-      return acc + item.longitude;
-    }, 0);
-    console.log(restaurants.length);
+    const {
+      search,
+      detail,
+      restaurants,
+      google,
+      selectedPlace,
+      activeMarker,
+      showingInfoWindow,
+      onMarkerClick,
+      onMapClicked,
+      onClose,
+    } = this.props;
+
+    let latSum, lngSum;
+
+    if (search) {
+      latSum = restaurants.reduce((acc, item) => {
+        return acc + item.latitude;
+      }, 0);
+      lngSum = restaurants.reduce((acc, item) => {
+        return acc + item.longitude;
+      }, 0);
+    }
+
     return (
       <section className={cx('mapSection')}>
-        {restaurants.length > 0 ? (
+        {search && restaurants.length > 0 ? (
           <Map
-            google={this.props.google}
+            google={google}
             zoom={15}
             style={mapStyles}
-            onClick={this.onMapClicked}
+            onClick={onMapClicked}
             initialCenter={{
               lat: latSum / restaurants.length,
               lng: lngSum / restaurants.length,
@@ -75,16 +59,43 @@ class MapView extends Component {
                 reviewCount={r.reviewCount}
                 wannagoCount={r.wannagoCount}
                 position={{ lat: r.latitude, lng: r.longitude }}
-                onClick={this.onMarkerClick}
+                onClick={onMarkerClick}
               />
             ))}
             <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-              onClose={this.onClose}
+              marker={activeMarker}
+              visible={showingInfoWindow}
+              onClose={onClose}
             >
-              <MapInfoView selectedPlace={this.state.selectedPlace} />
+              <MapInfoView selectedPlace={selectedPlace} />
             </InfoWindow>
+          </Map>
+        ) : detail ? (
+          <Map
+            google={google}
+            zoom={16}
+            style={mapStyles}
+            onClick={onMapClicked}
+            initialCenter={{
+              lat: restaurants.latitude,
+              lng: restaurants.longitude,
+            }}
+          >
+            <Marker
+              key={restaurants.id}
+              img={restaurants.imgUrl}
+              name={restaurants.name}
+              score={restaurants.score}
+              location={restaurants.location}
+              type={restaurants.foodType}
+              reviewCount={restaurants.reviewCount}
+              wannagoCount={restaurants.wannagoCount}
+              position={{
+                lat: restaurants.latitude,
+                lng: restaurants.longitude,
+              }}
+              onClick={onMarkerClick}
+            />
           </Map>
         ) : (
           <div>검색 결과가 없습니다.</div>

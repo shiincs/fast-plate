@@ -3,8 +3,22 @@ import classNames from 'classnames/bind';
 import styles from './WritingReviewView.module.scss';
 const cx = classNames.bind(styles);
 
+// 컴포넌트 나누기 (page, container, presentational)
+// 코드의 양 줄이기
+
 export default class WritingReviewView extends Component {
   render() {
+    const {
+      goodOpen,
+      okOpen,
+      notGoodOpen,
+      imagePath,
+      toggleGoodOpen,
+      toggleOkOpen,
+      toggleNotGoodOpen,
+      handleWordCount,
+    } = this.props;
+
     return (
       <React.Fragment>
         <section className={cx('WritingReviewPage')}>
@@ -18,14 +32,28 @@ export default class WritingReviewView extends Component {
             <div className={cx('RestaurantRecommendPicker')}>
               <ul className={cx('RestaurantRecommendPicker__List')}>
                 <li className={cx('RestaurantRecommendPicker__Item')}>
-                  <button className={cx('recommend')}>맛있다</button>
+                  <img
+                    src={goodOpen ? imagePath[1] : imagePath[0]}
+                    alt="좋아요 버튼"
+                    onClick={toggleGoodOpen}
+                  />
+                  <p className={cx('pickColor1')}>맛있다</p>
                 </li>
                 <li className={cx('RestaurantRecommendPicker__Item')}>
-                  <button className={cx('ok')}>괜찮다</button>
+                  <img
+                    src={okOpen ? imagePath[3] : imagePath[2]}
+                    alt="괜찮다 버튼"
+                    onClick={toggleOkOpen}
+                  />
+                  <p className={cx('pickColor2')}>괜찮다</p>
                 </li>
-                
                 <li className={cx('RestaurantRecommendPicker__Item')}>
-                  <button className={cx('not-recommend')}>별로</button>
+                  <img
+                    src={notGoodOpen ? imagePath[5] : imagePath[4]}
+                    alt="별로 버튼"
+                    onClick={toggleNotGoodOpen}
+                  />
+                  <p className={cx('pickColor3')}>별로</p>
                 </li>
               </ul>
             </div>
@@ -37,7 +65,13 @@ export default class WritingReviewView extends Component {
             </div>
             <div className={cx('ReviewWritingPage__FormWrap')}>
               <div className={cx('ReviewWritingPage__EditorWrap')}>
-                <textarea placeholder="Jominji님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" />
+                <textarea
+                  type="text"
+                  maxLength="10000"
+                  required
+                  placeholder="Jominji님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!"
+                  onChange={handleWordCount}
+                />
                 <p className={cx('ReviewEditor__TextLengthStateBox')}>
                   0 / 10,000
                 </p>

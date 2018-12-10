@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
-import food1 from '../components/HandleSecondary/SecondaryImg/food1.jpg';
-import food2 from '../components/HandleSecondary/SecondaryImg/food2.jpg';
-import food3 from '../components/HandleSecondary/SecondaryImg/food3.jpg';
-import food4 from '../components/HandleSecondary/SecondaryImg/food4.jpeg';
+
+import hero1 from '../components/MainHeroView/MainImg/hero1.jpg';
+import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
+import hero3 from '../components/MainHeroView/MainImg/hero3.jpg';
+import hero4 from '../components/MainHeroView/MainImg/hero4.jpg';
+
+import food1 from '../components/MainListView/SecondaryImg/food1.jpg';
+import food2 from '../components/MainListView/SecondaryImg/food2.jpg';
+import food3 from '../components/MainListView/SecondaryImg/food3.jpg';
+import food4 from '../components/MainListView/SecondaryImg/food4.jpeg';
 
 export default class PostDetail extends Component {
   /* 
@@ -17,7 +23,7 @@ export default class PostDetail extends Component {
     this.state = {
       want_num: 0,
       restaurants: {},
-      detailpics: [food1, food2, food3, food4],
+      detailpics: [hero1, hero2, hero3, hero4],
       comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
     };
   }
@@ -35,6 +41,23 @@ export default class PostDetail extends Component {
       restaurants: { want_num, ...rest },
       want_num: want_num,
     });
+
+    // 해당 레스토랑 정보를 localStorage에 저장 (최근 본 맛집에서 사용)
+    const localArr = Object.keys(localStorage)
+      .map(item => item.split('-'))
+      .map(item => item[1]);
+    console.log(
+      Object.keys(localStorage).find(item => item.includes(restaurantId))
+    );
+    if (localArr.includes(restaurantId)) {
+      localStorage.removeItem(
+        Object.keys(localStorage).find(item => item.includes(restaurantId))
+      );
+    }
+    localStorage.setItem(
+      `${new Date()}-${restaurantId}`,
+      JSON.stringify(this.state.restaurants)
+    );
   }
 
   async handleCount(pk, num) {

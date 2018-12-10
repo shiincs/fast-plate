@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './HandleSecondary.module.scss';
+import styles from './MainListView.module.scss';
 import classNames from 'classnames/bind';
 import food1 from './SecondaryImg/food1.jpg';
 import food2 from './SecondaryImg/food2.jpg';
@@ -13,7 +13,7 @@ import food9 from './SecondaryImg/food9.jpg';
 
 const cx = classNames.bind(styles);
 
-export default class HandleSecondary extends Component {
+export default class MainListView extends Component {
   constructor(props) {
     super(props);
     this.state = {

@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import Search from '../containers/Search';
 import SearchContext from '../contexts/SearchContext';
+import { withPage } from '../contexts/PageContext';
 
-export default class SearchPage extends Component {
+class SearchPage extends Component {
+  componentDidMount() {
+    this.props.handlePageOpen('search');
+  }
+
+  componentWillUnmount() {
+    this.props.handlePageClose('search');
+  }
+
   render() {
     const { location } = this.props;
     const params = new URLSearchParams(decodeURI(location.search));
@@ -17,3 +26,5 @@ export default class SearchPage extends Component {
     );
   }
 }
+
+export default withPage(SearchPage);
