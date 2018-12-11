@@ -26,20 +26,19 @@ export default class WritingReview extends Component {
     };
   }
 
+  handleWordCount(event) {
+    var input = event.target.value;
+    this.setState({
+      chars_left: 10000 - input.length,
+    });
+  }
+
   componentDidMount() {
     document.querySelector('.pickColor1').style.color = '#CBCBCB';
     document.querySelector('.pickColor2').style.color = '#CBCBCB';
     document.querySelector('.pickColor3').style.color = '#CBCBCB';
     document.querySelector('.pickColor3').style.marginLeft = '10px';
   }
-
-  handleWordCount = e => {
-    const charCount = e.target.value.length;
-    const charLeft = 10000 - charCount;
-    this.setState({
-      chars_left: charLeft,
-    });
-  };
 
   toggleGoodOpen = () => {
     this.setState(
@@ -102,7 +101,7 @@ export default class WritingReview extends Component {
           toggleGoodOpen={this.toggleGoodOpen}
           toggleOkOpen={this.toggleOkOpen}
           toggleNotGoodOpen={this.toggleNotGoodOpen}
-          handleWordCount={this.handleWordCount}
+          handleWordCount={e => this.handleWordCount(e)}
           restaurants={restaurants}
         />
       </React.Fragment>
