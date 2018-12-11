@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
 import ReviewListView from '../components/ReviewListView';
-import { Link } from 'react-router-dom';
-import Map from '../containers/Map';
+import { Redirect } from 'react-router-dom';
+import GoogleMap from '../containers/GoogleMap';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import CarouselView from './CarouselView/CarouselView';
 
 export default class PostDetailView extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ export default class PostDetailView extends Component {
       show: false,
       currentModalPic: null,
       currentModalComment: null,
+      writingReviewPage: false,
     };
   }
 
@@ -29,6 +32,12 @@ export default class PostDetailView extends Component {
       show: false,
     });
     document.body.style.overflow = 'scroll';
+  }
+
+  async handleWritingReviewPage() {
+    this.setState({
+      writingReviewPage: true,
+    });
   }
 
   static defaultProps = {
@@ -61,8 +70,16 @@ export default class PostDetailView extends Component {
       location,
       handleReviewfilter,
     } = this.props;
-    console.log(postset);
+    // console.log(postset);
+
+    const { writingReviewPage } = this.state;
+
+    if (writingReviewPage) {
+      return <Redirect to={`/restaurantsReview/${restaurants.pk}`} />;
+    }
+
     const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
+
     return (
       <React.Fragment>
         <div className="photo-list">
@@ -78,7 +95,7 @@ export default class PostDetailView extends Component {
           ))}
           {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
           <Modal show={this.state.show} handleClose={() => this.hideModal()}>
-            <div className="picCommentContainer">
+            {/* <div className="picCommentContainer">
               <img
                 src={this.state.currentModalPic}
                 alt="restuarantDetailPicsWithComments"
@@ -86,10 +103,10 @@ export default class PostDetailView extends Component {
               <div className="commentBox">
                 <p>{this.state.currentModalComment}</p>
               </div>
-            </div>
+            </div> */}
+            <CarouselView />
           </Modal>
         </div>
-
         <div className="detail-inner">
           <div className="restaurant-detail">
             <header>
@@ -97,9 +114,13 @@ export default class PostDetailView extends Component {
                 <h1 className="title">{restaurants.name}</h1>
                 <span className="rate" />
                 <div className="restaurants_action_button_wrap">
-                  <Link to="/newrestaurant">
-                    <button className="review_writing_button">리뷰쓰기</button>
-                  </Link>
+                  <button
+                    className="review_writing_button"
+                    onClick={() => this.handleWritingReviewPage()}
+                  >
+                    리뷰쓰기
+                  </button>
+
                   <button
                     className={wannaGoColor}
                     onClick={() => {
@@ -140,7 +161,7 @@ export default class PostDetailView extends Component {
             />
           </div>
           <div className="map">
-            <Map restaurants={restaurants} />
+            <GoogleMap restaurants={restaurants} />
           </div>
         </div>
       </React.Fragment>

@@ -5,6 +5,7 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { withUser } from '../contexts/UserContext';
 import { withModal } from '../contexts/ModalContext';
 import LoginPopupView from './LoginPopupView';
+import RecentGo from '../containers/RecentGo';
 
 const cx = classNames.bind(styles);
 
@@ -37,8 +38,6 @@ class MypageView extends Component {
       username,
     } = this.props;
 
-    console.log(recentView);
-
     return (
       <React.Fragment>
         <div
@@ -56,7 +55,7 @@ class MypageView extends Component {
                   handleClick('recentOpen', 'wannagoOpen');
                 }}
               >
-                최근 본 맛집 (0)
+                최근 본 맛집
               </div>
               <div
                 className={cx('tap', { active: wannagoOpen })}
@@ -79,9 +78,10 @@ class MypageView extends Component {
                     목록 삭제
                   </button>
                   <ul className={cx('recentView')}>
-                    {recentView.map(item => (
-                      <li key={item.pk}>{item.name}</li>
-                    ))}
+                    <RecentGo
+                      hideTargetElement={hideTargetElement}
+                      recentView={recentView}
+                    />
                   </ul>
                 </React.Fragment>
               )}

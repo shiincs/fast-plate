@@ -3,10 +3,10 @@ import WritingReview from '../containers/WritingReview';
 
 export default class WritingReviewPage extends Component {
   render() {
-    return (
-      <React.Fragment>
-        <WritingReview />
-      </React.Fragment>
-    );
+    const { match } = this.props;
+    console.log(match);
+    const reviewId = match.params.rReviewKeyword;
+
+    return <WritingReview key={reviewId} reviewId={reviewId} />;
   }
 }

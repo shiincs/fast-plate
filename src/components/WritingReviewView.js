@@ -3,9 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './WritingReviewView.module.scss';
 const cx = classNames.bind(styles);
 
-// 컴포넌트 나누기 (page, container, presentational)
-// 코드의 양 줄이기
-
 export default class WritingReviewView extends Component {
   render() {
     const {
@@ -17,6 +14,9 @@ export default class WritingReviewView extends Component {
       toggleOkOpen,
       toggleNotGoodOpen,
       handleWordCount,
+      restaurantsName,
+      buttonActive,
+      reviewTextBox,
     } = this.props;
 
     return (
@@ -24,7 +24,7 @@ export default class WritingReviewView extends Component {
         <section className={cx('WritingReviewPage')}>
           <div className={cx('ReviewWritingPage__Row')}>
             <div className={cx('RestaurantSubMessage')}>
-              <h2 className={cx('RestaurantName')}>카메스시/亀すし総</h2>
+              <h2 className={cx('RestaurantName')}>{restaurantsName}</h2>
               <p className={cx('RestaurantMessage')}>
                 에 대한 솔직한 리뷰를 써주세요.
               </p>
@@ -68,12 +68,14 @@ export default class WritingReviewView extends Component {
                 <textarea
                   type="text"
                   maxLength="10000"
+                  value={reviewTextBox}
                   required
                   placeholder="Jominji님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!"
                   onChange={handleWordCount}
+                  onClick={buttonActive}
                 />
                 <p className={cx('ReviewEditor__TextLengthStateBox')}>
-                  0 / 10,000
+                  {this.props.chars_left.toLocaleString()} / 10,000
                 </p>
               </div>
               <div className={cx('DraggablePictureContainer')}>
@@ -89,7 +91,17 @@ export default class WritingReviewView extends Component {
             <button className={cx('ReviewWritingPage__CancelButton')}>
               취소
             </button>
-            <button className={cx('ReviewWritingPage__SubmitButton')}>
+            <button
+              className={cx(
+                {
+                  ReviewWritingPage__SubmitButton_Active: reviewTextBox,
+                },
+                {
+                  ReviewWritingPage__SubmitButton_InActive: !reviewTextBox,
+                }
+              )}
+              disabled={!reviewTextBox}
+            >
               완료
             </button>
           </div>
