@@ -26,7 +26,7 @@ export default class ReviewItemView extends Component {
               </div>
             </div>
             <div className={cx('icon-rating')}>
-              <strong className={cx('icon-img')}>맛있다</strong>
+              <strong className={cx('bad')}>맛있다</strong>
             </div>
           </div>
         ))}
