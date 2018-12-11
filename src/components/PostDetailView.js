@@ -3,6 +3,8 @@ import './PostDetailView.scss';
 import ReviewList from '../containers/ReviewList';
 import { Link } from 'react-router-dom';
 import Map from '../containers/Map';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import CarouselView from './CarouselView/CarouselView';
 
 export default class PostDetailView extends Component {
   constructor(props) {
@@ -74,7 +76,7 @@ export default class PostDetailView extends Component {
           ))}
           {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
           <Modal show={this.state.show} handleClose={() => this.hideModal()}>
-            <div className="picCommentContainer">
+            {/* <div className="picCommentContainer">
               <img
                 src={this.state.currentModalPic}
                 alt="restuarantDetailPicsWithComments"
@@ -82,10 +84,10 @@ export default class PostDetailView extends Component {
               <div className="commentBox">
                 <p>{this.state.currentModalComment}</p>
               </div>
-            </div>
+            </div> */}
+            <CarouselView />
           </Modal>
         </div>
-
         <div className="detail-inner">
           <div className="restaurant-detail">
             <header>

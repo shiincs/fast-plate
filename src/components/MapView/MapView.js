@@ -23,7 +23,6 @@ class MapView extends Component {
       onMapClicked,
       onClose,
     } = this.props;
-
     let latSum, lngSum;
 
     if (search) {
@@ -85,11 +84,6 @@ class MapView extends Component {
               key={restaurants.id}
               img={restaurants.imgUrl}
               name={restaurants.name}
-              score={restaurants.score}
-              location={restaurants.location}
-              type={restaurants.foodType}
-              reviewCount={restaurants.reviewCount}
-              wannagoCount={restaurants.wannagoCount}
               position={{
                 lat: restaurants.latitude,
                 lng: restaurants.longitude,
