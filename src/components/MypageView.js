@@ -5,7 +5,6 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { withUser } from '../contexts/UserContext';
 import { withModal } from '../contexts/ModalContext';
 import LoginPopupView from './LoginPopupView';
-import { Link } from 'react-router-dom';
 import RecentGo from '../containers/RecentGo';
 
 const cx = classNames.bind(styles);
@@ -38,7 +37,6 @@ class MypageView extends Component {
       hideTargetElement,
       username,
     } = this.props;
-    console.log(recentView);
 
     return (
       <React.Fragment>

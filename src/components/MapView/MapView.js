@@ -33,7 +33,6 @@ class MapView extends Component {
         return acc + item.longitude;
       }, 0);
     }
-    console.log(restaurants);
     return (
       <section className={cx('mapSection')}>
         {search && restaurants.length > 0 ? (
@@ -87,9 +86,7 @@ class MapView extends Component {
               }}
             />
           </Map>
-        ) : (
-          <div>식당 정보가 없습니다.</div>
-        )}
+        ) : null}
       </section>
     );
   }

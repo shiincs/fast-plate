@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
 import ReviewListView from '../components/ReviewListView';
-import { Link } from 'react-router-dom';
-
 import { Redirect } from 'react-router-dom';
-import ReviewList from '../containers/ReviewList';
-
-import Map from '../containers/Map';
+import GoogleMap from '../containers/GoogleMap';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import CarouselView from './CarouselView/CarouselView';
 
@@ -159,7 +155,7 @@ export default class PostDetailView extends Component {
             <ReviewListView reviewList={postset} />
           </div>
           <div className="map">
-            <Map restaurants={restaurants} />
+            <GoogleMap restaurants={restaurants} />
           </div>
         </div>
       </React.Fragment>

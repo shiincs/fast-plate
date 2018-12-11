@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
-import { setRecentView } from '../localStorage';
+import { setRecentView } from '../setLocalStorage';
 
 import hero1 from '../components/MainHeroView/MainImg/hero1.jpg';
 import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
@@ -63,7 +63,7 @@ export default class PostDetail extends Component {
   }
 
   async handleCount(pk, num) {
-    const res = await api.patch(`/api/restaurants/list/${pk}`, {
+    await api.patch(`/api/restaurants/list/${pk}`, {
       want_num: num + 1,
     });
   }
