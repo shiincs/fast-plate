@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import ReviewItem from '../containers/ReviewItem';
 import classNames from 'classnames/bind';
 import styles from './ReviewListView.module.scss';
+import ReviewItemView from './ReviewItemView';
 const cx = classNames.bind(styles);
 
 export default class ReviewListView extends Component {
   render() {
+    const { reviewList } = this.props;
     return (
       <React.Fragment>
         <div className={cx('review-filter-wrap')}>
@@ -17,7 +19,7 @@ export default class ReviewListView extends Component {
             <li className={cx('review-filter-item')}>별로</li>
           </ul>
         </div>
-        <ReviewItem />
+        <ReviewItemView reviewList={reviewList} />
         <button className={cx('review-more-btn')}>더보기</button>
       </React.Fragment>
     );

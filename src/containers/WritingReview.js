@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import WritingReviewView from '../components/WritingReviewView';
+import api from '../api';
 
 export default class WritingReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      restaurantsName: '',
       goodOpen: false,
       okOpen: false,
       notGoodOpen: false,
       reviewScore: 0,
       chars_left: 10000,
+      reviewTextBox: '',
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
 
@@ -26,13 +29,34 @@ export default class WritingReview extends Component {
     };
   }
 
-  handleWordCount = e => {
-    const charCount = e.target.value.length;
-    const charLeft = 10000 - charCount;
+  handleWordCount(event) {
+    var input = event.target.value;
     this.setState({
-      chars_left: charLeft,
+      chars_left: 10000 - input.length,
+      reviewTextBox: event.target.value,
+    });
+  }
+
+  buttonActive = () => {
+    this.setState({
+      buttonClick: !this.state.buttonClick,
     });
   };
+
+  async componentDidMount() {
+    document.querySelector('.pickColor1').style.color = '#CBCBCB';
+    document.querySelector('.pickColor2').style.color = '#CBCBCB';
+    document.querySelector('.pickColor3').style.color = '#CBCBCB';
+    document.querySelector('.pickColor3').style.marginLeft = '10px';
+
+    const { reviewId } = this.props;
+    const {
+      data: { name },
+    } = await api.get(`/api/restaurants/list/${reviewId}`);
+    this.setState({
+      restaurantsName: name,
+    });
+  }
 
   toggleGoodOpen = () => {
     this.setState(
@@ -47,8 +71,8 @@ export default class WritingReview extends Component {
     );
     if (!this.state.goodOpen) {
       document.querySelector('.pickColor1').style.color = '#ff792a';
-      document.querySelector('.pickColor2').style.color = '#181818';
-      document.querySelector('.pickColor3').style.color = '#181818';
+      document.querySelector('.pickColor2').style.color = '#CBCBCB';
+      document.querySelector('.pickColor3').style.color = '#CBCBCB';
     }
   };
 
@@ -64,8 +88,8 @@ export default class WritingReview extends Component {
     );
     if (!this.state.okOpen) {
       document.querySelector('.pickColor2').style.color = '#ff792a';
-      document.querySelector('.pickColor1').style.color = '#181818';
-      document.querySelector('.pickColor3').style.color = '#181818';
+      document.querySelector('.pickColor1').style.color = '#CBCBCB';
+      document.querySelector('.pickColor3').style.color = '#CBCBCB';
     }
   };
 
@@ -81,12 +105,13 @@ export default class WritingReview extends Component {
     );
     if (!this.state.notGoodOpen) {
       document.querySelector('.pickColor3').style.color = '#ff792a';
-      document.querySelector('.pickColor1').style.color = '#181818';
-      document.querySelector('.pickColor2').style.color = '#181818';
+      document.querySelector('.pickColor1').style.color = '#CBCBCB';
+      document.querySelector('.pickColor2').style.color = '#CBCBCB';
     }
   };
 
   render() {
+    const { restaurants } = this.props;
     return (
       <React.Fragment>
         <WritingReviewView
@@ -94,7 +119,9 @@ export default class WritingReview extends Component {
           toggleGoodOpen={this.toggleGoodOpen}
           toggleOkOpen={this.toggleOkOpen}
           toggleNotGoodOpen={this.toggleNotGoodOpen}
-          handleWordCount={this.handleWordCount}
+          handleWordCount={e => this.handleWordCount(e)}
+          restaurants={restaurants}
+          buttonActive={this.buttonActive}
         />
       </React.Fragment>
     );

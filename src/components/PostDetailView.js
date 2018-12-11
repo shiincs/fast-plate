@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
-import ReviewList from '../containers/ReviewList';
+import ReviewListView from '../components/ReviewListView';
 import { Link } from 'react-router-dom';
+
+import { Redirect } from 'react-router-dom';
+import ReviewList from '../containers/ReviewList';
+
 import Map from '../containers/Map';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import CarouselView from './CarouselView/CarouselView';
@@ -13,6 +17,7 @@ export default class PostDetailView extends Component {
       show: false,
       currentModalPic: null,
       currentModalComment: null,
+      writingReviewPage: false,
     };
   }
 
@@ -31,6 +36,12 @@ export default class PostDetailView extends Component {
       show: false,
     });
     document.body.style.overflow = 'scroll';
+  }
+
+  async handleWritingReviewPage() {
+    this.setState({
+      writingReviewPage: true,
+    });
   }
 
   static defaultProps = {
@@ -54,13 +65,23 @@ export default class PostDetailView extends Component {
 
   render() {
     const {
+      postset,
       restaurants,
       detailpics,
       handleCount,
       wannaGo,
       handleWannaGo,
     } = this.props;
+    console.log(postset);
+
+    const { writingReviewPage } = this.state;
+
+    if (writingReviewPage) {
+      return <Redirect to={`/restaurantsReview/${restaurants.pk}`} />;
+    }
+
     const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
+
     return (
       <React.Fragment>
         <div className="photo-list">
@@ -95,9 +116,13 @@ export default class PostDetailView extends Component {
                 <h1 className="title">{restaurants.name}</h1>
                 <span className="rate" />
                 <div className="restaurants_action_button_wrap">
-                  <Link to="/newrestaurant">
-                    <button className="review_writing_button">리뷰쓰기</button>
-                  </Link>
+                  <button
+                    className="review_writing_button"
+                    onClick={() => this.handleWritingReviewPage()}
+                  >
+                    리뷰쓰기
+                  </button>
+
                   <button
                     className={wannaGoColor}
                     onClick={() => {
@@ -109,20 +134,18 @@ export default class PostDetailView extends Component {
                   </button>
                 </div>
               </div>
-              <div className="status">
+              {/* <div className="status">
                 <span className="hit">{restaurants.view_num}</span>
                 <span className="review">{restaurants.review_num}</span>
                 <span className="favorite">{restaurants.want_num}</span>
-              </div>
+              </div> */}
             </header>
             <div>
               <dl className="detail-list">
                 <dt className="addressName">주소</dt>
                 <dd className="address"> {restaurants.address_detail}</dd>
-
                 <dt className="tel-label">전화번호</dt>
                 <dd className="tel-number">{restaurants.phone_num}</dd>
-
                 <dt>음식 종류</dt>
                 <dd>{restaurants.food_type}</dd>
                 <dt>가격대</dt>
@@ -133,7 +156,7 @@ export default class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewList />
+            <ReviewListView reviewList={postset} />
           </div>
           <div className="map">
             <Map restaurants={restaurants} />
