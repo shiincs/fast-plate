@@ -22,9 +22,13 @@ class MainSearchView extends Component {
   }
 
   async handleButton() {
-    this.setState({
-      search: true,
-    });
+    if (!this.state.value) {
+      alert('검색어를 입력해 주십시오');
+    } else {
+      this.setState({
+        search: true,
+      });
+    }
   }
 
   render() {

@@ -3,9 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './WritingReviewView.module.scss';
 const cx = classNames.bind(styles);
 
-// 컴포넌트 나누기 (page, container, presentational)
-// 코드의 양 줄이기
-
 export default class WritingReviewView extends Component {
   render() {
     const {
@@ -73,7 +70,7 @@ export default class WritingReviewView extends Component {
                   onChange={handleWordCount}
                 />
                 <p className={cx('ReviewEditor__TextLengthStateBox')}>
-                  0 / 10,000
+                  {this.props.chars_left.toLocaleString()} / 10,000
                 </p>
               </div>
               <div className={cx('DraggablePictureContainer')}>

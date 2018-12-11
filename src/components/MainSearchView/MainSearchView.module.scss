@@ -52,7 +52,7 @@
   }
 
   & input {
-    width: 35rem;
+    width: 34rem;
     // height: 4.6rem;
     margin-top: 1px;
     height: calc(100% - 2px);
@@ -69,11 +69,14 @@
   }
 
   & button {
-    // height: 4.7rem;
+    // height: 4rem;
+    outline: none;
+    cursor: pointer;
     height: 100%;
     width: 15rem;
     border-radius: 25px;
     border-top-right-radius: 23px;
+    border-bottom-right-radius: 20px;
     background: $main-color;
     color: $color-white;
     position: absolute;
@@ -116,7 +119,7 @@
     height: 25px;
   }
 
-  input[type=text] {
+  input[type='text'] {
     width: 100%;
     margin-left: 35px;
     font-size: 1.6rem;

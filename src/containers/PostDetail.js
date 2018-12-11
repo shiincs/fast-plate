@@ -85,18 +85,16 @@ export default class PostDetail extends Component {
   }
 
   handleWannaGo() {
-    this.setState(
-      prevState => {
-        return {
-          wannaGo: !prevState.wannaGo,
-        };
-      },
-      () => console.log(this.state.wannaGo)
-    );
+    this.setState(prevState => {
+      return {
+        wannaGo: !prevState.wannaGo,
+      };
+    });
   }
 
   render() {
     const { restaurants, detailpics, comments, wannaGo } = this.state;
+
     return (
       <React.Fragment>
         <PostDetailView
