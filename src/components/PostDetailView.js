@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './PostDetailView.scss';
 import ReviewListView from '../components/ReviewListView';
 import { Link } from 'react-router-dom';
+
+import { Redirect } from 'react-router-dom';
+import ReviewList from '../containers/ReviewList';
+
 import Map from '../containers/Map';
 
 export default class PostDetailView extends Component {
@@ -11,6 +15,7 @@ export default class PostDetailView extends Component {
       show: false,
       currentModalPic: null,
       currentModalComment: null,
+      writingReviewPage: false,
     };
   }
 
@@ -29,6 +34,12 @@ export default class PostDetailView extends Component {
       show: false,
     });
     document.body.style.overflow = 'scroll';
+  }
+
+  async handleWritingReviewPage() {
+    this.setState({
+      writingReviewPage: true,
+    });
   }
 
   static defaultProps = {
@@ -60,7 +71,15 @@ export default class PostDetailView extends Component {
       handleWannaGo,
     } = this.props;
     console.log(postset);
+
+    const { writingReviewPage } = this.state;
+
+    if (writingReviewPage) {
+      return <Redirect to={`/restaurantsReview?keyword=${restaurants.name}`} />;
+    }
+
     const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
+
     return (
       <React.Fragment>
         <div className="photo-list">
@@ -95,9 +114,13 @@ export default class PostDetailView extends Component {
                 <h1 className="title">{restaurants.name}</h1>
                 <span className="rate" />
                 <div className="restaurants_action_button_wrap">
-                  <Link to="/newrestaurant">
-                    <button className="review_writing_button">리뷰쓰기</button>
-                  </Link>
+                  <button
+                    className="review_writing_button"
+                    onClick={() => this.handleWritingReviewPage()}
+                  >
+                    리뷰쓰기
+                  </button>
+
                   <button
                     className={wannaGoColor}
                     onClick={() => {

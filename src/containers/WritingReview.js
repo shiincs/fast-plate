@@ -26,13 +26,19 @@ export default class WritingReview extends Component {
     };
   }
 
-  handleWordCount = e => {
-    const charCount = e.target.value.length;
-    const charLeft = 10000 - charCount;
+  handleWordCount(event) {
+    var input = event.target.value;
     this.setState({
-      chars_left: charLeft,
+      chars_left: 10000 - input.length,
     });
-  };
+  }
+
+  componentDidMount() {
+    document.querySelector('.pickColor1').style.color = '#CBCBCB';
+    document.querySelector('.pickColor2').style.color = '#CBCBCB';
+    document.querySelector('.pickColor3').style.color = '#CBCBCB';
+    document.querySelector('.pickColor3').style.marginLeft = '10px';
+  }
 
   toggleGoodOpen = () => {
     this.setState(
@@ -47,8 +53,8 @@ export default class WritingReview extends Component {
     );
     if (!this.state.goodOpen) {
       document.querySelector('.pickColor1').style.color = '#ff792a';
-      document.querySelector('.pickColor2').style.color = '#181818';
-      document.querySelector('.pickColor3').style.color = '#181818';
+      document.querySelector('.pickColor2').style.color = '#CBCBCB';
+      document.querySelector('.pickColor3').style.color = '#CBCBCB';
     }
   };
 
@@ -64,8 +70,8 @@ export default class WritingReview extends Component {
     );
     if (!this.state.okOpen) {
       document.querySelector('.pickColor2').style.color = '#ff792a';
-      document.querySelector('.pickColor1').style.color = '#181818';
-      document.querySelector('.pickColor3').style.color = '#181818';
+      document.querySelector('.pickColor1').style.color = '#CBCBCB';
+      document.querySelector('.pickColor3').style.color = '#CBCBCB';
     }
   };
 
@@ -81,12 +87,13 @@ export default class WritingReview extends Component {
     );
     if (!this.state.notGoodOpen) {
       document.querySelector('.pickColor3').style.color = '#ff792a';
-      document.querySelector('.pickColor1').style.color = '#181818';
-      document.querySelector('.pickColor2').style.color = '#181818';
+      document.querySelector('.pickColor1').style.color = '#CBCBCB';
+      document.querySelector('.pickColor2').style.color = '#CBCBCB';
     }
   };
 
   render() {
+    const { restaurants } = this.props;
     return (
       <React.Fragment>
         <WritingReviewView
@@ -94,7 +101,8 @@ export default class WritingReview extends Component {
           toggleGoodOpen={this.toggleGoodOpen}
           toggleOkOpen={this.toggleOkOpen}
           toggleNotGoodOpen={this.toggleNotGoodOpen}
-          handleWordCount={this.handleWordCount}
+          handleWordCount={e => this.handleWordCount(e)}
+          restaurants={restaurants}
         />
       </React.Fragment>
     );
