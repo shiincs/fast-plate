@@ -7,6 +7,7 @@ import hero1 from '../components/MainHeroView/MainImg/hero1.jpg';
 import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
 import hero3 from '../components/MainHeroView/MainImg/hero3.jpg';
 import hero4 from '../components/MainHeroView/MainImg/hero4.jpg';
+import ModalProvider from '../contexts/ModalContext';
 
 export default class PostDetail extends Component {
   /* 
@@ -34,17 +35,14 @@ export default class PostDetail extends Component {
     const {
       data: { want_num, post_set, ...rest },
     } = await api.get(`/api/restaurants/list/${restaurantId}`);
-<<<<<<< HEAD
-=======
     // console.log(post_set);
->>>>>>> 5ae842f4d7e10e4988b713385c1a539a088d97b9
     this.setState({
       restaurants: { want_num, ...rest },
       want_num: want_num,
       post_set: post_set,
     });
 
-    console.log(post_set);
+    // console.log(post_set);
     // 해당 레스토랑 정보를 localStorage에 저장 (최근 본 맛집에서 사용)
     // restaurants 에서 최근 본 맛집에 필요한 정보만 뽑아서 객체에 저장
     const {
@@ -101,19 +99,21 @@ export default class PostDetail extends Component {
 
     return (
       <React.Fragment>
-        <PostDetailView
-          postset={post_set}
-          restaurantId={restaurantId}
-          restaurants={restaurants}
-          detailpics={detailpics}
-          comments={comments}
-          handleCount={this.handleCount}
-          wannaGo={wannaGo}
-          handleWannaGo={() => this.handleWannaGo()}
-          handleRating={() => this.handleRating()}
-          location={location}
-          // handleReviewfilter={() => this.handleReviewfilter()}
-        />
+        <ModalProvider>
+          <PostDetailView
+            postset={post_set}
+            restaurantId={restaurantId}
+            restaurants={restaurants}
+            detailpics={detailpics}
+            comments={comments}
+            handleCount={this.handleCount}
+            wannaGo={wannaGo}
+            handleWannaGo={() => this.handleWannaGo()}
+            handleRating={() => this.handleRating()}
+            location={location}
+            // handleReviewfilter={() => this.handleReviewfilter()}
+          />
+        </ModalProvider>
       </React.Fragment>
     );
   }

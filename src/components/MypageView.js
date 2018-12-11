@@ -78,10 +78,15 @@ class MypageView extends Component {
                     목록 삭제
                   </button>
                   <ul className={cx('recentView')}>
-                    <RecentGo
-                      hideTargetElement={hideTargetElement}
-                      recentView={recentView}
-                    />
+                    {recentView &&
+                      recentView.map(item => (
+                        <RecentGo
+                          key={item.pk}
+                          hideTargetElement={hideTargetElement}
+                          // recentView={recentView}
+                          item={item}
+                        />
+                      ))}
                   </ul>
                 </React.Fragment>
               )}
