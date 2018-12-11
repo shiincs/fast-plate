@@ -12,7 +12,9 @@ class PostDetailPage extends Component {
   }
 
   render() {
+    // match는 App에서 라우트 path에 변수 :rKeyword에 담긴 정보들
     const { match } = this.props;
+
     const restaurantId = match.params.rKeyword;
     return <PostDetail key={restaurantId} restaurantId={restaurantId} />;
   }

@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import WritingReviewView from '../components/WritingReviewView';
+import api from '../api';
 
 export default class WritingReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      restaurantsName: '',
       goodOpen: false,
       okOpen: false,
       notGoodOpen: false,
       reviewScore: 0,
       chars_left: 10000,
+      reviewTextBox: '',
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
 
@@ -30,14 +33,29 @@ export default class WritingReview extends Component {
     var input = event.target.value;
     this.setState({
       chars_left: 10000 - input.length,
+      reviewTextBox: event.target.value,
     });
   }
 
-  componentDidMount() {
+  buttonActive = () => {
+    this.setState({
+      buttonClick: !this.state.buttonClick,
+    });
+  };
+
+  async componentDidMount() {
     document.querySelector('.pickColor1').style.color = '#CBCBCB';
     document.querySelector('.pickColor2').style.color = '#CBCBCB';
     document.querySelector('.pickColor3').style.color = '#CBCBCB';
     document.querySelector('.pickColor3').style.marginLeft = '10px';
+
+    const { reviewId } = this.props;
+    const {
+      data: { name },
+    } = await api.get(`/api/restaurants/list/${reviewId}`);
+    this.setState({
+      restaurantsName: name,
+    });
   }
 
   toggleGoodOpen = () => {
@@ -103,6 +121,7 @@ export default class WritingReview extends Component {
           toggleNotGoodOpen={this.toggleNotGoodOpen}
           handleWordCount={e => this.handleWordCount(e)}
           restaurants={restaurants}
+          buttonActive={this.buttonActive}
         />
       </React.Fragment>
     );
