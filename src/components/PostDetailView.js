@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
-import ReviewList from '../containers/ReviewList';
+import ReviewListView from '../components/ReviewListView';
 import { Link } from 'react-router-dom';
 import Map from '../containers/Map';
 
@@ -131,7 +131,7 @@ export default class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewList postset={postset} />
+            <ReviewListView reviewList={postset} />
           </div>
           <div className="map">
             <Map restaurants={restaurants} />

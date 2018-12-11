@@ -14,7 +14,7 @@ export default class ReviewItemView extends Component {
               <div className={cx('user-thumb')}>
                 <img src="" alt="" />
               </div>
-              <figcaption>{r.username}</figcaption>
+              <figcaption>{r.author.username}</figcaption>
             </figure>
             <div className={cx('review-wrapper')}>
               <span className={cx('date')}>2018-10-20</span>
