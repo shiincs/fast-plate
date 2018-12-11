@@ -70,7 +70,7 @@ export default class WritingReviewView extends Component {
                   onChange={handleWordCount}
                 />
                 <p className={cx('ReviewEditor__TextLengthStateBox')}>
-                  0 / 10,000
+                  {this.props.chars_left.toLocaleString()} / 10,000
                 </p>
               </div>
               <div className={cx('DraggablePictureContainer')}>
