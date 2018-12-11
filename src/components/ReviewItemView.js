@@ -9,7 +9,7 @@ export default class ReviewItemView extends Component {
     return (
       <>
         {reviewList.map(r => (
-          <div className={cx('reveiw-content')}>
+          <div key={r.pk} className={cx('reveiw-content')}>
             <figure>
               <div className={cx('user-thumb')}>
                 <img src="" alt="" />

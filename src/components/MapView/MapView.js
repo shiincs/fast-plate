@@ -33,7 +33,7 @@ class MapView extends Component {
         return acc + item.longitude;
       }, 0);
     }
-
+    console.log(restaurants);
     return (
       <section className={cx('mapSection')}>
         {search && restaurants.length > 0 ? (
@@ -69,10 +69,10 @@ class MapView extends Component {
               <MapInfoView selectedPlace={selectedPlace} />
             </InfoWindow>
           </Map>
-        ) : detail ? (
+        ) : detail && Object.keys(restaurants).length > 0 ? (
           <Map
             google={google}
-            zoom={16}
+            zoom={17}
             style={mapStyles}
             onClick={onMapClicked}
             initialCenter={{
@@ -81,18 +81,14 @@ class MapView extends Component {
             }}
           >
             <Marker
-              key={restaurants.id}
-              img={restaurants.imgUrl}
-              name={restaurants.name}
               position={{
                 lat: restaurants.latitude,
                 lng: restaurants.longitude,
               }}
-              onClick={onMarkerClick}
             />
           </Map>
         ) : (
-          <div>검색 결과가 없습니다.</div>
+          <div>식당 정보가 없습니다.</div>
         )}
       </section>
     );

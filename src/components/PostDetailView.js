@@ -72,7 +72,7 @@ export default class PostDetailView extends Component {
       wannaGo,
       handleWannaGo,
     } = this.props;
-    console.log(postset);
+    // console.log(postset);
 
     const { writingReviewPage } = this.state;
 
