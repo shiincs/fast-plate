@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
+import ReviewListView from '../components/ReviewListView';
+import { Link } from 'react-router-dom';
+
 import { Redirect } from 'react-router-dom';
 import ReviewList from '../containers/ReviewList';
+
 import Map from '../containers/Map';
 
 export default class PostDetailView extends Component {
@@ -59,12 +63,14 @@ export default class PostDetailView extends Component {
 
   render() {
     const {
+      postset,
       restaurants,
       detailpics,
       handleCount,
       wannaGo,
       handleWannaGo,
     } = this.props;
+    console.log(postset);
 
     const { writingReviewPage } = this.state;
 
@@ -126,20 +132,18 @@ export default class PostDetailView extends Component {
                   </button>
                 </div>
               </div>
-              <div className="status">
+              {/* <div className="status">
                 <span className="hit">{restaurants.view_num}</span>
                 <span className="review">{restaurants.review_num}</span>
                 <span className="favorite">{restaurants.want_num}</span>
-              </div>
+              </div> */}
             </header>
             <div>
               <dl className="detail-list">
                 <dt className="addressName">주소</dt>
                 <dd className="address"> {restaurants.address_detail}</dd>
-
                 <dt className="tel-label">전화번호</dt>
                 <dd className="tel-number">{restaurants.phone_num}</dd>
-
                 <dt>음식 종류</dt>
                 <dd>{restaurants.food_type}</dd>
                 <dt>가격대</dt>
@@ -150,7 +154,7 @@ export default class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewList />
+            <ReviewListView reviewList={postset} />
           </div>
           <div className="map">
             <Map restaurants={restaurants} />
