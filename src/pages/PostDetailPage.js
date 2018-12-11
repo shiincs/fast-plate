@@ -13,8 +13,10 @@ class PostDetailPage extends Component {
 
   render() {
     const { match } = this.props;
+    const { location } = this.props;
+
     const restaurantId = match.params.rKeyword;
-    return <PostDetail restaurantId={restaurantId} />;
+    return <PostDetail restaurantId={restaurantId} location={location} />;
   }
 }
 

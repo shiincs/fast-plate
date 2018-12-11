@@ -58,6 +58,8 @@ export default class PostDetailView extends Component {
       handleCount,
       wannaGo,
       handleWannaGo,
+      location,
+      handleReviewfilter,
     } = this.props;
     console.log(postset);
     const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
@@ -131,7 +133,11 @@ export default class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewListView reviewList={postset} />
+            <ReviewListView
+              reviewList={postset}
+              location={location}
+              // handleReviewfilter={() => this.handleReviewfilter(n)}
+            />
           </div>
           <div className="map">
             <Map restaurants={restaurants} />
