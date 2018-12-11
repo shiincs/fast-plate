@@ -3,16 +3,19 @@
 .WritingReviewPage {
   font-size: 1.6rem;
   width: 773px;
-  margin: 145px auto 0;
+  margin: 130px auto 0;
   .ReviewWritingPage__Row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 51px;
+    transform: translateY(-45%);
 
     .RestaurantSubMessage {
       line-height: 1.5;
+      font-size: 2rem;
       .RestaurantName {
         font-size: 2.6rem;
+        color: $main-color;
       }
     }
     .RestaurantRecommendPicker {
@@ -113,7 +116,7 @@
       text-align: center;
       background-color: #ffffff;
     }
-    .ReviewWritingPage__SubmitButton {
+    .ReviewWritingPage__SubmitButton_Active {
       position: relative;
       min-width: 140px;
       min-height: 50px;
@@ -124,6 +127,18 @@
       color: #ffffff;
       text-align: center;
       background-color: #ff7100;
+    }
+    .ReviewWritingPage__SubmitButton_InActive {
+      position: relative;
+      min-width: 140px;
+      min-height: 50px;
+      border: 1px solid #e9e9e9;
+
+      border-radius: 50px;
+      font-size: 16px;
+      color: #ffffff;
+      text-align: center;
+      background-color: #e9e9e9;
     }
   }
 }

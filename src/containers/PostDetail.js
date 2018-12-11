@@ -29,6 +29,7 @@ export default class PostDetail extends Component {
 
   async componentDidMount() {
     const { restaurantId } = this.props;
+
     // 현재 api 서버에서 CORS 관련 문제 발생 (요청 불가)
     // proxy 우회해서 사용은 가능한 상태
 

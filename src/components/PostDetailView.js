@@ -75,7 +75,7 @@ export default class PostDetailView extends Component {
     const { writingReviewPage } = this.state;
 
     if (writingReviewPage) {
-      return <Redirect to={`/restaurantsReview?keyword=${restaurants.name}`} />;
+      return <Redirect to={`/restaurantsReview/${restaurants.pk}`} />;
     }
 
     const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
