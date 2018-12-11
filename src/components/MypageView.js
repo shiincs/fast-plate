@@ -55,7 +55,7 @@ class MypageView extends Component {
                   handleClick('recentOpen', 'wannagoOpen');
                 }}
               >
-                최근 본 맛집 (0)
+                최근 본 맛집
               </div>
               <div
                 className={cx('tap', { active: wannagoOpen })}

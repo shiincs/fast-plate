@@ -15,7 +15,6 @@ const cx = classNames.bind(styles);
 class HeaderView extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       scroll: 0,
     };
@@ -26,6 +25,10 @@ class HeaderView extends Component {
   componentDidMount() {
     // 2. Get a target element that you want to persist scrolling for (such as a modal/lightbox/flyout/nav).
     this.targetElement = MyPage;
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll, true);
   }
 
   handleScroll = () => {
@@ -45,10 +48,9 @@ class HeaderView extends Component {
     } = this.props;
     const { scroll } = this.state;
 
+    // 현재 보고있는 페이지가 메인 페이지라면 scroll 이벤트 리스너 등록
     if (this.props.main) {
       window.addEventListener('scroll', this.handleScroll, true);
-    } else {
-      window.removeEventListener('scroll', this.handleScroll, true);
     }
 
     return (
