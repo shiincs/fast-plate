@@ -24,6 +24,7 @@ export default class PostDetail extends Component {
       comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
       wannaGo: false,
       post_set: [],
+      filter: [],
     };
   }
 
@@ -34,10 +35,7 @@ export default class PostDetail extends Component {
     const {
       data: { want_num, post_set, ...rest },
     } = await api.get(`/api/restaurants/list/${restaurantId}`);
-<<<<<<< HEAD
-=======
     // console.log(post_set);
->>>>>>> 5ae842f4d7e10e4988b713385c1a539a088d97b9
     this.setState({
       restaurants: { want_num, ...rest },
       want_num: want_num,
@@ -80,13 +78,14 @@ export default class PostDetail extends Component {
     });
   }
 
-  // handleReviewfilter(n) {
-  //   const { post_set } = this.state;
-  //   const badFilter = post_set.filter(reviewItem => reviewItem.rate === n);
-  //   this.setState({
-  //     post_set: [badFilter],
-  //   });
-  // }
+  handleReviewfilter(n) {
+    const { post_set, filter } = this.state;
+    const rateFilter = filter.concat(rw => rw.rate === n);
+    console.log(rateFilter);
+    this.setState({
+      post_set: [rateFilter],
+    });
+  }
 
   render() {
     const {
@@ -110,9 +109,8 @@ export default class PostDetail extends Component {
           handleCount={this.handleCount}
           wannaGo={wannaGo}
           handleWannaGo={() => this.handleWannaGo()}
-          handleRating={() => this.handleRating()}
           location={location}
-          // handleReviewfilter={() => this.handleReviewfilter()}
+          handleReviewfilter={() => this.handleReviewfilter()}
         />
       </React.Fragment>
     );
