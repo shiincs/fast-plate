@@ -5,8 +5,10 @@ import { Redirect } from 'react-router-dom';
 import GoogleMap from '../containers/GoogleMap';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import CarouselView from './CarouselView/CarouselView';
+import { withModal } from '../contexts/ModalContext';
+import GalleryModal from '../containers/GalleryModal';
 
-export default class PostDetailView extends Component {
+class PostDetailView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,6 +63,8 @@ export default class PostDetailView extends Component {
 
   render() {
     const {
+      galleryOpen,
+      showTargetElement,
       postset,
       restaurants,
       detailpics,
@@ -71,6 +75,7 @@ export default class PostDetailView extends Component {
       handleReviewfilter,
     } = this.props;
     // console.log(postset);
+    console.log(showTargetElement);
 
     const { writingReviewPage } = this.state;
 
@@ -89,13 +94,16 @@ export default class PostDetailView extends Component {
               <img
                 src={pic}
                 alt="detailRestaurantpics"
-                onClick={() => this.showModal(index)}
+                // onClick={() => this.showModal(index)}
+                onClick={() => {
+                  !galleryOpen && showTargetElement('galleryOpen');
+                }}
               />
             </div>
           ))}
           {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
-          <Modal show={this.state.show} handleClose={() => this.hideModal()}>
-            {/* <div className="picCommentContainer">
+          {/* <Modal show={this.state.show} handleClose={() => this.hideModal()}>
+            <div className="picCommentContainer">
               <img
                 src={this.state.currentModalPic}
                 alt="restuarantDetailPicsWithComments"
@@ -103,9 +111,9 @@ export default class PostDetailView extends Component {
               <div className="commentBox">
                 <p>{this.state.currentModalComment}</p>
               </div>
-            </div> */}
+            </div>
             <CarouselView />
-          </Modal>
+          </Modal> */}
         </div>
         <div className="detail-inner">
           <div className="restaurant-detail">
@@ -164,10 +172,13 @@ export default class PostDetailView extends Component {
             <GoogleMap restaurants={restaurants} />
           </div>
         </div>
+        {galleryOpen ? <GalleryModal /> : null}
       </React.Fragment>
     );
   }
 }
+
+export default withModal(PostDetailView);
 
 const Modal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
