@@ -78,13 +78,14 @@ export default class PostDetail extends Component {
     });
   }
 
-  // handleReviewfilter(n) {
-  //   const { post_set } = this.state;
-  //   const badFilter = post_set.filter(reviewItem => reviewItem.rate === n);
-  //   this.setState({
-  //     post_set: [badFilter],
-  //   });
-  // }
+  handleReviewfilter(n) {
+    const { post_set } = this.state;
+    console.log(post_set);
+    const badFilter = post_set.filter(reviewItem => reviewItem.rate === n);
+    this.setState({
+      post_set: [badFilter],
+    });
+  }
 
   render() {
     const {

@@ -75,7 +75,6 @@ class PostDetailView extends Component {
       handleReviewfilter,
     } = this.props;
     // console.log(postset);
-    console.log(showTargetElement);
 
     const { writingReviewPage } = this.state;
 
