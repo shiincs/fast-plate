@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import { Redirect } from 'react-router-dom';
 import styles from './WritingReviewView.module.scss';
-import api from '../api';
 const cx = classNames.bind(styles);
 
 export default class WritingReviewView extends Component {

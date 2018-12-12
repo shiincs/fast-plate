@@ -7,8 +7,8 @@ const cx = classNames.bind(styles);
 
 export default class ReviewListView extends Component {
   render() {
-    const { reviewList, location, handleReviewfilter } = this.props;
-    console.log(location);
+    const { reviewList, handleReviewfilter } = this.props;
+    // console.log(location);
     // const p = new URLSearchParams(location.search);
     // const category = p.get('category');
     return (

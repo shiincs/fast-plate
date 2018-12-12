@@ -73,7 +73,7 @@ export default class WritingReview extends Component {
 
   // 보류
   async postReview() {
-    const { goodOpen, okOpen, notGoodOpen, reviewScore } = this.state;
+    const { goodOpen, okOpen, notGoodOpen } = this.state;
     const { reviewId } = this.props;
     if (goodOpen) {
       const res = await api.post(`/api/restaurants/list/${reviewId}`, {
@@ -81,9 +81,9 @@ export default class WritingReview extends Component {
       });
       console.log(res);
     } else if (okOpen) {
-      const res = await api.patch(`/api/restaurants/list/${reviewId}`, {});
+      await api.patch(`/api/restaurants/list/${reviewId}`, {});
     } else if (notGoodOpen) {
-      const res = await api.patch(`/api/restaurants/list/${reviewId}`, {});
+      await api.patch(`/api/restaurants/list/${reviewId}`, {});
     }
   }
 

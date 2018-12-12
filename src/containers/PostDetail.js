@@ -80,7 +80,7 @@ export default class PostDetail extends Component {
   }
 
   handleReviewfilter(n) {
-    const { post_set, filter } = this.state;
+    const { filter } = this.state;
     const rateFilter = filter.concat(rw => rw.rate === n);
     console.log(rateFilter);
     this.setState({
