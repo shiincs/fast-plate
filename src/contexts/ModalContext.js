@@ -13,8 +13,10 @@ export default class ModalProvider extends Component {
     this.state = {
       modalOpen: false,
       popupOpen: false,
+      galleryOpen: false,
       handleClick: this.handleClick,
       handlePopup: this.handlePopup,
+      handleGallery: this.handleGallery,
       showTargetElement: this.showTargetElement,
       hideTargetElement: this.hideTargetElement,
       clearAllBodyScrollLocks: this.clearAllBodyScrollLocks,
@@ -27,6 +29,12 @@ export default class ModalProvider extends Component {
     });
   };
 
+  handleGallery = () => {
+    this.setState({
+      galleryOpen: true,
+    });
+  };
+
   showTargetElement = name => {
     // ... some logic to show target element
     if (name === 'modalOpen') {
@@ -36,6 +44,10 @@ export default class ModalProvider extends Component {
     } else if (name === 'popupOpen') {
       this.setState(prevState => ({
         popupOpen: !prevState.popupOpen,
+      }));
+    } else if (name === 'galleryOpen') {
+      this.setState(prevState => ({
+        galleryOpen: !prevState.galleryOpen,
       }));
     }
 
@@ -53,7 +65,12 @@ export default class ModalProvider extends Component {
       this.setState(prevState => ({
         popupOpen: !prevState.popupOpen,
       }));
+    } else if (name === 'galleryOpen') {
+      this.setState(prevState => ({
+        galleryOpen: !prevState.galleryOpen,
+      }));
     }
+
     // 4. Re-enable body scroll
     enableBodyScroll(this.targetElement);
   };

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
-import { setRecentView } from '../localStorage';
+import { setRecentView } from '../setLocalStorage';
 
 import hero1 from '../components/MainHeroView/MainImg/hero1.jpg';
 import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
 import hero3 from '../components/MainHeroView/MainImg/hero3.jpg';
 import hero4 from '../components/MainHeroView/MainImg/hero4.jpg';
+import ModalProvider from '../contexts/ModalContext';
 
 export default class PostDetail extends Component {
   /* 
@@ -30,21 +31,20 @@ export default class PostDetail extends Component {
   async componentDidMount() {
     const { restaurantId } = this.props;
 
-    // 현재 api 서버에서 CORS 관련 문제 발생 (요청 불가)
-    // proxy 우회해서 사용은 가능한 상태
-
     //PostDetailPage에서 받아온 match 안에 id 값
     const {
       data: { want_num, post_set, rate_good, ...rest },
     } = await api.get(`/api/restaurants/list/${restaurantId}`);
-    console.log(rate_good);
+    // console.log(post_set);
     this.setState({
       restaurants: { want_num, ...rest },
       want_num: want_num,
       post_set: post_set,
     });
 
+    // console.log(post_set);
     // 해당 레스토랑 정보를 localStorage에 저장 (최근 본 맛집에서 사용)
+    // restaurants 에서 최근 본 맛집에 필요한 정보만 뽑아서 객체에 저장
     const {
       pk,
       name,
@@ -52,6 +52,7 @@ export default class PostDetail extends Component {
       food_type,
       rate_average,
     } = this.state.restaurants;
+
     const restData = {
       pk,
       name,
@@ -59,32 +60,12 @@ export default class PostDetail extends Component {
       food_type,
       rate_average,
     };
-
+    // 뽑아낸 정보 객체를 로컬스토리지에 저장
     setRecentView(restData);
-    // let tempArr = [localStorage.getItem('recent')];
-    // console.log(tempArr);
-    // console.log(localStorage.getItem('recent').constructor);
-    // console.log(Object.values(localStorage).constructor);
-
-    // const localArr = Object.keys(localStorage)
-    //   .map(item => item.split('-'))
-    //   .map(item => item[1]);
-    // console.log(
-    //   Object.keys(localStorage).find(item => item.includes(restaurantId))
-    // );
-    // if (localArr.includes(restaurantId)) {
-    //   localStorage.removeItem(
-    //     Object.keys(localStorage).find(item => item.includes(restaurantId))
-    //   );
-    // }
-    // localStorage.setItem(
-    //   `${new Date()}-${restaurantId}`,
-    //   JSON.stringify(this.state.restaurants)
-    // );
   }
 
   async handleCount(pk, num) {
-    const res = await api.patch(`/api/restaurants/list/${pk}`, {
+    await api.patch(`/api/restaurants/list/${pk}`, {
       want_num: num + 1,
     });
   }
@@ -97,6 +78,14 @@ export default class PostDetail extends Component {
     });
   }
 
+  // handleReviewfilter(n) {
+  //   const { post_set } = this.state;
+  //   const badFilter = post_set.filter(reviewItem => reviewItem.rate === n);
+  //   this.setState({
+  //     post_set: [badFilter],
+  //   });
+  // }
+
   render() {
     const {
       restaurantId,
@@ -106,19 +95,25 @@ export default class PostDetail extends Component {
       wannaGo,
       post_set,
     } = this.state;
+    const { location } = this.props;
 
     return (
       <React.Fragment>
-        <PostDetailView
-          postset={post_set}
-          restaurantId={restaurantId}
-          restaurants={restaurants}
-          detailpics={detailpics}
-          comments={comments}
-          handleCount={this.handleCount}
-          wannaGo={wannaGo}
-          handleWannaGo={() => this.handleWannaGo()}
-        />
+        <ModalProvider>
+          <PostDetailView
+            postset={post_set}
+            restaurantId={restaurantId}
+            restaurants={restaurants}
+            detailpics={detailpics}
+            comments={comments}
+            handleCount={this.handleCount}
+            wannaGo={wannaGo}
+            handleWannaGo={() => this.handleWannaGo()}
+            handleRating={() => this.handleRating()}
+            location={location}
+            // handleReviewfilter={() => this.handleReviewfilter()}
+          />
+        </ModalProvider>
       </React.Fragment>
     );
   }

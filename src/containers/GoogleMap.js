@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withPage } from '../contexts/PageContext';
 import MapView from '../components/MapView/MapView';
 
-class Map extends Component {
+class GoogleMap extends Component {
   state = {
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
@@ -48,4 +48,4 @@ class Map extends Component {
   }
 }
 
-export default withPage(Map);
+export default withPage(GoogleMap);

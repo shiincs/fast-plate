@@ -9,7 +9,7 @@ export default class ReviewItemView extends Component {
     return (
       <>
         {reviewList.map(r => (
-          <div className={cx('reveiw-content')}>
+          <div key={r.pk} className={cx('reveiw-content')}>
             <figure>
               <div className={cx('user-thumb')}>
                 <img src="" alt="" />
@@ -26,7 +26,21 @@ export default class ReviewItemView extends Component {
               </div>
             </div>
             <div className={cx('icon-rating')}>
-              <strong className={cx('icon-img')}>맛있다</strong>
+              <strong
+                className={cx(
+                  { bad: r.rate === 1 },
+                  { ok: r.rate === 3 },
+                  { good: r.rate === 5 }
+                )}
+              >
+                {r.rate === 1
+                  ? '별로'
+                  : r.rate === 3
+                  ? '괜찮다'
+                  : r.rate === 5
+                  ? '맛있다'
+                  : 'null'}
+              </strong>
             </div>
           </div>
         ))}

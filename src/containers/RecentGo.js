@@ -16,19 +16,16 @@ export default class RecentGo extends Component {
   };
 
   render() {
-    const { recentView } = this.props;
+    const { item } = this.props;
     return (
       <React.Fragment>
-        {recentView &&
-          recentView.map(item => (
-            <RecentGoView
-              key={item.pk}
-              item={item}
-              {...this.state}
-              {...this.props}
-              handleWannagoBtn={this.handleWannagoBtn}
-            />
-          ))}
+        <RecentGoView
+          key={item.pk}
+          item={item}
+          {...this.state}
+          {...this.props}
+          handleWannagoBtn={this.handleWannagoBtn}
+        />
       </React.Fragment>
     );
   }
