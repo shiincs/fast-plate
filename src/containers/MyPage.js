@@ -30,6 +30,7 @@ export default class MyPage extends Component {
         {...this.props}
         {...this.state}
         handleRecentReset={this.handleRecentReset}
+        handleRecentCount={this.handleRecentCount}
       />
     );
   }

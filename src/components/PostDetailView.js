@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
 import ReviewListView from '../components/ReviewListView';
-import { Link } from 'react-router-dom';
-
 import { Redirect } from 'react-router-dom';
-import ReviewList from '../containers/ReviewList';
+import GoogleMap from '../containers/GoogleMap';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import CarouselView from './CarouselView/CarouselView';
+import { withModal } from '../contexts/ModalContext';
+import GalleryModal from '../containers/GalleryModal';
 
-import Map from '../containers/Map';
-
-export default class PostDetailView extends Component {
+class PostDetailView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,14 +63,19 @@ export default class PostDetailView extends Component {
 
   render() {
     const {
+      galleryOpen,
+      showTargetElement,
       postset,
       restaurants,
       detailpics,
       handleCount,
       wannaGo,
       handleWannaGo,
+      location,
+      handleReviewfilter,
     } = this.props;
-    console.log(postset);
+    // console.log(postset);
+    console.log(showTargetElement);
 
     const { writingReviewPage } = this.state;
 
@@ -89,12 +94,15 @@ export default class PostDetailView extends Component {
               <img
                 src={pic}
                 alt="detailRestaurantpics"
-                onClick={() => this.showModal(index)}
+                // onClick={() => this.showModal(index)}
+                onClick={() => {
+                  !galleryOpen && showTargetElement('galleryOpen');
+                }}
               />
             </div>
           ))}
           {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
-          <Modal show={this.state.show} handleClose={() => this.hideModal()}>
+          {/* <Modal show={this.state.show} handleClose={() => this.hideModal()}>
             <div className="picCommentContainer">
               <img
                 src={this.state.currentModalPic}
@@ -104,9 +112,9 @@ export default class PostDetailView extends Component {
                 <p>{this.state.currentModalComment}</p>
               </div>
             </div>
-          </Modal>
+            <CarouselView />
+          </Modal> */}
         </div>
-
         <div className="detail-inner">
           <div className="restaurant-detail">
             <header>
@@ -154,16 +162,23 @@ export default class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewListView reviewList={postset} />
+            <ReviewListView
+              reviewList={postset}
+              location={location}
+              // handleReviewfilter={() => this.handleReviewfilter(n)}
+            />
           </div>
           <div className="map">
-            <Map restaurants={restaurants} />
+            <GoogleMap restaurants={restaurants} />
           </div>
         </div>
+        {galleryOpen ? <GalleryModal /> : null}
       </React.Fragment>
     );
   }
 }
+
+export default withModal(PostDetailView);
 
 const Modal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';

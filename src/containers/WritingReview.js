@@ -6,6 +6,7 @@ export default class WritingReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      restaurantsPk: '',
       restaurantsName: '',
       goodOpen: false,
       okOpen: false,
@@ -13,6 +14,10 @@ export default class WritingReview extends Component {
       reviewScore: 0,
       chars_left: 10000,
       reviewTextBox: '',
+      cancel: false,
+      selectedFile: null,
+      uploadImgArr: [],
+
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
 
@@ -29,8 +34,14 @@ export default class WritingReview extends Component {
     };
   }
 
+  handleCancel = () => {
+    this.setState({
+      cancel: true,
+    });
+  };
+
   handleWordCount(event) {
-    var input = event.target.value;
+    let input = event.target.value;
     this.setState({
       chars_left: 10000 - input.length,
       reviewTextBox: event.target.value,
@@ -51,11 +62,29 @@ export default class WritingReview extends Component {
 
     const { reviewId } = this.props;
     const {
-      data: { name },
+      data: { name, pk },
     } = await api.get(`/api/restaurants/list/${reviewId}`);
     this.setState({
       restaurantsName: name,
+      restaurantsPk: pk,
     });
+    console.log(reviewId);
+  }
+
+  // 보류
+  async postReview() {
+    const { goodOpen, okOpen, notGoodOpen, reviewScore } = this.state;
+    const { reviewId } = this.props;
+    if (goodOpen) {
+      const res = await api.post(`/api/restaurants/list/${reviewId}`, {
+        rate_good: 5,
+      });
+      console.log(res);
+    } else if (okOpen) {
+      const res = await api.patch(`/api/restaurants/list/${reviewId}`, {});
+    } else if (notGoodOpen) {
+      const res = await api.patch(`/api/restaurants/list/${reviewId}`, {});
+    }
   }
 
   toggleGoodOpen = () => {
@@ -110,6 +139,48 @@ export default class WritingReview extends Component {
     }
   };
 
+  fileSeletedHandler = event => {
+    this.setState(
+      {
+        selectedFile: event.target.files[0],
+        uploadImgArr: this.state.uploadImgArr.concat(
+          URL.createObjectURL(event.target.files[0])
+        ),
+      },
+      () => {
+        // 사진을 업로드하면 배열로 나온다. uploadImgArr 배열을 map으로 돌려서 img src에 보여주면 됨
+        console.log(this.state.uploadImgArr);
+      }
+    );
+  };
+
+  // handleDeleteImg(index) {
+  //   const { uploadImgArr } = this.state;
+  //   this.setState(prevState => ({
+  //     uploadImgArr: prevState.uploadImgArr.filter(list => {
+  //       return uploadImgArr.indexOf(uploadImgArr[list]) !== index;
+  //     }),
+  //   }));
+  // }
+
+  handleDeleteImg(index) {
+    const { uploadImgArr } = this.state;
+    const newArr = uploadImgArr.filter((item, idx, arr) => {
+      return item !== arr[index];
+    });
+    console.log(newArr);
+    this.setState({
+      uploadImgArr: newArr,
+    });
+  }
+
+  // // 사진 업로드하는 메소드 (나중에 쓸 일이 있을수도 있음)
+  // async fileUploadHandler() {
+  //   // const { reviewId } = this.props;
+  //   // await api.post(`/api/restaurants/list/${reviewId}`);
+  //   console.log('upload');
+  // }
+
   render() {
     const { restaurants } = this.props;
     return (
@@ -122,6 +193,11 @@ export default class WritingReview extends Component {
           handleWordCount={e => this.handleWordCount(e)}
           restaurants={restaurants}
           buttonActive={this.buttonActive}
+          handleCancel={this.handleCancel}
+          postReview={() => this.postReview()}
+          fileSeletedHandler={this.fileSeletedHandler}
+          fileUploadHandler={() => this.fileUploadHandler()}
+          handleDeleteImg={index => this.handleDeleteImg(index)}
         />
       </React.Fragment>
     );
