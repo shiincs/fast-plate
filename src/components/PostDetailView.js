@@ -165,7 +165,7 @@ class PostDetailView extends Component {
             <ReviewListView
               reviewList={postset}
               location={location}
-              // handleReviewfilter={() => this.handleReviewfilter(n)}
+              handleReviewfilter={n => handleReviewfilter(n)}
             />
           </div>
           <div className="map">

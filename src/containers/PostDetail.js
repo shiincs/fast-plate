@@ -25,6 +25,7 @@ export default class PostDetail extends Component {
       comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
       wannaGo: false,
       post_set: [],
+      filter: [],
     };
   }
 
@@ -78,13 +79,14 @@ export default class PostDetail extends Component {
     });
   }
 
-  // handleReviewfilter(n) {
-  //   const { post_set } = this.state;
-  //   const badFilter = post_set.filter(reviewItem => reviewItem.rate === n);
-  //   this.setState({
-  //     post_set: [badFilter],
-  //   });
-  // }
+  handleReviewfilter(n) {
+    const { post_set, filter } = this.state;
+    const rateFilter = filter.concat(rw => rw.rate === n);
+    console.log(rateFilter);
+    this.setState({
+      post_set: [rateFilter],
+    });
+  }
 
   render() {
     const {

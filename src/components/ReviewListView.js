@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import ReviewItem from '../containers/ReviewItem';
+// import ReviewItem from '../containers/ReviewItem';
 import classNames from 'classnames/bind';
 import styles from './ReviewListView.module.scss';
 import ReviewItemView from './ReviewItemView';
-import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 export default class ReviewListView extends Component {
   render() {
-    const { reviewList, location } = this.props;
+    const { reviewList, location, handleReviewfilter } = this.props;
     console.log(location);
     // const p = new URLSearchParams(location.search);
     // const category = p.get('category');
@@ -20,19 +19,19 @@ export default class ReviewListView extends Component {
             <li className={cx('review-filter-item')}>전체</li>
             <li
               className={cx('review-filter-item')}
-              onClick={() => this.handleReviewfilter(5)}
+              onClick={() => handleReviewfilter(5)}
             >
               맛있다
             </li>
             <li
               className={cx('review-filter-item')}
-              onClick={() => this.handleReviewfilter(3)}
+              onClick={() => handleReviewfilter(3)}
             >
               괜찮다
             </li>
             <li
               className={cx('review-filter-item')}
-              onClick={() => this.handleReviewfilter(1)}
+              onClick={() => handleReviewfilter(1)}
             >
               별로
             </li>
