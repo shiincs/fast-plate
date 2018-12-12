@@ -79,14 +79,20 @@ export default class WritingReview extends Component {
   }
 
   async postReview() {
+    const { goodOpen, okOpen, notGoodOpen } = this.state;
     const { author, restaurant, content, rate } = this.state;
-    const res = await api.post(`/api/posts/list`, {
-      author,
-      restaurant,
-      content,
-      rate,
-    });
-    console.log(res.config);
+
+    if (!goodOpen && !okOpen && !notGoodOpen) {
+      alert('평가해 주세요');
+    } else {
+      const res = await api.post(`/api/posts/list`, {
+        author,
+        restaurant,
+        content,
+        rate,
+      });
+      console.log(res.config);
+    }
   }
 
   toggleGoodOpen = () => {
