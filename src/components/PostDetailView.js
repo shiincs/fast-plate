@@ -75,7 +75,7 @@ class PostDetailView extends Component {
       container,
       allReview,
     } = this.props;
-    console.log(container);
+
     const { writingReviewPage } = this.state;
 
     if (writingReviewPage) {

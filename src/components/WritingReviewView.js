@@ -132,7 +132,7 @@ export default class WritingReviewView extends Component {
                 }
               )}
               disabled={!reviewTextBox}
-              onClick={(postReview, fileUploadHandler)}
+              onClick={postReview}
             >
               완료
             </button>
