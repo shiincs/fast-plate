@@ -34,7 +34,7 @@ export default class PostDetail extends Component {
 
     //PostDetailPage에서 받아온 match 안에 id 값
     const {
-      data: { want_num, post_set, ...rest },
+      data: { want_num, post_set, rate_good, ...rest },
     } = await api.get(`/api/restaurants/list/${restaurantId}`);
     // console.log(post_set);
     this.setState({
