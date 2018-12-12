@@ -4,6 +4,7 @@ import styles from './SearchListView.module.scss';
 import SearchContext from '../../contexts/SearchContext';
 import { Link } from 'react-router-dom';
 import withLoading from '../../hoc/withLoading';
+import defaultListItem from '../../commonimgs/defaultListItem.jpg';
 
 const cx = classNames.bind(styles);
 
@@ -29,6 +30,7 @@ class SearchListView extends Component {
 
   render() {
     const { restaurants, count } = this.props;
+
     return (
       <React.Fragment>
         <section className={cx('outerSection')}>
@@ -48,14 +50,25 @@ class SearchListView extends Component {
                   <ul className={cx('listRestaurants')}>
                     {restaurants.map(r => (
                       <li key={r.id} className={cx('listItem')}>
-                        <figure>
-                          <Link to={`/restaurant/${r.id}`}>
-                            <img
-                              className={cx('thumb')}
-                              src={r.imgUrl}
-                              alt={r.name}
-                            />
-                          </Link>
+                        <figure className={cx('itemFigure')}>
+                          <div className={cx('thumbWrapper')}>
+                            <Link
+                              className={cx('thumbLink')}
+                              to={`/restaurant/${r.id}`}
+                            >
+                              <img
+                                className={cx('thumbImage')}
+                                src={
+                                  r.imgUrl.length === 0
+                                    ? defaultListItem
+                                    : r.imgUrl
+                                        .find(item => item.length > 0)
+                                        .map(item => item.image)
+                                }
+                                alt={r.name}
+                              />
+                            </Link>
+                          </div>
                           <figcaption className={cx('info')}>
                             <Link to={`/restaurant/${r.id}`}>
                               <h2 className={cx('name')}>{r.name}</h2>
@@ -63,7 +76,7 @@ class SearchListView extends Component {
                             <span className={cx('score')}>{r.score}</span>
                             <p className={cx('etcInfo')}>
                               <span className={cx('location')}>
-                                {r.location} -
+                                {r.location.slice(0, 8)} -
                               </span>
                               <span className={cx('type')}> {r.foodType}</span>
                             </p>

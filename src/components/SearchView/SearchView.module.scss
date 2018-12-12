@@ -3,5 +3,17 @@
 @include desktop {
   .searchView {
     display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .googleMapWrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 100%;
+      background-color: #f6f6f6;
+    }
   }
 }
