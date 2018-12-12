@@ -49,7 +49,8 @@ class MapView extends Component {
             {restaurants.map(r => (
               <Marker
                 key={r.id}
-                img={r.imgUrl}
+                id={r.id}
+                imgUrl={r.imgUrl}
                 name={r.name}
                 score={r.score}
                 location={r.location}

@@ -55,15 +55,15 @@ class HeaderView extends Component {
 
     return (
       <>
-        <header className={cx('header', { transparent: main && scroll < 300 })}>
+        <header className={cx('header', { transparent: main && scroll < 200 })}>
           <div className={cx('logoAndSearch')}>
             <Link to="/" className={cx('logo')}>
               <div className={cx('miniLogo')} />
               <MainLogo
-                className={cx('mainLogo', { appear: !main || scroll > 300 })}
+                className={cx('mainLogo', { appear: !main || scroll > 200 })}
               />
               <GrayLogo
-                className={cx('grayLogo', { hide: main && scroll < 300 })}
+                className={cx('grayLogo', { hide: main && scroll < 200 })}
               />
             </Link>
             {!main && <MainSearchView />}
@@ -74,13 +74,13 @@ class HeaderView extends Component {
           </div>
           <nav className={cx('nav')}>
             <ul className={cx('navList')}>
-              <li className={cx('navItem', { white: main && scroll < 300 })}>
+              <li className={cx('navItem', { white: main && scroll < 200 })}>
                 EAT딜
               </li>
-              <li className={cx('navItem', { white: main && scroll < 300 })}>
+              <li className={cx('navItem', { white: main && scroll < 200 })}>
                 맛집 리스트
               </li>
-              <li className={cx('navItem', { white: main && scroll < 300 })}>
+              <li className={cx('navItem', { white: main && scroll < 200 })}>
                 망고 스토리
               </li>
               <li className={cx('navItem')}>
