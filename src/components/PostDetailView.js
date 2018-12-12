@@ -4,7 +4,6 @@ import ReviewListView from '../components/ReviewListView';
 import { Redirect } from 'react-router-dom';
 import GoogleMap from '../containers/GoogleMap';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import CarouselView from './CarouselView/CarouselView';
 import { withModal } from '../contexts/ModalContext';
 import GalleryModal from '../containers/GalleryModal';
 
@@ -164,7 +163,7 @@ class PostDetailView extends Component {
             <ReviewListView
               reviewList={postset}
               location={location}
-              // handleReviewfilter={() => this.handleReviewfilter(n)}
+              handleReviewfilter={n => handleReviewfilter(n)}
             />
           </div>
           <div className="map">
@@ -179,14 +178,14 @@ class PostDetailView extends Component {
 
 export default withModal(PostDetailView);
 
-const Modal = ({ handleClose, show, children }) => {
-  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
-  return (
-    <div className={showHideClassName}>
-      <section className="modal-main">
-        {children}
-        <button onClick={handleClose}>CLOSE</button>
-      </section>
-    </div>
-  );
-};
+// const Modal = ({ handleClose, show, children }) => {
+//   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+//   return (
+//     <div className={showHideClassName}>
+//       <section className="modal-main">
+//         {children}
+//         <button onClick={handleClose}>CLOSE</button>
+//       </section>
+//     </div>
+//   );
+// };

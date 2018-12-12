@@ -24,10 +24,10 @@ class LoginPopupView extends Component {
             <br />
             저장할 수 있어요.
           </p>
-          <a href="#" className={cx('loginFacebook')}>
+          <a href="/#" className={cx('loginFacebook')}>
             <span className={cx('btnTitle')}>페이스북으로 시작하기</span>
           </a>
-          <a href="#" className={cx('loginKakao')}>
+          <a href="/#" className={cx('loginKakao')}>
             <span className={cx('btnTitle')}>카카오톡으로 시작하기</span>
           </a>
           <button

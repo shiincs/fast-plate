@@ -9,6 +9,8 @@ import hero3 from '../components/MainHeroView/MainImg/hero3.jpg';
 import hero4 from '../components/MainHeroView/MainImg/hero4.jpg';
 import ModalProvider from '../contexts/ModalContext';
 
+const rateInfo = React.createContext();
+
 export default class PostDetail extends Component {
   /* 
     여기에서 식당리스트 정보를 서버에서 받아와서 상태를 관리한다.
@@ -25,6 +27,7 @@ export default class PostDetail extends Component {
       comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
       wannaGo: false,
       post_set: [],
+      container: [],
     };
   }
 
@@ -62,6 +65,8 @@ export default class PostDetail extends Component {
     };
     // 뽑아낸 정보 객체를 로컬스토리지에 저장
     setRecentView(restData);
+
+    this.allReview();
   }
 
   async handleCount(pk, num) {
@@ -78,12 +83,19 @@ export default class PostDetail extends Component {
     });
   }
 
+  allReview = () => {
+    const { post_set } = this.state;
+    this.setState({
+      container: post_set,
+    });
+  };
+
   handleReviewfilter(n) {
     const { post_set } = this.state;
-    console.log(post_set);
-    const badFilter = post_set.filter(reviewItem => reviewItem.rate === n);
     this.setState({
-      post_set: [badFilter],
+      container: post_set.filter(element => {
+        return element.rate === n;
+      }),
     });
   }
 
@@ -95,6 +107,7 @@ export default class PostDetail extends Component {
       comments,
       wannaGo,
       post_set,
+      container,
     } = this.state;
     const { location } = this.props;
 
@@ -112,7 +125,9 @@ export default class PostDetail extends Component {
             handleWannaGo={() => this.handleWannaGo()}
             handleRating={() => this.handleRating()}
             location={location}
-            // handleReviewfilter={() => this.handleReviewfilter()}
+            handleReviewfilter={n => this.handleReviewfilter(n)}
+            container={container}
+            allReview={this.allReview}
           />
         </ModalProvider>
       </React.Fragment>

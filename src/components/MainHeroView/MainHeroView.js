@@ -52,7 +52,7 @@ class HandleBadges extends Component {
   render() {
     return (
       <aside className={cx('badges')}>
-        <a href="#" className={cx('eatDeal')}>
+        <a href="/#" className={cx('eatDeal')}>
           <img src={EatDeal} alt="EatDeal-Logo" />
         </a>
         <div className={cx('linkToApp')}>
