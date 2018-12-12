@@ -67,6 +67,13 @@
       left: 4rem;
     }
   }
+  // input의 자동완성 배경색상 변화 방지
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
 
   & button {
     // height: 4rem;

@@ -79,14 +79,20 @@ export default class WritingReview extends Component {
   }
 
   async postReview() {
+    const { goodOpen, okOpen, notGoodOpen } = this.state;
     const { author, restaurant, content, rate } = this.state;
-    const res = await api.post(`/api/posts/list`, {
-      author,
-      restaurant,
-      content,
-      rate,
-    });
-    console.log(res.config);
+
+    if (!goodOpen && !okOpen && !notGoodOpen) {
+      alert('평가해 주세요');
+    } else {
+      const res = await api.post(`/api/posts/list`, {
+        author,
+        restaurant,
+        content,
+        rate,
+      });
+      console.log(res.config);
+    }
   }
 
   toggleGoodOpen = () => {
@@ -149,6 +155,7 @@ export default class WritingReview extends Component {
           URL.createObjectURL(event.target.files[0])
         ),
       },
+
       () => {
         // 사진을 업로드하면 배열로 나온다. uploadImgArr 배열을 map으로 돌려서 img src에 보여주면 됨
         console.log(this.state.uploadImgArr);
