@@ -149,6 +149,7 @@ export default class WritingReview extends Component {
           URL.createObjectURL(event.target.files[0])
         ),
       },
+
       () => {
         // 사진을 업로드하면 배열로 나온다. uploadImgArr 배열을 map으로 돌려서 img src에 보여주면 됨
         console.log(this.state.uploadImgArr);

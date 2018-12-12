@@ -97,6 +97,9 @@ export default class WritingReviewView extends Component {
                   type="file"
                   onChange={fileSeletedHandler}
                   ref={fileInput => (this.fileInput = fileInput)}
+                  onClick={event => {
+                    event.target.value = null;
+                  }}
                 />
                 <button
                   onClick={() => this.fileInput.click()}
