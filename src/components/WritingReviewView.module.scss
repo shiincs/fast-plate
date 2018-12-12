@@ -90,13 +90,26 @@
       }
       .DraggablePictureContainer {
         margin-bottom: 41px;
+
+        & img {
+          width: 89px;
+          height: 89px;
+          margin-left: 10px;
+          transform: translateY(15px);
+        }
+
         .DraggablePictureContainer__PictureList {
           width: 89px;
           height: 89px;
-          line-height: 89px;
+          line-height: 70px;
           text-align: center;
           border: 1px dashed #dbdbdb;
           cursor: pointer;
+          color: #7f7f7f;
+          opacity: 0.5;
+          font-size: 7rem;
+          font-weight: 50;
+          outline: none;
         }
       }
     }
@@ -115,6 +128,8 @@
       color: #7f7f7f;
       text-align: center;
       background-color: #ffffff;
+      outline: none;
+      cursor: pointer;
     }
     .ReviewWritingPage__SubmitButton_Active {
       position: relative;
@@ -127,6 +142,7 @@
       color: #ffffff;
       text-align: center;
       background-color: #ff7100;
+      cursor: pointer;
     }
     .ReviewWritingPage__SubmitButton_InActive {
       position: relative;

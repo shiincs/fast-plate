@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
 import ReviewListView from '../components/ReviewListView';
-import { Link } from 'react-router-dom';
-
 import { Redirect } from 'react-router-dom';
-import ReviewList from '../containers/ReviewList';
 
 import Map from '../containers/Map';
 
@@ -70,7 +67,6 @@ export default class PostDetailView extends Component {
       wannaGo,
       handleWannaGo,
     } = this.props;
-    console.log(postset);
 
     const { writingReviewPage } = this.state;
 

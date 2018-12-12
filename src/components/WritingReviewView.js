@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
+import { Redirect } from 'react-router-dom';
 import styles from './WritingReviewView.module.scss';
+import api from '../api';
 const cx = classNames.bind(styles);
 
 export default class WritingReviewView extends Component {
@@ -15,9 +17,21 @@ export default class WritingReviewView extends Component {
       toggleNotGoodOpen,
       handleWordCount,
       restaurantsName,
+      restaurantsPk,
       buttonActive,
       reviewTextBox,
+      handleCancel,
+      cancel,
+      postReview,
+      uploadImgArr,
+      handleDeleteImg,
+      fileSeletedHandler,
+      fileUploadHandler,
     } = this.props;
+
+    if (cancel) {
+      return <Redirect to={`/restaurant/${restaurantsPk}`} />;
+    }
 
     return (
       <React.Fragment>
@@ -79,16 +93,34 @@ export default class WritingReviewView extends Component {
                 </p>
               </div>
               <div className={cx('DraggablePictureContainer')}>
-                <ul>
-                  <li className={cx('DraggablePictureContainer__PictureList')}>
-                    <button />
-                  </li>
-                </ul>
+                <input
+                  style={{ display: 'none' }}
+                  type="file"
+                  onChange={fileSeletedHandler}
+                  ref={fileInput => (this.fileInput = fileInput)}
+                />
+                <button
+                  onClick={() => this.fileInput.click()}
+                  className={cx('DraggablePictureContainer__PictureList')}
+                >
+                  +
+                </button>
+                {uploadImgArr.map((img, index) => (
+                  <img
+                    src={img}
+                    key={index}
+                    alt="uploaded-images"
+                    onClick={() => handleDeleteImg(index)}
+                  />
+                ))}
               </div>
             </div>
           </div>
           <div className={cx('ReviewWritingPage__Buttons')}>
-            <button className={cx('ReviewWritingPage__CancelButton')}>
+            <button
+              className={cx('ReviewWritingPage__CancelButton')}
+              onClick={handleCancel}
+            >
               취소
             </button>
             <button
@@ -101,6 +133,7 @@ export default class WritingReviewView extends Component {
                 }
               )}
               disabled={!reviewTextBox}
+              onClick={(postReview, fileUploadHandler)}
             >
               완료
             </button>
