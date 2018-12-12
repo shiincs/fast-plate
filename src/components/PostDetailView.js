@@ -72,9 +72,10 @@ class PostDetailView extends Component {
       handleWannaGo,
       location,
       handleReviewfilter,
+      container,
+      allReview,
     } = this.props;
-    // console.log(postset);
-
+    console.log(container);
     const { writingReviewPage } = this.state;
 
     if (writingReviewPage) {
@@ -164,6 +165,8 @@ class PostDetailView extends Component {
               reviewList={postset}
               location={location}
               handleReviewfilter={n => handleReviewfilter(n)}
+              container={container}
+              allReview={allReview}
             />
           </div>
           <div className="map">

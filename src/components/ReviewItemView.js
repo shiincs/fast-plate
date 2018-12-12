@@ -5,10 +5,11 @@ const cx = classNames.bind(styles);
 
 export default class ReviewItemView extends Component {
   render() {
-    const { reviewList } = this.props;
+    const { container } = this.props;
+
     return (
       <>
-        {reviewList.map(r => (
+        {container.map(r => (
           <div key={r.pk} className={cx('reveiw-content')}>
             <figure>
               <div className={cx('user-thumb')}>
