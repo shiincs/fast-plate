@@ -39,7 +39,7 @@ export default class PostDetail extends Component {
     const {
       data: { want_num, post_set, rate_good, ...rest },
     } = await api.get(`/api/restaurants/list/${restaurantId}`);
-    // console.log(post_set);
+
     this.setState({
       restaurants: { want_num, ...rest },
       want_num: want_num,
@@ -62,7 +62,12 @@ export default class PostDetail extends Component {
       address,
       food_type,
       rate_average,
-      post_set: this.state.post_set,
+      imgUrl: this.state.post_set.find(item => item.postimage_posts.length > 0)
+        ? this.state.post_set
+            .find(item => item.postimage_posts.length > 0)
+            .postimage_posts.map(item => item.image)
+            .toString()
+        : null,
     };
     // 뽑아낸 정보 객체를 로컬스토리지에 저장
     setRecentView(restData);
@@ -102,6 +107,7 @@ export default class PostDetail extends Component {
 
   render() {
     const {
+      loading,
       restaurantId,
       restaurants,
       detailpics,
@@ -116,6 +122,7 @@ export default class PostDetail extends Component {
       <React.Fragment>
         <ModalProvider>
           <PostDetailView
+            loading={loading}
             postset={post_set}
             restaurantId={restaurantId}
             restaurants={restaurants}

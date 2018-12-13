@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 // import ReviewItem from '../containers/ReviewItem';
 import classNames from 'classnames/bind';
 import styles from './ReviewListView.module.scss';
-import ReviewItemView from './ReviewItemView';
 import ReviewItem from '../containers/ReviewItem';
-import withLoading from '../hoc/withLoading';
 const cx = classNames.bind(styles);
 
-class ReviewListView extends Component {
+export default class ReviewListView extends Component {
   render() {
     const { reviewList, handleReviewfilter, container, allReview } = this.props;
 
@@ -52,5 +50,3 @@ class ReviewListView extends Component {
     );
   }
 }
-
-export default withLoading(ReviewListView);

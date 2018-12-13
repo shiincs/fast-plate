@@ -7,14 +7,7 @@ export default class ReviewList extends Component {
     super(props);
     this.state = {
       postset: [],
-      loading: true,
     };
-  }
-
-  componentDidMount() {
-    this.setState({
-      loading: false,
-    });
   }
 
   render() {
@@ -24,7 +17,6 @@ export default class ReviewList extends Component {
       username: r.author.username,
       rate: r.rate,
     }));
-    // console.log(reviewList);
 
     return (
       <React.Fragment>

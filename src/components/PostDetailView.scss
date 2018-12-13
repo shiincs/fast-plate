@@ -7,11 +7,13 @@
   margin-bottom: 10px;
   display: flex;
   justify-content: space-around;
+
   .photo-item {
     position: relative;
     width: 370px;
     height: 340px;
     margin-left: 6px;
+
     // overflow: hidden;
     & img {
       position: absolute;
@@ -53,8 +55,10 @@
         width: 70%;
         transform: translateX(-40%);
       }
+
       & .commentBox {
         background: $color-white;
+
         & p {
           color: $color-black;
         }
@@ -102,13 +106,16 @@
           font-size: 2.6rem;
           color: #090909;
         }
+
         .restaurants_action_button_wrap {
           display: flex;
+
           button {
             width: 55px;
             height: 42px;
             font-size: 1.3rem;
           }
+
           .review_writing_button {
             background-image: url('https://mp-seoul-image-production-s3.mangoplate.com/web/resources/review_writing_icon.png');
             background-size: 32px;
@@ -119,6 +126,7 @@
             color: #9b9b9b;
             outline: none;
             cursor: pointer;
+
             &:hover {
               background-image: url('https://mp-seoul-image-production-s3.mangoplate.com/web/resources/review_writing_active_icon.png');
               background-size: 32px;
@@ -154,6 +162,7 @@
             animation: wannago 500ms;
             outline: none;
           }
+
           @keyframes wannago {
             0% {
               transform: scale(0.9);
@@ -167,6 +176,7 @@
               transform: scale(1);
             }
           }
+
           span {
             position: absolute;
             left: -10px;
@@ -176,6 +186,7 @@
           }
         }
       }
+
       .rate {
         font-size: 1.8rem;
         margin-left: 1rem;
@@ -214,6 +225,7 @@
         border: 1px solid #e9e9e9;
       }
     }
+
     .addressName {
       @include mobile {
         display: none;
@@ -223,10 +235,10 @@
 }
 
 .map {
+  position: relative;
   width: 400px;
-
   height: 400px;
-  background: #e5e5e5;
+
   @include deleteMap {
     display: none;
   }

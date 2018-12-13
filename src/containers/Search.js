@@ -20,10 +20,6 @@ export default class Search extends Component {
     };
   }
 
-  // handleRecentView = (id) => {
-  //   localStorage.setItem('')
-  // }
-
   async componentDidMount() {
     const { data } = await api.get(
       `/api/restaurants/list/?page=${this.props.page}`

@@ -18,14 +18,7 @@ export default function RecentGoView(props) {
         >
           <img
             // src={item.menuimage_res[0]}
-            src={
-              item.post_set.length > 0
-                ? item.post_set
-                    .map(item => item.postimage_posts)
-                    .find(item => item.length > 0)
-                    .map(item => item.image)
-                : defaultListItem
-            }
+            src={item.imgUrl ? item.imgUrl : defaultListItem}
             alt={item.name}
             className={cx('thumb')}
           />

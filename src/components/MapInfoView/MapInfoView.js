@@ -28,7 +28,9 @@ export default function MapInfoView(props) {
           <Link to={`/restaurant/${selectedPlace.id}`}>
             <h3 className={cx('name')}>{selectedPlace.name}</h3>
           </Link>
-          <span className={cx('score')}>{selectedPlace.score}</span>
+          <span className={cx('score')}>
+            {parseFloat(selectedPlace.score).toFixed(1)}
+          </span>
           <p className={cx('etcInfo')}>
             <span className={cx('location')}>
               {selectedPlace.location.slice(0, 8)} -

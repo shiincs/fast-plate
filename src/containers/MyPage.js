@@ -25,6 +25,7 @@ export default class MyPage extends Component {
   };
 
   render() {
+    console.log(this.state.recentView);
     return (
       <MypageView
         {...this.props}
