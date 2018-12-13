@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import ReviewItem from '../containers/ReviewItem';
 import classNames from 'classnames/bind';
 import styles from './ReviewListView.module.scss';
-import ReviewItem from '../containers/ReviewItem';
+import ReviewItemView from './ReviewItemView';
 const cx = classNames.bind(styles);
 
 export default class ReviewListView extends Component {
@@ -40,11 +40,7 @@ export default class ReviewListView extends Component {
             </li>
           </ul>
         </div>
-        <ReviewItem
-          reviewList={reviewList}
-          container={container}
-          allReview={allReview}
-        />
+        <ReviewItemView container={container} />
         <button className={cx('review-more-btn')}>더보기</button>
       </React.Fragment>
     );
