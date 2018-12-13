@@ -5,10 +5,15 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(function(config) {
-  const token = localStorage.getItem('token');
+  // const token = localStorage.getItem('token');
+  // if (token) {
+  //   config.headers = config.headers || {};
+  //   config.headers['Authorization'] = 'Bearer ' + token;
+  // }
+  const token = 'YWRtaW4tZmU6ZGplbWFsc2Zl';
   if (token) {
     config.headers = config.headers || {};
-    config.headers['Authorization'] = 'Bearer ' + token;
+    config.headers['Authorization'] = 'Basic ' + token;
   }
   return config;
 });

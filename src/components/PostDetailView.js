@@ -5,7 +5,9 @@ import { Redirect } from 'react-router-dom';
 import GoogleMap from '../containers/GoogleMap';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { withModal } from '../contexts/ModalContext';
+import withLoading from '../hoc/withLoading';
 import GalleryModal from '../containers/GalleryModal';
+import ReviewList from '../containers/ReviewList';
 
 class PostDetailView extends Component {
   constructor(props) {
@@ -161,8 +163,8 @@ class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewListView
-              reviewList={postset}
+            <ReviewList
+              postset={postset}
               location={location}
               handleReviewfilter={n => handleReviewfilter(n)}
               container={container}
@@ -179,7 +181,7 @@ class PostDetailView extends Component {
   }
 }
 
-export default withModal(PostDetailView);
+export default withLoading(withModal(PostDetailView));
 
 // const Modal = ({ handleClose, show, children }) => {
 //   const showHideClassName = show ? 'modal display-block' : 'modal display-none';

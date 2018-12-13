@@ -6,6 +6,10 @@ function setRecentView(data) {
   } else {
     // recent가 이미 있다면 recent 키의 값을 가져온 뒤 JSON 객체(배열)로 바꿔준다.
     let tempArr = JSON.parse(localStorage.getItem('recent'));
+    tempArr.map(item =>
+      console.log(JSON.stringify(item) === JSON.stringify(data))
+    );
+
     // 기존의 recent에 지금 넣고자 하는 data 객체와 같은 내용이 없다면(즉, 처음 넣는 데이터라면)
     if (tempArr.every(item => JSON.stringify(item) !== JSON.stringify(data))) {
       // 배열의 맨 앞에 data 객체를 넣어준다.

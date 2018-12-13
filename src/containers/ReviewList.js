@@ -7,23 +7,29 @@ export default class ReviewList extends Component {
     super(props);
     this.state = {
       postset: [],
+      loading: true,
     };
   }
 
+  componentDidMount() {
+    this.setState({
+      loading: false,
+    });
+  }
+
   render() {
-    const { postset } = this.props;
+    const { postset, ...rest } = this.props;
     const reviewList = postset.map(r => ({
       content: r.content,
       username: r.author.username,
       rate: r.rate,
     }));
-    console.log(reviewList);
+    // console.log(reviewList);
 
     return (
       <React.Fragment>
-        <ReviewListView>
-          <ReviewItemView reviewList={reviewList} />
-        </ReviewListView>
+        <ReviewListView reviewList={reviewList} {...rest} />
+        {/* <ReviewItemView /> */}
       </React.Fragment>
     );
   }

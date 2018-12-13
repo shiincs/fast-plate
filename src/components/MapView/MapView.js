@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './MapView.module.scss';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import MapInfoView from '../MapInfoView/MapInfoView';
+import loadingImg from '../../commonimgs/loadingImage/loadingImg.svg';
 const cx = classNames.bind(styles);
 const mapStyles = {
   width: '100%',
@@ -93,6 +94,15 @@ class MapView extends Component {
   }
 }
 
+const LoadingIndicator = props => (
+  <img
+    src={loadingImg}
+    alt="loadingIndicator"
+    className={cx('loadingIndicator')}
+  />
+);
+
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBEnQjegs7YdsLdGxRBMSHoQ1aFlJKppwM',
+  LoadingContainer: LoadingIndicator,
 })(MapView);

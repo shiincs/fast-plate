@@ -1,5 +1,5 @@
 import React from 'react';
-import loadingImg from './loadingImage/loadingImg.svg';
+import loadingImg from '../commonimgs/loadingImage/loadingImg.svg';
 import styles from './withLoading.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);

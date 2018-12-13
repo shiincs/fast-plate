@@ -33,7 +33,7 @@ export default class SearchView extends Component {
       id: r.pk,
       imgUrl: r.post_set.map(item => item.postimage_posts),
       name: r.name,
-      score: 4.7,
+      score: r.rate_average,
       location: r.address,
       foodType: r.food_type,
       viewCount: r.view_num,
