@@ -108,12 +108,15 @@ export default class WritingReviewView extends Component {
                   +
                 </button>
                 {uploadImgArr.map((img, index) => (
-                  <img
-                    src={img}
-                    key={index}
-                    alt="uploaded-images"
-                    onClick={() => handleDeleteImg(index)}
-                  />
+                  <>
+                    <img
+                      src={img}
+                      key={index}
+                      alt="uploaded-images"
+                      onClick={() => handleDeleteImg(index)}
+                    />
+                    <p className={cx('img_description')}>X</p>
+                  </>
                 ))}
               </div>
             </div>
