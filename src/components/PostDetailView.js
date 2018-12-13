@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
-import ReviewListView from '../components/ReviewListView';
 import { Redirect } from 'react-router-dom';
 import GoogleMap from '../containers/GoogleMap';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
