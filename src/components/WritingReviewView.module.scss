@@ -90,13 +90,20 @@
       }
       .DraggablePictureContainer {
         margin-bottom: 41px;
+        position: relative;
 
         & img {
           width: 89px;
           height: 89px;
           margin-left: 10px;
           transform: translateY(15px);
-          position: relative;
+          cursor: pointer;
+        }
+
+        & p {
+          display: none;
+          position: absolute;
+          transform: translate(-540%, 300%);
         }
 
         .DraggablePictureContainer__PictureList {
