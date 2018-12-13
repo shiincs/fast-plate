@@ -87,12 +87,14 @@
       .recentResetBtn {
         display: inline-flex;
         justify-content: center;
+        align-items: center;
         color: #dbdbdb;
         padding-right: 10px;
         font-size: 1.2rem;
         width: 100%;
-        height: 25px;
+        min-height: 20px;
         cursor: pointer;
+        outline: none;
 
         &:hover {
           color: red;
