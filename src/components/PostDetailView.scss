@@ -1,27 +1,48 @@
 @import '../commons.scss';
 
 .photo-list {
+  width: 100%;
   height: 340px;
   font-size: $fontsize;
   // margin-top: 61px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 
   .photo-item {
     position: relative;
-    width: 370px;
+    // width: 370px;
+    width: 25%;
     height: 340px;
-    margin-left: 6px;
 
-    // overflow: hidden;
     & img {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      width: calc(100% - 10px);
       height: 100%;
       object-fit: cover;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  .no-photo-item {
+    width: 100%;
+    height: 100%;
+    background-image: url('../commonimgs/defaultListItem.jpg');
+    background-repeat: repeat-x;
+    background-size: contain;
+
+    .no-photo-msg {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .6);
+      font-size: 2.1rem;
+      color: #fff;
     }
   }
 }
