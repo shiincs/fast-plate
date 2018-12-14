@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import WritingReviewView from '../components/WritingReviewView';
 import { Redirect } from 'react-router-dom';
 import api from '../api';
-import CarouselView from '../components/CarouselView/CarouselView';
 
 export default class WritingReview extends Component {
   constructor(props) {
@@ -24,15 +23,10 @@ export default class WritingReview extends Component {
 
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
-
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_active_face.svg',
-
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_ok_face.svg',
-
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_ok_active_face.svg',
-
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_not_recommend_face.svg',
-
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_not_recommend_active_face.svg',
       ],
     };
@@ -80,7 +74,7 @@ export default class WritingReview extends Component {
     if (!goodOpen && !okOpen && !notGoodOpen) {
       alert('평가해 주세요');
     } else {
-      const res = await api.post(`/api/posts/list/`, {
+      await api.post(`/api/posts/list/`, {
         restaurant: reviewId,
         content: reviewTextBox,
         rate,

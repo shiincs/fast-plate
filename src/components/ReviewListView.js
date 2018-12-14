@@ -19,7 +19,7 @@ export default class ReviewListView extends Component {
     });
   }
   render() {
-    const { reviewList, handleReviewfilter, container, allReview } = this.props;
+    const { handleReviewfilter, container } = this.props;
     const { maincolor } = this.state;
     // console.log(location);
     // const p = new URLSearchParams(location.search);

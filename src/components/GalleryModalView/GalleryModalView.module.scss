@@ -16,27 +16,29 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-40%, -50%);
+  transform: translate(-50%, -50%);
   width: 90%;
   height: 90%;
   border-radius: 5px;
+  background-color: #000;
   z-index: 200;
 
   .carouselWrapper {
-    background-color: #fff;
-    width: calc(100% - 335px);
+    background-color: #000;
+    width: 100%;
     height: 100%;
-    z-index: 100;
+    padding: 0 50px;
     border-radius: 5px 0 0 5px;
+    z-index: 100;
   }
 
-  .reviewWrapper {
-    background-color: #fff;
-    width: 335px;
-    height: 100%;
-    z-index: 200;
-    border-radius: 0 5px 5px 0;
-  }
+  // .reviewWrapper {
+  //   background-color: #fff;
+  //   width: 335px;
+  //   height: 100%;
+  //   z-index: 200;
+  //   border-radius: 0 5px 5px 0;
+  // }
 }
 
 .closeBtn {
