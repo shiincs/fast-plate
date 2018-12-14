@@ -75,7 +75,12 @@ class HeaderView extends Component {
           <nav className={cx('nav')}>
             <ul className={cx('navList')}>
               <li className={cx('navItem', { white: main && scroll < 200 })}>
-                <Link to="/eatdeals">EAT딜</Link>
+                <Link
+                  to="/eatdeals"
+                  className={cx('navItem', { white: main && scroll < 200 })}
+                >
+                  EAT딜
+                </Link>
               </li>
               <li className={cx('navItem', { white: main && scroll < 200 })}>
                 맛집 리스트

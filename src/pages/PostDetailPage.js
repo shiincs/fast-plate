@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PostDetail from '../containers/PostDetail';
 import { withPage } from '../contexts/PageContext';
+import GalleryModal from '../containers/GalleryModal';
 
 class PostDetailPage extends Component {
   componentDidMount() {
@@ -22,11 +23,13 @@ class PostDetailPage extends Component {
 
     const restaurantId = match.params.rKeyword;
     return (
-      <PostDetail
-        key={restaurantId}
-        restaurantId={restaurantId}
-        location={location}
-      />
+      <React.Fragment>
+        <PostDetail
+          key={restaurantId}
+          restaurantId={restaurantId}
+          location={location}
+        />
+      </React.Fragment>
     );
   }
 }

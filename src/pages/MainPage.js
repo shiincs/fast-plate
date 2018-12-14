@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import Main from '../containers/Main';
 
 export default class MainPage extends Component {
@@ -10,6 +11,10 @@ export default class MainPage extends Component {
   render() {
     return (
       <React.Fragment>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>망고플레이트: 나만의 맛집 검색</title>
+        </Helmet>
         <Main />
       </React.Fragment>
     );

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import WritingReviewView from '../components/WritingReviewView';
+import { Redirect } from 'react-router-dom';
 import api from '../api';
+import CarouselView from '../components/CarouselView/CarouselView';
 
 export default class WritingReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      reviewSend: false,
       restaurantsPk: '',
       restaurantsName: '',
       goodOpen: false,
@@ -14,17 +17,10 @@ export default class WritingReview extends Component {
       chars_left: 10000,
       reviewTextBox: '',
       cancel: false,
+      complete: false,
       selectedFile: null,
-      uploadImgArr: [],
-
-      author: {
-        pk: 17,
-        username: 'Jay',
-        email: 'abc@1234.com',
-      },
-      restaurant: 1,
-      content: '맛있어요~',
       rate: 0,
+      uploadImgArr: [],
 
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
@@ -42,11 +38,11 @@ export default class WritingReview extends Component {
     };
   }
 
-  handleCancel = () => {
+  handleCancel() {
     this.setState({
       cancel: true,
     });
-  };
+  }
 
   handleWordCount(event) {
     let input = event.target.value;
@@ -79,19 +75,19 @@ export default class WritingReview extends Component {
   }
 
   async postReview() {
-    const { goodOpen, okOpen, notGoodOpen } = this.state;
-    const { author, restaurant, content, rate } = this.state;
-
+    const { goodOpen, okOpen, notGoodOpen, reviewTextBox, rate } = this.state;
+    const { reviewId } = this.props;
     if (!goodOpen && !okOpen && !notGoodOpen) {
       alert('평가해 주세요');
     } else {
-      const res = await api.post(`/api/posts/list`, {
-        author,
-        restaurant,
-        content,
+      const res = await api.post(`/api/posts/list/`, {
+        restaurant: reviewId,
+        content: reviewTextBox,
         rate,
       });
-      console.log(res.config);
+      this.setState(prev => ({
+        reviewSend: !prev.reviewSend,
+      }));
     }
   }
 
@@ -191,7 +187,11 @@ export default class WritingReview extends Component {
   // }
 
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, reviewId } = this.props;
+    const { reviewSend } = this.state;
+    if (reviewSend) {
+      return <Redirect to={`/restaurant/${reviewId}`} />;
+    }
     return (
       <React.Fragment>
         <WritingReviewView
@@ -202,7 +202,7 @@ export default class WritingReview extends Component {
           handleWordCount={e => this.handleWordCount(e)}
           restaurants={restaurants}
           buttonActive={this.buttonActive}
-          handleCancel={this.handleCancel}
+          handleCancel={() => this.handleCancel()}
           postReview={() => this.postReview()}
           fileSeletedHandler={this.fileSeletedHandler}
           handleDeleteImg={index => this.handleDeleteImg(index)}

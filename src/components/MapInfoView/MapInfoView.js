@@ -8,6 +8,9 @@ const cx = classNames.bind(styles);
 
 export default function MapInfoView(props) {
   const selectedPlace = props.selectedPlace;
+
+  // selectedPlace에 아무것도 들어오지 않을 경우 렌더링 하지 않는다.
+  if (selectedPlace === null) return null;
   return (
     <BrowserRouter>
       <figure className={cx('infoWindow')}>
