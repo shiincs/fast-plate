@@ -8,12 +8,16 @@
     height: 100%;
 
     .googleMapWrapper {
-      position: absolute;
+      position: relative;
       top: 0;
       right: 0;
       width: 400px;
-      height: 100%;
       background-color: #f6f6f6;
+
+      .googleMapInnerWrapper {
+        position: relative;
+        height: 400px;
+      }
     }
   }
 }

@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ReviewItemView.module.scss';
+import withLoading from '../hoc/withLoading';
 const cx = classNames.bind(styles);
 
-export default class ReviewItemView extends Component {
+class ReviewItemView extends Component {
   render() {
     const { container } = this.props;
 
     return (
       <>
         {container.map(r => (
+          // console.log(r.image)
           <div key={r.pk} className={cx('reveiw-content')}>
             <figure>
               <div className={cx('user-thumb')}>
-                <img src="" alt="" />
+                <img src={r.author.img_profile} alt="" />
               </div>
               <figcaption>{r.author.username}</figcaption>
             </figure>
@@ -21,9 +23,11 @@ export default class ReviewItemView extends Component {
               <span className={cx('date')}>2018-10-20</span>
               <div className={cx('review')}>{r.content}</div>
               <div className={cx('list-thumb-photos')}>
-                <button className={cx('button-thumb')} />
-                <button className={cx('button-thumb')} />
-                <button className={cx('button-thumb')} />
+                {r.postimage_posts.map(img => (
+                  <button className={cx('button-thumb')} key={img.pk}>
+                    <img src={img.image} alt="" />
+                  </button>
+                ))}
               </div>
             </div>
             <div className={cx('icon-rating')}>
@@ -49,3 +53,5 @@ export default class ReviewItemView extends Component {
     );
   }
 }
+
+export default withLoading(ReviewItemView);

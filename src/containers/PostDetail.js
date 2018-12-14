@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import api from '../api';
 import PostDetailView from '../components/PostDetailView';
 import { setRecentView } from '../setLocalStorage';
-
-import hero1 from '../components/MainHeroView/MainImg/hero1.jpg';
-import hero2 from '../components/MainHeroView/MainImg/hero2.jpg';
-import hero3 from '../components/MainHeroView/MainImg/hero3.jpg';
-import hero4 from '../components/MainHeroView/MainImg/hero4.jpg';
 import ModalProvider from '../contexts/ModalContext';
-
-const rateInfo = React.createContext();
 
 export default class PostDetail extends Component {
   /* 
@@ -23,8 +16,7 @@ export default class PostDetail extends Component {
       restaurantId: null,
       want_num: 0,
       restaurants: {},
-      detailpics: [hero1, hero2, hero3, hero4],
-      comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
+      // comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
       wannaGo: false,
       post_set: [],
       container: [],
@@ -37,9 +29,9 @@ export default class PostDetail extends Component {
 
     //PostDetailPage에서 받아온 match 안에 id 값
     const {
-      data: { want_num, post_set, rate_good, ...rest },
+      data: { want_num, post_set, ...rest },
     } = await api.get(`/api/restaurants/list/${restaurantId}`);
-    // console.log(post_set);
+
     this.setState({
       restaurants: { want_num, ...rest },
       want_num: want_num,
@@ -62,7 +54,12 @@ export default class PostDetail extends Component {
       address,
       food_type,
       rate_average,
-      post_set: this.state.post_set,
+      imgUrl: this.state.post_set.find(item => item.postimage_posts.length > 0)
+        ? this.state.post_set
+            .find(item => item.postimage_posts.length > 0)
+            .postimage_posts.map(item => item.image)
+            .toString()
+        : null,
     };
     // 뽑아낸 정보 객체를 로컬스토리지에 저장
     setRecentView(restData);
@@ -102,9 +99,9 @@ export default class PostDetail extends Component {
 
   render() {
     const {
+      loading,
       restaurantId,
       restaurants,
-      detailpics,
       comments,
       wannaGo,
       post_set,
@@ -116,10 +113,10 @@ export default class PostDetail extends Component {
       <React.Fragment>
         <ModalProvider>
           <PostDetailView
-            postset={post_set}
+            loading={loading}
+            post_set={post_set}
             restaurantId={restaurantId}
             restaurants={restaurants}
-            detailpics={detailpics}
             comments={comments}
             handleCount={this.handleCount}
             wannaGo={wannaGo}

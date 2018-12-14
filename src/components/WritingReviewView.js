@@ -25,7 +25,7 @@ export default class WritingReviewView extends Component {
       uploadImgArr,
       handleDeleteImg,
       fileSeletedHandler,
-      fileUploadHandler,
+      // fileUploadHandler,
     } = this.props;
 
     if (cancel) {

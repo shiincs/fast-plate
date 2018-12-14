@@ -20,14 +20,15 @@ export default class Search extends Component {
     };
   }
 
-  // handleRecentView = (id) => {
-  //   localStorage.setItem('')
-  // }
-
   async componentDidMount() {
+    // Search Component (CC) 마운트 되면서 스크롤을 맨 위로 끌어올린다.
+    window.scrollTo(0, 0);
+
+    // 비동기 통신으로 해당 페이지의 식당 목록을 가져온다.
     const { data } = await api.get(
       `/api/restaurants/list/?page=${this.props.page}`
     );
+
     // setState는 비동기로 작동하지만 promise를 반환하지 않기 때문에 await을 쓸 수 없다.
     this.setState({
       count: data.count,

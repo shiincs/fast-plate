@@ -3,10 +3,11 @@ import SearchListView from '../SearchListView/SearchListView';
 import classNames from 'classnames/bind';
 import styles from './SearchView.module.scss';
 import GoogleMap from '../../containers/GoogleMap';
+import withLoading from '../../hoc/withLoading';
 
 const cx = classNames.bind(styles);
 
-export default class SearchView extends Component {
+class SearchView extends Component {
   static defaultProps = {
     // 서버로부터 받아온 레스토랑 목록 데이터
     restaurants: [
@@ -49,9 +50,13 @@ export default class SearchView extends Component {
 
         {/* 지도 출력 컴포넌트 */}
         <div className={cx('googleMapWrapper')}>
-          <GoogleMap restaurants={restaurantList} />
+          <div className={cx('googleMapInnerWrapper')}>
+            <GoogleMap restaurants={restaurantList} />
+          </div>
         </div>
       </article>
     );
   }
 }
+
+export default withLoading(SearchView);

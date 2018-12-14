@@ -5,10 +5,14 @@ import { withPage } from '../contexts/PageContext';
 
 class SearchPage extends Component {
   componentDidMount() {
+    // 페이지 Context의 search 상태를 true로 바꾼다.
     this.props.handlePageOpen('search');
+    // 페이지가 렌더링 될때마다 스크롤을 맨 위로 올린다.
+    window.scrollTo(0, 0);
   }
 
   componentWillUnmount() {
+    // 페이지 Context의 search 상태를 false로 바꾼다.
     this.props.handlePageClose('search');
   }
 
