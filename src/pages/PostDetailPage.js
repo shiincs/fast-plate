@@ -22,11 +22,13 @@ class PostDetailPage extends Component {
 
     const restaurantId = match.params.rKeyword;
     return (
-      <PostDetail
-        key={restaurantId}
-        restaurantId={restaurantId}
-        location={location}
-      />
+      <React.Fragment>
+        <PostDetail
+          key={restaurantId}
+          restaurantId={restaurantId}
+          location={location}
+        />
+      </React.Fragment>
     );
   }
 }
