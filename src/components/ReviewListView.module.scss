@@ -31,7 +31,11 @@
       border: none;
     }
   }
+  .maincolor {
+    color: $main-color;
+  }
 }
+
 .review-more-btn {
   // width: 100px;
   font-size: 2rem;
