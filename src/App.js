@@ -8,6 +8,7 @@ import Layout from './components/Layout';
 import UserProvider from './contexts/UserContext';
 import PageProvider from './contexts/PageContext';
 import WritingReviewPage from './pages/WritingReviewPage';
+import EatDealPage from './pages/EatDealPage';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Layout>
               <div className="App">
                 <Switch>
+                  <Route path="/eatdeals/" component={EatDealPage} />
                   <Route
                     path="/restaurantsReview/:rReviewKeyword"
                     component={WritingReviewPage}
