@@ -29,6 +29,11 @@ export default function CarouselView(props) {
             <h1>{restaurants.name}</h1>
             <h3>{item.author.username}</h3>
             <img
+              src={item.author.img_profile}
+              alt="profileImage"
+              className="profilePic"
+            />
+            <img
               src={
                 item.rate === 5
                   ? imagePath[0]
