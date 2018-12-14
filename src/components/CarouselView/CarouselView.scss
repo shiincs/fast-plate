@@ -6,6 +6,7 @@
   .carousel.carousel-slider {
     height: calc(100% - 100px);
     border-radius: 5px 0 0 0;
+    position: relative;
 
     & .control-prev {
       &::before {
@@ -48,16 +49,51 @@
             justify-content: center;
             align-items: center;
             background-color: #fff;
+            position: relative;
 
-            img {
-              width: auto;
-              width: 100%;
-              height: auto;
-              height: 100%;
+            .carouselImages {
+              width: 650px;
+              height: 800px;
+            }
+
+            h1 {
+              position: absolute;
+              top: 0;
+              right: 18%;
+              font-size: 1.5rem;
+              transform: translateY(15px);
+              color: #ff792a;
+            }
+
+            h3 {
+              position: absolute;
+              top: 15%;
+              right: 35%;
+              font-size: 2rem;
+            }
+
+            .evalFace {
+              position: absolute;
+              width: 55px;
+              height: 55px;
+              top: 30px;
+              right: 20px;
+            }
+
+            .evalText {
+              position: absolute;
+              top: 100px;
+              right: 22px;
+              width: 50px;
+              font-size: 1.5rem;
+              color: #ff792a;
             }
 
             p {
+              background: #fff;
               width: 50%;
+              font-size: 2rem;
+              line-height: 120%;
             }
           }
         }

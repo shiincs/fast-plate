@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import WritingReviewView from '../components/WritingReviewView';
 import { Redirect } from 'react-router-dom';
 import api from '../api';
+import CarouselView from '../components/CarouselView/CarouselView';
 
 export default class WritingReview extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
-import styles from './EatDaalView.module.scss';
+import styles from './EatDealView.module.scss';
 
 const cx = classNames.bind(styles);
 
