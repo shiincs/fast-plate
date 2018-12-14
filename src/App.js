@@ -9,6 +9,7 @@ import UserProvider from './contexts/UserContext';
 import PageProvider from './contexts/PageContext';
 import WritingReviewPage from './pages/WritingReviewPage';
 import EatDealPage from './pages/EatDealPage';
+import EatDealDetailPage from './pages/EatDealDetailPage';
 
 class App extends Component {
   render() {
@@ -19,6 +20,10 @@ class App extends Component {
             <Layout>
               <div className="App">
                 <Switch>
+                  <Route
+                    path="/eatdeals/:restaurant"
+                    component={EatDealDetailPage}
+                  />
                   <Route path="/eatdeals/" component={EatDealPage} />
                   <Route
                     path="/restaurantsReview/:rReviewKeyword"
