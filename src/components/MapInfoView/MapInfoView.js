@@ -8,6 +8,7 @@ const cx = classNames.bind(styles);
 
 export default function MapInfoView(props) {
   const selectedPlace = props.selectedPlace;
+  console.log(selectedPlace);
   return (
     <BrowserRouter>
       <figure className={cx('infoWindow')}>

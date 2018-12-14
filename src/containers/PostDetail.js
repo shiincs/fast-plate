@@ -3,6 +3,7 @@ import api from '../api';
 import PostDetailView from '../components/PostDetailView';
 import { setRecentView } from '../setLocalStorage';
 import ModalProvider from '../contexts/ModalContext';
+import { Helmet } from 'react-helmet';
 
 export default class PostDetail extends Component {
   /* 
@@ -112,6 +113,10 @@ export default class PostDetail extends Component {
     return (
       <React.Fragment>
         <ModalProvider>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>{restaurants.name}</title>
+          </Helmet>
           <PostDetailView
             loading={loading}
             post_set={post_set}
