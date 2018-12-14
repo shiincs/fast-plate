@@ -8,7 +8,8 @@ const cx = classNames.bind(styles);
 
 class GalleryModalView extends Component {
   render() {
-    const { galleryOpen, hideTargetElement } = this.props;
+    const { galleryOpen, hideTargetElement, restaurants } = this.props;
+    console.log(restaurants);
     return (
       <React.Fragment>
         <div

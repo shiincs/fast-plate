@@ -3,6 +3,6 @@ import GalleryModalView from '../components/GalleryModalView/GalleryModalView';
 
 export default class GalleryModal extends Component {
   render() {
-    return <GalleryModalView />;
+    return <GalleryModalView restaurants={this.props.restaurants} />;
   }
 }

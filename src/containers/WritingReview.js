@@ -78,17 +78,11 @@ export default class WritingReview extends Component {
     if (!goodOpen && !okOpen && !notGoodOpen) {
       alert('평가해 주세요');
     } else {
-      const res = await api.post(
-        `/api/posts/list/`,
-        {
-          restaurant: reviewId,
-          content: reviewTextBox,
-          rate,
-        },
-        () => {
-          console.log('working');
-        }
-      );
+      const res = await api.post(`/api/posts/list/`, {
+        restaurant: reviewId,
+        content: reviewTextBox,
+        rate,
+      });
     }
   }
 

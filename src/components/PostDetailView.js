@@ -174,7 +174,7 @@ class PostDetailView extends Component {
             <GoogleMap restaurants={restaurants} />
           </div>
         </div>
-        {galleryOpen ? <GalleryModal /> : null}
+        {galleryOpen ? <GalleryModal restaurants={restaurants} /> : null}
       </React.Fragment>
     );
   }
