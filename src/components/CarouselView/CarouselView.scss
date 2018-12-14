@@ -67,9 +67,20 @@
 
             h3 {
               position: absolute;
-              top: 15%;
-              right: 35%;
+              top: 18%;
+              right: 33.5%;
               font-size: 2rem;
+            }
+
+            .profilePic {
+              position: absolute;
+              top: 7%;
+              right: 32%;
+              display: inline-block;
+              border-radius: 50%;
+              width: 50px;
+              height: 50px;
+              text-align: center;
             }
 
             .evalFace {
