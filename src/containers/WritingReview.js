@@ -8,6 +8,7 @@ export default class WritingReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      reviewSend: false,
       restaurantsPk: '',
       restaurantsName: '',
       goodOpen: false,
@@ -84,6 +85,9 @@ export default class WritingReview extends Component {
         content: reviewTextBox,
         rate,
       });
+      this.setState(prev => ({
+        reviewSend: !prev.reviewSend,
+      }));
     }
   }
 
@@ -183,7 +187,11 @@ export default class WritingReview extends Component {
   // }
 
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, reviewId } = this.props;
+    const { reviewSend } = this.state;
+    if (reviewSend) {
+      return <Redirect to={`/restaurant/${reviewId}`} />;
+    }
     return (
       <React.Fragment>
         <WritingReviewView
