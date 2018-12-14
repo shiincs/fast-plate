@@ -25,7 +25,7 @@ export default class WritingReviewView extends Component {
       uploadImgArr,
       handleDeleteImg,
       fileSeletedHandler,
-      fileUploadHandler,
+      // fileUploadHandler,
     } = this.props;
 
     if (cancel) {
@@ -97,6 +97,9 @@ export default class WritingReviewView extends Component {
                   type="file"
                   onChange={fileSeletedHandler}
                   ref={fileInput => (this.fileInput = fileInput)}
+                  onClick={event => {
+                    event.target.value = null;
+                  }}
                 />
                 <button
                   onClick={() => this.fileInput.click()}
@@ -105,12 +108,15 @@ export default class WritingReviewView extends Component {
                   +
                 </button>
                 {uploadImgArr.map((img, index) => (
-                  <img
-                    src={img}
-                    key={index}
-                    alt="uploaded-images"
-                    onClick={() => handleDeleteImg(index)}
-                  />
+                  <>
+                    <img
+                      src={img}
+                      key={index}
+                      alt="uploaded-images"
+                      onClick={() => handleDeleteImg(index)}
+                    />
+                    <p className={cx('img_description')}>X</p>
+                  </>
                 ))}
               </div>
             </div>
@@ -132,7 +138,7 @@ export default class WritingReviewView extends Component {
                 }
               )}
               disabled={!reviewTextBox}
-              onClick={(postReview, fileUploadHandler)}
+              onClick={postReview}
             >
               완료
             </button>

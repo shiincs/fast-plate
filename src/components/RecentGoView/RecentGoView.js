@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './RecentGoView.module.scss';
 import { Link } from 'react-router-dom';
-
+import defaultListItem from '../../commonimgs/defaultListItem.jpg';
 const cx = classNames.bind(styles);
 
 export default function RecentGoView(props) {
@@ -18,7 +18,7 @@ export default function RecentGoView(props) {
         >
           <img
             // src={item.menuimage_res[0]}
-            src="https://mp-seoul-image-production-s3.mangoplate.com/882510_1516984909816099.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80"
+            src={item.imgUrl ? item.imgUrl : defaultListItem}
             alt={item.name}
             className={cx('thumb')}
           />
@@ -32,9 +32,11 @@ export default function RecentGoView(props) {
           >
             <h3 className={cx('name')}>{item.name}</h3>
           </Link>
-          <span className={cx('score')}>{item.rate_average}</span>
+          <span className={cx('score')}>
+            {parseFloat(item.rate_average).toFixed(1)}
+          </span>
           <p className={cx('etcInfo')}>
-            <span className={cx('location')}>{item.address} -</span>
+            <span className={cx('location')}>{item.address.slice(0, 8)} -</span>
             <span className={cx('type')}> {item.food_type}</span>
           </p>
         </figcaption>

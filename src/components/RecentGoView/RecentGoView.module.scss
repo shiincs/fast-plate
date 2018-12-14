@@ -40,6 +40,9 @@
         font-size: 1.2rem;
         padding-top: 7px;
         color: #6a6a6a;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
 

@@ -3,10 +3,11 @@ import classNames from 'classnames/bind';
 import styles from './MapView.module.scss';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import MapInfoView from '../MapInfoView/MapInfoView';
+import loadingImg from '../../commonimgs/loadingImage/loadingImg.svg';
 const cx = classNames.bind(styles);
 const mapStyles = {
   width: '100%',
-  height: '450px',
+  height: '400px',
 };
 
 class MapView extends Component {
@@ -49,7 +50,8 @@ class MapView extends Component {
             {restaurants.map(r => (
               <Marker
                 key={r.id}
-                img={r.imgUrl}
+                id={r.id}
+                imgUrl={r.imgUrl}
                 name={r.name}
                 score={r.score}
                 location={r.location}
@@ -92,6 +94,15 @@ class MapView extends Component {
   }
 }
 
+const LoadingIndicator = props => (
+  <img
+    src={loadingImg}
+    alt="loadingIndicator"
+    className={cx('loadingIndicator')}
+  />
+);
+
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBEnQjegs7YdsLdGxRBMSHoQ1aFlJKppwM',
+  LoadingContainer: LoadingIndicator,
 })(MapView);

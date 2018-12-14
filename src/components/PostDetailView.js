@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './PostDetailView.scss';
-import ReviewListView from '../components/ReviewListView';
 import { Redirect } from 'react-router-dom';
 import GoogleMap from '../containers/GoogleMap';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { withModal } from '../contexts/ModalContext';
+import withLoading from '../hoc/withLoading';
 import GalleryModal from '../containers/GalleryModal';
+import ReviewList from '../containers/ReviewList';
 
 class PostDetailView extends Component {
   constructor(props) {
@@ -16,23 +17,6 @@ class PostDetailView extends Component {
       currentModalComment: null,
       writingReviewPage: false,
     };
-  }
-
-  showModal(index) {
-    const { detailpics, comments } = this.props;
-    this.setState({
-      show: true,
-      currentModalPic: detailpics[index],
-      currentModalComment: comments[index],
-    });
-    document.body.style.overflow = 'hidden';
-  }
-
-  hideModal() {
-    this.setState({
-      show: false,
-    });
-    document.body.style.overflow = 'scroll';
   }
 
   async handleWritingReviewPage() {
@@ -55,18 +39,14 @@ class PostDetailView extends Component {
         // Business_hour:
       },
     ],
-    detailpics: [
-      // food1, food2, food3, food4
-    ],
   };
 
   render() {
     const {
       galleryOpen,
       showTargetElement,
-      postset,
+      post_set,
       restaurants,
-      detailpics,
       handleCount,
       wannaGo,
       handleWannaGo,
@@ -75,7 +55,19 @@ class PostDetailView extends Component {
       container,
       allReview,
     } = this.props;
-    console.log(container);
+
+    // 상세 페이지 상단 이미지 바 출력을 위한 변수 선언
+    // const imgSet = post_set
+    //   .filter(item => item.postimage_posts.length > 0)
+    //   .map(item =>
+    //     item.postimage_posts.map(item => item.image).find(item => item)
+    //   );
+    const imgSet = post_set
+      .filter(item => item.postimage_posts.length > 0)
+      .map(item => item.postimage_posts.find(item => item));
+
+    const imgList = imgSet.slice(0, 4);
+
     const { writingReviewPage } = this.state;
 
     if (writingReviewPage) {
@@ -87,32 +79,23 @@ class PostDetailView extends Component {
     return (
       <React.Fragment>
         <div className="photo-list">
-          {detailpics.map((pic, index) => (
-            <div key={index} className="photo-item">
-              {/* 레스토랑 디테일 정보 사진들 */}
-              <img
-                src={pic}
-                alt="detailRestaurantpics"
-                // onClick={() => this.showModal(index)}
-                onClick={() => {
-                  !galleryOpen && showTargetElement('galleryOpen');
-                }}
-              />
-            </div>
-          ))}
-          {/* 레스토랑 사진을 클릭하면 나오는 modal*/}
-          {/* <Modal show={this.state.show} handleClose={() => this.hideModal()}>
-            <div className="picCommentContainer">
-              <img
-                src={this.state.currentModalPic}
-                alt="restuarantDetailPicsWithComments"
-              />
-              <div className="commentBox">
-                <p>{this.state.currentModalComment}</p>
+          {imgList.length > 0 ? (
+            imgList.map(item => (
+              <div key={item.pk} className="photo-item">
+                <img
+                  src={item.image}
+                  alt="detailRestaurantpics"
+                  onClick={() => {
+                    !galleryOpen && showTargetElement('galleryOpen');
+                  }}
+                />
               </div>
+            ))
+          ) : (
+            <div className="no-photo-item">
+              <p className="no-photo-msg">앱에서 사진을 올려주세요</p>
             </div>
-            <CarouselView />
-          </Modal> */}
+          )}
         </div>
         <div className="detail-inner">
           <div className="restaurant-detail">
@@ -161,8 +144,8 @@ class PostDetailView extends Component {
                 <dd>{restaurants.Business_hour}</dd>
               </dl>
             </div>
-            <ReviewListView
-              reviewList={postset}
+            <ReviewList
+              post_set={post_set}
               location={location}
               handleReviewfilter={n => handleReviewfilter(n)}
               container={container}
@@ -179,7 +162,42 @@ class PostDetailView extends Component {
   }
 }
 
-export default withModal(PostDetailView);
+export default withLoading(withModal(PostDetailView));
+
+// {
+//   detailpics.map((pic, index) => (
+//     <div key={index} className="photo-item">
+//       {/* 레스토랑 디테일 정보 사진들 */}
+//       <img
+//         src={pic}
+//         alt="detailRestaurantpics"
+//         onClick={() => {
+//           !galleryOpen && showTargetElement('galleryOpen');
+//         }}
+//       />
+//     </div>
+//   ));
+// }
+
+// {
+//   /* 레스토랑 사진을 클릭하면 나오는 modal*/
+// }
+// {
+//   /* <Modal show={this.state.show} handleClose={() => this.hideModal()}>
+//             <div className="picCommentContainer">
+//               <img
+//                 src={this.state.currentModalPic}
+//                 alt="restuarantDetailPicsWithComments"
+//               />
+//               <div className="commentBox">
+//                 <p>{this.state.currentModalComment}</p>
+//               </div>
+//             </div>
+//             <CarouselView />
+//           </Modal> */
+// }
+
+// onClick={() => this.showModal(index)}
 
 // const Modal = ({ handleClose, show, children }) => {
 //   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
@@ -192,3 +210,20 @@ export default withModal(PostDetailView);
 //     </div>
 //   );
 // };
+
+// showModal(index) {
+//   const { detailpics, comments } = this.props;
+//   this.setState({
+//     show: true,
+//     currentModalPic: detailpics[index],
+//     currentModalComment: comments[index],
+//   });
+//   document.body.style.overflow = 'hidden';
+// }
+
+// hideModal() {
+//   this.setState({
+//     show: false,
+//   });
+//   document.body.style.overflow = 'scroll';
+// }

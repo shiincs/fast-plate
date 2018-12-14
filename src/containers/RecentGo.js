@@ -17,6 +17,7 @@ export default class RecentGo extends Component {
 
   render() {
     const { item } = this.props;
+
     return (
       <React.Fragment>
         <RecentGoView

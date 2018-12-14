@@ -1,6 +1,10 @@
 /************************************ Primary ************************************/
 @import './commons.scss';
 
+.App {
+  min-height: 100vh;
+}
+
 @include mobileVertical {
   .App {
     padding-top: 50px;

@@ -11,12 +11,20 @@ export default class WritingReview extends Component {
       goodOpen: false,
       okOpen: false,
       notGoodOpen: false,
-      reviewScore: 0,
       chars_left: 10000,
       reviewTextBox: '',
       cancel: false,
       selectedFile: null,
       uploadImgArr: [],
+
+      author: {
+        pk: 17,
+        username: 'Jay',
+        email: 'abc@1234.com',
+      },
+      restaurant: 1,
+      content: '맛있어요~',
+      rate: 0,
 
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_face.svg',
@@ -68,22 +76,22 @@ export default class WritingReview extends Component {
       restaurantsName: name,
       restaurantsPk: pk,
     });
-    console.log(reviewId);
   }
 
-  // 보류
   async postReview() {
     const { goodOpen, okOpen, notGoodOpen } = this.state;
-    const { reviewId } = this.props;
-    if (goodOpen) {
-      const res = await api.post(`/api/restaurants/list/${reviewId}`, {
-        rate_good: 5,
+    const { author, restaurant, content, rate } = this.state;
+
+    if (!goodOpen && !okOpen && !notGoodOpen) {
+      alert('평가해 주세요');
+    } else {
+      const res = await api.post(`/api/posts/list`, {
+        author,
+        restaurant,
+        content,
+        rate,
       });
-      console.log(res);
-    } else if (okOpen) {
-      await api.patch(`/api/restaurants/list/${reviewId}`, {});
-    } else if (notGoodOpen) {
-      await api.patch(`/api/restaurants/list/${reviewId}`, {});
+      console.log(res.config);
     }
   }
 
@@ -93,10 +101,10 @@ export default class WritingReview extends Component {
         goodOpen: true,
         okOpen: false,
         notGoodOpen: false,
-        reviewScore: 5,
+        rate: 5,
       },
       // this.setState는 비동기함수
-      () => console.log(this.state.reviewScore) // 5
+      () => console.log(this.state.rate) // 5
     );
     if (!this.state.goodOpen) {
       document.querySelector('.pickColor1').style.color = '#ff792a';
@@ -111,9 +119,9 @@ export default class WritingReview extends Component {
         okOpen: true,
         goodOpen: false,
         notGoodOpen: false,
-        reviewScore: 3,
+        rate: 3,
       },
-      () => console.log(this.state.reviewScore) // 3
+      () => console.log(this.state.rate) // 3
     );
     if (!this.state.okOpen) {
       document.querySelector('.pickColor2').style.color = '#ff792a';
@@ -128,9 +136,9 @@ export default class WritingReview extends Component {
         notGoodOpen: true,
         okOpen: false,
         goodOpen: false,
-        reviewScore: 1,
+        rate: 1,
       },
-      () => console.log(this.state.reviewScore) // 1
+      () => console.log(this.state.rate) // 1
     );
     if (!this.state.notGoodOpen) {
       document.querySelector('.pickColor3').style.color = '#ff792a';
@@ -147,6 +155,7 @@ export default class WritingReview extends Component {
           URL.createObjectURL(event.target.files[0])
         ),
       },
+
       () => {
         // 사진을 업로드하면 배열로 나온다. uploadImgArr 배열을 map으로 돌려서 img src에 보여주면 됨
         console.log(this.state.uploadImgArr);
@@ -196,7 +205,6 @@ export default class WritingReview extends Component {
           handleCancel={this.handleCancel}
           postReview={() => this.postReview()}
           fileSeletedHandler={this.fileSeletedHandler}
-          fileUploadHandler={() => this.fileUploadHandler()}
           handleDeleteImg={index => this.handleDeleteImg(index)}
         />
       </React.Fragment>

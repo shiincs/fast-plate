@@ -73,11 +73,7 @@ export default class ReviewListView extends Component {
             </li>
           </ul>
         </div>
-        <ReviewItemView
-          reviewList={reviewList}
-          container={container}
-          allReview={allReview}
-        />
+        <ReviewItemView container={container} />
         <button className={cx('review-more-btn')}>더보기</button>
       </React.Fragment>
     );
