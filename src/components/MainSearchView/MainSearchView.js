@@ -15,6 +15,17 @@ class MainSearchView extends Component {
     };
   }
 
+  // search가 true로 바뀌면서 rendering 되고난 뒤에 search 상태가 true가 유지되기 때문에 이를 억지로 다시 false로 바꿔준다.
+  // 이렇게 해야 검색창이 없어지지 않고 유지된다.
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.state.search) {
+      this.setState({
+        search: false,
+        value: '',
+      });
+    }
+  };
+
   handleInput(e) {
     this.setState({
       value: e.target.value,
@@ -34,6 +45,8 @@ class MainSearchView extends Component {
   render() {
     const { main } = this.props;
     if (this.state.search) {
+      console.log('헤더 사라짐');
+
       return <Redirect to={`/search?keyword=${this.state.value}&page=1`} />;
     }
 
