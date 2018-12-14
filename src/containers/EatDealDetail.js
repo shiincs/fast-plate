@@ -20,7 +20,7 @@ export default class EatDealDetail extends Component {
 
   render() {
     const { eatDealDetail } = this.state;
-    // console.log(eatDealDetail);
+    console.log(eatDealDetail);
     return (
       <>
         <EatDealDetailView eatDealDetail={eatDealDetail} />
