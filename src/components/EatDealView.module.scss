@@ -17,10 +17,13 @@
       .figure {
         .imageWrapper {
           position: relative;
+          max-height: 300px;
+          overflow: hidden;
           width: 100%;
 
           .image {
             width: 100%;
+            object-fit: cover;
           }
 
           .imageInfo {
@@ -32,7 +35,11 @@
             position: absolute;
             bottom: 0;
             padding-bottom: 15px;
-            background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+            background-image: linear-gradient(
+              to bottom,
+              transparent,
+              rgba(0, 0, 0, 0.4)
+            );
 
             .leftInfo {
               display: inline-flex;
@@ -61,7 +68,7 @@
 
               .salePrice {
                 line-height: 1.5;
-                font-size: 2.0rem;
+                font-size: 2rem;
                 font-weight: 600;
               }
             }
