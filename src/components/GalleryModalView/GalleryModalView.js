@@ -8,8 +8,8 @@ const cx = classNames.bind(styles);
 
 class GalleryModalView extends Component {
   render() {
-    const { galleryOpen, hideTargetElement, restaurants } = this.props;
-    console.log(restaurants);
+    const { galleryOpen, hideTargetElement, post_set } = this.props;
+    console.log(post_set[0].content);
     return (
       <React.Fragment>
         <div
@@ -22,7 +22,6 @@ class GalleryModalView extends Component {
           <div className={cx('carouselWrapper')}>
             <CarouselView />
           </div>
-          <div className={cx('reviewWrapper')}>댓글내용</div>
         </section>
         <button
           className={cx('closeBtn')}
