@@ -5,64 +5,55 @@ import { Carousel } from 'react-responsive-carousel';
 import './CarouselView.scss';
 
 // const cx = classNames.bind(styles);
-export default function CarouselView() {
+
+// 필요한 내용 : 유저명, 날짜, 평가얼굴아이콘
+export default function CarouselView(props) {
+  const { post_set, restaurants, imagePath } = props;
+  console.log(post_set[1].postimage_posts[0].image);
+  console.log(post_set[1].content);
+
   return (
-    <Carousel
-      className="carouselWindow"
-      showStatus={false}
-      showIndicators={false}
-    >
-      <div className="imgWrapper">
-        <img
-          src="http://lorempixel.com/output/cats-q-c-640-480-1.jpg"
-          alt="1"
-        />
-      </div>
-      <div className="imgWrapper">
-        <img
-          src="http://lorempixel.com/output/cats-q-c-640-480-2.jpg"
-          alt="2"
-        />
-      </div>
-      <div className="imgWrapper">
-        <img
-          src="http://lorempixel.com/output/cats-q-c-640-480-3.jpg"
-          alt="3"
-        />
-      </div>
-      <div className="imgWrapper">
-        <img
-          src="http://lorempixel.com/output/cats-q-c-640-480-4.jpg"
-          alt="4"
-        />
-      </div>
-      <div className="imgWrapper">
-        <img
-          src="http://lorempixel.com/output/cats-q-c-640-480-5.jpg"
-          alt="5"
-        />
-      </div>
-      <div className="imgWrapper">
-        <img
-          src="http://lorempixel.com/output/cats-q-c-640-480-6.jpg"
-          alt="6"
-        />
-      </div>
-      <div className="imgWrapper">
-        <img
-          src="http://lorempixel.com/output/cats-q-c-640-480-7.jpg"
-          alt="7"
-        />
-      </div>
-      {/* <div className="imgWrapper">
-        <img src="http://lorempixel.com/output/cats-q-c-640-480-8.jpg" />
-      </div>
-      <div className="imgWrapper">
-        <img src="http://lorempixel.com/output/cats-q-c-640-480-9.jpg" />
-      </div>
-      <div className="imgWrapper">
-        <img src="http://lorempixel.com/output/cats-q-c-640-480-10.jpg" />
-      </div> */}
-    </Carousel>
+    <React.Fragment>
+      <Carousel
+        className="carouselWindow"
+        showStatus={false}
+        showIndicators={false}
+      >
+        {post_set.map(item => (
+          <div key={item.pk} className="imgWrapper">
+            <img
+              src={item.postimage_posts.map(element => element.image)}
+              alt="userPostedimages"
+              className="carouselImages"
+            />
+            <h1>{restaurants.name}</h1>
+            <h3>{item.author.username}</h3>
+            <img
+              src={
+                item.rate === 5
+                  ? imagePath[0]
+                  : item.rate === 3
+                  ? imagePath[1]
+                  : item.rate === 1
+                  ? imagePath[2]
+                  : null
+              }
+              alt="eval-face-icon"
+              className={'evalFace'}
+            />
+            <p className={'evalText'}>
+              {item.rate === 5
+                ? '맛있다'
+                : item.rate === 3
+                ? '괜찮다'
+                : item.rate === 1
+                ? '별로'
+                : null}
+            </p>
+            <p className="carouselContent">{item.content}</p>
+          </div>
+        ))}
+      </Carousel>
+    </React.Fragment>
   );
 }
