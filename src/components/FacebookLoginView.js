@@ -1,7 +1,5 @@
 import FacebookLogin from 'react-facebook-login';
-
 import React, { Component } from 'react';
-import HeaderView from './HeaderView';
 
 export default class FacebookLoginView extends Component {
   state = {
