@@ -79,9 +79,9 @@ class MypageView extends Component {
                   </button>
                   <ul className={cx('recentView')}>
                     {recentView &&
-                      recentView.map(item => (
+                      recentView.map((item, index) => (
                         <RecentGo
-                          key={item.pk}
+                          key={index}
                           hideTargetElement={hideTargetElement}
                           // recentView={recentView}
                           item={item}
