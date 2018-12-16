@@ -11,6 +11,7 @@
     "react": "^16.6.3",
     "react-awesome-modal": "^2.0.5",
     "react-dom": "^16.6.3",
+    "react-facebook-login": "^4.1.1",
     "react-helmet": "^5.2.0",
     "react-naver-maps": "0.0.11",
     "react-responsive-carousel": "^3.1.43",
