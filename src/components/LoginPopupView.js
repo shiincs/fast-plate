@@ -30,9 +30,9 @@ class LoginPopupView extends Component {
             <span className={cx('btnTitle')}>페이스북으로 시작하기</span>
     </a>*/}
           <FacebookLoginView />
-          <a href="/#" className={cx('loginKakao')}>
+          <div href="/#" className={cx('loginKakao')}>
             <span className={cx('btnTitle')}>카카오톡으로 시작하기</span>
-          </a>
+          </div>
           <button
             className={cx('closeBtn')}
             onClick={() => hideTargetElement('popupOpen')}

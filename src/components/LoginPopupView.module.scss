@@ -70,6 +70,8 @@
       font-size: 1.4rem;
       border-radius: 50px;
       margin-bottom: 12px;
+      cursor: pointer;
+      outline: none;
 
       &::before {
         content: '';
@@ -103,6 +105,8 @@
       height: 50px;
       font-size: 1.4rem;
       border-radius: 50px;
+      cursor: pointer;
+      outline: none;
 
       &::before {
         content: '';
