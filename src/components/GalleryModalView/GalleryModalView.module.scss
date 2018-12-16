@@ -17,7 +17,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 80%;
   height: 90%;
   border-radius: 5px;
   background-color: #000;
@@ -31,22 +31,14 @@
     border-radius: 5px 0 0 5px;
     z-index: 100;
   }
-
-  // .reviewWrapper {
-  //   background-color: #fff;
-  //   width: 335px;
-  //   height: 100%;
-  //   z-index: 200;
-  //   border-radius: 0 5px 5px 0;
-  // }
 }
 
 .closeBtn {
   background-image: url('../../commonimgs/mangoplate_sprites_mobile.png');
   background-position: -28px -587px;
   position: fixed;
-  top: 2%;
-  right: 3%;
+  top: 3%;
+  right: 8%;
   width: 20px;
   height: 20px;
   z-index: 200;
