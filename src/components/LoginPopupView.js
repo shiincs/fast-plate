@@ -28,9 +28,10 @@ class LoginPopupView extends Component {
           </p>
           {/*<a href="/#" className={cx('loginFacebook')}>
             <span className={cx('btnTitle')}>페이스북으로 시작하기</span>
-    </a>*/}
+          </a>*/}
+          {/* 페이스북 로그인 API연동 */}
           <FacebookLoginView />
-          <div href="/#" className={cx('loginKakao')}>
+          <div className={cx('loginKakao')}>
             <span className={cx('btnTitle')}>카카오톡으로 시작하기</span>
           </div>
           <button

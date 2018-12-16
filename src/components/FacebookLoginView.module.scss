@@ -46,6 +46,8 @@
     font-size: 1.4rem;
     border-radius: 50px;
     margin-bottom: 12px;
+    cursor: pointer;
+    outline: none;
 
     &::before {
       content: '';
