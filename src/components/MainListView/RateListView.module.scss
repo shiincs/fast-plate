@@ -5,7 +5,7 @@
     margin: 0 15px;
   }
   .list-title {
-    font-size: 2rem;
+    font-size: 2.3rem;
     color: $main-color;
   }
   .restaurants-list {
@@ -29,15 +29,20 @@
         width: 100%;
         // height: 227.8px;
         background: #e3e3e3;
+        position: relative;
         &::before {
           display: block;
           content: '';
           width: 100%;
           padding-top: 66.66667%;
         }
-
         .image {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
       }
       figcaption {
