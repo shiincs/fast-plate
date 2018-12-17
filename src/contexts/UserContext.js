@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const { Provider, Consumer } = React.createContext();
 
-export default class UserProvider extends Component {
+class UserProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,6 +10,14 @@ export default class UserProvider extends Component {
       username: null,
       login: () => {},
       logout: () => {},
+      isLoggedIn: false,
+      userID: '',
+      name: '',
+      email: '',
+      picture: '',
+      token: null,
+      responseFacebook: this.responseFacebook,
+      componentClicked: this.componentClicked,
     };
   }
 
@@ -21,6 +29,20 @@ export default class UserProvider extends Component {
     //   username: 'user1',
     // });
   }
+
+  responseFacebook = response => {
+    console.log(response);
+    this.setState({
+      isLoggedIn: true,
+      userID: response.userID,
+      name: response.name,
+      email: response.email,
+      picture: response.picture.data.url,
+      token: response.accessToken,
+    });
+  };
+
+  componentClicked = () => console.log('componentClicked!');
 
   render() {
     return <Provider value={this.state}>{this.props.children}</Provider>;

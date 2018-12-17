@@ -7,6 +7,8 @@ import { withModal } from '../contexts/ModalContext';
 import withLoading from '../hoc/withLoading';
 import GalleryModal from '../containers/GalleryModal';
 import ReviewList from '../containers/ReviewList';
+import { withUser } from '../contexts/UserContext';
+import LoginPopupView from './LoginPopupView';
 
 class PostDetailView extends Component {
   constructor(props) {
@@ -20,10 +22,20 @@ class PostDetailView extends Component {
   }
 
   async handleWritingReviewPage() {
-    this.setState({
-      writingReviewPage: true,
-    });
+    if (localStorage.accesstoken) {
+      this.setState({
+        writingReviewPage: true,
+      });
+    } else {
+      return <LoginPopupView />;
+    }
   }
+
+  // handleWritingReviewPage() {
+  //   this.setState({
+  //     writingReviewPage: true,
+  //   });
+  // }
 
   static defaultProps = {
     // 서버로부터 받아온 레스토랑 목록 데이터
@@ -164,7 +176,7 @@ class PostDetailView extends Component {
   }
 }
 
-export default withLoading(withModal(PostDetailView));
+export default withUser(withLoading(withModal(PostDetailView)));
 
 // {
 //   detailpics.map((pic, index) => (
