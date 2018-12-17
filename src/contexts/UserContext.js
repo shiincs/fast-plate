@@ -11,12 +11,6 @@ class UserProvider extends Component {
       picture: null,
       login: this.login,
       logout: () => {},
-      isLoggedIn: false,
-      userID: '',
-      name: '',
-      email: '',
-      picture: '',
-      token: null,
       responseFacebook: this.responseFacebook,
       componentClicked: this.componentClicked,
     };

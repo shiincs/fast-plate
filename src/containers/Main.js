@@ -31,7 +31,6 @@ class Main extends Component {
         page_size: 8,
       },
     });
-    console.log(res.data.results);
     this.setState({
       restaurantList: [...res.data.results],
     });
