@@ -6,15 +6,16 @@
   font-weight: 900;
   color: #ff792a;
   text-align: center;
-
+  margin: 0 70px;
   & h2 {
     transform: translateX(-40%);
-    margin-bottom: 1rem;
-    font-size: 2rem;
+    margin-bottom: 9px;
+    font-size: 2.3rem;
   }
 
   & .tags {
     display: flex;
+    margin-bottom: 30px;
   }
 
   & button {
@@ -28,9 +29,10 @@
     position: relative;
     color: #fff;
     display: inline-block;
-    width: 471px;
-    /* width: 30%; */
-    margin-left: 29px;
+    min-width: 416px;
+    // width: 30%;
+    margin-left: 14.5px;
+    margin-right: 14.5px;
     text-align: center;
 
     & p {

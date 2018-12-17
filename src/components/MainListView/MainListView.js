@@ -126,7 +126,7 @@ export default class MainListView extends Component {
           <button onClick={() => this.myundong()}>#명동</button>
           <button onClick={() => this.gangnam()}>#강남</button>
         </div>
-        <div>''</div>
+
         {dummyArr.map((dummy, index) => (
           <HandleList
             key={dummy.id}

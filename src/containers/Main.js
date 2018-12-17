@@ -10,14 +10,14 @@ class Main extends Component {
 
     this.state = {
       restaurantList: [
-        {
-          //   id: 1,
-          //   name: '파씨오네',
-          //   rate_average: 4.2,
-          //   food_type: '탕 / 찌개 / 전골',
-          //   mainImg: food1,
-          //   text: '곱창전골 맛집 베스트',
-        },
+        // {
+        //   id: 1,
+        //   name: '파씨오네',
+        //   rate_average: 4.2,
+        //   food_type: '탕 / 찌개 / 전골',
+        //   mainImg: food1,
+        //   text: '곱창전골 맛집 베스트',
+        // },
       ],
     };
   }
