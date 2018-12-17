@@ -3,6 +3,10 @@ import EatDeal from '../containers/EatDeal';
 import { Helmet } from 'react-helmet';
 
 export default class EatDealPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <>

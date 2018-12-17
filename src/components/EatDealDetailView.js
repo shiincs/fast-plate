@@ -101,9 +101,10 @@ class EatDealDetailView extends Component {
                     .map((r, index) => <li key={index}>{r}</li>)}
               </ul>
             </div>
+
+            <button className={cx('action-button')}>구매하기</button>
           </article>
         )}
-        <button className={cx('action-button')}>구매하기</button>
       </>
     );
   }

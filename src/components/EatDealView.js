@@ -14,7 +14,7 @@ class EatDealView extends Component {
       <article className={cx('eatDealPage')}>
         <ul className={cx('list')}>
           {eatDeal.map(d => (
-            <Link to={`/eatdeals/${d.restaurant}`}>
+            <Link to={`/eatdeals/${d.restaurant}`} key={d.restaurant}>
               <li className={cx('item')}>
                 <figure className={cx('figure')}>
                   <div className={cx('imageWrapper')}>

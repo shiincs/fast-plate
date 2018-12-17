@@ -1,7 +1,9 @@
 @import '../commons.scss';
+
 a {
   text-decoration: none;
 }
+
 .eatDealPage {
   width: 768px;
   margin: 0 auto;
@@ -28,11 +30,9 @@ a {
         position: absolute;
         bottom: 0;
         padding-bottom: 15px;
-        background-image: linear-gradient(
-          to bottom,
+        background-image: linear-gradient(to bottom,
           transparent,
-          rgba(0, 0, 0, 0.4)
-        );
+          rgba(0, 0, 0, 0.4));
       }
     }
 
@@ -82,6 +82,7 @@ a {
         color: #393939;
         margin-right: 15px;
         text-align: right;
+
         .saleRate {
           margin-right: 10px;
           color: #14cbb2;
@@ -89,6 +90,7 @@ a {
           font-weight: bold;
           position: relative;
         }
+
         .Info {
           font-size: 1.5rem;
           font-weight: 600;
@@ -113,21 +115,26 @@ a {
       }
     }
   }
+
   .introduce-section {
     margin-bottom: 40px;
     color: #4f4f4f;
+
     .introduce-text {
       font-size: 1.8rem;
       margin-top: 25px;
       // font-weight: bold;
       color: #4f4f4f;
     }
+
     padding-left: 13px;
+
     h3 {
       font-size: 1.6rem;
       margin-bottom: 13px;
       font-weight: bold;
     }
+
     ul {
       font-size: 1.5rem;
       line-height: 1.5;
@@ -136,12 +143,13 @@ a {
     }
   }
 }
+
 .action-button {
   background: $main-color;
   width: 100%;
   height: 60px;
   line-height: 60px;
-  position: fixed;
+  position: relative;
   bottom: 0;
   max-width: 768px;
   left: 50%;
