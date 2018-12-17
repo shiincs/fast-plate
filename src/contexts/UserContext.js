@@ -8,7 +8,8 @@ export default class UserProvider extends Component {
     this.state = {
       id: null,
       username: null,
-      login: () => {},
+      picture: null,
+      login: this.login,
       logout: () => {},
     };
   }
@@ -21,6 +22,10 @@ export default class UserProvider extends Component {
     //   username: 'user1',
     // });
   }
+
+  login = response => {
+    console.log(response);
+  };
 
   render() {
     return <Provider value={this.state}>{this.props.children}</Provider>;
