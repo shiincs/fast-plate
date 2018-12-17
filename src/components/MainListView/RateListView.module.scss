@@ -1,83 +1,92 @@
 @import '../../commons.scss';
 
-.restaurants-list-wrap {
+<<<<<<< HEAD .restaurants-list-wrap {
   margin: 20px 90px;
 
-  @include mobile {
-    margin: 0 15px;
+  =======a {
+    display: block;
   }
 
-  .list-title {
-    font-size: 2rem;
-    color: $main-color;
-  }
+  .restaurants-list-wrap {
+    padding: 36px 90px;
+    margin-top: 30px;
+    border-top: 1px solid #dbdbdb;
 
-  .restaurants-list {
-    margin-top: 27px;
-    max-width: 1500px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    >>>>>>>c2d2400b2b900d94ba0d7a3faa9e3c91927b7c70 @include mobile {
+      margin: 0 15px;
+    }
 
-    .restaurants-item {
-      box-sizing: border-box;
-      width: 25%;
-      padding: 0 17px 35px;
+    .list-title {
+      font-size: 2.3rem;
+      color: $main-color;
+    }
 
-      @include mobile {
-        width: 50%;
+    .restaurants-list {
+      margin-top: 27px;
+      max-width: 1500px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
 
-        padding: 0 4.6px;
-      }
-
-      .thumb {
-        position: relative;
-        width: 100%;
-        // height: 227.8px;
-        background: #e3e3e3;
-
-        &::before {
-          display: block;
-          content: '';
-          width: 100%;
-          padding-top: 66.66667%;
-        }
-
-        .image {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-
-      figcaption {
-        padding-top: 12.5px;
-        color: #555;
+      .restaurants-item {
+        box-sizing: border-box;
+        width: 25%;
+        padding: 0 17px 35px;
 
         @include mobile {
-          padding: 6px 7px 16px 0px;
+          width: 50%;
+
+          padding: 0 4.6px;
         }
 
-        .item-title {
-          font-size: 2.1rem;
-          display: inline-block;
+        .thumb {
+          position: relative;
+          width: 100%;
+          // height: 227.8px;
+          background: #e3e3e3;
+
+          &::before {
+            display: block;
+            content: '';
+            width: 100%;
+            padding-top: 66.66667%;
+          }
+
+          .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
 
-        .point {
-          font-size: 2.1rem;
-          color: $main-color;
-          margin-left: 5px;
-        }
+        figcaption {
+          padding-top: 12.5px;
+          color: #555;
 
-        .etc {
-          margin-top: 8px;
-          font-size: 1.4rem;
-          color: #9b9b9b;
+          @include mobile {
+            padding: 6px 7px 16px 0px;
+          }
+
+          .item-title {
+            font-size: 2.1rem;
+            display: inline-block;
+          }
+
+          .point {
+            font-size: 2.1rem;
+            color: $main-color;
+            margin-left: 5px;
+          }
+
+          .etc {
+            margin-top: 8px;
+            font-size: 1.4rem;
+            color: #9b9b9b;
+          }
         }
       }
     }
   }
-}

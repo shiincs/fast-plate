@@ -47,3 +47,28 @@ export default class RateListView extends Component {
     );
   }
 }
+
+// {restaurantList.map(r => {
+//   let imageSrc;
+//   if (r.post_set[0] && r.post_set[0].postimage_posts[0]) {
+//     imageSrc = r.post_set[0].postimage_posts[0].image;
+//   } else {
+//     imageSrc = defaultimg;
+//   }
+//   return (
+//     <li className={cx('restaurants-item')}>
+//       <Link to={`/restaurant/${r.pk}`}>
+//         <figure className={cx('restaurant_inner_wrap')}>
+//           <div className={cx('thumb')}>
+//             <img className={cx('image')} src={imageSrc} />
+//           </div>
+//           <figcaption>
+//             <h3 className={cx('item-title')}>{r.name}</h3>
+//             <span className={cx('point')}>{r.rate_average}</span>
+//             <p className={cx('etc')}>{r.food_type}</p>
+//           </figcaption>
+//         </figure>
+//       </Link>
+//     </li>
+//   );
+// })}
