@@ -21,17 +21,13 @@ class PostDetailView extends Component {
     };
   }
 
-  async handleWritingReviewPage() {
-    if (localStorage.accesstoken) {
-      this.setState({
-        writingReviewPage: true,
-      });
-    } else {
-      return <LoginPopupView />;
-    }
+  handleWritingReviewPage() {
+    this.setState({
+      writingReviewPage: true,
+    });
   }
 
-  // handleWritingReviewPage() {
+  // async handleWritingReviewPage() {
   //   this.setState({
   //     writingReviewPage: true,
   //   });
@@ -55,7 +51,9 @@ class PostDetailView extends Component {
 
   render() {
     const {
+      username,
       galleryOpen,
+      popupOpen,
       showTargetElement,
       post_set,
       restaurants,
@@ -74,6 +72,7 @@ class PostDetailView extends Component {
     //   .map(item =>
     //     item.postimage_posts.map(item => item.image).find(item => item)
     //   );
+
     const imgSet = post_set
       .filter(item => item.postimage_posts.length > 0)
       .map(item => item.postimage_posts.find(item => item));
@@ -118,7 +117,11 @@ class PostDetailView extends Component {
                 <div className="restaurants_action_button_wrap">
                   <button
                     className="review_writing_button"
-                    onClick={() => this.handleWritingReviewPage()}
+                    onClick={() => {
+                      username
+                        ? this.handleWritingReviewPage()
+                        : showTargetElement('popupOpen');
+                    }}
                   >
                     리뷰쓰기
                   </button>
@@ -171,6 +174,7 @@ class PostDetailView extends Component {
         {galleryOpen ? (
           <GalleryModal post_set={post_set} restaurants={restaurants} />
         ) : null}
+        {popupOpen ? <LoginPopupView /> : null}
       </React.Fragment>
     );
   }
