@@ -41,21 +41,24 @@
         }
       }
       figcaption {
-        padding-top: 9px;
+        padding-top: 12.5px;
+        color: #555;
         @include mobile {
           padding: 6px 7px 16px 0px;
         }
         .item-title {
-          font-size: 1.6rem;
+          font-size: 2.1rem;
           display: inline-block;
         }
         .point {
-          font-size: 1.6rem;
+          font-size: 2.1rem;
+          color: $main-color;
           margin-left: 5px;
         }
         .etc {
-          margin-top: 6px;
-          font-size: 1.1rem;
+          margin-top: 8px;
+          font-size: 1.4rem;
+          color: #9b9b9b;
         }
       }
     }

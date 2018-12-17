@@ -3,9 +3,38 @@ import { withPage } from '../contexts/PageContext';
 import MainHeroView from '../components/MainHeroView/MainHeroView';
 import MainListView from '../components/MainListView/MainListView';
 import RateListView from '../components/MainListView/RateListView';
+import api from '../api';
 class Main extends Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      restaurantList: [
+        {
+          //   id: 1,
+          //   name: '파씨오네',
+          //   rate_average: 4.2,
+          //   food_type: '탕 / 찌개 / 전골',
+          //   mainImg: food1,
+          //   text: '곱창전골 맛집 베스트',
+        },
+      ],
+    };
+  }
+  async componentDidMount() {
     this.props.handlePageOpen('main');
+    //https://fastplate.xyz/api/restaurants/list/?page=1&ordering=-rate_average&page_size=8
+    const res = await api.get('/api/restaurants/list/', {
+      params: {
+        page: 1,
+        ordering: '-rate_average',
+        page_size: 8,
+      },
+    });
+    console.log(res.data.results);
+    this.setState({
+      restaurantList: [...res.data.results],
+    });
   }
 
   componentWillUnmount() {
@@ -13,11 +42,12 @@ class Main extends Component {
   }
 
   render() {
+    const { restaurantList } = this.state;
     return (
       <main>
         <MainHeroView />
         <MainListView />
-        <RateListView />
+        <RateListView restaurantList={restaurantList} />
       </main>
     );
   }
