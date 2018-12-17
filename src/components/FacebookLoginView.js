@@ -8,6 +8,7 @@ export default class FacebookLoginView extends Component {
     name: '',
     email: '',
     picture: '',
+    token: null,
   };
 
   responseFacebook = response => {
@@ -18,6 +19,7 @@ export default class FacebookLoginView extends Component {
       name: response.name,
       email: response.email,
       picture: response.picture.data.url,
+      token: response.accessToken,
     });
   };
 
@@ -27,6 +29,8 @@ export default class FacebookLoginView extends Component {
     let fbContent;
 
     if (this.state.isLoggedIn) {
+      localStorage.setItem('token', this.state.token);
+      console.log(localStorage);
       fbContent = (
         <div>
           <img src={this.state.picture} alt={this.state.name} />
