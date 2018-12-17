@@ -8,7 +8,8 @@ class UserProvider extends Component {
     this.state = {
       id: null,
       username: null,
-      login: () => {},
+      picture: null,
+      login: this.login,
       logout: () => {},
       isLoggedIn: false,
       userID: '',
@@ -30,19 +31,9 @@ class UserProvider extends Component {
     // });
   }
 
-  responseFacebook = response => {
+  login = response => {
     console.log(response);
-    this.setState({
-      isLoggedIn: true,
-      userID: response.userID,
-      name: response.name,
-      email: response.email,
-      picture: response.picture.data.url,
-      token: response.accessToken,
-    });
   };
-
-  componentClicked = () => console.log('componentClicked!');
 
   render() {
     return <Provider value={this.state}>{this.props.children}</Provider>;

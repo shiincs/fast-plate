@@ -112,10 +112,12 @@ class MypageView extends Component {
             </div>
           </div>
         </section>
-        <LoginPopupView
-          popupOpen={popupOpen}
-          hideTargetElement={hideTargetElement}
-        />
+        {popupOpen && (
+          <LoginPopupView
+            popupOpen={popupOpen}
+            hideTargetElement={hideTargetElement}
+          />
+        )}
       </React.Fragment>
     );
   }
