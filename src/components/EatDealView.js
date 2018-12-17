@@ -14,13 +14,13 @@ class EatDealView extends Component {
       <article className={cx('eatDealPage')}>
         <ul className={cx('list')}>
           {eatDeal.map(d => (
-            <Link to={`/eatdeals/${d.restaurant}`} key={d.restaurant}>
+            <Link to={`/eatdeals/${d.pk}`} key={d.pk}>
               <li className={cx('item')}>
                 <figure className={cx('figure')}>
                   <div className={cx('imageWrapper')}>
                     <img
                       className={cx('image')}
-                      src={d.eatdealimages[0].image}
+                      src={d.eatdealimages ? d.eatdealimages[0].image : null}
                       alt=""
                     />
 
