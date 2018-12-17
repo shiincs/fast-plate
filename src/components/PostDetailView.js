@@ -7,6 +7,8 @@ import { withModal } from '../contexts/ModalContext';
 import withLoading from '../hoc/withLoading';
 import GalleryModal from '../containers/GalleryModal';
 import ReviewList from '../containers/ReviewList';
+import { withUser } from '../contexts/UserContext';
+import LoginPopupView from './LoginPopupView';
 
 class PostDetailView extends Component {
   constructor(props) {
@@ -19,11 +21,17 @@ class PostDetailView extends Component {
     };
   }
 
-  async handleWritingReviewPage() {
+  handleWritingReviewPage() {
     this.setState({
       writingReviewPage: true,
     });
   }
+
+  // async handleWritingReviewPage() {
+  //   this.setState({
+  //     writingReviewPage: true,
+  //   });
+  // }
 
   static defaultProps = {
     // 서버로부터 받아온 레스토랑 목록 데이터
@@ -43,7 +51,9 @@ class PostDetailView extends Component {
 
   render() {
     const {
+      username,
       galleryOpen,
+      popupOpen,
       showTargetElement,
       post_set,
       restaurants,
@@ -62,6 +72,7 @@ class PostDetailView extends Component {
     //   .map(item =>
     //     item.postimage_posts.map(item => item.image).find(item => item)
     //   );
+
     const imgSet = post_set
       .filter(item => item.postimage_posts.length > 0)
       .map(item => item.postimage_posts.find(item => item));
@@ -106,7 +117,11 @@ class PostDetailView extends Component {
                 <div className="restaurants_action_button_wrap">
                   <button
                     className="review_writing_button"
-                    onClick={() => this.handleWritingReviewPage()}
+                    onClick={() => {
+                      username
+                        ? this.handleWritingReviewPage()
+                        : showTargetElement('popupOpen');
+                    }}
                   >
                     리뷰쓰기
                   </button>
@@ -159,12 +174,13 @@ class PostDetailView extends Component {
         {galleryOpen ? (
           <GalleryModal post_set={post_set} restaurants={restaurants} />
         ) : null}
+        {popupOpen ? <LoginPopupView /> : null}
       </React.Fragment>
     );
   }
 }
 
-export default withLoading(withModal(PostDetailView));
+export default withUser(withLoading(withModal(PostDetailView)));
 
 // {
 //   detailpics.map((pic, index) => (
