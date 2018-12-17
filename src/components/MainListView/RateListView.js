@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './RateListView.module.scss';
 import classNames from 'classnames/bind';
 import defaultimg from '../../commonimgs/defaultListItem.jpg';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 export default class RateListView extends Component {
@@ -36,16 +37,18 @@ export default class RateListView extends Component {
             }
             return (
               <li className={cx('restaurants-item')}>
-                <figure className={cx('restaurant_inner_wrap')}>
-                  <div className={cx('thumb')}>
-                    <img className={cx('image')} src={imageSrc} />
-                  </div>
-                  <figcaption>
-                    <h3 className={cx('item-title')}>{r.name}</h3>
-                    <span className={cx('point')}>{r.rate_average}</span>
-                    <p className={cx('etc')}>{r.food_type}</p>
-                  </figcaption>
-                </figure>
+                <Link to={`/restaurant/${r.pk}`}>
+                  <figure className={cx('restaurant_inner_wrap')}>
+                    <div className={cx('thumb')}>
+                      <img className={cx('image')} src={imageSrc} />
+                    </div>
+                    <figcaption>
+                      <h3 className={cx('item-title')}>{r.name}</h3>
+                      <span className={cx('point')}>{r.rate_average}</span>
+                      <p className={cx('etc')}>{r.food_type}</p>
+                    </figcaption>
+                  </figure>
+                </Link>
               </li>
             );
           })}
