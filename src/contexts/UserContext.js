@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import api from '../api';
 
 const { Provider, Consumer } = React.createContext();
 
@@ -25,8 +26,13 @@ class UserProvider extends Component {
     // });
   }
 
-  login = response => {
+  login = async response => {
     console.log(response);
+    const res = await api.post('/auth-token/facebook/', {
+      access_token: response.accessToken,
+      facebook_user_id: response.userId,
+    });
+    console.log(res);
   };
 
   render() {
