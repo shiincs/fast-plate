@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import styles from './EatDealView.module.scss';
 import { Link } from 'react-router-dom';
+import withLoading from '../hoc/withLoading';
+
 const cx = classNames.bind(styles);
 
-export default class EatDealView extends Component {
+class EatDealView extends Component {
   render() {
     const { eatDeal } = this.props;
     console.log(eatDeal);
@@ -12,7 +14,7 @@ export default class EatDealView extends Component {
       <article className={cx('eatDealPage')}>
         <ul className={cx('list')}>
           {eatDeal.map(d => (
-            <Link to={`/eatdeals/${d.restaurant}`}>
+            <Link to={`/eatdeals/${d.restaurant}`} key={d.restaurant}>
               <li className={cx('item')}>
                 <figure className={cx('figure')}>
                   <div className={cx('imageWrapper')}>
@@ -54,3 +56,5 @@ export default class EatDealView extends Component {
     );
   }
 }
+
+export default withLoading(EatDealView);

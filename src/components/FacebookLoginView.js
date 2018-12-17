@@ -1,5 +1,10 @@
-import FacebookLogin from 'react-facebook-login';
+// import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import React, { Component } from 'react';
+import classNames from 'classnames/bind';
+import styles from './FacebookLoginView.module.scss';
+
+const cx = classNames.bind(styles);
 
 export default class FacebookLoginView extends Component {
   state = {
@@ -39,14 +44,19 @@ export default class FacebookLoginView extends Component {
     } else {
       fbContent = (
         <FacebookLogin
-          appId="323220401853541"
+          appId={process.env.REACT_APP_FACEBOOK_KEY}
           autoLoad={true}
           fields="name,email,picture"
-          onClick={this.componentClicked}
+          // onClick={this.componentClicked}
           callback={this.responseFacebook}
+          render={renderProps => (
+            <div onClick={renderProps.onClick} className={cx('loginFacebook')}>
+              <span className={cx('btnTitle')}>페이스북으로 시작하기</span>
+            </div>
+          )}
         />
       );
     }
-    return <div>{fbContent}</div>;
+    return <React.Fragment>{fbContent}</React.Fragment>;
   }
 }

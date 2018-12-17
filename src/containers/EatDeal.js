@@ -9,6 +9,7 @@ export default class EatDeal extends Component {
 
     this.state = {
       eatDeal: [],
+      loading: true,
     };
   }
   async componentDidMount() {
@@ -16,15 +17,16 @@ export default class EatDeal extends Component {
     // console.log(res.data.results);
     this.setState({
       eatDeal: [...res.data.results],
+      loading: false,
     });
   }
 
   render() {
-    const { eatDeal } = this.state;
+    const { eatDeal, loading } = this.state;
     console.log(eatDeal);
     return (
       <>
-        <EatDealView eatDeal={eatDeal} />
+        <EatDealView eatDeal={eatDeal} loading={loading} />
       </>
     );
   }

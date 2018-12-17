@@ -1,6 +1,7 @@
 import EatDealDetailView from '../components/EatDealDetailView';
 import React, { Component } from 'react';
 import api from '../api';
+import { Helmet } from 'react-helmet';
 
 export default class EatDealDetail extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ export default class EatDealDetail extends Component {
 
     this.state = {
       eatDealDetail: {},
+      loading: true,
     };
   }
   async componentDidMount() {
@@ -15,15 +17,20 @@ export default class EatDealDetail extends Component {
     const res = await api.get(`/api/eatdeals/list/${pk}`);
     this.setState({
       eatDealDetail: { ...res.data },
+      loading: false,
     });
   }
 
   render() {
-    const { eatDealDetail } = this.state;
-    // console.log(eatDealDetail);
+    const { eatDealDetail, loading } = this.state;
+
     return (
       <>
-        <EatDealDetailView eatDealDetail={eatDealDetail} />
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{eatDealDetail.deal_name}</title>
+        </Helmet>
+        <EatDealDetailView eatDealDetail={eatDealDetail} loading={loading} />
       </>
     );
   }
