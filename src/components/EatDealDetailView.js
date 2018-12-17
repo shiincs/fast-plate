@@ -103,6 +103,7 @@ class EatDealDetailView extends Component {
             </div>
           </article>
         )}
+        <button className={cx('action-button')}>구매하기</button>
       </>
     );
   }
