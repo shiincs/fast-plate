@@ -1,6 +1,7 @@
 import EatDealDetailView from '../components/EatDealDetailView';
 import React, { Component } from 'react';
 import api from '../api';
+import { Helmet } from 'react-helmet';
 
 export default class EatDealDetail extends Component {
   constructor(props) {
@@ -25,6 +26,10 @@ export default class EatDealDetail extends Component {
 
     return (
       <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{eatDealDetail.deal_name}</title>
+        </Helmet>
         <EatDealDetailView eatDealDetail={eatDealDetail} loading={loading} />
       </>
     );

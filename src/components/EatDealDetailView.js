@@ -75,22 +75,30 @@ class EatDealDetailView extends Component {
               </h3>
               <ul className={cx('precautions-text')}>
                 {eatDealDetail.caution &&
-                  eatDealDetail.caution.split('\n').map(r => <li>{r}</li>)}
+                  eatDealDetail.caution
+                    .split('\n')
+                    .map((r, index) => <li key={index}>{r}</li>)}
               </ul>
               <h3 className={cx('refund')}>※ 사용 방법</h3>
               <ul className={cx('refund-text')}>
                 {eatDealDetail.how_to_use &&
-                  eatDealDetail.how_to_use.split('\n').map(r => <li>{r}</li>)}
+                  eatDealDetail.how_to_use
+                    .split('\n')
+                    .map((r, index) => <li key={index}>{r}</li>)}
               </ul>
               <h3 className={cx('question')}>※ 환불 규정</h3>
               <ul className={cx('question-text')}>
                 {eatDealDetail.refund &&
-                  eatDealDetail.refund.split('\n').map(r => <li>{r}</li>)}
+                  eatDealDetail.refund
+                    .split('\n')
+                    .map((r, index) => <li key={index}>{r}</li>)}
               </ul>
               <h3 className={cx('inquiry')}>문의</h3>
               <ul className={cx('inquiry-text')}>
                 {eatDealDetail.inquiry &&
-                  eatDealDetail.inquiry.split('\n').map(r => <li>{r}</li>)}
+                  eatDealDetail.inquiry
+                    .split('\n')
+                    .map((r, index) => <li key={index}>{r}</li>)}
               </ul>
             </div>
           </article>
