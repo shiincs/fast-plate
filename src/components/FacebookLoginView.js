@@ -29,6 +29,7 @@ class FacebookLoginView extends Component {
 
   render() {
     const { login } = this.props;
+
     return (
       <FacebookLogin
         appId={process.env.REACT_APP_FACEBOOK_KEY}

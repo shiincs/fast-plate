@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const { Provider, Consumer } = React.createContext();
 
-export default class UserProvider extends Component {
+class UserProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,6 +11,14 @@ export default class UserProvider extends Component {
       picture: null,
       login: this.login,
       logout: () => {},
+      isLoggedIn: false,
+      userID: '',
+      name: '',
+      email: '',
+      picture: '',
+      token: null,
+      responseFacebook: this.responseFacebook,
+      componentClicked: this.componentClicked,
     };
   }
 

@@ -5,7 +5,7 @@ import MainPage from './pages/MainPage';
 import SearchPage from './pages/SearchPage';
 import PostDetailPage from './pages/PostDetailPage';
 import Layout from './components/Layout';
-import UserProvider from './contexts/UserContext';
+import { UserProvider } from './contexts/UserContext';
 import PageProvider from './contexts/PageContext';
 import WritingReviewPage from './pages/WritingReviewPage';
 import EatDealPage from './pages/EatDealPage';

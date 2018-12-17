@@ -24,11 +24,13 @@
   }
 
   & .secondarylistList {
-    margin-top: 20px;
+    margin-bottom: 29px;
     position: relative;
-    color: $color-white;
+    color: #fff;
     display: inline-block;
-    width: 30%;
+    width: 471px;
+    /* width: 30%; */
+    margin-left: 29px;
     text-align: center;
 
     & p {
@@ -43,7 +45,8 @@
     }
 
     & img {
-      width: 90%;
+      width: 100%;
+      object-fit: cover;
     }
 
     @media all and (min-width: $size-basic) and (max-width: $size-normal) {

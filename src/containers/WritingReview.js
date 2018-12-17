@@ -183,9 +183,11 @@ export default class WritingReview extends Component {
   render() {
     const { restaurants, reviewId } = this.props;
     const { reviewSend } = this.state;
+
     if (reviewSend) {
       return <Redirect to={`/restaurant/${reviewId}`} />;
     }
+
     return (
       <React.Fragment>
         <WritingReviewView
