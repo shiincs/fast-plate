@@ -28,7 +28,27 @@ class SearchView extends Component {
   };
   render() {
     const { restaurants, ...rest } = this.props;
-
+    // console.log(
+    //   restaurants
+    //     .map(item =>
+    //       item.post_set.find(item => item.postimage_posts.length > 0)
+    //     )
+    //     .map(item => {
+    //       if (item) {
+    //         return item.postimage_posts[0].image;
+    //       } else {
+    //         return null;
+    //       }
+    //     })
+    // );
+    // const r = restaurants
+    //   .map(item => item.post_set.map(item => item.postimage_posts))
+    //   .map(item => item.find(item => item.length > 0));
+    // r.map(item =>
+    //   item
+    //     ? console.log(item.map(item => item.image).join(''))
+    //     : console.log(null)
+    // );
     // DB의 속성 이름을 내가 원하는 이름으로 바꾸기 위해 map을 돌려서 새로운 객체 속성에 값을 대입해준다.
     const restaurantList = restaurants.map(r => ({
       id: r.pk,
