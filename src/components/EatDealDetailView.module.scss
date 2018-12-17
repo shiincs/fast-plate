@@ -1,5 +1,7 @@
 @import '../commons.scss';
-
+a {
+  text-decoration: none;
+}
 .eatDealPage {
   width: 768px;
   margin: 0 auto;
@@ -133,4 +135,17 @@
       color: #7f7f7f;
     }
   }
+}
+.action-button {
+  background: $main-color;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  position: fixed;
+  bottom: 0;
+  max-width: 768px;
+  left: 50%;
+  font-size: 1.6rem;
+  color: #fff;
+  transform: translateX(-50%);
 }

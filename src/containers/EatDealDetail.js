@@ -8,6 +8,7 @@ export default class EatDealDetail extends Component {
 
     this.state = {
       eatDealDetail: {},
+      loading: true,
     };
   }
   async componentDidMount() {
@@ -15,15 +16,16 @@ export default class EatDealDetail extends Component {
     const res = await api.get(`/api/eatdeals/list/${pk}`);
     this.setState({
       eatDealDetail: { ...res.data },
+      loading: false,
     });
   }
 
   render() {
-    const { eatDealDetail } = this.state;
-    console.log(eatDealDetail);
+    const { eatDealDetail, loading } = this.state;
+
     return (
       <>
-        <EatDealDetailView eatDealDetail={eatDealDetail} />
+        <EatDealDetailView eatDealDetail={eatDealDetail} loading={loading} />
       </>
     );
   }

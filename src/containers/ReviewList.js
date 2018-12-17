@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReviewListView from '../components/ReviewListView';
-import ReviewItemView from '../components/ReviewItemView';
 export default class ReviewList extends Component {
   render() {
     const { post_set, ...rest } = this.props;

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import styles from './EatDealDetailView.module.scss';
+import withLoading from '../hoc/withLoading';
 
 const cx = classNames.bind(styles);
 
-export default class EatDealDetailView extends Component {
+class EatDealDetailView extends Component {
   render() {
     const { eatDealDetail } = this.props;
     if (Object.keys(eatDealDetail).length > 0) {
@@ -94,7 +95,10 @@ export default class EatDealDetailView extends Component {
             </div>
           </article>
         )}
+        <button className={cx('action-button')}>구매하기</button>
       </>
     );
   }
 }
+
+export default withLoading(EatDealDetailView);

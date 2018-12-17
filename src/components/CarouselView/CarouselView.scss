@@ -1,3 +1,5 @@
+@import '../../commons.scss';
+
 .carouselWindow {
   width: 100%;
   height: 100%;
@@ -6,27 +8,32 @@
   .carousel.carousel-slider {
     height: calc(100% - 100px);
     border-radius: 5px 0 0 0;
-    position: relative;
 
     & .control-prev {
+      position: fixed;
+      left: 0;
+
       &::before {
         border: 0;
         background-image: url('../../commonimgs/mangoplate_sprites_desktop.png');
         background-position: -935px -281px;
         width: 28px;
         height: 45px;
-        opacity: 0.8;
+        opacity: .8;
       }
     }
 
     & .control-next {
+      position: fixed;
+      right: 0;
+
       &::before {
         border: 0;
         background-image: url('../../commonimgs/mangoplate_sprites_desktop.png');
         background-position: -935px -332px;
         width: 28px;
         height: 45px;
-        opacity: 0.8;
+        opacity: .8;
       }
     }
 
@@ -46,65 +53,95 @@
             width: 100%;
             height: 100%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            background-color: #fff;
-            position: relative;
+            padding: 30px 30px 0 30px;
 
             .carouselImages {
-              width: 650px;
-              height: 800px;
+              width: auto;
+              height: auto;
+              max-height: 100%;
+              padding-right: 30px;
+              margin: 0 auto;
+              object-fit: cover;
             }
 
-            h1 {
-              position: absolute;
-              top: 0;
-              right: 18%;
-              font-size: 1.5rem;
-              transform: translateY(15px);
-              color: #ff792a;
-            }
+            .reviewContent {
+              position: relative;
+              width: 335px;
+              height: 100%;
+              background-color: #fff;
 
-            h3 {
-              position: absolute;
-              top: 18%;
-              right: 33.5%;
-              font-size: 2rem;
-            }
+              .name {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 33px;
+                font-size: 1.3rem;
+                border-bottom: 1px solid #f2f2f2;
+              }
 
-            .profilePic {
-              position: absolute;
-              top: 7%;
-              right: 32%;
-              display: inline-block;
-              border-radius: 50%;
-              width: 50px;
-              height: 50px;
-              text-align: center;
-            }
+              .reviewBody {
+                position: relative;
+                margin: 10px 15px;
+                display: flex;
+                flex-wrap: wrap;
 
-            .evalFace {
-              position: absolute;
-              width: 55px;
-              height: 55px;
-              top: 30px;
-              right: 20px;
-            }
+                .profileArea {
+                  width: 50%;
+                  display: inline-flex;
+                  justify-content: flex-start;
+                  align-items: center;
 
-            .evalText {
-              position: absolute;
-              top: 100px;
-              right: 22px;
-              width: 50px;
-              font-size: 1.5rem;
-              color: #ff792a;
-            }
+                  .profilePic {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                  }
 
-            p {
-              background: #fff;
-              width: 50%;
-              font-size: 2rem;
-              line-height: 120%;
+                  .author {
+                    margin-left: 10px;
+                    font-size: 1.3rem;
+                  }
+                }
+
+                .ratingArea {
+                  width: 50%;
+                  height: auto;
+                  display: inline-flex;
+                  flex-direction: column;
+                  align-items: flex-end;
+
+                  .evalFace {
+                    width: 40px;
+                    height: 30px;
+                  }
+
+                  .evalText {
+                    width: 40px;
+                    text-align: center;
+                    font-size: 1.2rem;
+                    line-height: 1.5;
+                    color: $main-color;
+                  }
+                }
+
+                .carouselContent {
+                  margin-top: 20px;
+                  font-size: 1.35rem;
+                  font-weight: 400;
+                  word-break: break-all;
+                  white-space: normal;
+                  text-align: left;
+                  line-height: 1.5;
+                  overflow-y: auto;
+                  max-height: 150px;
+                  color: rgba(51, 51, 51, 0.8);
+                }
+
+              }
             }
           }
         }
@@ -114,12 +151,13 @@
 
   .carousel {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     justify-content: center;
 
     .thumb {
       border: 0;
+      height: 80px;
       margin-right: 3px;
       position: relative;
 
@@ -128,7 +166,12 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, .5);
+      }
+
+      .carouselImages {
+        height: 100%;
+        object-fit: cover;
       }
     }
 

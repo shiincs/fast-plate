@@ -7,9 +7,7 @@ export default class GalleryModal extends Component {
     this.state = {
       imagePath: [
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_recommend_active_face.svg',
-
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_ok_active_face.svg',
-
         'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/restaurant_not_recommend_active_face.svg',
       ],
     };
