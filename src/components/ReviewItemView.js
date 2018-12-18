@@ -3,11 +3,19 @@ import classNames from 'classnames/bind';
 import styles from './ReviewItemView.module.scss';
 import withLoading from '../hoc/withLoading';
 import reviewUserImg from '../commonimgs/reviewUser.png';
+import { withModal } from '../contexts/ModalContext';
+import GalleryModal from '../containers/GalleryModal';
 const cx = classNames.bind(styles);
 
 class ReviewItemView extends Component {
   render() {
-    const { container } = this.props;
+    const {
+      container,
+      galleryOpen,
+      showTargetElement,
+      post_set,
+      restaurants,
+    } = this.props;
 
     return (
       <>
@@ -18,7 +26,6 @@ class ReviewItemView extends Component {
           } else {
             imageSrc = reviewUserImg;
           }
-
           return (
             // console.log(r.image)
             <div key={r.pk} className={cx('reveiw-content')}>
@@ -33,7 +40,11 @@ class ReviewItemView extends Component {
                 <div className={cx('review')}>{r.content}</div>
                 <div className={cx('list-thumb-photos')}>
                   {r.postimage_posts.map(img => (
-                    <button className={cx('button-thumb')} key={img.pk}>
+                    <button
+                      className={cx('button-thumb')}
+                      key={img.pk}
+                      onClick={() => showTargetElement('galleryOpen')}
+                    >
                       <img src={img.image} alt={img.pk} />
                     </button>
                   ))}
@@ -59,9 +70,12 @@ class ReviewItemView extends Component {
             </div>
           );
         })}
+        {galleryOpen ? (
+          <GalleryModal post_set={post_set} restaurants={restaurants} />
+        ) : null}
       </>
     );
   }
 }
 
-export default withLoading(ReviewItemView);
+export default withLoading(withModal(ReviewItemView));

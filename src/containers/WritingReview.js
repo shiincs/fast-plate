@@ -179,10 +179,14 @@ export default class WritingReview extends Component {
   //   // await api.post(`/api/restaurants/list/${reviewId}`);
   //   console.log('upload');
   // }
+  // async fileUploadHandler(reviewId) {
+  //   // const {reviewId} = this.props;
+  //   await api.post(`/api/restaurants/list/${reviewId}`{});
+  // }
 
   render() {
     const { restaurants, reviewId } = this.props;
-    const { reviewSend } = this.state;
+    const { reviewSend, restaurantsPk } = this.state;
 
     if (reviewSend) {
       return <Redirect to={`/restaurant/${reviewId}`} />;
@@ -192,6 +196,7 @@ export default class WritingReview extends Component {
       <React.Fragment>
         <WritingReviewView
           {...this.state}
+          restaurantsPk={restaurantsPk}
           toggleGoodOpen={this.toggleGoodOpen}
           toggleOkOpen={this.toggleOkOpen}
           toggleNotGoodOpen={this.toggleNotGoodOpen}
@@ -202,6 +207,7 @@ export default class WritingReview extends Component {
           postReview={() => this.postReview()}
           fileSeletedHandler={this.fileSeletedHandler}
           handleDeleteImg={index => this.handleDeleteImg(index)}
+          fileUploadHandler={() => this.fileUploadHandler()}
         />
       </React.Fragment>
     );

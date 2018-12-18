@@ -25,7 +25,7 @@ export default class WritingReviewView extends Component {
       uploadImgArr,
       handleDeleteImg,
       fileSeletedHandler,
-      // fileUploadHandler,
+      fileUploadHandler,
     } = this.props;
 
     if (cancel) {
@@ -100,6 +100,7 @@ export default class WritingReviewView extends Component {
                   onClick={event => {
                     event.target.value = null;
                   }}
+                  onClick={restaurantsPk => fileUploadHandler(restaurantsPk)}
                 />
                 <button
                   onClick={() => this.fileInput.click()}
