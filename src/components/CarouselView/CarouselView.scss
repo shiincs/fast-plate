@@ -4,10 +4,12 @@
   width: 100%;
   height: 100%;
   background-color: #000;
+  padding-top: 35px;
+  padding-bottom: 20px;
 
   .carousel.carousel-slider {
     height: calc(100% - 100px);
-    border-radius: 5px 0 0 0;
+    // border-radius: 5px 0 0 0;
 
     & .control-prev {
       position: fixed;
@@ -19,7 +21,7 @@
         background-position: -935px -281px;
         width: 28px;
         height: 45px;
-        opacity: .8;
+        opacity: 0.8;
       }
     }
 
@@ -33,7 +35,7 @@
         background-position: -935px -332px;
         width: 28px;
         height: 45px;
-        opacity: .8;
+        opacity: 0.8;
       }
     }
 
@@ -55,31 +57,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 30px 0 30px;
 
             .carouselImages {
-              width: auto;
-              height: auto;
-              max-width: 60%;
-              max-height: 100%;
-              padding-right: 30px;
-              margin: 0 auto;
+              width: 74%;
+              position: absolute;
+              height: 100%;
               object-fit: cover;
             }
 
             .reviewContent {
-              position: relative;
+              position: absolute;
               width: 335px;
               height: 100%;
               background-color: #fff;
+              right: 0;
+              bottom: 0;
 
               .name {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
                 width: 100%;
-                height: 33px;
-                font-size: 1.3rem;
+                height: 40px;
+                color: #444;
+                font-size: 1.6rem;
                 border-bottom: 1px solid #f2f2f2;
               }
 
@@ -96,15 +97,15 @@
                   align-items: center;
 
                   .profilePic {
-                    width: 40px;
-                    height: 40px;
+                    width: 44px;
+                    height: 44px;
                     border-radius: 50%;
                     object-fit: cover;
                   }
 
                   .author {
                     margin-left: 10px;
-                    font-size: 1.3rem;
+                    font-size: 1.4rem;
                   }
                 }
 
@@ -123,7 +124,7 @@
                   .evalText {
                     width: 40px;
                     text-align: center;
-                    font-size: 1.2rem;
+                    font-size: 1.3rem;
                     line-height: 1.5;
                     color: $main-color;
                   }
@@ -141,7 +142,6 @@
                   max-height: 150px;
                   color: rgba(51, 51, 51, 0.8);
                 }
-
               }
             }
           }
@@ -167,7 +167,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, .5);
+        background-color: rgba(0, 0, 0, 0.5);
       }
 
       .carouselImages {
