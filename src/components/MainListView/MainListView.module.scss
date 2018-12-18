@@ -7,6 +7,7 @@
   color: #ff792a;
   text-align: center;
   margin: 0 70px;
+
   & h2 {
     text-align: left;
     margin-left: 20px;
@@ -31,7 +32,7 @@
     position: relative;
     color: #fff;
     display: inline-block;
-    min-width: 416px;
+    max-width: 416px;
     // width: 30%;
     margin-left: 14.5px;
     margin-right: 14.5px;
