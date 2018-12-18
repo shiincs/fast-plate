@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import { Redirect } from 'react-router-dom';
 import styles from './WritingReviewView.module.scss';
+import { withUser } from '../contexts/UserContext';
 const cx = classNames.bind(styles);
 
-export default class WritingReviewView extends Component {
+class WritingReviewView extends Component {
   render() {
     const {
+      username,
+      picture,
       goodOpen,
       okOpen,
       notGoodOpen,
@@ -73,8 +76,8 @@ export default class WritingReviewView extends Component {
           </div>
           <div className={cx('ReviewWritingPage__ContentWrap')}>
             <div className={cx('UserSimpleProfile')}>
-              <img src="" alt="" />
-              <span className={cx('username')}>Jominji</span>
+              <img src={picture} alt={username} />
+              <span className={cx('username')}>{username}</span>
             </div>
             <div className={cx('ReviewWritingPage__FormWrap')}>
               <div className={cx('ReviewWritingPage__EditorWrap')}>
@@ -83,7 +86,7 @@ export default class WritingReviewView extends Component {
                   maxLength="10000"
                   value={reviewTextBox}
                   required
-                  placeholder="Jominji님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!"
+                  placeholder={`${username}님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!`}
                   onChange={handleWordCount}
                   onClick={buttonActive}
                 />
@@ -148,3 +151,5 @@ export default class WritingReviewView extends Component {
     );
   }
 }
+
+export default withUser(WritingReviewView);
