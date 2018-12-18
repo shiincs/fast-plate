@@ -1,9 +1,9 @@
 @import '../../commons.scss';
 
-<<<<<<< HEAD .restaurants-list-wrap {
+.restaurants-list-wrap {
   margin: 20px 90px;
 
-  =======a {
+  a {
     display: block;
   }
 
@@ -12,7 +12,7 @@
     margin-top: 30px;
     border-top: 1px solid #dbdbdb;
 
-    >>>>>>>c2d2400b2b900d94ba0d7a3faa9e3c91927b7c70 @include mobile {
+    @include mobile {
       margin: 0 15px;
     }
 
@@ -90,3 +90,4 @@
       }
     }
   }
+}
