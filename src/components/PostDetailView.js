@@ -128,8 +128,12 @@ class PostDetailView extends Component {
                   <button
                     className={wannaGoColor}
                     onClick={() => {
-                      handleCount(restaurants.pk, restaurants.want_num);
-                      handleWannaGo();
+                      if (username) {
+                        handleCount(restaurants.pk, restaurants.want_num);
+                        handleWannaGo();
+                      } else {
+                        showTargetElement('popupOpen');
+                      }
                     }}
                   >
                     <span>가고싶다</span>
