@@ -1,9 +1,8 @@
 @import '../../commons.scss';
 
 .restaurants-list-wrap {
-  padding: 36px 90px;
-  margin-top: 30px;
-  border-top: 1px solid #dbdbdb;
+  position: relative;
+  padding: 500px 90px 0 90px;
 
   @include mobile {
     margin: 0 15px;
