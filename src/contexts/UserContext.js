@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../api';
+import { Redirect } from 'react-router-dom';
 
 const { Provider, Consumer } = React.createContext();
 
@@ -10,32 +11,62 @@ class UserProvider extends Component {
       id: null,
       username: null,
       picture: null,
+      initialLogin: false,
       login: this.login,
-      logout: () => {},
+      logout: this.logout,
       responseFacebook: this.responseFacebook,
-      componentClicked: this.componentClicked,
+      refreshUser: this.refreshUser,
     };
   }
 
-  componentDidMount() {
-    // 현재 유저 정보를 확인해서 setState 해준다.
-    // localStorage.getItem('token')
-    // this.setState({
-    //   id: 1,
-    //   username: 'user1',
-    // });
+  async componentDidMount() {
+    const pk = localStorage.getItem('currentUserPK');
+    localStorage.getItem('token') && pk && (await this.refreshUser(pk));
   }
 
   login = async response => {
-    console.log(response);
-    const res = await api.post('/auth-token/facebook/', {
+    const res = await api.post('/api/members/auth-token/facebook/', {
       access_token: response.accessToken,
       facebook_user_id: response.userId,
     });
-    console.log(res);
+
+    localStorage.setItem('token', res.data.token);
+    localStorage.setItem('currentUserPK', res.data.user.pk);
+
+    this.setState(prev => ({
+      id: res.data.user.pk,
+      username: res.data.user.full_name,
+      picture: res.data.user.img_profile,
+      initialLogin: !prev.initialLogin,
+    }));
+  };
+
+  refreshUser = async pk => {
+    const { data } = await api.get(`/api/members/list/${pk}`);
+    console.log(data);
+    // 현재 유저 정보를 확인해서 setState 해준다.
+    this.setState({
+      id: data.pk,
+      username: data.full_name,
+      picture: data.img_profile,
+    });
+  };
+
+  logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('currentUserPK');
+    this.setState(prev => ({
+      id: null,
+      username: null,
+      picture: null,
+      initialLogin: !prev.initialLogin,
+    }));
   };
 
   render() {
+    if (this.state.initialLogin) {
+      return <Redirect to="/" />;
+    }
     return <Provider value={this.state}>{this.props.children}</Provider>;
   }
 }
