@@ -38,7 +38,7 @@ class MypageView extends Component {
       hideTargetElement,
       username,
     } = this.props;
-
+    console.log(recentView);
     return (
       <React.Fragment>
         <div

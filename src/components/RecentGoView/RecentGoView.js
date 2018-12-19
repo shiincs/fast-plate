@@ -18,6 +18,7 @@ function RecentGoView(props) {
     showTargetElement,
     hideTargetElement,
   } = props;
+  console.log(item);
   return (
     <li key={item.pk} className={cx('RecentGo')}>
       <figure className={cx('RecentGoItem')}>
@@ -28,7 +29,6 @@ function RecentGoView(props) {
           }}
         >
           <img
-            // src={item.menuimage_res[0]}
             src={item.imgUrl ? item.imgUrl : defaultListItem}
             alt={item.name}
             className={cx('thumb')}

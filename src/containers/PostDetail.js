@@ -58,7 +58,7 @@ export default class PostDetail extends Component {
       imgUrl: this.state.post_set.find(item => item.postimage_posts.length > 0)
         ? this.state.post_set
             .find(item => item.postimage_posts.length > 0)
-            .postimage_posts.map(item => item.image)
+            .postimage_posts.map(item => item.image)[0]
             .toString()
         : null,
     };
