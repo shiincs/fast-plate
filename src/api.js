@@ -10,7 +10,9 @@ api.interceptors.request.use(function(config) {
   //   config.headers = config.headers || {};
   //   config.headers['Authorization'] = 'Bearer ' + token;
   // }
+
   const token = 'YWRtaW4tZmU6ZGplbWFsc2Zl';
+  // const token = localStorage.getItem('token');
   if (token) {
     config.headers = config.headers || {};
     config.headers['Authorization'] = 'Basic ' + token;

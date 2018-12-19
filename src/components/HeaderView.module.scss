@@ -97,7 +97,8 @@ $color: #555;
 
           &.logined {
             border: 2px solid $main-color;
-            background-image: none;
+            background-position: center;
+            background-size: cover;
           }
         }
       }

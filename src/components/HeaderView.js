@@ -41,6 +41,7 @@ class HeaderView extends Component {
     const {
       main,
       username,
+      picture,
       modalOpen,
       showTargetElement,
       handleClick,
@@ -102,6 +103,7 @@ class HeaderView extends Component {
                 {username ? (
                   <button
                     className={cx('myPage', 'logined')}
+                    style={{ backgroundImage: `url(${picture})` }}
                     onClick={() => {
                       !modalOpen && showTargetElement('modalOpen');
                     }}

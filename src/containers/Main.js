@@ -45,8 +45,8 @@ class Main extends Component {
     return (
       <main>
         <MainHeroView />
-        <MainListView />
         <RateListView restaurantList={restaurantList} />
+        <MainListView />
       </main>
     );
   }
