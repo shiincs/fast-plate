@@ -44,6 +44,7 @@ class HeaderView extends Component {
       modalOpen,
       showTargetElement,
       handleClick,
+      picture,
       ...rest
     } = this.props;
     const { scroll } = this.state;
@@ -102,6 +103,7 @@ class HeaderView extends Component {
                 {username ? (
                   <button
                     className={cx('myPage', 'logined')}
+                    style={{ backgroundImage: `url(${picture})` }}
                     onClick={() => {
                       !modalOpen && showTargetElement('modalOpen');
                     }}
