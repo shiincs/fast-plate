@@ -1,7 +1,6 @@
 @import '../commons.scss';
 
 .reveiw-content {
-  margin-top: 14px;
   border-bottom: 1px solid #dbdbdb;
 
   &:hover {
@@ -10,7 +9,7 @@
 
   display: flex;
   justify-content: space-between;
-  padding: 40px 1% 52px;
+  padding: 54px 1% 52px;
   min-height: 74px;
 
   @include mobile {
