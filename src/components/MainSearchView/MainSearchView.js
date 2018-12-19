@@ -45,8 +45,6 @@ class MainSearchView extends Component {
   render() {
     const { main } = this.props;
     if (this.state.search) {
-      console.log('헤더 사라짐');
-
       return <Redirect to={`/search?keyword=${this.state.value}&page=1`} />;
     }
 

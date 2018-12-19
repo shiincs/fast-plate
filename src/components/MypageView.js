@@ -26,6 +26,7 @@ class MypageView extends Component {
 
   render() {
     const {
+      logout,
       handleRecentReset,
       recentView,
       modalOpen,
@@ -83,6 +84,7 @@ class MypageView extends Component {
                       recentView.map((item, index) => (
                         <RecentGo
                           key={index}
+                          showTargetElement={showTargetElement}
                           hideTargetElement={hideTargetElement}
                           // recentView={recentView}
                           item={item}

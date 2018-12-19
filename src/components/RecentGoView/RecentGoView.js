@@ -3,10 +3,21 @@ import classNames from 'classnames/bind';
 import styles from './RecentGoView.module.scss';
 import { Link } from 'react-router-dom';
 import defaultListItem from '../../commonimgs/defaultListItem.jpg';
+import { withUser } from '../../contexts/UserContext';
+import { withModal } from '../../contexts/ModalContext';
+import LoginPopupView from '../LoginPopupView';
 const cx = classNames.bind(styles);
 
-export default function RecentGoView(props) {
-  const { item, wannago, handleWannagoBtn, hideTargetElement } = props;
+function RecentGoView(props) {
+  const {
+    popupOpen,
+    username,
+    item,
+    wannago,
+    handleWannagoBtn,
+    showTargetElement,
+    hideTargetElement,
+  } = props;
   return (
     <li key={item.pk} className={cx('RecentGo')}>
       <figure className={cx('RecentGoItem')}>
@@ -42,11 +53,16 @@ export default function RecentGoView(props) {
         </figcaption>
         <div
           className={cx('wannagoBtn', { active: wannago })}
-          onClick={handleWannagoBtn}
+          onClick={() => {
+            username ? handleWannagoBtn() : showTargetElement('popupOpen');
+          }}
         >
           가고싶다
         </div>
       </figure>
+      {popupOpen ? <LoginPopupView /> : null}
     </li>
   );
 }
+
+export default withUser(withModal(RecentGoView));

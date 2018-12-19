@@ -8,6 +8,8 @@ const cx = classNames.bind(styles);
 class WritingReviewView extends Component {
   render() {
     const {
+      username,
+      picture,
       goodOpen,
       okOpen,
       notGoodOpen,
@@ -102,6 +104,7 @@ class WritingReviewView extends Component {
                   onClick={event => {
                     event.target.value = null;
                   }}
+                  onClick={restaurantsPk => fileUploadHandler(restaurantsPk)}
                 />
                 <button
                   onClick={() => this.fileInput.click()}

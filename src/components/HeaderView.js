@@ -41,6 +41,7 @@ class HeaderView extends Component {
     const {
       main,
       username,
+      picture,
       modalOpen,
       showTargetElement,
       handleClick,

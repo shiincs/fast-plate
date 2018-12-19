@@ -9,32 +9,13 @@ import api from '../api';
 const cx = classNames.bind(styles);
 
 class FacebookLoginView extends Component {
-  // state = {
-  //   isLoggedIn: false,
-  //   userID: '',
-  //   name: '',
-  //   email: '',
-  //   picture: '',
-  // };
-
-  // responseFacebook = response => {
-  //   console.log(response);
-  //   this.setState({
-  //     isLoggedIn: true,
-  //     userID: response.userID,
-  //     name: response.name,
-  //     email: response.email,
-  //     picture: response.picture.data.url,
-  //   });
-  // };
-
   render() {
     const { login } = this.props;
 
     return (
       <FacebookLogin
         appId={process.env.REACT_APP_FACEBOOK_KEY}
-        autoLoad={true}
+        autoLoad={false}
         fields="name,email,picture"
         callback={login}
         render={renderProps => (

@@ -57,6 +57,7 @@ class PostDetailView extends Component {
       showTargetElement,
       post_set,
       restaurants,
+      restaurantId,
       handleCount,
       wannaGo,
       handleWannaGo,
@@ -66,7 +67,6 @@ class PostDetailView extends Component {
       allReview,
       handleStarOn,
     } = this.props;
-
     // 상세 페이지 상단 이미지 바 출력을 위한 변수 선언
     // const imgSet = post_set
     //   .filter(item => item.postimage_posts.length > 0)
@@ -130,9 +130,12 @@ class PostDetailView extends Component {
                   <button
                     className={wannaGoColor}
                     onClick={() => {
-                      handleCount(restaurants.pk, restaurants.want_num);
-                      handleWannaGo();
-                      handleStarOn();
+                      if (username) {
+                        handleCount(restaurants.pk, restaurants.want_num);
+                        handleWannaGo();
+                      } else {
+                        showTargetElement('popupOpen');
+                      }
                     }}
                   >
                     <span>가고싶다</span>
@@ -167,6 +170,8 @@ class PostDetailView extends Component {
               handleReviewfilter={n => handleReviewfilter(n)}
               container={container}
               allReview={allReview}
+              galleryOpen={galleryOpen}
+              restaurants={restaurants}
             />
           </div>
           <div className="map">
