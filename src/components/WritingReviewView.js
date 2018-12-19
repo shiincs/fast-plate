@@ -29,7 +29,7 @@ class WritingReviewView extends Component {
       reviewTextBox,
       handleCancel,
       cancel,
-      // postReview,
+      postReview,
       uploadImgArr,
       handleSubmit,
       handleFileChange,
@@ -151,9 +151,9 @@ class WritingReviewView extends Component {
                   ReviewWritingPage__SubmitButton_InActive: !reviewTextBox,
                 }
               )}
-              disabled={!reviewTextBox}
-              // onClick={postReview}
-              onClick={() => handleSubmit()}
+              // disabled={!reviewTextBox}
+              onClick={postReview}
+              // onClick={() => handleSubmit()}
             >
               완료
             </button>

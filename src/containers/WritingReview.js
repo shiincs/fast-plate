@@ -45,6 +45,7 @@ export default class WritingReview extends Component {
       chars_left: 10000 - input.length,
       reviewTextBox: e.target.value,
     });
+    console.log(this.state.reviewTextBox);
   }
 
   buttonActive = () => {
@@ -97,7 +98,7 @@ export default class WritingReview extends Component {
     if (!goodOpen && !okOpen && !notGoodOpen) {
       alert('평가해 주세요');
     } else {
-      await api.post(`/api/posts/list/`, {
+      const res = await api.post(`/api/posts/list/`, {
         restaurant: reviewId,
         content: reviewTextBox,
         rate,
@@ -110,18 +111,43 @@ export default class WritingReview extends Component {
   }
 
   async handleSubmit() {
-    const { reviewTextBox, uploadImgArr } = this.state;
+    const { restaurantsPk, rate, reviewTextBox, uploadImgArr } = this.state;
+    console.log(restaurantsPk, rate, reviewTextBox);
+    try {
+      const res = await api.post('/api/posts/list/', {
+        restaurant: restaurantsPk,
+        content: reviewTextBox,
+        rate,
+      });
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+
     // FormData는 key-value 저장소로서,
     // POST 요청에 담아 보낼 수 있습니다.
     // 가장 큰 특징은 **파일을 담을 수 있다**는 것입니다.
-    const formData = new FormData();
-    formData.append('reviewTextBox', reviewTextBox);
-    uploadImgArr.forErach((f, index) => {
-      formData.append(`file${index}`, f);
-    });
-    const res = await api.post('/api/posts/image/', FormData);
-    // 콘솔에서 출력된 결과를 확인해보세요.
-    console.log(res.data);
+
+    // const formData = new FormData();
+    // formData.append('reviewTextBox', reviewTextBox);
+    // uploadImgArr.forErach((f, index) => {
+    //   formData.append(`file${index}`, f);
+    // });
+    // const res = await api.post('/api/posts/image/', FormData);
+    // // 콘솔에서 출력된 결과를 확인해보세요.
+    // console.log(res.data);
+
+    // const form = new FormData();
+
+    // form.append('image', 이미지 파일);
+    // form.append('pk', 댓글PK);
+    // try {
+    //   api.post('/api/posts/image/', form, {
+    //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //   });
+    // } catch (e) {
+    //   console.log(e);
+    // }
   }
 
   toggleGoodOpen = () => {
