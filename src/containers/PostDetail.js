@@ -87,7 +87,6 @@ class PostDetail extends Component {
     const { restaurantId } = this.props;
     console.log(restaurantId);
     const res = await api.post(`/api/restaurants/list/wannago/`, {
-      Authentication: 'YWRtaW4tZmU6ZGplbWFsc2Zl',
       restaurant: parseInt(restaurantId),
     });
     console.log(res);

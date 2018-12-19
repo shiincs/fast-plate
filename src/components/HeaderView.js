@@ -45,7 +45,6 @@ class HeaderView extends Component {
       modalOpen,
       showTargetElement,
       handleClick,
-      picture,
       ...rest
     } = this.props;
     const { scroll } = this.state;

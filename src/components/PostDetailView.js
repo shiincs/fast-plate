@@ -9,6 +9,7 @@ import GalleryModal from '../containers/GalleryModal';
 import ReviewList from '../containers/ReviewList';
 import { withUser } from '../contexts/UserContext';
 import LoginPopupView from './LoginPopupView';
+import { withWannago } from '../contexts/WannagoContext';
 
 class PostDetailView extends Component {
   constructor(props) {
@@ -51,6 +52,8 @@ class PostDetailView extends Component {
 
   render() {
     const {
+      handleActive,
+      wannagoActive,
       username,
       galleryOpen,
       popupOpen,
@@ -67,22 +70,13 @@ class PostDetailView extends Component {
       allReview,
       handleStarOn,
     } = this.props;
-    // 상세 페이지 상단 이미지 바 출력을 위한 변수 선언
-    // const imgSet = post_set
-    //   .filter(item => item.postimage_posts.length > 0)
-    //   .map(item =>
-    //     item.postimage_posts.map(item => item.image).find(item => item)
-    //   );
 
-    // const imgSet = post_set
-    //   .filter(item => item.postimage_posts.length > 0)
-    //   .map(item => item.postimage_posts.find(item => item));
+    // 상세 페이지 상단 이미지 바 출력을 위한 변수 선언
     const imgSet = post_set
       .filter(item => item.postimage_posts.length > 0)
       .map(item => item.postimage_posts);
-    console.log('imgSet', imgSet);
+
     const imgList = imgSet[0].slice(0, 4);
-    console.log('imgList', imgList);
 
     const { writingReviewPage } = this.state;
 
@@ -90,7 +84,8 @@ class PostDetailView extends Component {
       return <Redirect to={`/restaurantsReview/${restaurants.pk}`} />;
     }
 
-    const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
+    // const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
+    const wannaGoColor = wannagoActive ? 'wannaGoOn' : 'wannaGoOff';
 
     return (
       <React.Fragment>
@@ -136,7 +131,8 @@ class PostDetailView extends Component {
                     onClick={() => {
                       if (username) {
                         handleCount(restaurants.pk, restaurants.want_num);
-                        handleWannaGo();
+                        handleActive();
+                        handleStarOn();
                       } else {
                         showTargetElement('popupOpen');
                       }
@@ -191,7 +187,7 @@ class PostDetailView extends Component {
   }
 }
 
-export default withUser(withLoading(withModal(PostDetailView)));
+export default withUser(withLoading(withModal(withWannago(PostDetailView))));
 
 // {
 //   detailpics.map((pic, index) => (

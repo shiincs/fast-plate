@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PostDetail from '../containers/PostDetail';
 import { withPage } from '../contexts/PageContext';
+import { WannagoProvier, withWannago } from '../contexts/WannagoContext';
 
 class PostDetailPage extends Component {
   componentDidMount() {
@@ -17,17 +18,18 @@ class PostDetailPage extends Component {
 
   render() {
     // match는 App에서 라우트 path에 변수 :rKeyword에 담긴 정보들
-    const { match } = this.props;
-    const { location } = this.props;
+    const { match, location } = this.props;
 
     const restaurantId = match.params.rKeyword;
     return (
       <React.Fragment>
-        <PostDetail
-          key={restaurantId}
-          restaurantId={restaurantId}
-          location={location}
-        />
+        <WannagoProvier>
+          <PostDetail
+            key={restaurantId}
+            restaurantId={restaurantId}
+            location={location}
+          />
+        </WannagoProvier>
       </React.Fragment>
     );
   }

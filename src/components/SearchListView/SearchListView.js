@@ -30,12 +30,6 @@ export default class SearchListView extends Component {
 
   render() {
     const { restaurants, count } = this.props;
-    const imgUrl = restaurants.map(item => item.imgUrl);
-    // console.log(
-    //   imgUrl
-    //     .map(item => item.find(item => Object.keys(item).length > 1))
-    //     .map(item => item[0].image)
-    // );
 
     return (
       <React.Fragment>

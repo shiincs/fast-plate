@@ -37,7 +37,6 @@ class MypageView extends Component {
       showTargetElement,
       hideTargetElement,
       username,
-      logout,
     } = this.props;
     console.log(recentView);
     return (
