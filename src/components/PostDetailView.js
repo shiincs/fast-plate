@@ -52,6 +52,7 @@ class PostDetailView extends Component {
 
   render() {
     const {
+      handleToggle,
       handleActive,
       wannagoActive,
       username,
@@ -132,7 +133,8 @@ class PostDetailView extends Component {
                       if (username) {
                         handleCount(restaurants.pk, restaurants.want_num);
                         handleActive();
-                        handleStarOn();
+                        // handleStarOn();
+                        handleToggle(wannagoActive);
                       } else {
                         showTargetElement('popupOpen');
                       }

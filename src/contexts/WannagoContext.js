@@ -11,6 +11,8 @@ class WannagoProvier extends Component {
       wannagoSet: [],
       wannagoActive: false,
       handleActive: this.handleActive,
+      handleCount: this.handleCount,
+      handleToggle: this.handleToggle,
     };
   }
 
@@ -30,7 +32,9 @@ class WannagoProvier extends Component {
     // 현재 보고있는 레스토랑이 wannago_set에서 몇번째 pk인지
     const currentPk = data.wannago_set.find(
       item => item.restaurant === restaurantId
-    ).pk;
+    )
+      ? data.wannago_set.find(item => item.restaurant === restaurantId).pk
+      : null;
 
     // pk 상태 저장
     this.setState({
@@ -45,11 +49,11 @@ class WannagoProvier extends Component {
     }
   }
 
-  async handleCount(pk, num) {
+  handleCount = async (pk, num) => {
     await api.patch(`/api/restaurants/list/${pk}`, {
       want_num: num + 1,
     });
-  }
+  };
 
   handleActive = () => {
     this.setState(prev => ({
@@ -57,18 +61,18 @@ class WannagoProvier extends Component {
     }));
   };
 
-  async handleToggle(active) {
+  handleToggle = async active => {
     const restaurantId = parseInt(this.props.children.props.restaurantId);
-
     if (active) {
+      const res2 = await api.delete(
+        `/api/restaurants/list/wannago/${this.state.currentPk}`
+      );
+    } else {
       const res = await api.post(`/api/restaurants/list/wannago/`, {
         restaurant: restaurantId,
       });
-      console.log(res);
-    } else {
-      const res2 = await api.delete(`/api/restaurants/list/wannago/`);
     }
-  }
+  };
 
   render() {
     return <Provider value={this.state}>{this.props.children}</Provider>;
