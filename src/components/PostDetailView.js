@@ -65,6 +65,7 @@ class PostDetailView extends Component {
       handleReviewfilter,
       container,
       allReview,
+      handleStarOn,
     } = this.props;
     // 상세 페이지 상단 이미지 바 출력을 위한 변수 선언
     // const imgSet = post_set

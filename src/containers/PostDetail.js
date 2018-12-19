@@ -4,8 +4,9 @@ import PostDetailView from '../components/PostDetailView';
 import { setRecentView } from '../setLocalStorage';
 import ModalProvider from '../contexts/ModalContext';
 import { Helmet } from 'react-helmet';
+import { withUser } from '../contexts/UserContext';
 
-export default class PostDetail extends Component {
+class PostDetail extends Component {
   /* 
     여기에서 식당리스트 정보를 서버에서 받아와서 상태를 관리한다.
     SearchView(PC)에 내려주고,
@@ -82,6 +83,16 @@ export default class PostDetail extends Component {
     });
   }
 
+  async handleStarOn() {
+    const { restaurantId } = this.props;
+    console.log(restaurantId);
+    const res = await api.post(`/api/restaurants/list/wannago/`, {
+      Authentication: 'YWRtaW4tZmU6ZGplbWFsc2Zl',
+      restaurant: parseInt(restaurantId),
+    });
+    console.log(res);
+  }
+
   allReview = () => {
     const { post_set } = this.state;
     this.setState({
@@ -129,6 +140,7 @@ export default class PostDetail extends Component {
             handleRating={() => this.handleRating()}
             location={location}
             handleReviewfilter={n => this.handleReviewfilter(n)}
+            handleStarOn={() => this.handleStarOn()}
             container={container}
             allReview={this.allReview}
           />
@@ -137,3 +149,5 @@ export default class PostDetail extends Component {
     );
   }
 }
+
+export default withUser(PostDetail);
