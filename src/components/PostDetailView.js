@@ -52,6 +52,7 @@ class PostDetailView extends Component {
 
   render() {
     const {
+      handleMyPage,
       handleToggle,
       handleActive,
       wannagoActive,
@@ -61,15 +62,11 @@ class PostDetailView extends Component {
       showTargetElement,
       post_set,
       restaurants,
-      restaurantId,
       handleCount,
-      wannaGo,
-      handleWannaGo,
       location,
       handleReviewfilter,
       container,
       allReview,
-      handleStarOn,
     } = this.props;
 
     // 상세 페이지 상단 이미지 바 출력을 위한 변수 선언
@@ -87,7 +84,10 @@ class PostDetailView extends Component {
 
     // const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
     const wannaGoColor = wannagoActive ? 'wannaGoOn' : 'wannaGoOff';
-
+    const arrSet = [];
+    JSON.parse(localStorage.getItem('recent')).map(item =>
+      arrSet.push(item.pk)
+    );
     return (
       <React.Fragment>
         <div className="photo-list">
@@ -135,6 +135,7 @@ class PostDetailView extends Component {
                         handleActive();
                         // handleStarOn();
                         handleToggle(wannagoActive);
+                        handleMyPage(arrSet);
                       } else {
                         showTargetElement('popupOpen');
                       }

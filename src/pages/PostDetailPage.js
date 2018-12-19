@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PostDetail from '../containers/PostDetail';
 import { withPage } from '../contexts/PageContext';
-import { WannagoProvier, withWannago } from '../contexts/WannagoContext';
+import { WannagoProvider, withWannago } from '../contexts/WannagoContext';
 
 class PostDetailPage extends Component {
   componentDidMount() {
@@ -23,13 +23,13 @@ class PostDetailPage extends Component {
     const restaurantId = match.params.rKeyword;
     return (
       <React.Fragment>
-        <WannagoProvier>
+        <WannagoProvider>
           <PostDetail
             key={restaurantId}
             restaurantId={restaurantId}
             location={location}
           />
-        </WannagoProvier>
+        </WannagoProvider>
       </React.Fragment>
     );
   }
