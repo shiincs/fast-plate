@@ -65,6 +65,7 @@ class PostDetailView extends Component {
       handleReviewfilter,
       container,
       allReview,
+      handleStarOn,
     } = this.props;
     // 상세 페이지 상단 이미지 바 출력을 위한 변수 선언
     // const imgSet = post_set
@@ -73,11 +74,15 @@ class PostDetailView extends Component {
     //     item.postimage_posts.map(item => item.image).find(item => item)
     //   );
 
+    // const imgSet = post_set
+    //   .filter(item => item.postimage_posts.length > 0)
+    //   .map(item => item.postimage_posts.find(item => item));
     const imgSet = post_set
       .filter(item => item.postimage_posts.length > 0)
-      .map(item => item.postimage_posts.find(item => item));
-
-    const imgList = imgSet.slice(0, 4);
+      .map(item => item.postimage_posts);
+    console.log('imgSet', imgSet);
+    const imgList = imgSet[0].slice(0, 4);
+    console.log('imgList', imgList);
 
     const { writingReviewPage } = this.state;
 

@@ -21,7 +21,7 @@ export default function MapInfoView(props) {
                 ? defaultListItem
                 : selectedPlace.imgUrl
                     .find(item => item.length > 0)
-                    .map(item => item.image)
+                    .map(item => item.image)[0]
             }
             alt={selectedPlace.name}
             className={cx('thumb')}

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import styles from './FacebookLoginView.module.scss';
 import { withUser } from '../contexts/UserContext';
+import api from '../api';
 
 const cx = classNames.bind(styles);
 
