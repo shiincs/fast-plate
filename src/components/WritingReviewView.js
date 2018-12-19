@@ -3,9 +3,14 @@ import classNames from 'classnames/bind';
 import { Redirect } from 'react-router-dom';
 import styles from './WritingReviewView.module.scss';
 import { withUser } from '../contexts/UserContext';
+
 const cx = classNames.bind(styles);
 
 class WritingReviewView extends Component {
+  constructor(props) {
+    super(props);
+    this.inputRef = React.createRef();
+  }
   render() {
     const {
       username,
@@ -24,11 +29,10 @@ class WritingReviewView extends Component {
       reviewTextBox,
       handleCancel,
       cancel,
-      postReview,
+      // postReview,
       uploadImgArr,
-      handleDeleteImg,
-      fileSeletedHandler,
-      fileUploadHandler,
+      handleSubmit,
+      handleFileChange,
     } = this.props;
 
     if (cancel) {
@@ -96,22 +100,25 @@ class WritingReviewView extends Component {
               </div>
               <div className={cx('DraggablePictureContainer')}>
                 <input
+                  //숨김 input='file'
                   style={{ display: 'none' }}
                   type="file"
-                  onChange={fileSeletedHandler}
-                  ref={fileInput => (this.fileInput = fileInput)}
-                  onClick={event => {
-                    event.target.value = null;
-                  }}
-                  onClick={restaurantsPk => fileUploadHandler(restaurantsPk)}
+                  accept="image/*"
+                  multiple
+                  ref={this.inputRef}
+                  onChange={e => handleFileChange(e)}
+                  // onClick={event => {
+                  //   event.target.value = null;
+                  // }}
+                  // onClick={restaurantsPk => fileUploadHandler(restaurantsPk)}
                 />
                 <button
-                  onClick={() => this.fileInput.click()}
+                  onClick={() => this.inputRef.current.click()}
                   className={cx('DraggablePictureContainer__PictureList')}
                 >
                   +
                 </button>
-                {uploadImgArr.map((img, index) => (
+                {/* {uploadImgArr.map((img, index) => (
                   <>
                     <img
                       src={img}
@@ -121,6 +128,9 @@ class WritingReviewView extends Component {
                     />
                     <p className={cx('img_description')}>X</p>
                   </>
+                ))} */}
+                {uploadImgArr.map((f, index) => (
+                  <ImagePreview file={f} key={index} />
                 ))}
               </div>
             </div>
@@ -142,7 +152,8 @@ class WritingReviewView extends Component {
                 }
               )}
               disabled={!reviewTextBox}
-              onClick={postReview}
+              // onClick={postReview}
+              onClick={() => handleSubmit()}
             >
               완료
             </button>
@@ -150,6 +161,39 @@ class WritingReviewView extends Component {
         </section>
       </React.Fragment>
     );
+  }
+}
+
+class ImagePreview extends React.Component {
+  static defaultProps = {
+    // File 객체
+    file: null,
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      imageSrc: null,
+    };
+  }
+
+  componentDidMount() {
+    const { file } = this.props;
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      this.setState({
+        imageSrc: reader.result,
+      });
+    });
+    reader.readAsDataURL(file);
+  }
+
+  render() {
+    const { file } = this.state;
+    const { imageSrc } = this.state;
+    const alt = file ? file.name : '';
+    return <img style={{ width: '100px' }} src={imageSrc} alt={alt} />;
   }
 }
 
