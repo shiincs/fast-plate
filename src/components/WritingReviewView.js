@@ -35,8 +35,6 @@ class WritingReviewView extends Component {
       handleFileChange,
       handleDeleteImg,
       fileSeletedHandler,
-      username,
-      picture,
     } = this.props;
 
     if (cancel) {
