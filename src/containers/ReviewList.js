@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReviewListView from '../components/ReviewListView';
 export default class ReviewList extends Component {
   render() {
-    const { post_set, ...rest } = this.props;
+    const { post_set, galleryOpen, restaurants, ...rest } = this.props;
     const reviewList = post_set.map(r => ({
       content: r.content,
       username: r.author.username,
@@ -11,7 +11,13 @@ export default class ReviewList extends Component {
 
     return (
       <React.Fragment>
-        <ReviewListView reviewList={reviewList} {...rest} />
+        <ReviewListView
+          galleryOpen={galleryOpen}
+          reviewList={reviewList}
+          post_set={post_set}
+          restaurants={restaurants}
+          {...rest}
+        />
       </React.Fragment>
     );
   }

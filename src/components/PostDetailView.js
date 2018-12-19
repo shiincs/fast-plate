@@ -57,6 +57,7 @@ class PostDetailView extends Component {
       showTargetElement,
       post_set,
       restaurants,
+      restaurantId,
       handleCount,
       wannaGo,
       handleWannaGo,
@@ -168,6 +169,8 @@ class PostDetailView extends Component {
               handleReviewfilter={n => handleReviewfilter(n)}
               container={container}
               allReview={allReview}
+              galleryOpen={galleryOpen}
+              restaurants={restaurants}
             />
           </div>
           <div className="map">

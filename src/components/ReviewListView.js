@@ -19,7 +19,7 @@ export default class ReviewListView extends Component {
     });
   }
   render() {
-    const { handleReviewfilter, container } = this.props;
+    const { handleReviewfilter, container, post_set, restaurants } = this.props;
     const { maincolor } = this.state;
     // console.log(location);
     // const p = new URLSearchParams(location.search);
@@ -73,7 +73,11 @@ export default class ReviewListView extends Component {
             </li>
           </ul>
         </div>
-        <ReviewItemView container={container} />
+        <ReviewItemView
+          container={container}
+          post_set={post_set}
+          restaurants={restaurants}
+        />
         <button className={cx('review-more-btn')}>더보기</button>
       </React.Fragment>
     );
