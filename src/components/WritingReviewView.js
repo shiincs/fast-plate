@@ -28,7 +28,8 @@ class WritingReviewView extends Component {
       uploadImgArr,
       handleDeleteImg,
       fileSeletedHandler,
-      fileUploadHandler,
+      username,
+      picture,
     } = this.props;
 
     if (cancel) {
@@ -76,7 +77,7 @@ class WritingReviewView extends Component {
           </div>
           <div className={cx('ReviewWritingPage__ContentWrap')}>
             <div className={cx('UserSimpleProfile')}>
-              <img src={picture} alt={username} />
+              <img src={picture} alt="profilePicture" />
               <span className={cx('username')}>{username}</span>
             </div>
             <div className={cx('ReviewWritingPage__FormWrap')}>
