@@ -24,7 +24,7 @@ class SearchPage extends Component {
     return (
       <React.Fragment>
         <SearchContext.Provider value={keyword}>
-          <Search key={[keyword, page]} page={page} />
+          <Search key={[keyword, page]} page={page} keyword={keyword} />
         </SearchContext.Provider>
       </React.Fragment>
     );
