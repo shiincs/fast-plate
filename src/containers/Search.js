@@ -30,6 +30,7 @@ export default class Search extends Component {
       params: {
         page,
         search: keyword,
+        ordering: '-rate_average',
       },
     });
 

@@ -9,7 +9,7 @@ class UserProvider extends Component {
     super(props);
     this.state = {
       id: null,
-      username: 'dfs',
+      username: null,
       picture: null,
       redirect: false,
       login: this.login,

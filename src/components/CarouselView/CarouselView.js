@@ -17,57 +17,59 @@ export default function CarouselView(props) {
         showStatus={false}
         showIndicators={false}
       >
-        {validReview.map(item => (
-          <figure key={item.pk} className="imgWrapper">
-            <img
-              src={item.postimage_posts.map(element => element.image)}
-              alt="userPostedimages"
-              className="carouselImages"
-            />
-            <figcaption className="reviewContent">
-              <h1 className="name">{restaurants.name}</h1>
-              <div className="reviewBody">
-                <div className="profileArea">
-                  <img
-                    src={
-                      item.author.img_profile
-                        ? item.author.img_profile
-                        : defaultListItem
-                    }
-                    alt="profileImage"
-                    className="profilePic"
-                  />
-                  <h3 className="author">{item.author.username}</h3>
-                </div>
-                <div className="ratingArea">
-                  <img
-                    src={
-                      item.rate === 5
-                        ? imagePath[0]
+        {validReview.map(item =>
+          item.postimage_posts.map(imgs => (
+            <figure key={item.pk} className="imgWrapper">
+              <img
+                src={imgs.image}
+                alt="userPostedimages"
+                className="carouselImages"
+              />
+              <figcaption className="reviewContent">
+                <h1 className="name">{restaurants.name}</h1>
+                <div className="reviewBody">
+                  <div className="profileArea">
+                    <img
+                      src={
+                        item.author.img_profile
+                          ? item.author.img_profile
+                          : defaultListItem
+                      }
+                      alt="profileImage"
+                      className="profilePic"
+                    />
+                    <h3 className="author">{item.author.username}</h3>
+                  </div>
+                  <div className="ratingArea">
+                    <img
+                      src={
+                        item.rate === 5
+                          ? imagePath[0]
+                          : item.rate === 3
+                          ? imagePath[1]
+                          : item.rate === 1
+                          ? imagePath[2]
+                          : null
+                      }
+                      alt="eval-face-icon"
+                      className={'evalFace'}
+                    />
+                    <p className={'evalText'}>
+                      {item.rate === 5
+                        ? '맛있다'
                         : item.rate === 3
-                        ? imagePath[1]
+                        ? '괜찮다'
                         : item.rate === 1
-                        ? imagePath[2]
-                        : null
-                    }
-                    alt="eval-face-icon"
-                    className={'evalFace'}
-                  />
-                  <p className={'evalText'}>
-                    {item.rate === 5
-                      ? '맛있다'
-                      : item.rate === 3
-                      ? '괜찮다'
-                      : item.rate === 1
-                      ? '별로'
-                      : null}
-                  </p>
+                        ? '별로'
+                        : null}
+                    </p>
+                  </div>
+                  <p className="carouselContent">{item.content}</p>
                 </div>
-                <p className="carouselContent">{item.content}</p>
-              </div>
-            </figcaption>
-          </figure>
-        ))}
+              </figcaption>
+            </figure>
+          ))
+        )}
       </Carousel>
     </React.Fragment>
   );
