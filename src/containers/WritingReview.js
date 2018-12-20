@@ -103,17 +103,19 @@ export default class WritingReview extends Component {
           content: reviewTextBox,
           rate,
         });
-        console.log(cpk);
+
         const formData = new FormData();
         // console.log(uploadImgArr[0])
-        formData.append('image', uploadImgArr[0]);
-        formData.append('pk', cpk);
-        console.log(formData.get('pk'));
+        // formData.append('image', uploadImgArr[0]);
 
-        const res2 = await api.post('/api/posts/image/', formData, {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        });
-        console.log(res2);
+        formData.append('post', cpk);
+
+        for (const image of uploadImgArr) {
+          formData.append(`image`, image);
+          await api.post('/api/posts/image/', formData, {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          });
+        }
       } catch (e) {
         console.log(e);
       }
