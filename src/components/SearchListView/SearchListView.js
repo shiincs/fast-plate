@@ -53,57 +53,64 @@ export default class SearchListView extends Component {
 
                   <div className={cx('listSection')}>
                     <ul className={cx('listRestaurants')}>
-                      {restaurants.map(r => (
-                        <li key={r.id} className={cx('listItem')}>
-                          <figure className={cx('itemFigure')}>
-                            <div className={cx('thumbWrapper')}>
-                              <Link
-                                className={cx('thumbLink')}
-                                to={`/restaurant/${r.id}`}
-                              >
-                                <img
-                                  className={cx('thumbImage')}
-                                  src={
-                                    r.imgUrl.length === 0
-                                      ? defaultListItem
-                                      : r.imgUrl.map(item =>
-                                          item.find(
-                                            item => Object.keys(item).length > 1
-                                          )
-                                        )[0].image
-                                  }
-                                  alt={r.name}
-                                />
-                              </Link>
-                            </div>
-                            <figcaption className={cx('info')}>
-                              <Link to={`/restaurant/${r.id}`}>
-                                <h2 className={cx('name')}>{r.name}</h2>
-                              </Link>
-                              <span className={cx('score')}>
-                                {parseFloat(r.score).toFixed(1)}
-                              </span>
-                              <p className={cx('etcInfo')}>
-                                <span className={cx('location')}>
-                                  {r.location.slice(0, 8)} -
+                      {restaurants.map(r => {
+                        return (
+                          <li key={r.id} className={cx('listItem')}>
+                            <figure className={cx('itemFigure')}>
+                              <div className={cx('thumbWrapper')}>
+                                <Link
+                                  className={cx('thumbLink')}
+                                  to={`/restaurant/${r.id}`}
+                                >
+                                  <img
+                                    className={cx('thumbImage')}
+                                    src={
+                                      !r.imgUrl.map(item =>
+                                        item.find(
+                                          item => Object.keys(item).length > 1
+                                        )
+                                      )[0]
+                                        ? defaultListItem
+                                        : r.imgUrl.map(item =>
+                                            item.find(
+                                              item =>
+                                                Object.keys(item).length > 1
+                                            )
+                                          )[0].image
+                                    }
+                                    alt={r.name}
+                                  />
+                                </Link>
+                              </div>
+                              <figcaption className={cx('info')}>
+                                <Link to={`/restaurant/${r.id}`}>
+                                  <h2 className={cx('name')}>{r.name}</h2>
+                                </Link>
+                                <span className={cx('score')}>
+                                  {parseFloat(r.score).toFixed(1)}
                                 </span>
-                                <span className={cx('type')}>
-                                  {' '}
-                                  {r.foodType}
-                                </span>
-                              </p>
-                              <p className={cx('countInfo')}>
-                                <span className={cx('viewCount')}>
-                                  {r.viewCount}
-                                </span>
-                                <span className={cx('reviewCount')}>
-                                  {r.reviewCount}
-                                </span>
-                              </p>
-                            </figcaption>
-                          </figure>
-                        </li>
-                      ))}
+                                <p className={cx('etcInfo')}>
+                                  <span className={cx('location')}>
+                                    {r.location.slice(0, 8)} -
+                                  </span>
+                                  <span className={cx('type')}>
+                                    {' '}
+                                    {r.foodType}
+                                  </span>
+                                </p>
+                                <p className={cx('countInfo')}>
+                                  <span className={cx('viewCount')}>
+                                    {r.viewCount}
+                                  </span>
+                                  <span className={cx('reviewCount')}>
+                                    {r.reviewCount}
+                                  </span>
+                                </p>
+                              </figcaption>
+                            </figure>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeaderView from '../components/HeaderView';
 import ModalProvider from '../contexts/ModalContext';
+import { WannagoProvider } from '../contexts/WannagoContext';
 
 export default class Header extends Component {
   constructor(props) {
@@ -24,11 +25,13 @@ export default class Header extends Component {
     return (
       <React.Fragment>
         <ModalProvider>
-          <HeaderView
-            {...this.state}
-            handleClick={this.handleClick}
-            key={keyword}
-          />
+          <WannagoProvider>
+            <HeaderView
+              {...this.state}
+              handleClick={this.handleClick}
+              key={keyword}
+            />
+          </WannagoProvider>
         </ModalProvider>
       </React.Fragment>
     );
