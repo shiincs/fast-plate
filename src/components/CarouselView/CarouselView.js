@@ -38,7 +38,7 @@ export default function CarouselView(props) {
                       alt="profileImage"
                       className="profilePic"
                     />
-                    <h3 className="author">{item.author.username}</h3>
+                    <h3 className="author">{item.author.full_name}</h3>
                   </div>
                   <div className="ratingArea">
                     <img

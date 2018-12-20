@@ -71,7 +71,7 @@ export default class WritingReview extends Component {
   }
   handleFileChange(e) {
     e.persist();
-    console.log(e.target.files);
+    // console.log(e.target.files);
     if (e.target.files) {
       this.setState(prevState => ({
         uploadImgArr: [...prevState.uploadImgArr, ...e.target.files],
@@ -80,54 +80,65 @@ export default class WritingReview extends Component {
   }
   async postReview() {
     const {
+      restaurantsPk,
       goodOpen,
       okOpen,
       notGoodOpen,
       reviewTextBox,
+      uploadImgArr,
       rate,
       // uploadImgArr,
     } = this.state;
-    const { reviewId } = this.props;
-
-    // const FormData = new FormData();
-    // formData.append('content', content);
-    // uploadImgArr.forEach((f, index) => {
-    //   FormData.append(`file${index}`, f);
-    // });
+    console.log(restaurantsPk, rate, reviewTextBox);
+    // const { reviewId } = this.props;
 
     if (!goodOpen && !okOpen && !notGoodOpen) {
       alert('평가해 주세요');
     } else {
-      const res = await api.post(`/api/posts/list/`, {
-        restaurant: reviewId,
-        content: reviewTextBox,
-        rate,
-      });
+      try {
+        const {
+          data: { pk: cpk },
+        } = await api.post(`/api/posts/list/`, {
+          restaurant: restaurantsPk,
+          content: reviewTextBox,
+          rate,
+        });
+        console.log(cpk);
+        const formData = new FormData();
+        // console.log(uploadImgArr[0])
+        formData.append('image', uploadImgArr[0]);
+        formData.append('pk', cpk);
+        console.log(formData.get('pk'));
+
+        const res2 = await api.post('/api/posts/image/', formData, {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        });
+        console.log(res2);
+      } catch (e) {
+        console.log(e);
+      }
+
       this.setState(prev => ({
         reviewSend: !prev.reviewSend,
       }));
-      // await api.post('/api/posts/image/', FormData);
     }
   }
 
   async handleSubmit() {
-    const { restaurantsPk, rate, reviewTextBox, uploadImgArr } = this.state;
-    console.log(restaurantsPk, rate, reviewTextBox);
-    try {
-      const res = await api.post('/api/posts/list/', {
-        restaurant: restaurantsPk,
-        content: reviewTextBox,
-        rate,
-      });
-      console.log(res);
-    } catch (e) {
-      console.log(e);
-    }
-
+    // const { restaurantsPk, rate, reviewTextBox, uploadImgArr } = this.state;
+    // try {
+    // const res = await api.post('/api/posts/list/', {
+    //   restaurant: restaurantsPk,
+    //   content: reviewTextBox,
+    //   rate,
+    // });
+    //   console.log(res);
+    // } catch (e) {
+    //   console.log(e);
+    // }
     // FormData는 key-value 저장소로서,
     // POST 요청에 담아 보낼 수 있습니다.
     // 가장 큰 특징은 **파일을 담을 수 있다**는 것입니다.
-
     // const formData = new FormData();
     // formData.append('reviewTextBox', reviewTextBox);
     // uploadImgArr.forErach((f, index) => {
@@ -136,9 +147,7 @@ export default class WritingReview extends Component {
     // const res = await api.post('/api/posts/image/', FormData);
     // // 콘솔에서 출력된 결과를 확인해보세요.
     // console.log(res.data);
-
     // const form = new FormData();
-
     // form.append('image', 이미지 파일);
     // form.append('pk', 댓글PK);
     // try {
