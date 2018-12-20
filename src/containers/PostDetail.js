@@ -19,7 +19,7 @@ class PostDetail extends Component {
       want_num: 0,
       restaurants: {},
       // comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
-      wannaGo: false,
+      // wannaGo: false,
       post_set: [],
       container: [],
       loading: true,
@@ -56,6 +56,7 @@ class PostDetail extends Component {
       address,
       food_type,
       rate_average,
+      want_num,
       imgUrl: this.state.post_set.find(item => item.postimage_posts.length > 0)
         ? this.state.post_set
             .find(item => item.postimage_posts.length > 0)
@@ -75,22 +76,22 @@ class PostDetail extends Component {
     });
   }
 
-  handleWannaGo() {
-    this.setState(prevState => {
-      return {
-        wannaGo: !prevState.wannaGo,
-      };
-    });
-  }
+  // handleWannaGo() {
+  //   this.setState(prevState => {
+  //     return {
+  //       wannaGo: !prevState.wannaGo,
+  //     };
+  //   });
+  // }
 
-  async handleStarOn() {
-    const { restaurantId } = this.props;
-    console.log(restaurantId);
-    const res = await api.post(`/api/restaurants/list/wannago/`, {
-      restaurant: parseInt(restaurantId),
-    });
-    console.log(res);
-  }
+  // async handleStarOn() {
+  //   const { restaurantId } = this.props;
+  //   console.log(restaurantId);
+  //   const res = await api.post(`/api/restaurants/list/wannago/`, {
+  //     restaurant: parseInt(restaurantId),
+  //   });
+  //   console.log(res);
+  // }
 
   allReview = () => {
     const { post_set } = this.state;

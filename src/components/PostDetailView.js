@@ -52,6 +52,11 @@ class PostDetailView extends Component {
 
   render() {
     const {
+      wannagoPk,
+      currentPk,
+      handleCurrentPk,
+      wannagoSet,
+      handleMyPage,
       handleToggle,
       handleActive,
       wannagoActive,
@@ -61,15 +66,11 @@ class PostDetailView extends Component {
       showTargetElement,
       post_set,
       restaurants,
-      restaurantId,
       handleCount,
-      wannaGo,
-      handleWannaGo,
       location,
       handleReviewfilter,
       container,
       allReview,
-      handleStarOn,
     } = this.props;
 
     // 상세 페이지 상단 이미지 바 출력을 위한 변수 선언
@@ -133,8 +134,8 @@ class PostDetailView extends Component {
                       if (username) {
                         handleCount(restaurants.pk, restaurants.want_num);
                         handleActive();
-                        // handleStarOn();
-                        handleToggle(wannagoActive);
+                        handleCurrentPk(restaurants.pk);
+                        handleToggle(wannagoActive, restaurants.pk);
                       } else {
                         showTargetElement('popupOpen');
                       }

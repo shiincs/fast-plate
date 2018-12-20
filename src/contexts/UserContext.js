@@ -21,7 +21,9 @@ class UserProvider extends Component {
 
   async componentDidMount() {
     const pk = localStorage.getItem('currentUserPK');
-    localStorage.getItem('token') && pk && (await this.refreshUser(pk));
+    const token = localStorage.getItem('token');
+
+    token && pk && (await this.refreshUser(pk));
   }
 
   login = async response => {

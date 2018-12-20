@@ -6,6 +6,7 @@ import { withUser } from '../contexts/UserContext';
 import { withModal } from '../contexts/ModalContext';
 import LoginPopupView from './LoginPopupView';
 import RecentGo from '../containers/RecentGo';
+import { withWannago } from '../contexts/WannagoContext';
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,8 @@ class MypageView extends Component {
   componentDidMount() {
     this.targetElement = LoginPopupView;
   }
+
+  componentDidUpdate() {}
 
   componentWillUnmount() {
     // 5. Useful if we have called disableBodyScroll for multiple target elements,
@@ -26,6 +29,11 @@ class MypageView extends Component {
 
   render() {
     const {
+      handleCurrentPk,
+      handleActive,
+      handleCount,
+      handleToggle,
+      wannagoSet,
       logout,
       handleRecentReset,
       recentView,
@@ -38,7 +46,8 @@ class MypageView extends Component {
       hideTargetElement,
       username,
     } = this.props;
-    console.log(recentView);
+    // console.log(recentView.map(item => item.pk));
+
     return (
       <React.Fragment>
         <div
@@ -80,15 +89,23 @@ class MypageView extends Component {
                   </button>
                   <ul className={cx('recentView')}>
                     {recentView &&
-                      recentView.map((item, index) => (
-                        <RecentGo
-                          key={index}
-                          showTargetElement={showTargetElement}
-                          hideTargetElement={hideTargetElement}
-                          // recentView={recentView}
-                          item={item}
-                        />
-                      ))}
+                      recentView.map((item, index) => {
+                        return (
+                          <RecentGo
+                            key={index}
+                            showTargetElement={showTargetElement}
+                            hideTargetElement={hideTargetElement}
+                            item={item}
+                            myPageWannago={wannagoSet
+                              .map(item => item.restaurant)
+                              .includes(item.pk)}
+                            handleCurrentPk={handleCurrentPk}
+                            handleActive={handleActive}
+                            handleCount={handleCount}
+                            handleToggle={handleToggle}
+                          />
+                        );
+                      })}
                   </ul>
                 </React.Fragment>
               )}
@@ -127,4 +144,4 @@ class MypageView extends Component {
   }
 }
 
-export default withUser(withModal(MypageView));
+export default withUser(withModal(withWannago(MypageView)));
