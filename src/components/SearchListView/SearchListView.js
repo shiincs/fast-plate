@@ -70,7 +70,8 @@ export default class SearchListView extends Component {
                                           item.find(
                                             item => Object.keys(item).length > 1
                                           )
-                                        )[0].image
+                                        )[0]
+                                    // .image
                                   }
                                   alt={r.name}
                                 />

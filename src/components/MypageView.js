@@ -29,8 +29,11 @@ class MypageView extends Component {
 
   render() {
     const {
-      myPageSet,
-      handleMyPage,
+      handleCurrentPk,
+      handleActive,
+      handleCount,
+      handleToggle,
+      wannagoSet,
       logout,
       handleRecentReset,
       recentView,
@@ -44,12 +47,7 @@ class MypageView extends Component {
       username,
     } = this.props;
     // console.log(recentView.map(item => item.pk));
-    if (recentView.length > 0) {
-      const arrSet = [];
-      recentView.map(item => arrSet.push(item.pk));
-      handleMyPage(arrSet);
-    }
-    // console.log(myPageSet);
+
     return (
       <React.Fragment>
         <div
@@ -97,9 +95,14 @@ class MypageView extends Component {
                             key={index}
                             showTargetElement={showTargetElement}
                             hideTargetElement={hideTargetElement}
-                            // recentView={recentView}
                             item={item}
-                            myPageWannago={myPageSet && myPageSet[index]}
+                            myPageWannago={wannagoSet
+                              .map(item => item.restaurant)
+                              .includes(item.pk)}
+                            handleCurrentPk={handleCurrentPk}
+                            handleActive={handleActive}
+                            handleCount={handleCount}
+                            handleToggle={handleToggle}
                           />
                         );
                       })}

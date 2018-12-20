@@ -12,10 +12,12 @@ const cx = classNames.bind(styles);
 class RecentGoView extends Component {
   render() {
     const {
+      wannagoActive,
       myPageWannago,
-      // handleActive,
-      // handleCount,
-      // handleToggle,
+      handleCurrentPk,
+      handleActive,
+      handleCount,
+      handleToggle,
       popupOpen,
       username,
       item,
@@ -23,8 +25,6 @@ class RecentGoView extends Component {
       showTargetElement,
       hideTargetElement,
     } = this.props;
-    // console.log(item);
-    // console.log(this.props.wannagoActive);
 
     return (
       <li key={item.pk} className={cx('RecentGo')}>
@@ -63,7 +63,14 @@ class RecentGoView extends Component {
           <div
             className={cx('wannagoBtn', { active: myPageWannago })}
             onClick={() => {
-              username ? handleWannagoBtn() : showTargetElement('popupOpen');
+              if (username) {
+                handleCount(item.pk, item.want_num);
+                handleActive();
+                handleCurrentPk(item.pk);
+                handleToggle(myPageWannago, item.pk);
+              } else {
+                showTargetElement('popupOpen');
+              }
             }}
           >
             가고싶다
@@ -75,4 +82,4 @@ class RecentGoView extends Component {
   }
 }
 
-export default withUser(withModal(withWannago(RecentGoView)));
+export default withUser(withModal(RecentGoView));

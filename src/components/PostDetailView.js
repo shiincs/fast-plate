@@ -52,6 +52,10 @@ class PostDetailView extends Component {
 
   render() {
     const {
+      wannagoPk,
+      currentPk,
+      handleCurrentPk,
+      wannagoSet,
       handleMyPage,
       handleToggle,
       handleActive,
@@ -84,10 +88,7 @@ class PostDetailView extends Component {
 
     // const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
     const wannaGoColor = wannagoActive ? 'wannaGoOn' : 'wannaGoOff';
-    const arrSet = [];
-    JSON.parse(localStorage.getItem('recent')).map(item =>
-      arrSet.push(item.pk)
-    );
+
     return (
       <React.Fragment>
         <div className="photo-list">
@@ -133,9 +134,8 @@ class PostDetailView extends Component {
                       if (username) {
                         handleCount(restaurants.pk, restaurants.want_num);
                         handleActive();
-                        // handleStarOn();
-                        handleToggle(wannagoActive);
-                        handleMyPage(arrSet);
+                        handleCurrentPk(restaurants.pk);
+                        handleToggle(wannagoActive, restaurants.pk);
                       } else {
                         showTargetElement('popupOpen');
                       }
