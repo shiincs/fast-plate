@@ -54,11 +54,6 @@ export default class SearchListView extends Component {
                   <div className={cx('listSection')}>
                     <ul className={cx('listRestaurants')}>
                       {restaurants.map(r => {
-                        console.log(
-                          r.imgUrl.map(item =>
-                            item.find(item => Object.keys(item).length > 1)
-                          )[0]
-                        );
                         return (
                           <li key={r.id} className={cx('listItem')}>
                             <figure className={cx('itemFigure')}>
