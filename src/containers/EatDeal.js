@@ -14,7 +14,6 @@ export default class EatDeal extends Component {
   }
   async componentDidMount() {
     const res = await api.get('/api/eatdeals/list/');
-    // console.log(res.data.results);
     this.setState({
       eatDeal: [...res.data.results],
       loading: false,

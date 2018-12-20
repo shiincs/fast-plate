@@ -28,12 +28,6 @@ class PostDetailView extends Component {
     });
   }
 
-  // async handleWritingReviewPage() {
-  //   this.setState({
-  //     writingReviewPage: true,
-  //   });
-  // }
-
   static defaultProps = {
     // 서버로부터 받아온 레스토랑 목록 데이터
     // PostDetail에서 받아온 레스토랑 더미 사진 목록
@@ -52,11 +46,7 @@ class PostDetailView extends Component {
 
   render() {
     const {
-      wannagoPk,
-      currentPk,
       handleCurrentPk,
-      wannagoSet,
-      handleMyPage,
       handleToggle,
       handleActive,
       wannagoActive,
@@ -86,7 +76,6 @@ class PostDetailView extends Component {
       return <Redirect to={`/restaurantsReview/${restaurants.pk}`} />;
     }
 
-    // const wannaGoColor = wannaGo ? 'wannaGoOn' : 'wannaGoOff';
     const wannaGoColor = wannagoActive ? 'wannaGoOn' : 'wannaGoOff';
 
     return (
@@ -145,11 +134,6 @@ class PostDetailView extends Component {
                   </button>
                 </div>
               </div>
-              {/* <div className="status">
-                <span className="hit">{restaurants.view_num}</span>
-                <span className="review">{restaurants.review_num}</span>
-                <span className="favorite">{restaurants.want_num}</span>
-              </div> */}
             </header>
             <div>
               <dl className="detail-list">
@@ -191,67 +175,3 @@ class PostDetailView extends Component {
 }
 
 export default withUser(withLoading(withModal(withWannago(PostDetailView))));
-
-// {
-//   detailpics.map((pic, index) => (
-//     <div key={index} className="photo-item">
-//       {/* 레스토랑 디테일 정보 사진들 */}
-//       <img
-//         src={pic}
-//         alt="detailRestaurantpics"
-//         onClick={() => {
-//           !galleryOpen && showTargetElement('galleryOpen');
-//         }}
-//       />
-//     </div>
-//   ));
-// }
-
-// {
-//   /* 레스토랑 사진을 클릭하면 나오는 modal*/
-// }
-// {
-//   /* <Modal show={this.state.show} handleClose={() => this.hideModal()}>
-//             <div className="picCommentContainer">
-//               <img
-//                 src={this.state.currentModalPic}
-//                 alt="restuarantDetailPicsWithComments"
-//               />
-//               <div className="commentBox">
-//                 <p>{this.state.currentModalComment}</p>
-//               </div>
-//             </div>
-//             <CarouselView />
-//           </Modal> */
-// }
-
-// onClick={() => this.showModal(index)}
-
-// const Modal = ({ handleClose, show, children }) => {
-//   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
-//   return (
-//     <div className={showHideClassName}>
-//       <section className="modal-main">
-//         {children}
-//         <button onClick={handleClose}>CLOSE</button>
-//       </section>
-//     </div>
-//   );
-// };
-
-// showModal(index) {
-//   const { detailpics, comments } = this.props;
-//   this.setState({
-//     show: true,
-//     currentModalPic: detailpics[index],
-//     currentModalComment: comments[index],
-//   });
-//   document.body.style.overflow = 'hidden';
-// }
-
-// hideModal() {
-//   this.setState({
-//     show: false,
-//   });
-//   document.body.style.overflow = 'scroll';
-// }

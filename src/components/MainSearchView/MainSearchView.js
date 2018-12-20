@@ -54,9 +54,7 @@ class MainSearchView extends Component {
           <form className={cx('mainSearch')}>
             <fieldset>
               <legend>맛집검색</legend>
-              <span className={cx('magnifyIcon')}>
-                {/* <img src={magnifying} alt="magnifyingIcon" /> */}
-              </span>
+              <span className={cx('magnifyIcon')} />
               <input
                 type="text"
                 value={this.state.value}

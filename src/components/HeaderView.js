@@ -68,10 +68,6 @@ class HeaderView extends Component {
               />
             </Link>
             {!main && <MainSearchView />}
-            {/* <form className={cx('searchBox', { hide: main })}>
-              <span className={cx('searchIcon')} />
-              <input type="text" placeholder="지역, 식당 또는 음식" />
-            </form> */}
           </div>
           <nav className={cx('nav')}>
             <ul className={cx('navList')}>

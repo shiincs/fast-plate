@@ -31,10 +31,7 @@ class WritingReviewView extends Component {
       cancel,
       postReview,
       uploadImgArr,
-      handleSubmit,
       handleFileChange,
-      handleDeleteImg,
-      fileSeletedHandler,
     } = this.props;
 
     if (cancel) {
@@ -109,10 +106,6 @@ class WritingReviewView extends Component {
                   multiple
                   ref={this.inputRef}
                   onChange={e => handleFileChange(e)}
-                  // onClick={event => {
-                  //   event.target.value = null;
-                  // }}
-                  // onClick={restaurantsPk => fileUploadHandler(restaurantsPk)}
                 />
                 <button
                   onClick={() => this.inputRef.current.click()}
@@ -120,17 +113,6 @@ class WritingReviewView extends Component {
                 >
                   +
                 </button>
-                {/* {uploadImgArr.map((img, index) => (
-                  <>
-                    <img
-                      src={img}
-                      key={index}
-                      alt="uploaded-images"
-                      onClick={() => handleDeleteImg(index)}
-                    />
-                    <p className={cx('img_description')}>X</p>
-                  </>
-                ))} */}
                 {uploadImgArr.map((f, index) => (
                   <ImagePreview file={f} key={index} />
                 ))}
@@ -153,9 +135,7 @@ class WritingReviewView extends Component {
                   ReviewWritingPage__SubmitButton_InActive: !reviewTextBox,
                 }
               )}
-              // disabled={!reviewTextBox}
               onClick={postReview}
-              // onClick={() => handleSubmit()}
             >
               완료
             </button>

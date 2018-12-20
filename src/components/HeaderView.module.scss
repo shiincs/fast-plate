@@ -106,19 +106,9 @@ $color: #555;
   }
 }
 
-@include mobileVertical {
-  // header.transparent {
-  //   background: #fff;
-  //   box-shadow: 0 4px 11px rgba(0, 0, 0, 0);
-  // }
-}
+@include mobileVertical {}
 
-@include mobileHorizontal {
-  // header.transparent {
-  //   background: #fff;
-  //   box-shadow: 0 4px 11px rgba(0, 0, 0, 0);
-  // }
-}
+@include mobileHorizontal {}
 
 @include tablet {
   .header {
@@ -183,6 +173,7 @@ $color: #555;
 
     .nav {
       .navList {
+
         .navItem:nth-child(1),
         .navItem:nth-child(2),
         .navItem:nth-child(3) {

@@ -1,4 +1,3 @@
-// import FacebookLogin from 'react-facebook-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';

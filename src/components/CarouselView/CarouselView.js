@@ -6,7 +6,6 @@ import defaultListItem from '../../commonimgs/defaultListItem.jpg';
 // 필요한 내용 : 유저명, 날짜, 평가얼굴아이콘
 export default function CarouselView(props) {
   const { post_set, restaurants, imagePath } = props;
-  // console.log(post_set.filter(item => item.postimage_posts.length > 0));
   const validReview = post_set.filter(item => item.postimage_posts.length > 0);
   console.log(validReview[0].postimage_posts[0].image);
 

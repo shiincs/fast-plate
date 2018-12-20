@@ -26,7 +26,6 @@ class ReviewItemView extends Component {
             imageSrc = reviewUserImg;
           }
           return (
-            // console.log(r.image)
             <div key={r.pk} className={cx('reveiw-content')}>
               <figure>
                 <div className={cx('user-thumb')}>

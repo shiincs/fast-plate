@@ -18,8 +18,6 @@ class PostDetail extends Component {
       restaurantId: null,
       want_num: 0,
       restaurants: {},
-      // comments: ['인덱스1', '인덱스2', '인덱스3', '인덱스4'],
-      // wannaGo: false,
       post_set: [],
       container: [],
       loading: true,
@@ -40,6 +38,7 @@ class PostDetail extends Component {
       post_set: post_set,
       loading: false,
     });
+
     // 해당 레스토랑 정보를 localStorage에 저장 (최근 본 맛집에서 사용)
     // restaurants 에서 최근 본 맛집에 필요한 정보만 뽑아서 객체에 저장
     const {
@@ -75,23 +74,6 @@ class PostDetail extends Component {
       want_num: num + 1,
     });
   }
-
-  // handleWannaGo() {
-  //   this.setState(prevState => {
-  //     return {
-  //       wannaGo: !prevState.wannaGo,
-  //     };
-  //   });
-  // }
-
-  // async handleStarOn() {
-  //   const { restaurantId } = this.props;
-  //   console.log(restaurantId);
-  //   const res = await api.post(`/api/restaurants/list/wannago/`, {
-  //     restaurant: parseInt(restaurantId),
-  //   });
-  //   console.log(res);
-  // }
 
   allReview = () => {
     const { post_set } = this.state;

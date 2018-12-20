@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReviewItem from '../containers/ReviewItem';
 import classNames from 'classnames/bind';
 import styles from './ReviewListView.module.scss';
 import ReviewItemView from './ReviewItemView';
@@ -21,9 +20,6 @@ export default class ReviewListView extends Component {
   render() {
     const { handleReviewfilter, container, post_set, restaurants } = this.props;
     const { maincolor } = this.state;
-    // console.log(location);
-    // const p = new URLSearchParams(location.search);
-    // const category = p.get('category');
 
     return (
       <React.Fragment>

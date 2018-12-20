@@ -53,7 +53,6 @@
 
   & input {
     width: 34rem;
-    // height: 4.6rem;
     margin-top: 1px;
     height: calc(100% - 2px);
     margin-left: 3rem;
@@ -67,6 +66,7 @@
       left: 4rem;
     }
   }
+
   // input의 자동완성 배경색상 변화 방지
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -76,7 +76,6 @@
   }
 
   & button {
-    // height: 4rem;
     outline: none;
     cursor: pointer;
     height: 100%;
