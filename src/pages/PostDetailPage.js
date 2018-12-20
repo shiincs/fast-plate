@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PostDetail from '../containers/PostDetail';
 import { withPage } from '../contexts/PageContext';
-import { WannagoProvider, withWannago } from '../contexts/WannagoContext';
 
 class PostDetailPage extends Component {
   componentDidMount() {
