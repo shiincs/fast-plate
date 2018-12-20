@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import api from '../api';
 import { withPage } from './PageContext';
 import { withUser } from './UserContext';
+import { withRouter } from 'react-router-dom';
 
 const { Provider, Consumer } = React.createContext();
 
@@ -17,35 +18,25 @@ class WannagoProvider extends Component {
       handleCount: this.handleCount,
       handleToggle: this.handleToggle,
       handleCurrentPk: this.handleCurrentPk,
+      handleWannagoOpen: this.handleWannagoOpen,
     };
   }
 
   async componentDidMount() {
-    // 현재 보고있는 레스토랑의 pk를 가져온다.
-    const restaurantId = parseInt(this.props.children.props.restaurantId);
     // 현재 유저의 정보를 불러온다.
-    // const pk = localStorage.getItem('currentUserPK');
-    const { data } = await api.get(`/api/members/list/2`);
+    const pk = localStorage.getItem('currentUserPK');
+    const { data } = await api.get(`/api/members/list/${pk}`);
 
     this.setState({
       wannagoSet: data.wannago_set,
     });
 
-    // if (this.props.detail) {
-    //   // 현재 보고있는 레스토랑이 wannago_set에서 몇번째 pk인지
-    //   const wannagoPk = data.wannago_set.find(
-    //     item => item.restaurant === restaurantId
-    //   )
-    //     ? data.wannago_set.find(item => item.restaurant === restaurantId).pk
-    //     : null;
-
-    //   this.handleWannagoPk(wannagoPk);
-    // }
-
     // 현재 보고있는 레스토랑이 wannago_set에 있는 레스토랑이라면 true
+    const arr = this.props.location.pathname.split('');
+    arr.splice(0, 12);
     const isActive = data.wannago_set
       .map(item => item.restaurant)
-      .includes(restaurantId);
+      .includes(parseInt(arr.join('')));
 
     // 만약 현재 보고있는 레스토랑이 wannago_set에 있는 레스토랑이라면 wannagoActive 상태를 true로 바꿔준다.
     if (isActive) {
@@ -56,10 +47,12 @@ class WannagoProvider extends Component {
   }
 
   async componentDidUpdate() {
-    const { data } = await api.get(`/api/members/list/2`);
+    const pk = localStorage.getItem('currentUserPK');
+    const { data } = await api.get(`/api/members/list/${pk}`);
 
     // 현재 보고있는 레스토랑이 wannago_set에서 몇번째 pk인지
     const restaurantId = parseInt(this.props.children.props.restaurantId);
+
     const wannagoPk = data.wannago_set.find(item =>
       !this.state.currentPk
         ? item.restaurant === restaurantId
@@ -71,8 +64,7 @@ class WannagoProvider extends Component {
             : item.restaurant === this.state.currentPk
         ).pk
       : null;
-    console.log('stateWannago', this.state.wannagoPk);
-    console.log('Wannago', wannagoPk);
+
     // 현재 보고있는 레스토랑의 pk를 가져온다.
     if (this.state.wannagoPk !== wannagoPk) {
       this.handleWannagoPk(wannagoPk);
@@ -87,7 +79,6 @@ class WannagoProvider extends Component {
   };
 
   handleCurrentPk = pk => {
-    console.log(pk);
     // pk 상태 저장
     this.setState({
       currentPk: pk,
@@ -113,17 +104,19 @@ class WannagoProvider extends Component {
 
     if (active) {
       await api.delete(`/api/restaurants/list/wannago/${wannagoPk}`);
-      const { data } = await api.get(`/api/members/list/2`);
+      const currentUserpk = localStorage.getItem('currentUserPK');
+      const { data } = await api.get(`/api/members/list/${currentUserpk}`);
       this.setState({
-        wannagoSet: [...data.wannago_set],
+        wannagoSet: data.wannago_set,
       });
     } else {
       await api.post(`/api/restaurants/list/wannago/`, {
         restaurant: pk,
       });
-      const { data } = await api.get(`/api/members/list/2`);
+      const currentUserpk = localStorage.getItem('currentUserPK');
+      const { data } = await api.get(`/api/members/list/${currentUserpk}`);
       this.setState({
-        wannagoSet: [...data.wannago_set],
+        wannagoSet: data.wannago_set,
       });
     }
   };
@@ -141,7 +134,9 @@ function withWannago(WrappedComponent) {
   };
 }
 
-const withUserPageWannagoProvider = withUser(withPage(WannagoProvider));
+const withUserPageWannagoProvider = withUser(
+  withPage(withRouter(WannagoProvider))
+);
 export {
   withUserPageWannagoProvider as WannagoProvider,
   Consumer as WannagoConsumer,

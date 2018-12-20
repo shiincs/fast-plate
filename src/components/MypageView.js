@@ -7,6 +7,7 @@ import { withModal } from '../contexts/ModalContext';
 import LoginPopupView from './LoginPopupView';
 import RecentGo from '../containers/RecentGo';
 import { withWannago } from '../contexts/WannagoContext';
+import WannaGo from '../containers/WannaGo';
 
 const cx = classNames.bind(styles);
 
@@ -46,8 +47,6 @@ class MypageView extends Component {
       hideTargetElement,
       username,
     } = this.props;
-    // console.log(recentView.map(item => item.pk));
-
     return (
       <React.Fragment>
         <div
@@ -111,7 +110,21 @@ class MypageView extends Component {
               )}
               {wannagoOpen && (
                 <ul className={cx('wannago')}>
-                  <li>가고싶다</li>
+                  {wannagoSet.map((item, index) => {
+                    return (
+                      <WannaGo
+                        key={index}
+                        showTargetElement={showTargetElement}
+                        hideTargetElement={hideTargetElement}
+                        wannagoItem={item}
+                        myPageWannago={true}
+                        handleCurrentPk={handleCurrentPk}
+                        handleActive={handleActive}
+                        handleCount={handleCount}
+                        handleToggle={handleToggle}
+                      />
+                    );
+                  })}
                 </ul>
               )}
             </div>

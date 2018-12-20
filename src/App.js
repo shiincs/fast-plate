@@ -10,6 +10,7 @@ import PageProvider from './contexts/PageContext';
 import WritingReviewPage from './pages/WritingReviewPage';
 import EatDealPage from './pages/EatDealPage';
 import EatDealDetailPage from './pages/EatDealDetailPage';
+import { WannagoProvider } from './contexts/WannagoContext';
 
 class App extends Component {
   render() {
@@ -17,28 +18,30 @@ class App extends Component {
       <BrowserRouter>
         <UserProvider>
           <PageProvider>
-            <Layout>
-              <div className="App">
-                <Switch>
-                  <Route
-                    path="/eatdeals/:restaurant"
-                    component={EatDealDetailPage}
-                  />
-                  <Route path="/eatdeals/" component={EatDealPage} />
-                  <Route
-                    path="/restaurantsReview/:rReviewKeyword"
-                    component={WritingReviewPage}
-                  />
-                  <Route path="/search" component={SearchPage} />
-                  <Route
-                    path="/restaurant/:rKeyword"
-                    component={PostDetailPage}
-                  />
-                  {/*루트페이지는 항상 맨 아래 위치 */}
-                  <Route path="/" component={MainPage} />
-                </Switch>
-              </div>
-            </Layout>
+            <WannagoProvider>
+              <Layout>
+                <div className="App">
+                  <Switch>
+                    <Route
+                      path="/eatdeals/:restaurant"
+                      component={EatDealDetailPage}
+                    />
+                    <Route path="/eatdeals/" component={EatDealPage} />
+                    <Route
+                      path="/restaurantsReview/:rReviewKeyword"
+                      component={WritingReviewPage}
+                    />
+                    <Route path="/search" component={SearchPage} />
+                    <Route
+                      path="/restaurant/:rKeyword"
+                      component={PostDetailPage}
+                    />
+                    {/*루트페이지는 항상 맨 아래 위치 */}
+                    <Route path="/" component={MainPage} />
+                  </Switch>
+                </div>
+              </Layout>
+            </WannagoProvider>
           </PageProvider>
         </UserProvider>
       </BrowserRouter>

@@ -16,8 +16,6 @@ class ReviewItemView extends Component {
       post_set,
       restaurants,
     } = this.props;
-
-    console.log(container);
     return (
       <>
         {container.map(r => {

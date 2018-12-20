@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
-import styles from './RecentGoView.module.scss';
+import styles from './WannaGoView.module.scss';
 import { Link } from 'react-router-dom';
 import defaultListItem from '../../commonimgs/defaultListItem.jpg';
 import { withUser } from '../../contexts/UserContext';
 import { withModal } from '../../contexts/ModalContext';
-import LoginPopupView from '../LoginPopupView';
 const cx = classNames.bind(styles);
 
-class RecentGoView extends Component {
+class WannaGoView extends Component {
   render() {
     const {
+      username,
+      item,
       myPageWannago,
+      showTargetElement,
+      hideTargetElement,
       handleCurrentPk,
       handleActive,
       handleCount,
       handleToggle,
-      popupOpen,
-      username,
-      item,
-      showTargetElement,
-      hideTargetElement,
     } = this.props;
 
     return (
@@ -73,10 +71,9 @@ class RecentGoView extends Component {
             가고싶다
           </div>
         </figure>
-        {popupOpen ? <LoginPopupView /> : null}
       </li>
     );
   }
 }
 
-export default withUser(withModal(RecentGoView));
+export default withUser(withModal(WannaGoView));
