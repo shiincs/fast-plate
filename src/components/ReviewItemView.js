@@ -17,6 +17,7 @@ class ReviewItemView extends Component {
       restaurants,
     } = this.props;
 
+    console.log(container);
     return (
       <>
         {container.map(r => {
@@ -33,7 +34,7 @@ class ReviewItemView extends Component {
                 <div className={cx('user-thumb')}>
                   <img src={imageSrc} alt="" />
                 </div>
-                <figcaption>{r.author.username}</figcaption>
+                <figcaption>{r.author.full_name}</figcaption>
               </figure>
               <div className={cx('review-wrapper')}>
                 <span className={cx('date')}>2018-10-20</span>
