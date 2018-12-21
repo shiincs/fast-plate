@@ -23,7 +23,7 @@ class Main extends Component {
   }
   async componentDidMount() {
     this.props.handlePageOpen('main');
-    //https://fastplate.xyz/api/restaurants/list/?page=1&ordering=-rate_average&page_size=8
+    //요청 예시 - https://fastplate.xyz/api/restaurants/list/?page=1&ordering=-rate_average&page_size=8
     const res = await api.get('/api/restaurants/list/', {
       params: {
         page: 1,

@@ -23,18 +23,6 @@ export default class ModalProvider extends Component {
     };
   }
 
-  // handlePopup = () => {
-  //   this.setState({
-  //     popupOpen: true,
-  //   });
-  // };
-
-  // handleGallery = () => {
-  //   this.setState({
-  //     galleryOpen: true,
-  //   });
-  // };
-
   showTargetElement = name => {
     // ... some logic to show target element
     if (name === 'modalOpen') {

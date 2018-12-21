@@ -45,7 +45,6 @@ export default class WritingReview extends Component {
       chars_left: 10000 - input.length,
       reviewTextBox: e.target.value,
     });
-    console.log(this.state.reviewTextBox);
   }
 
   buttonActive = () => {
@@ -71,7 +70,6 @@ export default class WritingReview extends Component {
   }
   handleFileChange(e) {
     e.persist();
-    // console.log(e.target.files);
     if (e.target.files) {
       this.setState(prevState => ({
         uploadImgArr: [...prevState.uploadImgArr, ...e.target.files],
@@ -87,10 +85,8 @@ export default class WritingReview extends Component {
       reviewTextBox,
       uploadImgArr,
       rate,
-      // uploadImgArr,
     } = this.state;
     console.log(restaurantsPk, rate, reviewTextBox);
-    // const { reviewId } = this.props;
 
     if (!goodOpen && !okOpen && !notGoodOpen) {
       alert('평가해 주세요');
@@ -105,8 +101,6 @@ export default class WritingReview extends Component {
         });
 
         const formData = new FormData();
-        // console.log(uploadImgArr[0])
-        // formData.append('image', uploadImgArr[0]);
 
         formData.append('post', cpk);
 
@@ -124,41 +118,6 @@ export default class WritingReview extends Component {
         reviewSend: !prev.reviewSend,
       }));
     }
-  }
-
-  async handleSubmit() {
-    // const { restaurantsPk, rate, reviewTextBox, uploadImgArr } = this.state;
-    // try {
-    // const res = await api.post('/api/posts/list/', {
-    //   restaurant: restaurantsPk,
-    //   content: reviewTextBox,
-    //   rate,
-    // });
-    //   console.log(res);
-    // } catch (e) {
-    //   console.log(e);
-    // }
-    // FormData는 key-value 저장소로서,
-    // POST 요청에 담아 보낼 수 있습니다.
-    // 가장 큰 특징은 **파일을 담을 수 있다**는 것입니다.
-    // const formData = new FormData();
-    // formData.append('reviewTextBox', reviewTextBox);
-    // uploadImgArr.forErach((f, index) => {
-    //   formData.append(`file${index}`, f);
-    // });
-    // const res = await api.post('/api/posts/image/', FormData);
-    // // 콘솔에서 출력된 결과를 확인해보세요.
-    // console.log(res.data);
-    // const form = new FormData();
-    // form.append('image', 이미지 파일);
-    // form.append('pk', 댓글PK);
-    // try {
-    //   api.post('/api/posts/image/', form, {
-    //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    //   });
-    // } catch (e) {
-    //   console.log(e);
-    // }
   }
 
   toggleGoodOpen = () => {
@@ -229,15 +188,6 @@ export default class WritingReview extends Component {
     );
   };
 
-  // handleDeleteImg(index) {
-  //   const { uploadImgArr } = this.state;
-  //   this.setState(prevState => ({
-  //     uploadImgArr: prevState.uploadImgArr.filter(list => {
-  //       return uploadImgArr.indexOf(uploadImgArr[list]) !== index;
-  //     }),
-  //   }));
-  // }
-
   handleDeleteImg(index) {
     const { uploadImgArr } = this.state;
     const newArr = uploadImgArr.filter((item, idx, arr) => {
@@ -248,17 +198,6 @@ export default class WritingReview extends Component {
       uploadImgArr: newArr,
     });
   }
-
-  // // 사진 업로드하는 메소드 (나중에 쓸 일이 있을수도 있음)
-  // async fileUploadHandler() {
-  //   // const { reviewId } = this.props;
-  //   // await api.post(`/api/restaurants/list/${reviewId}`);
-  //   console.log('upload');
-  // }
-  // async fileUploadHandler(reviewId) {
-  //   // const {reviewId} = this.props;
-  //   await api.post(`/api/restaurants/list/${reviewId}`{});
-  // }
 
   render() {
     const { restaurants, reviewId } = this.props;
@@ -285,7 +224,6 @@ export default class WritingReview extends Component {
           handleDeleteImg={index => this.handleDeleteImg(index)}
           fileUploadHandler={() => this.fileUploadHandler()}
           handleFileChange={e => this.handleFileChange(e)}
-          handleSubmit={() => this.handleSubmit()}
         />
       </React.Fragment>
     );

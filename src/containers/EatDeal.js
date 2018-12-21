@@ -22,7 +22,7 @@ export default class EatDeal extends Component {
 
   render() {
     const { eatDeal, loading } = this.state;
-    console.log(eatDeal);
+
     return (
       <>
         <EatDealView eatDeal={eatDeal} loading={loading} />
