@@ -6,7 +6,7 @@
 - 개발 일정 - **2018/12/03 ~ 2018/12/21**
 - 개발 도구
   - Language - `JavaScript ES6+` / `HTML5` / `CSS3(& Sass)`
-  - Library - `react v16.6.3` / `react-router-dom v4.3.1`/ `react-helmet v5.2.0` / `axios v0.18.0` / `node-sass v4.10.0` / `classnames v2.2.6`
+  - Library - `react v16.6.3` / `react-router-dom v4.3.1`/ `react-helmet v5.2.0` / `axios v0.18.0` / `node-sass v4.10.0` / `classnames v2.2.6` / `body-scroll-lock v2.6.1` / `react-responsive-carousel v3.1.43` / `react-facebook-login v4.1.1` / `google-maps-react v2.0.2`
   - Module Bundler & Build Tool - `Webpack v4.26.1`
   - JS Compiler - `Babel v7.1.6`
   - This Project created by `Create-React-App v2.1.1`
