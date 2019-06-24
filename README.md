@@ -28,7 +28,7 @@
   - 여기까지 하셨다면 작업할 준비가 되셨습니다.
 - develop 브랜치는 각각의 feature로 나뉘어서 작업한 뒤 merge 되는 곳입니다. 개발은 feature 브랜치를 만들어서 작업하신 뒤에 개발이 완료된 feature 브랜치는 develop에 merge 해주세요.
   - feature 브랜치는 develop 브랜치에 위치한 상태에서 만들어야 합니다. 현재 위치가 develop이 아니라면 `git checkout develop` 으로 develop 브랜치로 이동해주세요.
-  - develop 브랜치로 이동하셨다면 `git flow feature start 기능이름` 을 입력해서 feature 브랜치를 만들어주세요. 
+  - develop 브랜치로 이동하셨다면 `git flow feature start 기능이름` 을 입력해서 feature 브랜치를 만들어주세요.
   - 브랜치가 성공적으로 만들어졌다면 `feature/기능이름` 형태의 브랜치가 생기면서 자동으로 `feature/기능이름` 브랜치로 이동했을 겁니다.
   - 자 이제, feature 브랜치에서 원하는 작업을 시작하시면 됩니다.
   - 그리고 브랜치에서 작업을 완료하셨다면 `add`, `commit`, `push` 를 하신 뒤 `git flow feature finish 기능이름` 을 입력해서 feature를 종료시켜주시면 됩니다.
@@ -38,5 +38,23 @@
 - **(주의사항!)** 만약 여러 사람이 같은 파일에 작업한다면, 변경사항이 충돌하게 될 것입니다. 이러한 현상을 해결하기 위해서는 아래와 같이 작업해주시면 됩니다.
   - 원본(PM)의 리모트 레포지토리(Github Repository) 주소를 복사해서 `git remote add pmorigin 레포지토리주소` 를 입력해서 PM의 repo를 remote에 추가로 등록해놓습니다.
   - develop 브랜치에 위치한 상태에서 `git pull pmorigin develop`으로 pm의 develop 브랜치를 pull 받으려고 하면 내용이 다른 부분에서 conflict가 발생합니다. ---> 이 때, 코드상에서 원하는 변경사항을 수락해주시면 됩니다.
-  - 변경사항을 원하는 대로 수정하신 뒤에  `add`, `commit`, `git push origin develop`으로 개발자님의 리모트에 반영해주시면 됩니다.
+  - 변경사항을 원하는 대로 수정하신 뒤에 `add`, `commit`, `git push origin develop`으로 개발자님의 리모트에 반영해주시면 됩니다.
   - conflict를 해결한 내용을 PM에게 Pull Request를 보내시면 됩니다.
+
+## Images
+
+- 맛집 목록
+
+![맛집목록](/images/[망플]맛집목록.png)
+
+- 맛집 상세정보
+
+![맛집상세정보](/images/[망플]맛집상세정보.png)
+
+- 최근 본 맛집
+
+![최근 본 맛집](/images/[망플]최근본맛집.png)
+
+- 로그인
+
+![로그인](/images/[망플]로그인.png)
