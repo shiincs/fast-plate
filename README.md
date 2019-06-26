@@ -7,8 +7,7 @@
 - 개발 도구
   - Language - `JavaScript ES6+` / `HTML5` / `CSS3(& Sass)`
   - Library - `react v16.6.3` / `react-router-dom v4.3.1`/ `react-helmet v5.2.0` / `axios v0.18.0` / `node-sass v4.10.0` / `classnames v2.2.6` / `body-scroll-lock v2.6.1` / `react-responsive-carousel v3.1.43` / `react-facebook-login v4.1.1` / `google-maps-react v2.0.2`
-  - Module Bundler & Build Tool - `Webpack v4.26.1`
-  - JS Compiler - `Babel v7.1.6`
+  - Etc - `REST API` / `Slack` / `Trello`
   - This Project created by `Create-React-App v2.1.1`
 
 ## Project Plan
@@ -40,21 +39,3 @@
   - develop 브랜치에 위치한 상태에서 `git pull pmorigin develop`으로 pm의 develop 브랜치를 pull 받으려고 하면 내용이 다른 부분에서 conflict가 발생합니다. ---> 이 때, 코드상에서 원하는 변경사항을 수락해주시면 됩니다.
   - 변경사항을 원하는 대로 수정하신 뒤에 `add`, `commit`, `git push origin develop`으로 개발자님의 리모트에 반영해주시면 됩니다.
   - conflict를 해결한 내용을 PM에게 Pull Request를 보내시면 됩니다.
-
-## Images
-
-**[맛집 목록]**
-
-![맛집목록](/images/[망플]맛집목록.png)
-
-**[맛집 상세정보]**
-
-![맛집상세정보](/images/[망플]맛집상세정보.png)
-
-**[최근 본 맛집]**
-
-![최근 본 맛집](/images/[망플]최근본맛집.png)
-
-**[로그인]**
-
-![로그인](/images/[망플]로그인.png)
